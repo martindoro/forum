@@ -11,48 +11,57 @@ public class Comment {
 	@Id
 	@GeneratedValue
 	private int ident;
-	private String username;
-	private String game;
+	private int userId;
+	private int topicId;
 	private String content;
 	private Date createdOn;
 	
 	public Comment() {
 	}
 	
-	public Comment(String username, String game, String content) {
-		this.username = username;
-		this.game = game;
+	public Comment(int userId, int topicId, String content) {
+		this.userId = userId;
+		this.topicId = topicId;
 		this.content = content;
 		this.createdOn = new java.sql.Timestamp(new Date().getTime());
 	}
-	
+
 	public int getIdent() {
 		return ident;
 	}
+
 	public void setIdent(int ident) {
 		this.ident = ident;
 	}
-	public String getUsername() {
-		return username;
+
+	public int getUserId() {
+		return userId;
 	}
-	public void setUsername(String username) {
-		this.username = username;
+
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
-	public String getGame() {
-		return game;
+
+	public int getTopicId() {
+		return topicId;
 	}
-	public void setGame(String game) {
-		this.game = game;
+
+	public void setTopicId(int topicId) {
+		this.topicId = topicId;
 	}
+
 	public String getContent() {
 		return content;
 	}
+
 	public void setContent(String content) {
 		this.content = content;
 	}
+
 	public Date getCreatedOn() {
 		return createdOn;
 	}
+
 	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
 	}
