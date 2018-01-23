@@ -35,9 +35,13 @@ public class ForumController {
 	}
 	
 	
-	private void fillModel(Model model) {
-		model.addAttribute("getComments", commentService.getCommentsTopic(topic.getIdent()));
-		model.addAttribute("getTopics", topicService.getTopic(category.getIdent()));
+	private void fillModel(Model model) {		
+		try {
+			model.addAttribute("getComments", commentService.getCommentsTopic(topic.getIdent()));
+			model.addAttribute("getTopics", topicService.getTopic(category.getIdent()));
+		} catch (NullPointerException e) {
+			
+		}		
 		model.addAttribute("getCategories", categoryService.getCategory());
 	}
 	
