@@ -9,7 +9,7 @@ public class Topic {
 	@Id
 	@GeneratedValue
 	private int ident;
-	private int userId;
+	private String userName;
 	private int categoryId;
 	private String content;
 	private Date createdOn;
@@ -17,8 +17,8 @@ public class Topic {
 	public Topic() {
 	}
 	
-	public Topic(int userId, int categoryId, String content) {
-		this.userId = userId;
+	public Topic(String userName, int categoryId, String content) {
+		this.userName = userName;
 		this.categoryId = categoryId;
 		this.content = content;
 		this.createdOn = new java.sql.Timestamp(new Date().getTime());
@@ -32,12 +32,12 @@ public class Topic {
 		this.ident = ident;
 	}
 
-	public int getUserId() {
-		return userId;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public int getCategoryId() {

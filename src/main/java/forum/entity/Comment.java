@@ -11,7 +11,7 @@ public class Comment {
 	@Id
 	@GeneratedValue
 	private int ident;
-	private int userId;
+	private String userName;
 	private int topicId;
 	private String content;
 	private Date createdOn;
@@ -19,8 +19,8 @@ public class Comment {
 	public Comment() {
 	}
 	
-	public Comment(int userId, int topicId, String content) {
-		this.userId = userId;
+	public Comment(String userName, int topicId, String content) {
+		this.userName = userName;
 		this.topicId = topicId;
 		this.content = content;
 		this.createdOn = new java.sql.Timestamp(new Date().getTime());
@@ -34,12 +34,12 @@ public class Comment {
 		this.ident = ident;
 	}
 
-	public int getUserId() {
-		return userId;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUserId(String userName) {
+		this.userName = userName;
 	}
 
 	public int getTopicId() {
