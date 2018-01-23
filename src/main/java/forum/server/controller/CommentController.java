@@ -1,11 +1,11 @@
-package forum.server;
+package forum.server.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class ForumController {
+public class CommentController {
 
 	@RequestMapping("/")
 	public String user(Model model) {
