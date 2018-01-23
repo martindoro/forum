@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.context.WebApplicationContext;
 
+import forum.entity.Category;
 import forum.entity.Comment;
 import forum.entity.Favorite;
 import forum.entity.Topic;
@@ -32,7 +33,8 @@ public class ServiceController {
 	private UserServiceJPA userService;
 	
 	@RequestMapping("/add_comment")
-	public String comment(Comment comment, Model model) {
+	public String comment(String content, Model model) {
+		
 		commentService.addComment(comment);
 		return "topic";
 	}
@@ -50,8 +52,9 @@ public class ServiceController {
 		return "index";
 	}
 	
-	@RequestMapping("/category")
-	public String category(Model model) {
+	@RequestMapping("/add_category")
+	public String category(String content, Model model) {
+		categoryService.addCategory(new Category(content));
 		return "index";
 	}
 	
