@@ -11,7 +11,7 @@ public class ForumUser {
 	@GeneratedValue
 	private int ident;
 	@Column(unique=true)
-	private String login;
+	public String login;
 	@Column(unique=true)
 	private String password;
 	private String email;
