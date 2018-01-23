@@ -34,14 +34,14 @@ public class ServiceController {
 	@RequestMapping("/add_comment")
 	public String comment(Comment comment, Model model) {
 		commentService.addComment(comment);
-		return "comment";
+		return "topic";
 	}
 	
 	@RequestMapping("/add_reply")
 	public String reply(Comment comment, int replyto, Model model) {
 		comment.setReplyto(replyto);
 		commentService.addComment(comment);
-		return "comment";
+		return "topic";
 	}
 	
 	@RequestMapping("/add_topic")
