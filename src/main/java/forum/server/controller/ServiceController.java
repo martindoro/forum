@@ -31,11 +31,12 @@ public class ServiceController {
 	private TopicServiceJPA topicService;
 	@Autowired
 	private UserServiceJPA userService;
+	@Autowired
+	private UserController userController;
 	
 	@RequestMapping("/add_comment")
-	public String comment(String content, Model model) {
-		
-		commentService.addComment(comment);
+	public String comment(int topicId, String content, Model model) {
+		commentService.addComment(new Comment(userController.getLoggedPlayer().login, topicId, content));
 		return "topic";
 	}
 	
