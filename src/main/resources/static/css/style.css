@@ -1,0 +1,576 @@
+
+/* div { */
+/* 		border-style: solid; */
+/* 		border-width: 1px; */
+
+/* } */
+
+.ram {
+		border-style: solid;
+		border-width: 1px;
+	
+}
+
+.puzzletable {background-color: #ff8300;}
+
+.enjoy-css {
+-webkit-box-sizing: content-box;
+-moz-box-sizing: content-box;
+box-sizing: content-box;
+#width: 300px;
+#height: 300px;
+border: none;
+font: normal 16px/1 "Times New Roman", Times, serif;
+color: rgba(255,255,255,1);
+text-align: center;
+-o-text-overflow: ellipsis;
+text-overflow: ellipsis;
+background: -webkit-linear-gradient(-90deg, rgba(247,14,14,1) 0, rgba(8,12,15,1) 94%, rgba(8,12,15,1) 100%);
+background: -moz-linear-gradient(180deg, rgba(247,14,14,1) 0, rgba(8,12,15,1) 94%, rgba(8,12,15,1) 100%);
+background: linear-gradient(180deg, rgba(247,14,14,1) 0, rgba(8,12,15,1) 94%, rgba(8,12,15,1) 100%);
+background-position: 50% 50%;
+-webkit-background-origin: padding-box;
+background-origin: padding-box;
+-webkit-background-clip: border-box;
+background-clip: border-box;
+-webkit-background-size: auto auto;
+background-size: auto auto;
+-webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+-moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+-o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
+}
+
+.watch {
+	color: white;
+	font-size: 14px;
+	width: 250px;
+}
+
+
+
+body {
+/* #background-color: #ff0000; */
+/* background-color: black; */
+/* background-repeat: no-repeat; */
+
+
+/* /* IE10+ */  */
+/* background-image: -ms-linear-gradient(top, #911111 0%, #000000 100%); */
+
+/* /* Mozilla Firefox */  */
+/* background-image: -moz-linear-gradient(top, #911111 0%, #000000 100%); */
+
+/* /* Opera */  */
+/* background-image: -o-linear-gradient(top, #911111 0%, #000000 100%); */
+
+/* /* Webkit (Safari/Chrome 10) */  */
+/* background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #911111), color-stop(100, #000000)); */
+
+/* /* Webkit (Chrome 11+) */  */
+/* background-image: -webkit-linear-gradient(top, #911111 0%, #000000 100%); */
+
+/* /* W3C Markup */  */
+/* background-image: linear-gradient(to bottom, #911111 0%, #000000 100%); */
+
+
+
+
+
+
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#a90329+0,8f0222+44,000000+90,000000+91,000000+91,000000+94,000000+94 */
+#background: rgb(169,3,41); /* Old browsers */
+#background: -moz-linear-gradient(top, rgba(169,3,41,1) 0%, rgba(143,2,34,1) 44%, rgba(0,0,0,1) 90%, rgba(0,0,0,1) 91%, rgba(0,0,0,1) 91%, rgba(0,0,0,1) 94%, rgba(0,0,0,1) 94%); /* FF3.6-15 */
+#background: -webkit-linear-gradient(top, rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(0,0,0,1) 90%,rgba(0,0,0,1) 91%,rgba(0,0,0,1) 91%,rgba(0,0,0,1) 94%,rgba(0,0,0,1) 94%); /* Chrome10-25,Safari5.1-6 */
+#background: linear-gradient(to bottom, rgba(169,3,41,1) 0%,rgba(143,2,34,1) 44%,rgba(0,0,0,1) 90%,rgba(0,0,0,1) 91%,rgba(0,0,0,1) 91%,rgba(0,0,0,1) 94%,rgba(0,0,0,1) 94%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+#filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+
+background-image: url("../img/bg1.jpg");
+
+}
+
+
+.buttons {
+	text-align: center;
+	margin: auto;
+	
+}
+
+.logo {
+	
+	background-repeat: no-repeat;	
+background-position: center;
+
+
+/* IE10+ */ 
+background-image: -ms-linear-gradient(top, #CC0000 0%, #333333 100%);
+
+/* Mozilla Firefox */ 
+background-image: -moz-linear-gradient(top, #CC0000 0%, #333333 100%);
+
+/* Opera */ 
+background-image: -o-linear-gradient(top, #CC0000 0%, #333333 100%);
+
+/* Webkit (Safari/Chrome 10) */ 
+background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #CC0000), color-stop(100, #333333));
+
+/* Webkit (Chrome 11+) */ 
+background-image: -webkit-linear-gradient(top, #CC0000 0%, #333333 100%);
+
+/* W3C Markup */ 
+background-image: linear-gradient(to bottom, #CC0000 0%, #333333 100%);	
+	
+	
+	
+	
+/* background-repeat: no-repeat;	 */
+/* background-position: center; */
+background-color: #ff0000;	
+background-image: url('img/GameStudio-logo.png');
+background-image: url("img/GameStudio-logo.png");
+background-image: url("../img/gsl.png");
+##height: 175px;
+height: 12em;
+#position: fixed;
+#top:0;
+#border-radius: 15px;
+border-top-radius: 15px;
+border-top-right-radius: 15px;
+border-top-left-radius: 15px;
+text-align:center;
+#padding: 15px;
+
+
+
+
+
+
+}
+
+
+hr { 
+    display: block;
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+} 
+
+
+
+
+/* label { */
+/*   display: inline-block; */
+/*   width: 140px; */
+/*   text-align: right; */
+/*   float: right; */
+/* }​ */
+
+/* input { */
+/*     margin-top: 5px; */
+/*     margin-bottom: 5px; */
+/*     display:inline-block; */
+/*     *display: inline;     for IE7 */
+/*     zoom:1;              for IE7 */
+/*     vertical-align:middle; */
+/*     margin-left:20px */
+/* } */
+
+.inpu {
+	
+#background-color: #ff0000;
+border: 1px solid red;	
+#text-align: right;
+#float: center;	
+
+}
+
+.mineren {
+	
+	line-height:0;
+	
+}
+
+
+.mines {
+	text-align: center;
+	#margin: auto;
+	padding: none;
+}
+
+
+.menubar {
+height: 3em;
+#height: 15em;
+text-align: center;	
+
+}
+
+
+/* menuul, ul  { */
+	
+/* #position: fixed; */
+/* top: 0; */
+/* #bottom: 0; */
+/* width: 100%; */
+/* list-style-type: none; */
+/* margin: 0; */
+/* padding: 0; */
+/* overflow: hidden; */
+/* background-color: #333;	    */
+/* display: inline-block; */
+
+/* } */
+
+
+/* menuli, li { */
+/* float: left; */
+/* border-right: 1px solid #bbb; */
+
+/* } */
+
+.pagebody {
+background-color: white;
+height: 30em;
+padding: 5px;
+text-align: center;
+border-bottom-left-radius: 15px;
+border-bottom-right-radius: 15px;
+#background-color: white;
+background-image: url("../img/bg2.jpg");
+}
+
+.game {
+	text-align: center;
+	margin: auto;
+	padding: none;
+}
+
+.pagebodygame {
+background-color: white;
+background-image: url("../img/bg2.jpg");
+height: 32em;
+padding: 5px;
+text-align: center;
+#border-bottom-left-radius: 15px;
+#border-bottom-right-radius: 15px;
+}
+
+
+
+.pagebodyg {
+background-color: white;	
+background-image: url("../img/bg2.jpg");
+height: 58em;
+padding: 5px;
+text-align: center;
+border-bottom-left-radius: 15px;
+border-bottom-right-radius: 15px;
+	
+	
+}
+.banner1 {
+height: 35px;
+width: 220px;
+
+}
+
+.banner2 {
+height: 35px;
+width: 150px;
+
+}
+
+
+
+.stats {
+background-image: url("../img/bg2.jpg");
+border-bottom-left-radius: 15px;
+border-bottom-right-radius: 15px;
+	
+}
+
+.imggames {
+height: 100px;
+width: 100px;
+}
+
+
+.img {
+	height: 100px;
+	width: 100px;
+/* 	align-content: left; */
+	float: left;
+	
+}
+
+
+p {
+#color: white;
+}
+
+.text {
+	
+	text-align: left;
+	padding: 15px;
+	#color: white;
+	
+}
+
+
+
+.gtext {
+	
+    #margin: 70px;
+	text-align: left;
+	padding: 5px;
+	
+}
+
+
+.score {
+	text-align: left;
+}
+
+.score.tr:hover {background-color: #ffb7b7;}
+
+.unlist {
+#position: fixed;
+top: 0;
+#bottom: 0;
+width: 100%;
+list-style-type: none;
+margin: 0;
+padding: 0;
+overflow: hidden;
+background-color: #333;	   
+display: inline-block;
+
+}
+
+
+.puzzle {
+	border: 1px solid black;
+	font-size: 25px;
+	text-color: black;
+	color: black;
+	#background-image: url("../img/gsl.png");
+	
+}
+
+.rating {
+	text-align: center;
+}
+
+
+.rating a {
+#display: block;
+color: black;
+font-size: 35px;
+#text-align: center;
+#padding: 14px 16px;
+text-decoration: none;
+}
+
+.rating a:hover {
+#background-color: black;
+font-size: 65px;
+}
+
+.level a {
+	color: black;
+	font-size: 25px;
+}
+
+.level a:hover {
+	font-size: 35px;
+}
+
+/* Change the link color to #111 (black) on hover */
+
+
+
+
+
+.list {
+float: left;
+border-right: 1px solid #bbb;
+}
+
+.list:last-child {
+border-right: none;
+}
+.list a {
+display: block;
+color: white;
+text-align: center;
+padding: 14px 16px;
+text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+.list a:hover {
+background-color: #111;
+}
+
+
+
+
+
+
+/* ul { */
+/* #position: fixed; */
+/* top: 0; */
+/* #bottom: 0; */
+/* width: 100%; */
+/* list-style-type: none; */
+/* margin: 0; */
+/* padding: 0; */
+/* overflow: hidden; */
+/* background-color: #333;	    */
+/* display: inline-block; */
+
+/* } */
+
+/* li { */
+/* float: left; */
+/* border-right: 1px solid #bbb; */
+/* } */
+
+/* li:last-child { */
+/* border-right: none; */
+/* } */
+/* li a { */
+/* display: block; */
+/* color: white; */
+/* text-align: center; */
+/* padding: 14px 16px; */
+/* text-decoration: none; */
+/* } */
+
+/* Change the link color to #111 (black) on hover */
+/* li a:hover { */
+/* background-color: #111; */
+/* } */
+
+
+
+
+.active {
+#background-color: #4CAF50;
+background-color: #7f0000;
+}
+
+.dropbtn {
+background-color: #4CAF50;
+color: white;
+padding: 16px;
+font-size: 16px;
+border: none;
+cursor: pointer;		
+position: relative; /* <-- Added */
+z-index: 1; /* <-- Added */
+			
+			
+}
+
+
+.dropdown {
+position: relative;
+ display: inline-block;
+}
+
+
+.dropdown-content {
+display: none;
+position: absolute;
+background-color: #f9f9f9;
+min-width: 160px;
+box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+z-index: 1;
+}
+
+
+
+
+
+
+/* Links inside the dropdown */
+.dropdown-content a {
+color: black;
+padding: 12px 16px;
+text-decoration: none;
+display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+display: block;
+}
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+background-color: #3e8e41;
+}
+
+
+
+/*modal skuska*/
+
+
+/* The Modal (background) */
+.modal {
+display: none; /* Hidden by default */
+position: fixed; /* Stay in place */
+z-index: 1; /* Sit on top */
+left: 0;
+top: 0;
+width: 100%; /* Full width */
+height: 100%; /* Full height */
+overflow: auto; /* Enable scroll if needed */
+background-color: rgb(0,0,0); /* Fallback color */
+background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+			    }
+
+/* Modal Content/Box */
+.modal-content {
+background-color: #fefefe;
+margin: 15% auto; /* 15% from the top and centered */
+padding: 20px;
+border: 1px solid #888;
+width: 35%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+text-align: right;
+color: #aaa;
+float: right;
+font-size: 28px;
+font-weight: bold;
+position: right;	
+}
+
+.close:hover,
+.close:focus {
+color: black;
+text-decoration: none;
+cursor: pointer;
+position: right;	
+ }
+ 
+.register {
+color: black;
+ 
+ 
+ }
+ 
+ 
+.slider {
+    height: 75px;
+    width: 75px;
+}
