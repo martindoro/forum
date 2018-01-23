@@ -15,11 +15,11 @@ public class FavoriteServiceJPA {
 
 	public void setFavorite(Favorite favorite) {
 		try {
-			entityManager.createQuery("SELECT f FROM Favorite f WHERE f.user_name = :user_name AND f.comment_id = :comment_id")
-					.setParameter("user_name", favorite.getUserName()).setParameter("comment_id", favorite.getCommentId())
+			entityManager.createQuery("SELECT f FROM Favorite f WHERE f.userName = :userName AND f.commentId = :commentId")
+					.setParameter("userName", favorite.getUserName()).setParameter("commentId", favorite.getCommentId())
 					.getSingleResult();
-			entityManager.createQuery("DELETE FROM Favorite f WHERE f.user_name = :user_name AND f.comment_id = :comment_id")
-					.setParameter("user_name", favorite.getUserName()).setParameter("comment_id", favorite.getCommentId())
+			entityManager.createQuery("DELETE FROM Favorite f WHERE f.userName = :userName AND f.commentId = :commentId")
+					.setParameter("userName", favorite.getUserName()).setParameter("commentId", favorite.getCommentId())
 					.executeUpdate();
 		} catch (NoResultException e) {
 			entityManager.persist(favorite);
@@ -27,14 +27,14 @@ public class FavoriteServiceJPA {
 	}
 
 	public List<Favorite> getFavorite(String userName) {
-		return entityManager.createQuery("SELECT f FROM Favorite f WHERE f.user_name = :user_name")
+		return entityManager.createQuery("SELECT f FROM Favorite f WHERE f.userName = :userName")
 				.setParameter("username", userName).getResultList();
 	}
 
 	public boolean isFavorite(Favorite favorite) {
 		try {
-			entityManager.createQuery("SELECT f FROM Favorite f WHERE f.user_name = :user_name AND f.comment_id = :comment_id")
-					.setParameter("user_name", favorite.getUserName()).setParameter("comment_id", favorite.getCommentId())
+			entityManager.createQuery("SELECT f FROM Favorite f WHERE f.userName = :userName AND f.commentId = :commentId")
+					.setParameter("userName", favorite.getUserName()).setParameter("commentId", favorite.getCommentId())
 					.getSingleResult();
 			return true;
 		} catch (NoResultException e) {
