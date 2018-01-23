@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class CommentController {
 
-	@RequestMapping("/")
+	@RequestMapping("/comment")
 	public String user(Model model) {
 		return "index";
 
