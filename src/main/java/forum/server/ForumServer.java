@@ -18,7 +18,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 //		@Bean
 //		/*TODO doplnit JPA services /* 
 //
-
 	}
 
 
