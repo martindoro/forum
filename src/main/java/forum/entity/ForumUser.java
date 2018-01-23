@@ -1,10 +1,11 @@
 package forum.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
-public class User {
+@Entity
+public class ForumUser {
 //boolean userIsAdmin
 	@Id
 	@GeneratedValue
@@ -15,10 +16,10 @@ public class User {
 	private String password;
 	private String email;
 
-	public User() {
+	public ForumUser() {
 	}
 	
-	public User(String login, String password, String email) {
+	public ForumUser(String login, String password, String email) {
 		this.login = login;
 		this.password = password;
 		this.email = email;

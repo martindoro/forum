@@ -7,7 +7,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(uniqueConstraints={@UniqueConstraint(columnNames= {"userId", "commentId"})})
+@Table(uniqueConstraints={@UniqueConstraint(columnNames= {"userName", "commentId"})})
 public class Favorite {
 	@Id
 	@GeneratedValue
