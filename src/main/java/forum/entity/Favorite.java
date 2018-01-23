@@ -12,14 +12,14 @@ public class Favorite {
 	@Id
 	@GeneratedValue
 	private int ident;
-	private int userId;
+	private String userName;
 	private int commentId;
 	
 	public Favorite() {
 	}
 	
-	public Favorite(int userId, int commentId) {
-		this.userId = userId;
+	public Favorite(String userName, int commentId) {
+		this.userName = userName;
 		this.commentId = commentId;
 	}
 
@@ -31,12 +31,12 @@ public class Favorite {
 		this.ident = ident;
 	}
 
-	public int getUserId() {
-		return userId;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 
 	public int getCommentId() {
