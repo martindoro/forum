@@ -48,8 +48,8 @@ public class ServiceController {
 	}
 	
 	@RequestMapping("/add_topic")
-	public String topic(Topic topic, Model model) {
-		topicService.addTopic(topic);
+	public String topic(int categoryId, String content, Model model) {
+		topicService.addTopic(new Topic(userController.getLoggedPlayer().getLogin(), categoryId, content));
 		return "index";
 	}
 	
