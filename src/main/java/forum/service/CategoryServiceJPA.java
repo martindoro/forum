@@ -4,11 +4,12 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import forum.entity.Category;
 
 
-
+@Transactional
 public class CategoryServiceJPA {
 	@PersistenceContext
 	private EntityManager entityManager;

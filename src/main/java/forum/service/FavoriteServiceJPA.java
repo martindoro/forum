@@ -5,9 +5,11 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 import forum.entity.Favorite;
 
+@Transactional
 public class FavoriteServiceJPA {
 
 	@PersistenceContext

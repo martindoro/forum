@@ -8,8 +8,17 @@
 <title>Java Academy Forum</title>
 </head>
 <body>
-
-
+	
+	<table id="center-element">
+						<tr th:each='category:${getCategories}'> 
+						<td th:text='${category.content}' />
+						</tr>
+<!-- 					<tr th:each='topic:${getTopics}'> -->
+<!-- 						<td th:text='${topic.content}' /> -->
+<!-- 					</tr> -->
+	</table>	
+	
+	
 	<table id="center-element">
 					<tr>
 						<th>Name</th>
@@ -20,7 +29,15 @@
 						<td th:text='${getComments.content}' />
 						<td th:text='${getComments.createdOn}' />
 					</tr>
-				</table>
+	</table>
+	
+	
+	<form action="/add_category" method="post">
+		<label>Category: </label> 
+		<input type="text" name="content"/>
+	
+		<input type="submit" value="Send" />
+		</form>
 
 <p>login </p>
 
