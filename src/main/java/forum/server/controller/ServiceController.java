@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.WebApplicationContext;
 
 import forum.entity.Category;
@@ -35,7 +36,7 @@ public class ServiceController {
 	private UserController userController;
 	
 	@RequestMapping("/add_comment")
-	public String comment(int topicId, String content, Model model) {
+	public String comment(@RequestParam(value = "topicId", required = false) int topicId, @RequestParam(value = "content", required = false) String content, Model model) {
 		commentService.addComment(new Comment(userController.getLoggedPlayer().login, topicId, content));
 		return "topic";
 	}
@@ -48,7 +49,7 @@ public class ServiceController {
 	}
 	
 	@RequestMapping("/add_topic")
-	public String topic(int categoryId, String content, Model model) {
+	public String topic(@RequestParam(value = "categoryId", required = false) int categoryId, @RequestParam(value = "content", required = false) String content, Model model) {
 		topicService.addTopic(new Topic(userController.getLoggedPlayer().getLogin(), categoryId, content));
 		return "index";
 	}
