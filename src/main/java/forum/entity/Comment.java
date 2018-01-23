@@ -15,6 +15,7 @@ public class Comment {
 	private int topicId;
 	private String content;
 	private Date createdOn;
+	private int replyto;
 	
 	public Comment() {
 	}
@@ -23,6 +24,14 @@ public class Comment {
 		this.userName = userName;
 		this.topicId = topicId;
 		this.content = content;
+		this.createdOn = new java.sql.Timestamp(new Date().getTime());
+	}
+	
+	public Comment(String userName, int topicId, String content, int replyto) {
+		this.userName = userName;
+		this.topicId = topicId;
+		this.content = content;
+		this.replyto = replyto;
 		this.createdOn = new java.sql.Timestamp(new Date().getTime());
 	}
 
@@ -64,5 +73,13 @@ public class Comment {
 
 	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
+	}
+	
+	public int getReplyto() {
+		return replyto;
+	}
+	
+	public void setReplyto(int replyto) {
+		this.replyto = replyto;
 	}
 }
