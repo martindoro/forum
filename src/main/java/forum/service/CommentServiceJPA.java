@@ -24,7 +24,7 @@ public class CommentServiceJPA {
 				.setParameter("userName", userName).getResultList();
 	}
 
-	public List<Comment> getCommentsTopic(String topicID) {
+	public List<Comment> getCommentsTopic(int topicID) {
 		return entityManager.createQuery("SELECT c FROM Comment c WHERE c.topicID = :topicID ORDER BY c.createdOn ASC")
 				.setParameter("topicID", topicID).getResultList();
 	}
