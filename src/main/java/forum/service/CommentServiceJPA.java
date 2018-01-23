@@ -20,12 +20,12 @@ public class CommentServiceJPA {
 
 	public List<Comment> getCommentsUser(String userName) {
 		return entityManager
-				.createQuery("SELECT c FROM Comment c WHERE c.userName = :userName ORDER BY c.createdOn DESC")
-				.setParameter("userName", userName).getResultList();
+				.createQuery("SELECT c FROM Comment c WHERE c.user_name = :user_name ORDER BY c.created_on DESC")
+				.setParameter("user_name", userName).getResultList();
 	}
 
-	public List<Comment> getCommentsTopic(int topicID) {
-		return entityManager.createQuery("SELECT c FROM Comment c WHERE c.topicID = :topicID ORDER BY c.createdOn ASC")
-				.setParameter("topicID", topicID).getResultList();
+	public List<Comment> getCommentsTopic(int topicId) {
+		return entityManager.createQuery("SELECT c FROM Comment c WHERE c.topic_id = :topic_id ORDER BY c.created_on ASC")
+				.setParameter("topic_id", topicId).getResultList();
 	}
 }

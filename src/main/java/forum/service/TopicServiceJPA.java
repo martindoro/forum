@@ -17,7 +17,7 @@ public class TopicServiceJPA {
 	}
 
 	public List<Topic> getTopic(int ident) {		
-		return entityManager.createQuery("SELECT t FROM Topic t WHERE t.categoryId = :ident ").getResultList();
+		return entityManager.createQuery("SELECT t FROM Topic t WHERE t.category_id = :ident ").getResultList();
 	}
 
 	private void removeTopic(int ident) {
