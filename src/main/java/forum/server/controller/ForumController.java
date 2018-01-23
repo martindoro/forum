@@ -1,5 +1,8 @@
 package forum.server.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +24,7 @@ public class ForumController {
 	private CategoryServiceJPA categoryService;
 	private Category category;
 	private Topic topic;
+	
 
 	@RequestMapping("/")
 	public String user(Model model) {
@@ -35,14 +39,24 @@ public class ForumController {
 	}
 	
 	
-	private void fillModel(Model model) {		
+	private void fillModel(Model model) {	
+		for (Category category : categoryService.getCategory()) {
+			List<Topic> topics = new ArrayList<>();
+		topics.addAll(topicService.getTopic(category.getIdent()));
+		model.addAttribute("",)
+		}
 		try {
-			model.addAttribute("getComments", commentService.getCommentsTopic(topic.getIdent()));
-			model.addAttribute("getTopics", topicService.getTopic(category.getIdent()));
+//			model.addAttribute("getComments", commentService.getCommentsTopic(topic.getIdent()));
+			model.addAttribute("getTopics", );
 		} catch (NullPointerException e) {
 			
 		}		
 		model.addAttribute("getCategories", categoryService.getCategory());
+	}
+	
+	public void  setIdentTotopic(List<Category> categories){		
+		
+		
 	}
 	
 	

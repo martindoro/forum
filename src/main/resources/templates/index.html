@@ -10,12 +10,14 @@
 <body>
 
 	<table id="center-element">
+	
 		<tr th:each='category:${getCategories}'>
 			<th th:text='${category.content}' />
 			</tr>
 		<tr th:each='topic:${getTopics}'>
 			<td th:text='${topic.content}' />
 		</tr>
+	
 	</table>
 
 
