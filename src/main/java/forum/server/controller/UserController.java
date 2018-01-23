@@ -16,6 +16,8 @@ public class UserController {
 	
 	private String chkbx;
 	
+	private ForumUser loggedPlayer;
+	
 	public ForumUser getLoggedPlayer() {
 		return loggedPlayer;
 	}
@@ -26,7 +28,7 @@ public class UserController {
 	}
 
 		
-	private ForumUser loggedPlayer;
+	
 	
 	@Autowired 
 	private UserServiceJPA userServiceJPA;

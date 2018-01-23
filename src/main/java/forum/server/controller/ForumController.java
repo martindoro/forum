@@ -38,6 +38,11 @@ public class ForumController {
 		return "register";
 	}
 	
+	@RequestMapping("/test")
+	public String test(Model model) {
+		return "test";
+	}
+	
 	
 	private void fillModel(Model model) {	
 		for (Category category : categoryService.getCategory()) {
