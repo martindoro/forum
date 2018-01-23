@@ -8,6 +8,20 @@
 <title>Java Academy Forum</title>
 </head>
 <body>
+
+
+	<table id="center-element">
+					<tr>
+						<th>Name</th>
+						<th>Comment</th>
+					</tr>
+					<tr th:each='getComments:${getComments}'>
+						<td th:text='${getComments.userName}' />
+						<td th:text='${getComments.content}' />
+						<td th:text='${getComments.createdOn}' />
+					</tr>
+				</table>
+
 <p>login </p>
 
 	<form action="/login" method="post">
