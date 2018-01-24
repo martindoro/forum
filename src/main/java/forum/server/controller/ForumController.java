@@ -47,6 +47,16 @@ public class ForumController {
 	public String test(Model model) {
 		return "test";
 	}
+	
+	@RequestMapping("/test1")
+	public String test1(Model model) {
+		return "test1";
+	}
+	
+	@RequestMapping("/test2")
+	public String test2(Model model) {
+		return "test2";
+	}
 
 	@RequestMapping("/comment")
 	public String comment(int ident, Model model) {
