@@ -1,0 +1,90 @@
+/* .unlist { */
+/* position: fixed; */
+/* top: 0; */
+/* #bottom: 0; */
+/* width: 100%; */
+/* list-style-type: none; */
+/* margin: 0; */
+/* padding: 0; */
+/* overflow: hidden; */
+/* background-color: #333;	    */
+/* display: inline-block; */
+
+/* } */
+
+/* .list { */
+/* float: left; */
+/* border-right: 1px solid #bbb; */
+/* } */
+
+/* .list:last-child { */
+/* border-right: none; */
+/* } */
+/* .list a { */
+/* display: block; */
+/* color: white; */
+/* text-align: center; */
+/* padding: 14px 16px; */
+/* text-decoration: none; */
+/* } */
+
+/* /* Change the link color to #111 (black) on hover */ */
+/* .list a:hover { */
+/* background-color: #111; */
+/* } */
+
+
+/* .menubar { */
+/* height: 3em; */
+/* #height: 15em; */
+/* text-align: center;	 */
+
+/* } */
+
+/* .active { */
+/* #background-color: #4CAF50; */
+/* background-color: #7f0000; */
+/* } */
+
+.main {
+	margin-top: 300px;
+}
+
+/* .ram { */
+/* 		border-style: solid; */
+/* 		border-width: 1px; */
+	
+/* } */
+
+
+/* The navigation bar */
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+	
+
+}
+
+/* Links inside the navbar */
+.navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change background on mouse-over */
+.navbar a:hover {
+    background: #ddd;
+    color: black;
+}
+
+/* Main content */
+.main {
+    margin-top: 30px; /* Add a top margin to avoid content overlay */
+}
