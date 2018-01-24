@@ -24,8 +24,12 @@ public class ForumController {
 	private CategoryServiceJPA categoryService;
 	private Category category;
 	private Topic topic;
-	private int topicId ;
+	private int topicId;
+	private int categoryId;
 
+	public int getCategoryId() {
+		return categoryId;
+	}
 
 	public int getTopicId() {
 		return topicId;
@@ -47,12 +51,12 @@ public class ForumController {
 	public String test(Model model) {
 		return "test";
 	}
-	
+
 	@RequestMapping("/test1")
 	public String test1(Model model) {
 		return "test1";
 	}
-	
+
 	@RequestMapping("/test2")
 	public String test2(Model model) {
 		return "test2";
@@ -60,12 +64,20 @@ public class ForumController {
 
 	@RequestMapping("/comment")
 	public String comment(int ident, Model model) {
-			topicId = ident;	
+		topicId = ident;
 		fillModel(model);
 		return "/comment";
 	}
 
+	@RequestMapping("/topic")
+	public String topic(int ident, Model model) {
+		categoryId = ident;
+		fillModel(model);
+		return "/topic";
+	}
+
 	private void fillModel(Model model) {
+		model.addAttribute("getTopics", topicService.getTopic(categoryId));
 		model.addAttribute("getComments", commentService.getCommentsTopic(topicId));
 		model.addAttribute("categories", categoryService.getCategory());
 		model.addAttribute("topicsForHardware", topicService.getTopic(1));
@@ -75,7 +87,5 @@ public class ForumController {
 			model.addAttribute(category.getContent(), topicService.getTopic(category.getIdent()));
 		}
 	}
-
-	
 
 }

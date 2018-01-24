@@ -10,7 +10,7 @@
 <body>
 
 	<div id="center-element">
-		<h1>Hardware</h1>
+	<a th:href='${"/topic?ident=1"}'><h1>Hardware</h1></a>
 		
 			<p th:each='topic:${topicsForHardware}'>
 			
@@ -18,13 +18,13 @@
 		</p>
 	</div>
 	<div id="center-element">
-		<h1>Software</h1>
+		<a th:href='${"/topic?ident=2"}'><h1>Software</h1></a>
 			<p th:each='topic:${topicsForSoftware}'>
 			<a th:href='${"/comment?ident=" + topic.ident}'><p th:text='${topic.content}' /></a>
 		</p>
 	</div>
 		<div id="center-element">
-		<h1>Other</h1>
+		<a th:href='${"/topic?ident=3"}'><h1>Other</h1></a>
 			<p th:each='topic:${topicsForOther}'>
 			<a th:href='${"/comment?ident=" + topic.ident}'><p th:text='${topic.content}' /></a>
 		</p>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+
+<!-- 		<link rel="stylesheet" type="text/css" href="gs/css/bootstrap.css"/> -->
+<!-- 		<link rel="stylesheet" type="text/css" href="gs/css/style.css"/> -->
+<title>Java Academy Forum</title>
+</head>
+<body>
+	<div id='right' th:replace="fragments::header" />
+
+
+	<table id="center-element">
+		<tr th:each='topic:${getTopics}'>
+	<td>	<a th:href='${"/comment?ident=" + topic.ident}'><p th:text='${topic.content}' /></a></td>
+			<td	th:text="${#dates.format(topic.createdOn, ' HH:mm  dd-MMM-yyyy ')}"></td>
+		</tr>
+	</table>
+
+	<form action='/add_topic' method='post'>
+		<input type="text" name="content" placeholder="Enter topic" /> <input
+			type="hidden" th:value='${@forumController.categoryId}' name="categoryId" />
+		<input type='submit' value='Save Topic' />
+	</form>
+
+</body>
+</html>

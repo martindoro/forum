@@ -55,7 +55,7 @@ public class ServiceController {
 	public String topic(@RequestParam(value = "categoryId", required = false) int categoryId,
 			@RequestParam(value = "content", required = false) String content, Model model) {
 		topicService.addTopic(new Topic(userController.getLoggedPlayer().getLogin(), categoryId, content));
-		return "index";
+		return "forward:/topic?ident=" + categoryId;
 	}
 
 	@RequestMapping("/add_category")

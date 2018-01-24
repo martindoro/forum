@@ -21,11 +21,10 @@ public class CategoryServiceJPA {
 	}
 
 	public List<Category> getCategory() {
-		/* try {
-		 setCategories();
-		 } catch( SQLException e) {
-		 return entityManager.createQuery("SELECT c FROM Category c").getResultList();
-		 }*/
+		/*
+		 * try { setCategories(); } catch( SQLException e) { return
+		 * entityManager.createQuery("SELECT c FROM Category c").getResultList(); }
+		 */
 		return entityManager.createQuery("SELECT c FROM Category c ").getResultList();
 	}
 
