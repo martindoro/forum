@@ -9,6 +9,10 @@ div {
 	border-top-left-radius: 10px;
 }
 
+header {
+	background-color: rgb(49, 63, 79);
+}
+
 .csstransforms #page-body, .csstransforms #page-footer, .csstransforms .main-header,
 	.csstransforms .offcanvas-content, .csstransforms .oncanvas-content {
 	-webkit-transition: -webkit-transform .3s
@@ -19,6 +23,16 @@ div {
 	transition: transform .3s cubic-bezier(.645, .045, .355, 1),
 		-webkit-transform .3s cubic-bezier(.645, .045, .355, 1), -o-transform
 		.3s cubic-bezier(.645, .045, .355, 1)
+}
+
+body {
+	margin: 0;
+	font-family: -apple-system, "Helvetica Neue", Roboto, "Segoe UI",
+		Helvetica, sans-serif;
+	font-size: 1.3rem;
+	line-height: 1.4;
+	color: #303030;
+	background-color: transparent
 }
 
 .container {
@@ -160,5 +174,21 @@ div {
 	#cp-box>.inner {
 		display: table;
 		width: 100%
+	}
+}
+
+@media ( min-width :992px) {
+	.big-grid {
+		display: table;
+		width: 100%
+	}
+	.col-maincontent, .col-sidebar {
+		display: table-cell;
+		height: 100%;
+		vertical-align: top
+	}
+	.col-sidebar {
+		width: 20%;
+		padding-left: 15px
 	}
 }
