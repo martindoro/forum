@@ -43,10 +43,13 @@ public class ForumController {
 	}
 
 	private void fillModel(Model model) {
-		model.addAttribute("getCategories", categoryService.getCategory());
+		model.addAttribute("categories", categoryService.getCategory());
 		model.addAttribute("topicsForHardware", topicService.getTopic(1));
 		model.addAttribute("topicsForSoftware", topicService.getTopic(2));
 		model.addAttribute("topicsForOther", topicService.getTopic(3));
+		for(Category category : categoryService.getCategory()) {
+			model.addAttribute(category.getContent(), topicService.getTopic(category.getIdent()));
+		}
 	}
 
 	public void setIdentTotopic(List<Category> categories) {
