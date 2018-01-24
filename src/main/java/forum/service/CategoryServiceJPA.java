@@ -21,10 +21,12 @@ public class CategoryServiceJPA {
 	}
 
 	public List<Category> getCategory() {
-		/*
-		 * try { setCategories(); } catch( SQLException e) { return
-		 * entityManager.createQuery("SELECT c FROM Category c").getResultList(); }
-		 */
+		
+//		  try {
+//		   setCategories();
+//		    } catch( SQLException e) { return
+//		  entityManager.createQuery("SELECT c FROM Category c").getResultList(); }
+//		 
 		return entityManager.createQuery("SELECT c FROM Category c ").getResultList();
 	}
 
@@ -33,7 +35,7 @@ public class CategoryServiceJPA {
 				.executeUpdate();
 	}
 
-	public void setCategories() throws PSQLException {
+	public void setCategories()  {
 		Category category = new Category();
 		category.setContent("Hardware");
 		addCategory(category);

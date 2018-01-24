@@ -10,7 +10,7 @@
 <body>
 	<div id='right' th:replace="fragments::header" />
 
-
+<h1 th:text='${category}'/>
 	<table id="center-element">
 		<tr th:each='topic:${getTopics}'>
 	<td>	<a th:href='${"/comment?ident=" + topic.ident}'><p th:text='${topic.content}' /></a></td>

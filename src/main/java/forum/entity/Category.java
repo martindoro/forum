@@ -9,9 +9,19 @@ import javax.persistence.UniqueConstraint;
 @Entity
 @Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "content" }) })
 public class Category {
+	
+	
+	
+	
+
 	@Id
 	@GeneratedValue
 	private int ident;
+	
+	
+	public void setIdent(int ident) {
+		this.ident = ident;
+	}
 	private String content;
 
 	public Category() {
@@ -32,4 +42,11 @@ public class Category {
 	public void setContent(String content) {
 		this.content = content;
 	}
+	@Override
+	public String toString() {
+		return ""+content;
+	}
+
+	
 }
+
