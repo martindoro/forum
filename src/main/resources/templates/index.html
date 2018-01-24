@@ -13,19 +13,20 @@
 		<h1>Hardware</h1>
 		
 			<p th:each='topic:${topicsForHardware}'>
-			<p th:text='${topic.content}' />
+			
+			<a th:href='${"/comment?ident=" + topic.ident}'> <p th:text='${topic.content}' /></a>
 		</p>
 	</div>
 	<div id="center-element">
 		<h1>Software</h1>
 			<p th:each='topic:${topicsForSoftware}'>
-			<p th:text='${topic.content}' />
+			<a th:href='${"/comment?ident=" + topic.ident}'><p th:text='${topic.content}' /></a>
 		</p>
 	</div>
 		<div id="center-element">
 		<h1>Other</h1>
 			<p th:each='topic:${topicsForOther}'>
-			<p th:text='${topic.content}' />
+			<a th:href='${"/comment?ident=" + topic.ident}'><p th:text='${topic.content}' /></a>
 		</p>
 	</div>
 

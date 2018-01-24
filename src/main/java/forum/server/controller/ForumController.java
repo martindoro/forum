@@ -43,11 +43,13 @@ public class ForumController {
 	}
 
 	@RequestMapping("/comment")
-	public String comment(Model model) {
+	public String comment(int ident, Model model) {
+		model.addAttribute("getComments", commentService.getCommentsTopic(ident));
 		return "comment";
 	}
 
 	private void fillModel(Model model) {
+		
 		model.addAttribute("categories", categoryService.getCategory());
 		model.addAttribute("topicsForHardware", topicService.getTopic(1));
 		model.addAttribute("topicsForSoftware", topicService.getTopic(2));
@@ -57,8 +59,6 @@ public class ForumController {
 		}
 	}
 
-	public void setIdentTotopic(List<Category> categories) {
-
-	}
+	
 
 }
