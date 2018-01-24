@@ -24,7 +24,6 @@ public class ForumController {
 	private CategoryServiceJPA categoryService;
 	private Category category;
 	private Topic topic;
-	
 
 	@RequestMapping("/")
 	public String user(Model model) {
@@ -32,37 +31,26 @@ public class ForumController {
 		return "index";
 
 	}
-	
+
 	@RequestMapping("/register")
 	public String register(Model model) {
 		return "register";
 	}
-	
+
 	@RequestMapping("/test")
 	public String test(Model model) {
 		return "test";
 	}
-	
-	
-	private void fillModel(Model model) {	
-		for (Category category : categoryService.getCategory()) {
-			List<Topic> topics = new ArrayList<>();
-		topics.addAll(topicService.getTopic(category.getIdent()));
-		model.addAttribute("",)
-		}
-		try {
-//			model.addAttribute("getComments", commentService.getCommentsTopic(topic.getIdent()));
-			model.addAttribute("getTopics", );
-		} catch (NullPointerException e) {
-			
-		}		
+
+	private void fillModel(Model model) {
 		model.addAttribute("getCategories", categoryService.getCategory());
+		model.addAttribute("topicsForHardware", topicService.getTopic(1));
+		model.addAttribute("topicsForSoftware", topicService.getTopic(2));
+		model.addAttribute("topicsForOther", topicService.getTopic(3));
 	}
-	
-	public void  setIdentTotopic(List<Category> categories){		
-		
-		
+
+	public void setIdentTotopic(List<Category> categories) {
+
 	}
-	
-	
+
 }
