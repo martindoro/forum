@@ -12,14 +12,19 @@
 
 
 	<table id="center-element">
-		<tr th:each='getComments:${getComments}'>
-			<td th:text='${getComments.userName}' />
-			<td th:text='${getComments.content}' />
-			<td th:text='${getComments.createdOn}' />
+		<tr th:each='comments:${getComments}'>
+			<td th:text='${comments.content}' />
+			<td th:text='${comments.createdOn}' />
 		</tr>
 	</table>
 
+<form  action='/addComment' method='post'>
 
+ 					<input type="hidden" value='5' name="topicId"/> 
+						<input type="text" name="content" placeholder="Enter comment" />
+
+						<input type='submit' value='Save Comment' />
+					</form>
 	
 
 

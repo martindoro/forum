@@ -42,12 +42,17 @@ public class ForumController {
 		return "test";
 	}
 
+	@RequestMapping("/comment")
+	public String comment(Model model) {
+		return "comment";
+	}
+
 	private void fillModel(Model model) {
 		model.addAttribute("categories", categoryService.getCategory());
 		model.addAttribute("topicsForHardware", topicService.getTopic(1));
 		model.addAttribute("topicsForSoftware", topicService.getTopic(2));
 		model.addAttribute("topicsForOther", topicService.getTopic(3));
-		for(Category category : categoryService.getCategory()) {
+		for (Category category : categoryService.getCategory()) {
 			model.addAttribute(category.getContent(), topicService.getTopic(category.getIdent()));
 		}
 	}

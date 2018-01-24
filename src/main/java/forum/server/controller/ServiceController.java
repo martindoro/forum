@@ -1,5 +1,6 @@
 package forum.server.controller;
 
+import org.postgresql.util.PSQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -34,35 +35,38 @@ public class ServiceController {
 	private UserServiceJPA userService;
 	@Autowired
 	private UserController userController;
-	
+
 	@RequestMapping("/add_comment")
-	public String comment(@RequestParam(value = "topicId", required = false) int topicId, @RequestParam(value = "content", required = false) String content, Model model) {
+	public String comment(@RequestParam(value = "topicId", required = false) int topicId,
+			@RequestParam(value = "content", required = false) String content, Model model) {
 		commentService.addComment(new Comment(userController.getLoggedPlayer().login, topicId, content));
 		return "topic";
 	}
-	
+
 	@RequestMapping("/add_reply")
 	public String reply(Comment comment, int replyto, Model model) {
 		comment.setReplyto(replyto);
 		commentService.addComment(comment);
 		return "topic";
 	}
-	
+
 	@RequestMapping("/add_topic")
-	public String topic(@RequestParam(value = "categoryId", required = false) int categoryId, @RequestParam(value = "content", required = false) String content, Model model) {
+	public String topic(@RequestParam(value = "categoryId", required = false) int categoryId,
+			@RequestParam(value = "content", required = false) String content, Model model) {
 		topicService.addTopic(new Topic(userController.getLoggedPlayer().getLogin(), categoryId, content));
 		return "index";
 	}
-	
+
 	@RequestMapping("/add_category")
-	public String category(String content, Model model) {
+	public String category(String content, Model model) throws PSQLException {
 		categoryService.addCategory(new Category(content));
 		return "index";
 	}
-	
+
 	@RequestMapping("/favorite")
 	public String favorite(Favorite favorite, Model model) {
 		favoriteService.setFavorite(favorite);
 		return "comment";
 	}
+
 }
