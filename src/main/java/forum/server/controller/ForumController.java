@@ -24,6 +24,12 @@ public class ForumController {
 	private CategoryServiceJPA categoryService;
 	private Category category;
 	private Topic topic;
+	private int topicId ;
+
+
+	public int getTopicId() {
+		return topicId;
+	}
 
 	@RequestMapping("/")
 	public String user(Model model) {
@@ -44,12 +50,13 @@ public class ForumController {
 
 	@RequestMapping("/comment")
 	public String comment(int ident, Model model) {
-		model.addAttribute("getComments", commentService.getCommentsTopic(ident));
-		return "comment";
+			topicId = ident;	
+		fillModel(model);
+		return "/comment";
 	}
 
 	private void fillModel(Model model) {
-		
+		model.addAttribute("getComments", commentService.getCommentsTopic(topicId));
 		model.addAttribute("categories", categoryService.getCategory());
 		model.addAttribute("topicsForHardware", topicService.getTopic(1));
 		model.addAttribute("topicsForSoftware", topicService.getTopic(2));

@@ -37,10 +37,11 @@ public class ServiceController {
 	private UserController userController;
 
 	@RequestMapping("/add_comment")
-	public String comment(@RequestParam(value = "topicId", required = false) int topicId,
+	public String comment(@RequestParam(value = "topicId", required = false) String topicId,
 			@RequestParam(value = "content", required = false) String content, Model model) {
-		commentService.addComment(new Comment(userController.getLoggedPlayer().login, topicId, content));
-		return "topic";
+		int topicIdent = Integer.parseInt(topicId);
+		commentService.addComment(new Comment(userController.getLoggedPlayer().login, topicIdent, content));
+		return "forward:/comment?ident=" + topicId;
 	}
 
 	@RequestMapping("/add_reply")

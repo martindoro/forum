@@ -8,7 +8,7 @@
 <title>Java Academy Forum</title>
 </head>
 <body>
-<div id='right' th:replace="fragments::header" />
+	<div id='right' th:replace="fragments::header" />
 
 
 	<table id="center-element">
@@ -18,16 +18,13 @@
 		</tr>
 	</table>
 
-<form  action='/addComment' method='post'>
-
- 					<input type="hidden" value='5' name="topicId"/> 
-						<input type="text" name="content" placeholder="Enter comment" />
-
-						<input type='submit' value='Save Comment' />
-					</form>
-	
+	<form action='/add_comment' method='post'>
 
 
-	
+		<input type="text" name="content" placeholder="Enter comment" />
+		 <input	type="hidden" th:value='${@forumController.topicId}' name="topicId" />
+		<input type='submit' value='Save Comment' />
+	</form>
+
 </body>
 </html>
