@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+
+<!-- 		<link rel="stylesheet" type="text/css" href="gs/css/bootstrap.css"/> -->
+<!-- 		<link rel="stylesheet" type="text/css" href="gs/css/style.css"/> -->
+<title>Java Academy Forum</title>
+</head>
+<body>
+<div id='right' th:replace="fragments::header" />
+
+
+	<table id="center-element">
+		<tr th:each='getComments:${getComments}'>
+			<td th:text='${getComments.userName}' />
+			<td th:text='${getComments.content}' />
+			<td th:text='${getComments.createdOn}' />
+		</tr>
+	</table>
+
+
+	
+
+
+	
+</body>
+</html>

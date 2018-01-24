@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div class="header" th:fragment="header">
+<a href='/'>Back to somewhere</a>
+<form action="/login" method="post">
+		Login: <input type="text" name="login" /> Passowrd: <input
+			type="password" name="password" /> <input type="submit" value="Login" />
+	</form>
+</div>
+
+<div th:fragment="nice_footer">
+
+
+<div th:fragment="addComment_fragment">
+<span th:if="${not @userController.logged}">Log in to comment.</span><span th:if="${@userController.logged}">
+					<form  action='/addComment' method='post'>
+ 					<input type="hidden" th:value='${game.ident}' name="game"/> 
+						<input type="text" name="content" placeholder="Enter comment" />
+
+						<input type='submit' value='Save Comment' />
+					</form>
+				</span>
+</div>
+
+<!-- <span th:if='${@userController.logged}'> -->
+<!-- Logged as <span th:text='${@userController.loggedPlayer?.login}'/> -->
+<!-- <a href= "/logout">Logout</a> -->
+<!-- </span> -->
+<!-- <span th:if='${not @userController.logged}'> -->
+<!-- <a href='/user'>Login</a> -->
+<!-- or -->
+<!-- <a href='/user'>Register</a> -->
+<!-- </span> -->
+</div>
+
+
+
+</body>
+
+</html>
