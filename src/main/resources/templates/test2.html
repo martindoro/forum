@@ -2,124 +2,140 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+<title>TEST2</title>
+<!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.css" /> -->
 <link rel="stylesheet" type="text/css" href="css/test2.css" />
 </head>
 <body>
-	<div class="oncanvas-content">
-		<div id="page-body">
-			<div class="container">
+	<!-- 	<div class="oncanvas-content"> -->
+	<div id="page-body">
+		<div class="container">
 
-				<div class="big-grid">
-					<div class="col-maincontent">
-						<div class="category-header">
-							<a class="category-title" href="lnkst">Hardware</a>
-						</div>
-						<div id="forum-1">
-							<ol class="itemlist itemlist--forums itemlist--forums--full">
-								<li
-									class="itemlist__item forum_read_subforum has-lastpostavatar">
-									<div class="item-inner">
-										<div class="item-col-icon forum-image">
-											<img src="/images/favicon.gif" />
-										</div>
-										<div class="item-col-main">
-											<div class=" itemlist__item item-col-main">
-												<a class="item-title">Topic1</a>
-											</div>
-										</div>
-										<div class="item-col-stats">
-											<span class="item-stat item-stat--topics"> <span
-												class="item-stat__count formatted-numcounter"> 123123
-													<span class="item-stat__label">Topics/Posts</span>
-											</span>
-											</span>
-										</div>
-										<div class="item-col-lastpost">Last post by bla bla</div>
-
-									</div>
-								</li>
-
-								<li
-									class="itemlist__item forum_read_subforum has-lastpostavatar">
-									<div class="item-inner">
-										<div class="item-col-icon forum-image">
-											<img src="/images/favicon.gif" />
-										</div>
-										<div class="item-col-main">
-											<div class=" itemlist__item item-col-main">
-												<a class="item-title">Topic2</a>
-											</div>
-										</div>
-										<div class="item-col-stats">
-											<span class="item-stat item-stat--topics"> <span
-												class="item-stat__count formatted-numcounter"> 123 <span
-													class="item-stat__label">Topics/Posts</span>
-											</span>
-
-											</span>
-
-										</div>
-										<div class="item-col-lastpost">Last post by Lorem Ipsum
-										</div>
-
-
-									</div>
-								</li>
-							</ol>
-						</div>
+			<div class="big-grid">
+				<div class="col-maincontent">
+					<div class="category-header">
+						<a class="category-title" th:href='${"/topic?ident=1"}'>Hardware</a>
+					</div>
+					<div id="forum-1">
 						<ol class="itemlist itemlist--forums itemlist--forums--full">
-							<li class="itemlist__item forum_read_subforum has-lastpostavatar">
+							<li class="itemlist__item forum_read_subforum has-lastpostavatar"
+								th:each='topic:${topicsForHardware}'>
 								<div class="item-inner">
-									<div class="col-maincontent">
-										<div class="category-header category-title">Software</div>
-										<div class=" itemlist__item item-col-main">
-											<div class="item-title">Topic1</div>
-										</div>
-										<div class=" itemlist__item item-col-main">Topic2</div>
-										<div class=" itemlist__item item-col-main">Topic3
-											asdasdasdasdasdasd</div>
-
-
-										<div class="category-header category-title">KATEGORIA</div>
-										<div class=" itemlist__item item-col-main">Topic2</div>
-
-										<div class="category-header category-title">KATEGORIA</div>
-
+									<div class="item-col-icon forum-image">
+										<img src="/images/favicon.gif" />
 									</div>
+									<div class="item-col-main">
+										<div class="itemlist__item item-col-main">
+											<a class="item-title"
+												th:href='${"/comment?ident=" + topic.ident}'><p
+													th:text='${topic.content}' /> </a>
+										</div>
+									</div>
+									<div class="item-col-stats">
+										<span class="item-stat item-stat--topics"> <span
+											class="item-stat__count formatted-numcounter"> 123123
+												<span class="item-stat__label">Posts</span>
+										</span>
+										</span>
+									</div>
+									<div class="item-col-lastpost">Last post by bla bla</div>
+
+								</div>
+							</li>
+
+
+						</ol>
+						<div class="category-header">
+							<a class="category-title" th:href='${"/topic?ident=2"}'>Software</a>
+						</div>
+						<!-- 						<div id="forum-1"> -->
+						<ol class="itemlist itemlist--forums itemlist--forums--full">
+							<li class="itemlist__item forum_read_subforum has-lastpostavatar"
+								th:each='topic:${topicsForSoftware}'>
+								<div class="item-inner">
+									<div class="item-col-icon forum-image">
+										<img src="/images/favicon.gif" />
+									</div>
+									<div class="item-col-main">
+										<div class=" itemlist__item item-col-main">
+											<a class="item-title"
+												th:href='${"/comment?ident=" + topic.ident}'><p
+													th:text='${topic.content}' /></a>
+										</div>
+									</div>
+									<div class="item-col-stats">
+										<span class="item-stat item-stat--topics"> <span
+											class="item-stat__count formatted-numcounter"> 123123
+												<span class="item-stat__label">Topics/Posts</span>
+										</span>
+										</span>
+									</div>
+									<div class="item-col-lastpost">Last post by bla bla</div>
+
 								</div>
 							</li>
 						</ol>
+						<div class="category-header">
+							<a class="category-title" th:href='${"/topic?ident=3"}'>Other</a>
+						</div>
+						<!-- 						<div id="forum-1"> -->
+						<ol class="itemlist itemlist--forums itemlist--forums--full">
+							<li class="itemlist__item forum_read_subforum has-lastpostavatar"
+								th:each='topic:${topicsForOther}'>
+								<div class="item-inner">
+									<div class="item-col-icon forum-image">
+										<img src="/images/favicon.gif" />
+									</div>
+									<div class="item-col-main">
+										<div class=" itemlist__item item-col-main">
+											<a class="item-title"
+												th:href='${"/comment?ident=" + topic.ident}'><p
+													th:text='${topic.content}' /></a>
+										</div>
+									</div>
+									<div class="item-col-stats">
+										<span class="item-stat item-stat--topics"> <span
+											class="item-stat__count formatted-numcounter"> 123123
+												<span class="item-stat__label">Topics/Posts</span>
+										</span>
+										</span>
+									</div>
+									<div class="item-col-lastpost">Last post by bla bla</div>
+
+								</div>
+							</li>
+						</ol>
+						<!-- 						</div> -->
 					</div>
 				</div>
-				<div class="sidebar-widget statistics">
-					<div class="widget-header">
-						<i class="widget-icon fi fi-chart-bar"> </i> Statistics
+			</div>
 
-					</div>
-					<div id="widget-statistics" class="widget-content collapse in">
+			<div class="sidebar-widget statistics">
+				<div class="widget-header">
+					<i class="widget-icon fi fi-chart-bar"> </i> Statistics
+
+				</div>
+				<div id="widget-statistics" class="widget-content collapse in">
 					<p>
-					<i class="fa fa-comment"></i>
-					Total topics
-					<strong>123</strong>
+						<i class="fa fa-comment"></i> Total topics <strong>123</strong>
 					</p>
 					<p>
-					<i class="fa fa-comment"></i>
-					Total post
-					<strong>123123</strong>
+						<i class="fa fa-comment"></i> Total post <strong>123123</strong>
 					</p>
 					<p>
-					<i class="fa fa-comment"></i>
-					Total members
-					<strong>2</strong>
+						<i class="fa fa-comment"></i> Total members <strong>2</strong>
 					</p>
-					
-					
-					</div>
+
+
 				</div>
 			</div>
 		</div>
 	</div>
+	<!-- 		</div> -->
+	<footer id="page-footer" class="page-footer page-footer--basic">
+		<div class="page-footer__before">
+			<div class="container">asda</div>
+		</div>
+	</footer>
 </body>
 </html>

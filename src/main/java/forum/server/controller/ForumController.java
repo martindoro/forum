@@ -61,7 +61,14 @@ public class ForumController {
 
 	@RequestMapping("/test2")
 	public String test2(Model model) {
+		fillModel(model);
 		return "test2";
+	}
+	
+	@RequestMapping("/test3")
+	public String test3(Model model) {
+		fillModel(model);
+		return "test3";
 	}
 
 	@RequestMapping("/comment")
