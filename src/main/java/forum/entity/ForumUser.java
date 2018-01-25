@@ -15,6 +15,15 @@ public class ForumUser {
 	@Column(unique=true)
 	private String password;
 	private String email;
+	private int admin;
+
+	public int getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(int admin) {
+		this.admin = admin;
+	}
 
 	public ForumUser() {
 	}

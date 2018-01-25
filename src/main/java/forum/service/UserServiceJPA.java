@@ -26,6 +26,18 @@ public class UserServiceJPA {
 			return null;
 		}
 	}
+	
+	
+	public boolean isAdmin(String login) {
+		try {
+			 entityManager
+					.createQuery("SELECT fu FROM ForumUser fu WHERE fu.admin =:admin AND fu.login =:login")
+					.setParameter("admin", 1).setParameter("login", login).getSingleResult();
+		} catch (NoResultException e) {
+			return false;
+		}
+		return true;
+	}
 
 	
 	

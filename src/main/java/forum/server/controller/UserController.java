@@ -14,6 +14,8 @@ public class UserController {
 	private String errormsg;
 	private String chkbx;
 	private ForumUser loggedPlayer;
+
+	
 	@Autowired
 	private UserServiceJPA userServiceJPA;
 
@@ -28,6 +30,7 @@ public class UserController {
 	@RequestMapping("/login")
 	public String login(ForumUser forumUser, Model model) {
 		loggedPlayer = userServiceJPA.login(forumUser.getLogin(), forumUser.getPassword());
+		fillModel(model);
 		return "forward:/test1";
 	}
 
@@ -48,5 +51,10 @@ public class UserController {
 		return loggedPlayer != null;
 	}
 
+	
+	private void fillModel(Model model) {
+	model.addAttribute("admin", userServiceJPA.isAdmin(loggedPlayer.getLogin()));
+	
+	}
 
 }

@@ -51,9 +51,16 @@
 		<!-- 	<div class="container"> -->
 		<div class="w3-row">
 			<div class="w3-col m4 l3">
+			
+			
+			
 				<!-- 		<div class="col"> -->
 				<p>Some text some text some text some text..</p>
 				<p>Some text some text some text some text..</p>
+				<span th:if='${admin}'>
+				<p>SOM ADMIN</p>
+				</span>				
+				
 				<p>Some text some text some text some text..</p>
 				<p>Some text some text some text some text..</p>
 				<p>Some text some text some text some text..</p>
@@ -70,6 +77,10 @@
 				<p>Some text some text some text some text..</p>
 				<p>Some text some text some text some text..</p>
 				<p>Some text some text some text some text..</p>
+				
+							<span th:if='${admin}'>
+				<p>SOM ADMIN</p>
+				</span>	
 				<p>Some text some text some text some text..</p>
 				<p>Some text some text some text some text..</p>
 				<p>Some text some text some text some text..</p>
