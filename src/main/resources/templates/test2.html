@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
 <title>Insert title here</title>
@@ -7,39 +7,119 @@
 <link rel="stylesheet" type="text/css" href="css/test2.css" />
 </head>
 <body>
-	<div class="container">
+	<div class="oncanvas-content">
+		<div id="page-body">
+			<div class="container">
 
-		<div class="bid-grid">
-			<div class="col-maincontent">
-				<div class="category-header">
-					<a class="category-title" href="lnkst">Hardware</a>
-				</div>
-				<ol class="itemlist itemlist--forums itemlist--forums--full">
-					<li class="itemlist__item forum_read_subforum has-lastpostavatar">
-						<div class="item-inner">
-							<div class="col-maincontent">
-								<div class=" itemlist__item item-col-main">Topic1</div>
-								<div class=" itemlist__item item-col-main">Topic2</div>
-								<div class=" itemlist__item item-col-main">Topic3</div>
-
-
-								<div class="category-header category-title">Software</div>
-								<div class=" itemlist__item item-col-main">Topic1</div>
-								<div class=" itemlist__item item-col-main">Topic2</div>
-								<div class=" itemlist__item item-col-main">Topic3 asdasdasdasdasdasd</div>
-
-
-								<div class="category-header category-title">KATEGORIA</div>
-								<div class="category-header category-title">KATEGORIA</div>
-
-							</div>
+				<div class="big-grid">
+					<div class="col-maincontent">
+						<div class="category-header">
+							<a class="category-title" href="lnkst">Hardware</a>
 						</div>
-					</li>
-				</ol>
-				<!-- 				</div> -->
+						<div id="forum-1">
+							<ol class="itemlist itemlist--forums itemlist--forums--full">
+								<li
+									class="itemlist__item forum_read_subforum has-lastpostavatar">
+									<div class="item-inner">
+										<div class="item-col-icon forum-image">
+											<img src="/images/favicon.gif" />
+										</div>
+										<div class="item-col-main">
+											<div class=" itemlist__item item-col-main">
+												<a class="item-title">Topic1</a>
+											</div>
+										</div>
+										<div class="item-col-stats">
+											<span class="item-stat item-stat--topics"> <span
+												class="item-stat__count formatted-numcounter"> 123123
+													<span class="item-stat__label">Topics/Posts</span>
+											</span>
+											</span>
+										</div>
+										<div class="item-col-lastpost">Last post by bla bla</div>
+
+									</div>
+								</li>
+
+								<li
+									class="itemlist__item forum_read_subforum has-lastpostavatar">
+									<div class="item-inner">
+										<div class="item-col-icon forum-image">
+											<img src="/images/favicon.gif" />
+										</div>
+										<div class="item-col-main">
+											<div class=" itemlist__item item-col-main">
+												<a class="item-title">Topic2</a>
+											</div>
+										</div>
+										<div class="item-col-stats">
+											<span class="item-stat item-stat--topics"> <span
+												class="item-stat__count formatted-numcounter"> 123 <span
+													class="item-stat__label">Topics/Posts</span>
+											</span>
+
+											</span>
+
+										</div>
+										<div class="item-col-lastpost">Last post by Lorem Ipsum
+										</div>
+
+
+									</div>
+								</li>
+							</ol>
+						</div>
+						<ol class="itemlist itemlist--forums itemlist--forums--full">
+							<li class="itemlist__item forum_read_subforum has-lastpostavatar">
+								<div class="item-inner">
+									<div class="col-maincontent">
+										<div class="category-header category-title">Software</div>
+										<div class=" itemlist__item item-col-main">
+											<div class="item-title">Topic1</div>
+										</div>
+										<div class=" itemlist__item item-col-main">Topic2</div>
+										<div class=" itemlist__item item-col-main">Topic3
+											asdasdasdasdasdasd</div>
+
+
+										<div class="category-header category-title">KATEGORIA</div>
+										<div class=" itemlist__item item-col-main">Topic2</div>
+
+										<div class="category-header category-title">KATEGORIA</div>
+
+									</div>
+								</div>
+							</li>
+						</ol>
+					</div>
+				</div>
+				<div class="sidebar-widget statistics">
+					<div class="widget-header">
+						<i class="widget-icon fi fi-chart-bar"> </i> Statistics
+
+					</div>
+					<div id="widget-statistics" class="widget-content collapse in">
+					<p>
+					<i class="fa fa-comment"></i>
+					Total topics
+					<strong>123</strong>
+					</p>
+					<p>
+					<i class="fa fa-comment"></i>
+					Total post
+					<strong>123123</strong>
+					</p>
+					<p>
+					<i class="fa fa-comment"></i>
+					Total members
+					<strong>2</strong>
+					</p>
+					
+					
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>
