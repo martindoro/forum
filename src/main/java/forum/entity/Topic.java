@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 @Entity
 public class Topic {
 	@Id
@@ -14,6 +15,8 @@ public class Topic {
 	private int categoryId;
 	private String content;
 	private Date createdOn;
+
+	
 	
 	public Topic() {
 	}
@@ -64,4 +67,5 @@ public class Topic {
 	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
 	}
+	
 }

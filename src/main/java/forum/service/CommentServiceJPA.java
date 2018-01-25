@@ -17,6 +17,7 @@ public class CommentServiceJPA {
 	public void addComment(Comment comment) {
 		entityManager.persist(comment);
 	}
+	
 
 	public List<Comment> getCommentsUser(String userName) {
 		return entityManager
@@ -27,5 +28,8 @@ public class CommentServiceJPA {
 	public List<Comment> getCommentsTopic(int topicId) {
 		return entityManager.createQuery("SELECT c FROM Comment c WHERE c.topicId = :topic_id ORDER BY c.createdOn ASC")
 				.setParameter("topic_id", topicId).getResultList();
+	}
+	public long getCommentCount(int topicId) {
+		return (long) entityManager.createQuery("SELECT COUNT(c)  FROM Comment c WHERE c.topicId = :topicId").setParameter("topicId", topicId).getSingleResult();
 	}
 }

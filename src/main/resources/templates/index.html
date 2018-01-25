@@ -14,7 +14,7 @@
 				th:text="${category.content}"></h3></a>
 		<div th:each="topic : ${@topicService.getTopicList(category.ident)}">
 			<a th:href='${"/comment?ident=" + topic.ident}'><p
-					th:text="${topic.content}" /></a>
+					th:text="${topic.content}" /></a><span th:text='${@commentService.getCommentCount(topic.ident)}'/>
 		</div>
 	</div>
 

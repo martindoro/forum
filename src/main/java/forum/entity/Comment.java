@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 @Entity
 public class Comment {
@@ -16,17 +17,17 @@ public class Comment {
 	private String content;
 	private Date createdOn;
 	private int replyto;
-	
+
 	public Comment() {
 	}
-	
+
 	public Comment(String userName, int topicId, String content) {
 		this.userName = userName;
 		this.topicId = topicId;
 		this.content = content;
 		this.createdOn = new java.sql.Timestamp(new Date().getTime());
 	}
-	
+
 	public Comment(String userName, int topicId, String content, int replyto) {
 		this.userName = userName;
 		this.topicId = topicId;
@@ -74,12 +75,13 @@ public class Comment {
 	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
 	}
-	
+
 	public int getReplyto() {
 		return replyto;
 	}
-	
+
 	public void setReplyto(int replyto) {
 		this.replyto = replyto;
 	}
+
 }

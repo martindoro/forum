@@ -10,11 +10,12 @@
 <body>
 	<div id='right' th:replace="fragments::header" />
 
-<h1 th:text='${category}'/>
+<h1 th:text='${getCategoryById}'/>
 	<table id="center-element">
 		<tr th:each='topic:${getTopics}'>
-	<td>	<a th:href='${"/comment?ident=" + topic.ident}'><p th:text='${topic.content}' /></a></td>
+	<td>	<a th:href='${"/comment?ident=" + topic.ident}'><p th:text='${topic.content}' /><span th:text='${@commentService.getCommentCount(topic.ident)}'/></a></td>
 			<td	th:text="${#dates.format(topic.createdOn, ' HH:mm  dd-MMM-yyyy ')}"></td>
+			<span th:text='${commentCount}'/>
 		</tr>
 	</table>
 

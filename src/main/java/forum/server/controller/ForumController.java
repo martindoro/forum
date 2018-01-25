@@ -64,7 +64,7 @@ public class ForumController {
 		fillModel(model);
 		return "test2";
 	}
-	
+
 	@RequestMapping("/test3")
 	public String test3(Model model) {
 		fillModel(model);
@@ -84,27 +84,15 @@ public class ForumController {
 		fillModel(model);
 		return "/topic";
 	}
-	
-	private void fillCategories(Model model) {	
-			for(Category s : categoryService.getCategory()) {			
-			    model.addAttribute(categoryService.getContentById(s.getIdent()), topicService.getTopicList(s.getIdent()));
-			    //model.addAttribute(topicService.getTopic(s.getIdent()), topicService.getTopicCount(s.getIdent()));
-			    System.out.println(model);
-			}		
-	}
-	
+
 	public List<Topic> getTopics(int ident) {
 		return topicService.getTopicList(ident);
 	}
 
 	private void fillModel(Model model) {
-		fillCategories(model);
 		model.addAttribute("controller", this);
 		model.addAttribute("getTopics", topicService.getTopicList(categoryId));
 		model.addAttribute("getComments", commentService.getCommentsTopic(topicId));
 		model.addAttribute("categories", categoryService.getCategory());
-		model.addAttribute("topicsForHardware", topicService.getTopicList(1));
-		model.addAttribute("topicsForSoftware", topicService.getTopicList(2));
-		model.addAttribute("topicsForOther", topicService.getTopicList(3));
 	}
 }
