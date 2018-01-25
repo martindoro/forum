@@ -34,6 +34,10 @@ public class CategoryServiceJPA {
 		entityManager.createQuery("DELETE FROM Category c WHERE c.ident = :ident").setParameter("ident", ident)
 				.executeUpdate();
 	}
+	
+	public String getContentById(int ident) {
+		return (String) entityManager.createQuery("SELECT c.content FROM Category c WHERE c.ident = :ident").setParameter("ident", ident).getSingleResult();
+	}
 
 	public void setCategories()  {
 		Category category = new Category();

@@ -77,26 +77,25 @@ public class ForumController {
 		return "/topic";
 	}
 	
-	private void fillCategories() {	
+	private void fillCategories(Model model) {	
 			List<Category> categories = categoryService.getCategory();
 			for(Category s : categories) {			
-			    category.setContent(s.getContent());
-			    category.setIdent(s.getIdent());
+//			    category.setContent(s.getContent());
+//			    category.setIdent(s.getIdent());
+			    model.addAttribute(Integer.toString(s.getIdent()), topicService.getTopic(s.getIdent()));
 			}	
 			
 	}
 
 	private void fillModel(Model model) {
 	
-		fillCategories();
-		model.addAttribute("category", categoryService.getCategory());
+		fillCategories(model);
 		model.addAttribute("getTopics", topicService.getTopic(categoryId));
 		model.addAttribute("getComments", commentService.getCommentsTopic(topicId));
 		model.addAttribute("categories", categoryService.getCategory());
-		model.addAttribute("topicsForHardware", topicService.getTopic(1));
-		model.addAttribute("topicsForSoftware", topicService.getTopic(2));
-		model.addAttribute("topicsForOther", topicService.getTopic(3));
-
+//		model.addAttribute("topicsForHardware", topicService.getTopic(1));
+//		model.addAttribute("topicsForSoftware", topicService.getTopic(2));
+//		model.addAttribute("topicsForOther", topicService.getTopic(3));
 	}
 	
 	
