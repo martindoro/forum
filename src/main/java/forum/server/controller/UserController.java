@@ -43,4 +43,10 @@ public class UserController {
 		loggedPlayer = null;
 		return "forward:/";
 	}
+	
+	public boolean isLogged() {
+		return loggedPlayer != null;
+	}
+
+
 }

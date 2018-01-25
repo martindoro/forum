@@ -15,24 +15,30 @@
 		<a class="active" href="/register" id="myBtn" style="float: right">Register</a>
 		
 		<a class="active" href="#login"  style="float: right" value="Login">Login</a>
-		<form action="/login" method="post">
 		<input type="submit" value="Login" style="float: right"/>
-		<span th:if='${not @userController.logged}'>
 			<input type="password" name="password" placeholder="Password" class="login"/>
 			<input type="text" name="login" placeholder="Login" class="login"/><br/><br/>
-		</span>
-		</form>
-		<span th:if='${@userController.logged}'>
-			<a href="profile.html">
-			<p th:text="'Logged as:' + ' ' + ${@userController.LoggedPlayer?.Login}" />
-			</a>
-		</span>	
 		
-		
-		
+						
 			
+		
+		
+		
+		
+			<div id="myModal" class="modal">
 
+			<!-- Modal content -->
+			<div class="modal-content">
+				<span class="close" align="right">&times;</span> <br />
+				<form action="/login" method="post">
+					Login: <input type="text" name="login" />
+					 Password: <input type="password" name="password" />
+					  <input type="submit" value="Login" />
+				</form>
+<script src="js/modal.js"></script>
+			</div>
 
+		</div>
 	</div>
 
 	<div class="w3-row">
@@ -48,6 +54,25 @@
 		<div class="w3-row">
 			<div class="w3-col m4 l3">
 				<!-- 		<div class="col"> -->
+				<p>Register Form</p><hr/>
+	<form action="/register_sub" method="post">
+	<div class="block">
+	<label>Login Name:</label> <br/><input class="inpu" type="text" name="Login" required="required" placeholder="Login"/><br/>
+	</div>
+	<div class="block">
+	<label>Password: </label><br/><input class="inpu" type="password" name="password" required="required" placeholder="Password"/><br/>
+	</div>
+	<div class="block">
+	<label>Retype Password:</label><br/> <input class="inpu" type="password" name="password_check"  placeholder="Password" required="required"/><br/>
+	</div>
+	<div class="block">
+	<label>Email:</label> <br/><input type="email" name="email"/><br/><br/>
+	</div>
+	<input type="checkbox" name="checkbox" value="checkbox"/> I Agree with rules!<br/><br/>
+	<input type="submit" value="Register"/>
+	</form>
+	<p>Red Marked Fields are Mandatory!</p>
+				
 				<p>Some text some text some text some text..</p>
 				<p>Some text some text some text some text..</p>
 				<p>Some text some text some text some text..</p>

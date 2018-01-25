@@ -155,5 +155,20 @@ background-color: #7f0000;
 }
 
 p {
-	color: white;
+	#color: white;
+}
+
+.logo {
+/* 	margin: auto;
+	padding: 10px;
+    float: left;
+    display: block; */
+height: 25px;
+width: 175px;
+
+}
+
+input[type=text] {
+    background-color: #3CBC8D;
+    color: black;
 }
