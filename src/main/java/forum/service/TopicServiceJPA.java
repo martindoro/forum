@@ -18,12 +18,16 @@ public class TopicServiceJPA {
 		entityManager.persist(topic);
 	}
 
-	public List<Topic> getTopic(int ident) {		
+	public List<Topic> getTopicList(int ident) {		
 		return entityManager.createQuery("SELECT t FROM Topic t WHERE t.categoryId = :ident ").setParameter("ident", ident).getResultList();
 	}
 
-	private void removeTopic(int ident) {
+	public void removeTopic(int ident) {
 		entityManager.createQuery("DELETE FROM Topic t WHERE t.ident = :ident")
 				.setParameter("ident", ident).executeUpdate();
+	}
+	
+	public int getTopicCount(int ident) {
+		return (int) entityManager.createQuery("SELECT COUNT(t) FROM Topic t WHERE t.category_id = :ident").setParameter("ident", ident).getSingleResult();
 	}
 }
