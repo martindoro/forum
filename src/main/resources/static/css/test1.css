@@ -169,6 +169,44 @@ width: 175px;
 }
 
 input[type=text] {
-    background-color: #3CBC8D;
+    #background-color: #3CBC8D;
     color: black;
+}
+
+input[type=password] {
+    #background-color: #3CBC8D;
+    color: black;
+}
+
+.linkButton { 
+     background: none;
+     border: none;
+     #color: #0066ff;
+     text-decoration: underline;
+     cursor: pointer; 
+         display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+     
+
+}
+
+.linkButton a {
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.linkButton a:hover {
+    background: #ddd;
+    color: black;
+}
+
+.logged {
+	font-size :10px;
+	
 }

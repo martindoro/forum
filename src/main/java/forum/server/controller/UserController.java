@@ -28,7 +28,7 @@ public class UserController {
 	@RequestMapping("/login")
 	public String login(ForumUser forumUser, Model model) {
 		loggedPlayer = userServiceJPA.login(forumUser.getLogin(), forumUser.getPassword());
-		return "forward:/";
+		return "forward:/test1";
 	}
 
 	@RequestMapping("/register_sub")
@@ -41,7 +41,7 @@ public class UserController {
 	@RequestMapping("/logout")
 	public String login(Model model) {
 		loggedPlayer = null;
-		return "forward:/";
+		return "forward:/test1";
 	}
 	
 	public boolean isLogged() {
