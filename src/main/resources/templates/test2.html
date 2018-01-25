@@ -5,21 +5,28 @@
 <title>TEST2</title>
 <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.css" /> -->
 <link rel="stylesheet" type="text/css" href="css/test2.css" />
+<!-- <link rel="stylesheet" type="text/css" href="css/test1.css" /> -->
+
 </head>
 <body>
+	<header>
+		<!-- <div th:replace="test1::navbar"/> -->
+	</header>
 	<!-- 	<div class="oncanvas-content"> -->
 	<div id="page-body">
+
 		<div class="container">
+
 
 			<div class="big-grid">
 				<div class="col-maincontent">
 					<div class="category-header">
-						<a class="category-title" th:href='${"/topic?ident=1"}'>Hardware</a>
+						<a class="category-title" th:href='${"/topic?ident=" + category.ident}'><span th:text="${category.content}" /></a>
 					</div>
 					<div id="forum-1">
 						<ol class="itemlist itemlist--forums itemlist--forums--full">
 							<li class="itemlist__item forum_read_subforum has-lastpostavatar"
-								th:each='topic:${topicsForHardware}'>
+								th:each="topic : ${@topicService.getTopicList(category.ident)}">
 								<div class="item-inner">
 									<div class="item-col-icon forum-image">
 										<img src="/images/favicon.gif" />
@@ -33,7 +40,7 @@
 									</div>
 									<div class="item-col-stats">
 										<span class="item-stat item-stat--topics"> <span
-											class="item-stat__count formatted-numcounter"> 123123
+											class="item-stat__count formatted-numcounter" > 
 												<span class="item-stat__label">Posts</span>
 										</span>
 										</span>
@@ -42,69 +49,68 @@
 
 								</div>
 							</li>
-
-
 						</ol>
-						<div class="category-header">
-							<a class="category-title" th:href='${"/topic?ident=2"}'>Software</a>
-						</div>
-						<!-- 						<div id="forum-1"> -->
-						<ol class="itemlist itemlist--forums itemlist--forums--full">
-							<li class="itemlist__item forum_read_subforum has-lastpostavatar"
-								th:each='topic:${topicsForSoftware}'>
-								<div class="item-inner">
-									<div class="item-col-icon forum-image">
-										<img src="/images/favicon.gif" />
-									</div>
-									<div class="item-col-main">
-										<div class=" itemlist__item item-col-main">
-											<a class="item-title"
-												th:href='${"/comment?ident=" + topic.ident}'><p
-													th:text='${topic.content}' /></a>
-										</div>
-									</div>
-									<div class="item-col-stats">
-										<span class="item-stat item-stat--topics"> <span
-											class="item-stat__count formatted-numcounter"> 123123
-												<span class="item-stat__label">Topics/Posts</span>
-										</span>
-										</span>
-									</div>
-									<div class="item-col-lastpost">Last post by bla bla</div>
+						
+<!-- 						<div class="category-header"> -->
+<!-- 							<a class="category-title" th:href='${"/topic?ident=2"}'>Software</a> -->
+<!-- 						</div> -->
+<!-- 												<div id="forum-1"> -->
+<!-- 						<ol class="itemlist itemlist--forums itemlist--forums--full"> -->
+<!-- 							<li class="itemlist__item forum_read_subforum has-lastpostavatar" -->
+<!-- 								th:each='topic:${topicsForSoftware}'> -->
+<!-- 								<div class="item-inner"> -->
+<!-- 									<div class="item-col-icon forum-image"> -->
+<!-- 										<img src="/images/favicon.gif" /> -->
+<!-- 									</div> -->
+<!-- 									<div class="item-col-main"> -->
+<!-- 										<div class=" itemlist__item item-col-main"> -->
+<!-- 											<a class="item-title" -->
+<!-- 												th:href='${"/comment?ident=" + topic.ident}'><p -->
+<!-- 													th:text='${topic.content}' /></a> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 									<div class="item-col-stats"> -->
+<!-- 										<span class="item-stat item-stat--topics"> <span -->
+<!-- 											class="item-stat__count formatted-numcounter"> 123123 -->
+<!-- 												<span class="item-stat__label">Topics/Posts</span> -->
+<!-- 										</span> -->
+<!-- 										</span> -->
+<!-- 									</div> -->
+<!-- 									<div class="item-col-lastpost">Last post by bla bla</div> -->
 
-								</div>
-							</li>
-						</ol>
-						<div class="category-header">
-							<a class="category-title" th:href='${"/topic?ident=3"}'>Other</a>
-						</div>
-						<!-- 						<div id="forum-1"> -->
-						<ol class="itemlist itemlist--forums itemlist--forums--full">
-							<li class="itemlist__item forum_read_subforum has-lastpostavatar"
-								th:each='topic:${topicsForOther}'>
-								<div class="item-inner">
-									<div class="item-col-icon forum-image">
-										<img src="/images/favicon.gif" />
-									</div>
-									<div class="item-col-main">
-										<div class=" itemlist__item item-col-main">
-											<a class="item-title"
-												th:href='${"/comment?ident=" + topic.ident}'><p
-													th:text='${topic.content}' /></a>
-										</div>
-									</div>
-									<div class="item-col-stats">
-										<span class="item-stat item-stat--topics"> <span
-											class="item-stat__count formatted-numcounter"> 123123
-												<span class="item-stat__label">Topics/Posts</span>
-										</span>
-										</span>
-									</div>
-									<div class="item-col-lastpost">Last post by bla bla</div>
+<!-- 								</div> -->
+<!-- 							</li> -->
+<!-- 						</ol> -->
+<!-- 						<div class="category-header"> -->
+<!-- 							<a class="category-title" th:href='${"/topic?ident=3"}'>Other</a> -->
+<!-- 						</div> -->
+<!-- 												<div id="forum-1"> -->
+<!-- 						<ol class="itemlist itemlist--forums itemlist--forums--full"> -->
+<!-- 							<li class="itemlist__item forum_read_subforum has-lastpostavatar" -->
+<!-- 								th:each='topic:${topicsForOther}'> -->
+<!-- 								<div class="item-inner"> -->
+<!-- 									<div class="item-col-icon forum-image"> -->
+<!-- 										<img src="/images/favicon.gif" /> -->
+<!-- 									</div> -->
+<!-- 									<div class="item-col-main"> -->
+<!-- 										<div class=" itemlist__item item-col-main"> -->
+<!-- 											<a class="item-title" -->
+<!-- 												th:href='${"/comment?ident=" + topic.ident}'><p -->
+<!-- 													th:text='${topic.content}' /></a> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 									<div class="item-col-stats"> -->
+<!-- 										<span class="item-stat item-stat--topics"> <span -->
+<!-- 											class="item-stat__count formatted-numcounter"> 123123 -->
+<!-- 												<span class="item-stat__label">Topics/Posts</span> -->
+<!-- 										</span> -->
+<!-- 										</span> -->
+<!-- 									</div> -->
+<!-- 									<div class="item-col-lastpost">Last post by bla bla</div> -->
 
-								</div>
-							</li>
-						</ol>
+<!-- 								</div> -->
+<!-- 							</li> -->
+<!-- 						</ol> -->
 						<!-- 						</div> -->
 					</div>
 				</div>
