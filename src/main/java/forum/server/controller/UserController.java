@@ -33,7 +33,7 @@ public class UserController {
 	public String login(ForumUser forumUser, Model model) {
 		loggedPlayer = userServiceJPA.login(forumUser.getLogin(), forumUser.getPassword());
 		fillModel(model);
-		return "forward:/test1";
+		return "forward:";
 	}
 
 	@RequestMapping("/register_sub")
