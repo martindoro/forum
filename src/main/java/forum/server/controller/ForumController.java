@@ -1,17 +1,10 @@
 package forum.server.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.EntityManager;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import forum.entity.Category;
-import forum.entity.Topic;
 import forum.service.CategoryServiceJPA;
 import forum.service.CommentServiceJPA;
 import forum.service.TopicServiceJPA;
@@ -27,9 +20,6 @@ public class ForumController {
 	private CategoryServiceJPA categoryService;
 	@Autowired
 	private UserServiceJPA userService;
-	
-	private Category category;
-	private Topic topic;
 	private int topicId;
 	private int categoryId;
 
@@ -85,16 +75,19 @@ public class ForumController {
 	@RequestMapping("/topic")
 	public String topic(int ident, Model model) {
 		categoryId = ident;
+		model.addAttribute("getCategoryById", categoryService.getContentById(categoryId));
 		fillModel(model);
 		return "/topic";
 	}
 
-//	public List<Topic> getTopics(int ident) {
-//		return topicService.getTopicList(ident);
-//	}
+	// public List<Topic> getTopics(int ident) {
+	// return topicService.getTopicList(ident);
+	// }
 
 	private void fillModel(Model model) {
 		model.addAttribute("controller", this);
+		
+		model.addAttribute("getComments" , commentService.getCommentsTopic(topicId));
 		model.addAttribute("getTopics", topicService.getTopicList(categoryId));
 		model.addAttribute("categories", categoryService.getCategory());
 		model.addAttribute("total_comments", commentService.getCommentCount());
