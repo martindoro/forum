@@ -8,6 +8,46 @@
 <link rel="stylesheet" type="text/css" href="css/test2.css" />
 
 <title>Java Academy Forum</title>
+
+
+<style type="text/css" id="st_userconfig_CSS">
+/* slickpanel overrides. please do not eat */
+
+/* Typography */
+.container, .layout-boxed #wrap, .breadcrumbs-bar.detached,
+	.layout-stretched .nav-breadcrumbs {
+	max-width: 1230px;
+}
+
+.postbody .content {
+	font-size: 16px;
+}
+
+/* colors */
+.itemlist__item--colbar, .cp-main h3, #tabs, .st-section__header,
+	.btn-primary, .thead, .category-header, .section-header {
+	background-color: rgb(49, 63, 79)
+}
+
+/* header */
+.main-header {
+	background-color: rgb(255, 255, 255);
+	background-image: none;
+	height: 50px;
+	background-position:;
+}
+
+/* footer */
+#page-footer {
+	background-color: rgb(49, 63, 79);
+	background-position:;
+}
+
+/* Post Author Label */
+.topic-author-label .label {
+	background-color: rgb(83, 184, 124);
+}
+</style>
 </head>
 <body>
 	<div id="page-body">
@@ -22,10 +62,13 @@
 								class="category-title" th:text="${category.content}"></div></a>
 
 						<ol class="itemlist itemlist--forums itemlist--forums--full">
-							<li class="itemlist__item forum_read_subforum has-lastpostavatar" th:each="topic : ${@topicService.getTopicList(category.ident)}">
+							<li class="itemlist__item forum_read_subforum has-lastpostavatar"
+								th:each="topic : ${@topicService.getTopicList(category.ident)}">
 
 								<div class="item-inner">
-
+									<div class="item-col-icon forum-image">
+										<img src="/images/favicon.gif" />
+									</div>
 									<div class="item-col-main">
 
 										<div class="itemlist__item item-col-main">
@@ -33,17 +76,18 @@
 											<a class="item-title"
 												th:href='${"/comment?ident=" + topic.ident}'><p
 													th:text="${topic.content}" /></a>
-											<div class="item-col-stats">
-												<span class="item-stat item-stat--topics"> <span
-													class="item-stat__count formatted-numcounter"> <span
-														class="item-stat__label"
-														th:text='${@commentService.getCommentCount(topic.ident)}' />
-														Posts
-												</span>
-												</span>
-											</div>
 										</div>
 									</div>
+									<div class="item-col-stats">
+										<span class="item-stat item-stat--topics"> <span
+											class="item-stat__count formatted-numcounter"> <span
+												class="item-stat__label"
+												th:text='${@commentService.getCommentCountForTopic(topic.ident)}' />
+												Posts
+										</span>
+										</span>
+									</div>
+									<div class="item-col-lastpost">Last post by bla bla</div>
 								</div>
 							</li>
 						</ol>
@@ -104,7 +148,7 @@
 						<i class="fa fa-comment"></i> Total topics <strong>123</strong>
 					</p>
 					<p>
-						<i class="fa fa-comment"></i> Total post <strong>123123</strong>
+						<i class="fa fa-comment"></i> Total post <strong th:text='${total_comments}' />
 					</p>
 					<p>
 						<i class="fa fa-comment"></i> Total members <strong>2</strong>
