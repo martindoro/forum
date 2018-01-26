@@ -34,16 +34,4 @@ public class CategoryServiceJPA {
 	public String getContentById(int ident) {
 		return (String) entityManager.createQuery("SELECT c.content FROM Category c WHERE c.ident = :ident").setParameter("ident", ident).getSingleResult();
 	}
-
-//	private void setCategories()  {
-//		Category category = new Category();
-//		category.setContent("Hardware");
-//		addCategory(category);
-//		Category category1 = new Category();
-//		category1.setContent("Software");
-//		addCategory(category1);
-//		Category category2 = new Category();
-//		category2.setContent("Other");
-//		addCategory(category2);
-//	}
 }

@@ -60,7 +60,6 @@
 						<a class="category-header"
 							th:href='${"/topic?ident=" + category.ident}'><div
 								class="category-title" th:text="${category.content}"></div></a>
-
 						<ol class="itemlist itemlist--forums itemlist--forums--full">
 							<li class="itemlist__item forum_read_subforum has-lastpostavatar"
 								th:each="topic : ${@topicService.getTopicList(category.ident)}">

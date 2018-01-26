@@ -1,11 +1,12 @@
 package forum.entity;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Transient;
 
 @Entity
 public class Comment {
@@ -86,7 +87,6 @@ public class Comment {
 
 	@Override
 	public String toString() {
-		return userName + " on " + createdOn;
+		return userName + " on " + new SimpleDateFormat("HH:mm EEEE dd MMM yyyy", Locale.ENGLISH).format(createdOn);
 	}
-
 }

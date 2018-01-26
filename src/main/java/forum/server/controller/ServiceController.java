@@ -69,5 +69,4 @@ public class ServiceController {
 		favoriteService.setFavorite(favorite);
 		return "comment";
 	}
-
 }

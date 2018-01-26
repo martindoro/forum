@@ -19,7 +19,6 @@ public class CommentServiceJPA {
 		entityManager.persist(comment);
 	}
 	
-
 	public List<Comment> getCommentsUser(String userName) {
 		return entityManager
 				.createQuery("SELECT c FROM Comment c WHERE c.userName = :user_name ORDER BY c.createdOn DESC")
@@ -44,6 +43,5 @@ public class CommentServiceJPA {
 		} catch (NoResultException e) {
 			return null;
 		}
-
 	}
 }

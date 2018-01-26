@@ -35,7 +35,6 @@ public class ForumController {
 	public String user(Model model) {
 		fillModel(model);
 		return "index";
-
 	}
 
 	@RequestMapping("/register")
@@ -80,13 +79,8 @@ public class ForumController {
 		return "/topic";
 	}
 
-	// public List<Topic> getTopics(int ident) {
-	// return topicService.getTopicList(ident);
-	// }
-
 	private void fillModel(Model model) {
 		model.addAttribute("controller", this);
-		
 		model.addAttribute("getComments" , commentService.getCommentsTopic(topicId));
 		model.addAttribute("getTopics", topicService.getTopicList(categoryId));
 		model.addAttribute("categories", categoryService.getCategory());

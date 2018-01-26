@@ -27,7 +27,6 @@ public class UserServiceJPA {
 		}
 	}
 	
-	
 	public boolean isAdmin(String login) {
 		try {
 			 entityManager
