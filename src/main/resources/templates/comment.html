@@ -2,13 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
-
+<link rel="stylesheet" type="text/css" href="css/test1.css"/>
 <!-- 		<link rel="stylesheet" type="text/css" href="gs/css/bootstrap.css"/> -->
 <!-- 		<link rel="stylesheet" type="text/css" href="gs/css/style.css"/> -->
 <title>Java Academy Forum</title>
 </head>
 <body>
-	<div id='right' th:replace="fragments::header" />
+	<div th:replace="test1::navbar"/>
 
 
 	<table id="center-element">
@@ -17,14 +17,14 @@
 			<td th:text="${#dates.format(comments.createdOn, ' HH:mm  dd-MMM-yyyy ')}"></td>
 		</tr>
 	</table>
-
+	
+	<span th:if='${not @userController.logged}'>Log in to add comment!</span>
+<span th:if='${@userController.logged}'>
 	<form action='/add_comment' method='post'>
-
-
 		<input type="text" name="content" placeholder="Enter comment" />
 		 <input	type="hidden" th:value='${@forumController.topicId}' name="topicId" />
 		<input type='submit' value='Save Comment' />
 	</form>
-
+</span>
 </body>
 </html>

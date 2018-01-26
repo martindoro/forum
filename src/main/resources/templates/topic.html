@@ -13,17 +13,18 @@
 <h1 th:text='${getCategoryById}'/>
 	<table id="center-element">
 		<tr th:each='topic:${getTopics}'>
-	<td>	<a th:href='${"/comment?ident=" + topic.ident}'><p th:text='${topic.content}' /><span th:text='${@commentService.getCommentCount(topic.ident)}'/></a></td>
+	<td>	<a th:href='${"/comment?ident=" + topic.ident}'><p th:text='${topic.content}' /><span th:text='${@commentService.getCommentCountForTopic(topic.ident)}'/></a></td>
 			<td	th:text="${#dates.format(topic.createdOn, ' HH:mm  dd-MMM-yyyy ')}"></td>
-			<span th:text='${commentCount}'/>
+			
 		</tr>
 	</table>
-
+	<span th:if='${not @userController.logged}'>Log in to add topic!</span>
+<span th:if='${@userController.logged}'>
 	<form action='/add_topic' method='post'>
 		<input type="text" name="content" placeholder="Enter topic" /> <input
 			type="hidden" th:value='${@forumController.categoryId}' name="categoryId" />
 		<input type='submit' value='Save Topic' />
 	</form>
-
+</span>
 </body>
 </html>

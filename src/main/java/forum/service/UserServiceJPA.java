@@ -39,7 +39,7 @@ public class UserServiceJPA {
 		return true;
 	}
 
-	public int getUserCount() {
-		return (int) entityManager.createQuery("SELECT COUNT(fu) FROM ForumUser fu").getSingleResult();
+	public long getUserCount() {
+		return (long) entityManager.createQuery("SELECT COUNT(fu) FROM ForumUser fu").getSingleResult();
 	}
 }

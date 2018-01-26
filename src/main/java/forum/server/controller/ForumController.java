@@ -28,7 +28,7 @@ public class ForumController {
 	@Autowired
 	private UserServiceJPA userService;
 	
-	private Category category = new Category();
+	private Category category;
 	private Topic topic;
 	private int topicId;
 	private int categoryId;
@@ -89,18 +89,16 @@ public class ForumController {
 		return "/topic";
 	}
 
-	public List<Topic> getTopics(int ident) {
-		return topicService.getTopicList(ident);
-	}
+//	public List<Topic> getTopics(int ident) {
+//		return topicService.getTopicList(ident);
+//	}
 
 	private void fillModel(Model model) {
 		model.addAttribute("controller", this);
 		model.addAttribute("getTopics", topicService.getTopicList(categoryId));
-		model.addAttribute("getComments", commentService.getCommentsTopic(topicId));
 		model.addAttribute("categories", categoryService.getCategory());
 		model.addAttribute("total_comments", commentService.getCommentCount());
 		model.addAttribute("total_users", userService.getUserCount());
 		model.addAttribute("total_topics", topicService.getTopicCount());
-		model.addAttribute("last_commented", commentService.lastCommented(topicId));
 	}
 }
