@@ -2,29 +2,124 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
-<link rel="stylesheet" type="text/css" href="css/test1.css"/>
+<!-- <link rel="stylesheet" type="text/css" href="css/test1.css" /> -->
 <!-- 		<link rel="stylesheet" type="text/css" href="gs/css/bootstrap.css"/> -->
 <!-- 		<link rel="stylesheet" type="text/css" href="gs/css/style.css"/> -->
+<link rel="stylesheet" type="text/css" href="css/test2.css" />
+
 <title>Java Academy Forum</title>
+<style type="text/css" id="st_userconfig_CSS">
+/* slickpanel overrides. please do not eat */
+
+/* Typography */
+.container, .layout-boxed #wrap, .breadcrumbs-bar.detached,
+	.layout-stretched .nav-breadcrumbs {
+	max-width: 1230px;
+}
+
+.postbody .content {
+	font-size: 16px;
+}
+
+/* colors */
+.itemlist__item--colbar, .cp-main h3, #tabs, .st-section__header,
+	.btn-primary, .thead, .category-header, .section-header {
+	background-color: rgb(49, 63, 79)
+}
+
+/* header */
+.main-header {
+	background-color: rgb(255, 255, 255);
+	background-image: none;
+	height: 50px;
+	background-position:;
+}
+
+/* footer */
+#page-footer {
+	background-color: rgb(49, 63, 79);
+	background-position:;
+}
+
+/* Post Author Label */
+.topic-author-label .label {
+	background-color: rgb(83, 184, 124);
+}
+</style>
 </head>
 <body>
-	<div id='right' th:replace="fragments::header" />
+	<div id="page-body">
+		<div class="container">
+			<div class="big-grid">
+
+				<div class="col-maincontent">
+					<div class="action-bar bottom">
+						<div class="buttons">
+							<a  class="btn btn-success btn-createnew" href="#comment1">+ Post reply</a>
+						</div>
+					</div>
+					<div class="postlist" th:each='comments:${getComments}'>
+						<div class="post has-profile">
+							<div class="inner">
+								<dl class="postprofile">
+									<dt class="avatar-container">
+										<img class="avatar" src="/images/default.jpeg" />
+									</dt>
+									<dt class="profile-main no-profile-rank"
+										th:text='${comments.userName}'>Username</dt>
+								</dl>
+								<div class="postbody">
+									<p class="author">
+										<span class="timestamp"
+											th:text="${#dates.format(comments.createdOn, ' HH:mm  dd-MMM-yyyy ')}" />
+
+									</p>
+									<div class="content" th:text='${comments.content}' />
+
+									<!-- 										<table id="center-element"> -->
+									<!-- 											<tr th:each='comments:${getComments}'> -->
+									<!-- 												<td th:text='${comments.content}' /> -->
+									<!-- 												<td -->
+									<!-- 													th:text="${#dates.format(comments.createdOn, ' HH:mm  dd-MMM-yyyy ')}"></td> -->
+									<!-- 											</tr> -->
+									<!-- 										</table> -->
+
+								</div>
 
 
-	<table id="center-element">
-		<tr th:each='comments:${getComments}'>
-			<td th:text='${comments.content}' />
-			<td th:text="${#dates.format(comments.createdOn, ' HH:mm  dd-MMM-yyyy ')}"></td>
-		</tr>
-	</table>
-	
-	<span th:if='${not @userController.logged}'>Log in to add comment!</span>
-<span th:if='${@userController.logged}'>
-	<form action='/add_comment' method='post'>
-		<input type="text" name="content" placeholder="Enter comment" />
-		 <input	type="hidden" th:value='${@forumController.topicId}' name="topicId" />
-		<input type='submit' value='Save Comment' />
-	</form>
-</span>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="action-bar bottom">
+				<div class="buttons">
+					<a class="btn btn-success btn-createnew">+ Post reply</a>
+				</div>
+			</div>
+
+			<span th:if='${not @userController.logged}'>Log in to add
+				comment!</span> <span th:if='${@userController.logged}'>
+				<form class="quicklogin-form" action='/add_comment' method='post'>
+					<textarea required="required" id="comment1" class="quicklogin__username-input form-control" type="text"
+						name="content" placeholder="Enter comment" /> <input
+						type="hidden" th:value='${@forumController.topicId}'
+						name="topicId" /> <input class="btn btn-success btn-createnew"
+						type='submit' value='Save Comment' />
+				</form>
+			</span>
+			<div id='right' th:replace="fragments::header" />
+		</div>
+	</div>
+	<footer id="page-footer" class="page-footer page-footer--basic">
+		<div class="page-footer__before">
+			<div class="container">
+				<p
+					th:text="'Logged as:' + ' ' + ${@userController.LoggedPlayer?.Login}" />
+			</div>
+		</div>
+	</footer>
+
 </body>
 </html>
