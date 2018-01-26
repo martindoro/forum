@@ -86,8 +86,7 @@ public class Comment {
 
 	@Override
 	public String toString() {
-		return   userName + " on " + createdOn;
+		return userName + " on " + createdOn;
 	}
-	
 
 }

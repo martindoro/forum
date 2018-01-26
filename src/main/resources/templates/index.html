@@ -91,6 +91,8 @@
 										Last post by
 										<div class="item-lastpost__info"
 											th:text='${@commentService.lastCommented(topic.ident)}' />
+<!-- 										<div class="item-lastpost__info" th:text="${#dates.format(@commentService.lastCommented(topic.ident), ' HH:mm  dd-MMM-yyyy ')}" /> -->
+											
 									</div>
 								</div>
 							</li>
