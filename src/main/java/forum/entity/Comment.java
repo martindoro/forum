@@ -84,4 +84,10 @@ public class Comment {
 		this.replyto = replyto;
 	}
 
+	@Override
+	public String toString() {
+		return   userName + " on " + createdOn;
+	}
+	
+
 }

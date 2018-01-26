@@ -87,7 +87,11 @@
 										</span>
 										</span>
 									</div>
-									<div class="item-col-lastpost">Last post by bla bla</div>
+									<div class="item-col-lastpost">
+										Last post by
+										<div class="item-lastpost__info"
+											th:text='${@commentService.lastCommented(topic.ident)}' />
+									</div>
 								</div>
 							</li>
 						</ol>
@@ -145,13 +149,16 @@
 				</div>
 				<div id="widget-statistics" class="widget-content collapse in">
 					<p>
-						<i class="fa fa-comment"></i> Total topics <strong th:text='${total_topics}' />
+						<i class="fa fa-comment"></i> Total topics <strong
+							th:text='${total_topics}' />
 					</p>
 					<p>
-						<i class="fa fa-comment"></i> Total post <strong th:text='${total_comments}' />
+						<i class="fa fa-comment"></i> Total post <strong
+							th:text='${total_comments}' />
 					</p>
 					<p>
-						<i class="fa fa-comment"></i> Total members <strong th:text='${total_users}' />
+						<i class="fa fa-comment"></i> Total members <strong
+							th:text='${total_users}' />
 					</p>
 
 
