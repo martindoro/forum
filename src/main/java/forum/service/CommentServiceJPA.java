@@ -3,6 +3,7 @@ package forum.service;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
@@ -38,6 +39,11 @@ public class CommentServiceJPA {
 	}
 	
 	public Comment lastCommented(int topicId) {
-		return (Comment) entityManager.createQuery("SELECT c FROM Comment c WHERE c.topicId = :topicId ORDER BY c.createdOn DESC").setParameter("topicId", topicId).setMaxResults(1).getSingleResult();
+		try {
+			return (Comment) entityManager.createQuery("SELECT c FROM Comment c WHERE c.topicId = :topicId ORDER BY c.createdOn DESC").setParameter("topicId", topicId).setMaxResults(1).getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
+
 	}
 }
