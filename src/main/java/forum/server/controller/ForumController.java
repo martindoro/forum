@@ -15,6 +15,7 @@ import forum.entity.Topic;
 import forum.service.CategoryServiceJPA;
 import forum.service.CommentServiceJPA;
 import forum.service.TopicServiceJPA;
+import forum.service.UserServiceJPA;
 
 @Controller
 public class ForumController {
@@ -24,6 +25,9 @@ public class ForumController {
 	private TopicServiceJPA topicService;
 	@Autowired
 	private CategoryServiceJPA categoryService;
+	@Autowired
+	private UserServiceJPA userService;
+	
 	private Category category = new Category();
 	private Topic topic;
 	private int topicId;
@@ -94,5 +98,9 @@ public class ForumController {
 		model.addAttribute("getTopics", topicService.getTopicList(categoryId));
 		model.addAttribute("getComments", commentService.getCommentsTopic(topicId));
 		model.addAttribute("categories", categoryService.getCategory());
+		model.addAttribute("total_comments", commentService.getCommentCount());
+		model.addAttribute("total_users", userService.getUserCount());
+		model.addAttribute("total_topics", topicService.getTopicCount());
+		model.addAttribute("last_commented", commentService.lastCommented(topicId));
 	}
 }

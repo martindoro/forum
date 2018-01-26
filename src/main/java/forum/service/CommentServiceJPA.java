@@ -29,7 +29,15 @@ public class CommentServiceJPA {
 		return entityManager.createQuery("SELECT c FROM Comment c WHERE c.topicId = :topic_id ORDER BY c.createdOn ASC")
 				.setParameter("topic_id", topicId).getResultList();
 	}
-	public long getCommentCount(int topicId) {
-		return (long) entityManager.createQuery("SELECT COUNT(c)  FROM Comment c WHERE c.topicId = :topicId").setParameter("topicId", topicId).getSingleResult();
+	public int getCommentCountForTopic(int topicId) {
+		return (int) entityManager.createQuery("SELECT COUNT(c)  FROM Comment c WHERE c.topicId = :topicId").setParameter("topicId", topicId).getSingleResult();
+	}
+	
+	public int getCommentCount() {
+		return (int) entityManager.createQuery("SELECT COUNT(c)  FROM Comment c").getSingleResult();
+	}
+	
+	public Comment lastCommented(int topicId) {
+		return (Comment) entityManager.createQuery("SELECT c FROM Comment c WHERE c.topicId = :topicId ORDER BY c.createdOn DESC LIMIT 1").getSingleResult();
 	}
 }

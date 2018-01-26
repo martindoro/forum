@@ -61,7 +61,7 @@ public class ServiceController {
 	@RequestMapping("/add_category")
 	public String category(String content, Model model) throws PSQLException {
 		categoryService.addCategory(new Category(content));
-		return "index";
+		return "forward:/";
 	}
 
 	@RequestMapping("/favorite")

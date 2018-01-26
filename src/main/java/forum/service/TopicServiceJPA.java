@@ -27,7 +27,11 @@ public class TopicServiceJPA {
 				.setParameter("ident", ident).executeUpdate();
 	}
 	
-	public int getTopicCount(int ident) {
+	public int getTopicCountForCategory(int ident) {
 		return (int) entityManager.createQuery("SELECT COUNT(t) FROM Topic t WHERE t.category_id = :ident").setParameter("ident", ident).getSingleResult();
+	}
+	
+	public int getTopicCount() {
+		return (int) entityManager.createQuery("SELECT COUNT(t) FROM Topic t").getSingleResult();
 	}
 }

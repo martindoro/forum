@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import forum.service.CommentServiceJPA;
+import forum.service.TopicServiceJPA;
 import forum.service.UserServiceJPA;
 
 import forum.entity.ForumUser;
@@ -51,10 +53,7 @@ public class UserController {
 		return loggedPlayer != null;
 	}
 
-	
 	private void fillModel(Model model) {
-	model.addAttribute("admin", userServiceJPA.isAdmin(loggedPlayer.getLogin()));
-	
+		model.addAttribute("admin", userServiceJPA.isAdmin(loggedPlayer.getLogin()));
 	}
-
 }
