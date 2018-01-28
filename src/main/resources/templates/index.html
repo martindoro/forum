@@ -50,12 +50,54 @@
 </style>
 </head>
 <body>
-	<div id="page-body">
+<div class="header-wrapper">
+<header id="wp-header">
+<div class="section-boxed section-header">
+<!-- <div class="navigation-container"> -->
+<!-- <div class="nav-menu"> -->
+<!-- </div> -->
+<!-- <div class="clear"></div> -->
+<!-- </div> -->
+<!-- </div> -->
 
+<!-- <div th:fragment="navbar"> -->
+
+	<div id="logo-container">
+	<a href="/">	<img src="images/tsys.png" alt="Logo" class="logo"/> </a>
+	</div>
+	<nav class="navigation-container">
+	<div  id="menu" class="nav-menu">
+	<ul id="menu-navigation" class="menu-ul">
+		<a href="test1.html" style="padding-left:80px">Home</a> <a href="#news">News</a> <a href="#contact">Contact</a>
+		
+		
+<!-- 		<a class="active" href="/register" id="myBtn" style="float: right">Register</a> -->
+<!-- 		<a class="active" href="#login"  style="float: right" value="Login">Login</a> -->
+		
+		<a class="active" href="/register" id="myBtn" style="float: right">Or Register</a>
+		<form action="/login" method="post">
+		<input type="submit" value="Login" style="float: right" class="linkButton linkButton a linkButton a:hover"/>
+		<span th:if='${not @userController.logged}'>
+			<input type="password" name="password" placeholder="Password" class="login"/>
+			<input type="text" name="login" placeholder="Login" class="login"/><br/><br/>
+		</span>
+		</form>
+			
+		
+<!-- 	</div>	 -->
+</ul>			
+</div>
+</nav>
+	
+</div>
+
+</header>
+
+</div>
+	<div id="page-body">
 		<div class="container">
 			<div class="big-grid">
 				<div class="col-maincontent">
-
 					<div th:each="category : ${categories}">
 						<a class="category-header"
 							th:href='${"/topic?ident=" + category.ident}'><div
@@ -90,7 +132,6 @@
 										Last post by
 										<div class="item-lastpost__info"
 											th:text='${@commentService.lastCommented(topic.ident)}' />
-<!-- 										<div class="item-lastpost__info" th:text="${#dates.format(@commentService.lastCommented(topic.ident), ' HH:mm  dd-MMM-yyyy ')}" /> -->
 											
 									</div>
 								</div>
@@ -111,33 +152,33 @@
 
 					<br />
 
-					<p>Register</p>
+<!-- 					<p>Register</p> -->
 
-					<form action="/register_sub" method="post">
-						<div class="block">
-							<label>Login Name:</label> <br /> <input class="inpu"
-								type="text" name="login" placeholder="Login" id="field_username"
-								title="Username must not be blank and contain only letters, numbers and underscores." /><br />
-						</div>
-						<div class="block">
-							<label>Password: </label><br /> <input class="inpu"
-								type="password" name="password" placeholder="Password"
-								id="field_pwd1"
-								title="Password must contain at least 6 characters, including UPPER/lowercase and numbers." /><br />
-						</div>
-						<div class="block">
-							<label>Retype Password:</label><br /> <input class="inpu"
-								type="password" placeholder="Password" id="field_pwd2"
-								title="Please enter the same Password as above."
-								name="password2" /><br />
-						</div>
-						<div class="block">
-							<label>Email:</label> <br /> <input type="email" name="email" /><br />
-							<br />
-						</div>
+<!-- 					<form action="/register_sub" method="post"> -->
+<!-- 						<div class="block"> -->
+<!-- 							<label>Login Name:</label> <br /> <input class="inpu" -->
+<!-- 								type="text" name="login" placeholder="Login" id="field_username" -->
+<!-- 								title="Username must not be blank and contain only letters, numbers and underscores." /><br /> -->
+<!-- 						</div> -->
+<!-- 						<div class="block"> -->
+<!-- 							<label>Password: </label><br /> <input class="inpu" -->
+<!-- 								type="password" name="password" placeholder="Password" -->
+<!-- 								id="field_pwd1" -->
+<!-- 								title="Password must contain at least 6 characters, including UPPER/lowercase and numbers." /><br /> -->
+<!-- 						</div> -->
+<!-- 						<div class="block"> -->
+<!-- 							<label>Retype Password:</label><br /> <input class="inpu" -->
+<!-- 								type="password" placeholder="Password" id="field_pwd2" -->
+<!-- 								title="Please enter the same Password as above." -->
+<!-- 								name="password2" /><br /> -->
+<!-- 						</div> -->
+<!-- 						<div class="block"> -->
+<!-- 							<label>Email:</label> <br /> <input type="email" name="email" /><br /> -->
+<!-- 							<br /> -->
+<!-- 						</div> -->
 
-						<input type="submit" value="Register" />
-					</form>
+<!-- 						<input type="submit" value="Register" /> -->
+<!-- 					</form> -->
 					<script src="/js/registerValid.js"></script>
 
 
@@ -165,7 +206,6 @@
 
 				</div>
 			</div>
-
 		</div>
 	</div>
 	<footer id="page-footer" class="page-footer page-footer--basic">

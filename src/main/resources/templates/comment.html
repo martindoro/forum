@@ -48,16 +48,31 @@
 </style>
 </head>
 <body>
+	<div class="header-wrapper">
+		<header id="wp-header">
+			<!-- <div class="section-boxed section-header"> -->
+			<!-- <div class="navigation-container"> -->
+			<!-- <div class="nav-menu"> -->
+			<!-- </div> -->
+			<!-- <div class="clear"></div> -->
+			<!-- </div> -->
+			<!-- </div> -->
+
+
+		</header>
+
+	</div>
 	<div id="page-body">
 		<div class="container">
 			<div class="big-grid">
 
 				<div class="col-maincontent">
-					<div class="action-bar bottom">
-						<div class="buttons">
-							<a  class="btn btn-success btn-createnew" href="#comment1">+ Post reply</a>
-						</div>
-					</div>
+<!-- 					<div class="action-bar bottom"> -->
+<!-- 						<div class="buttons"> -->
+<!-- 							<a class="btn btn-success btn-createnew" href="#comment1">+ -->
+<!-- 								Post reply</a> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
 					<div class="postlist" th:each='comments:${getComments}'>
 						<div class="post has-profile">
 							<div class="inner">
@@ -93,20 +108,22 @@
 				</div>
 
 			</div>
-			<div class="action-bar bottom">
-				<div class="buttons">
-					<a class="btn btn-success btn-createnew">+ Post reply</a>
-				</div>
-			</div>
+<!-- 			<div class="action-bar bottom"> -->
+<!-- 				<div class="buttons"> -->
+<!-- 					<a class="btn btn-success btn-createnew">+ Post reply</a> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
 
 			<span th:if='${not @userController.logged}'>Log in to add
 				comment!</span> <span th:if='${@userController.logged}'>
 				<form class="quicklogin-form" action='/add_comment' method='post'>
-					<textarea required="required" id="comment1" class="quicklogin__username-input form-control" type="text"
-						name="content" placeholder="Enter comment" /> <input
-						type="hidden" th:value='${@forumController.topicId}'
-						name="topicId" /> <input class="btn btn-success btn-createnew"
-						type='submit' value='Save Comment' />
+					<textarea required="required" id="comment1"
+						class="quicklogin__username-input form-control" type="text"
+						name="content" placeholder="Enter comment" />
+					<input type="hidden" th:value='${@forumController.topicId}'
+						name="topicId" /> <br />
+					<input class="btn btn-success btn-createnew" type='submit'
+						value='Save Comment' />
 				</form>
 			</span>
 			<div id='right' th:replace="fragments::header" />

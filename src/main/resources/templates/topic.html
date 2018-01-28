@@ -5,26 +5,152 @@
 
 <!-- 		<link rel="stylesheet" type="text/css" href="gs/css/bootstrap.css"/> -->
 <!-- 		<link rel="stylesheet" type="text/css" href="gs/css/style.css"/> -->
+<link rel="stylesheet" type="text/css" href="css/test2.css" />
+
 <title>Java Academy Forum</title>
+
+
+<style type="text/css" id="st_userconfig_CSS">
+/* slickpanel overrides. please do not eat */
+
+/* Typography */
+.container, .layout-boxed #wrap, .breadcrumbs-bar.detached,
+	.layout-stretched .nav-breadcrumbs {
+	max-width: 1230px;
+}
+
+.postbody .content {
+	font-size: 16px;
+}
+
+/* colors */
+.itemlist__item--colbar, .cp-main h3, #tabs, .st-section__header,
+	.btn-primary, .thead, .category-header, .section-header {
+	background-color: rgb(49, 63, 79)
+}
+
+/* header */
+.main-header {
+	background-color: rgb(255, 255, 255);
+	background-image: none;
+	height: 50px;
+	background-position:;
+}
+
+/* footer */
+#page-footer {
+	background-color: rgb(49, 63, 79);
+	background-position:;
+}
+
+/* Post Author Label */
+.topic-author-label .label {
+	background-color: rgb(83, 184, 124);
+}
+</style>
 </head>
 <body>
-	<div id='right' th:replace="fragments::header" />
+	<div class="header-wrapper">
+		<header id="wp-header">
+			<div class="section-boxed section-header">
+				<!-- <div class="navigation-container"> -->
+				<!-- <div class="nav-menu"> -->
+				<!-- </div> -->
+				<!-- <div class="clear"></div> -->
+				<!-- </div> -->
+				<!-- </div> -->
 
-<h1 th:text='${getCategoryById}'/>
-	<table id="center-element">
-		<tr th:each='topic:${getTopics}'>
-	<td>	<a th:href='${"/comment?ident=" + topic.ident}'><p th:text='${topic.content}' /><span th:text='${@commentService.getCommentCountForTopic(topic.ident)}'/></a></td>
-			<td	th:text="${#dates.format(topic.createdOn, ' HH:mm  dd-MMM-yyyy ')}"></td>
-			
-		</tr>
-	</table>
-	<span th:if='${not @userController.logged}'>Log in to add topic!</span>
-<span th:if='${@userController.logged}'>
-	<form action='/add_topic' method='post'>
-		<input type="text" name="content" placeholder="Enter topic" /> <input
-			type="hidden" th:value='${@forumController.categoryId}' name="categoryId" />
-		<input type='submit' value='Save Topic' />
-	</form>
-</span>
+				<!-- <div th:fragment="navbar"> -->
+
+				<div id="logo-container">
+					<a href="/"> <img src="images/tsys.png" alt="Logo" class="logo" />
+					</a>
+				</div>
+				<nav class="navigation-container">
+					<div id="menu" class="nav-menu">
+						<ul id="menu-navigation" class="menu-ul">
+							<a href="test1.html" style="padding-left: 80px">Home</a>
+							<a href="#news">News</a>
+							<a href="#contact">Contact</a>
+
+
+							<!-- 		<a class="active" href="/register" id="myBtn" style="float: right">Register</a> -->
+							<!-- 		<a class="active" href="#login"  style="float: right" value="Login">Login</a> -->
+
+							<a class="active" href="/register" id="myBtn"
+								style="float: right">Or Register</a>
+							<form action="/login" method="post">
+										<input type="submit" value="Login" style="float: right" class="linkButton linkButton a linkButton a:hover"/>
+								<span th:if='${not @userController.logged}'> <input
+									type="password" name="password" placeholder="Password"
+									class="login" /> <input type="text" name="login"
+									placeholder="Login" class="login" /><br /> <br />
+								</span>
+							</form>
+
+
+							<!-- 	</div>	 -->
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</header>
+	</div>
+	<div id="page-body">
+
+		<div class="container">
+			<div class="big-grid">
+				<div class="col-maincontent">
+
+					<!-- 	<div id='right' th:replace="fragments::header" /> -->
+
+					<div class="category-header">
+						<div class="category-title" th:text='${getCategoryById}'></div>
+					</div>
+					<ol class="itemlist itemlist--forums itemlist--forums--full">
+						<li class="itemlist__item forum_read_subforum has-lastpostavatar"
+							th:each='topic:${getTopics}'>
+							<!-- 		<a th:href='${"/comment?ident=" + topic.ident}'><p th:text='${topic.content}' /><span th:text='${@commentService.getCommentCountForTopic(topic.ident)}'/></a> -->
+							<div class="item-inner">
+								<div class="item-col-icon forum-image">
+									<img src="/images/favicon.gif" />
+								</div>
+								<div class="item-col-main">
+									<div class="itemlist__item item-col-main">
+										<a class="item-title"
+											th:href='${"/comment?ident=" + topic.ident}'><p
+												th:text="${topic.content}" /></a>
+									</div>
+								</div>
+								<div class="item-col-stats">
+									<span class="item-stat item-stat--topics"> <span
+										class="item-stat__count formatted-numcounter"> <span
+											class="item-stat__label"
+											th:text='${@commentService.getCommentCountForTopic(topic.ident)}' />
+											Posts
+									</span>
+									</span>
+								</div>
+								<div class="item-col-lastpost">
+									Created on
+									<div class="item-lastpost__info"
+										th:text="${#dates.format(topic.createdOn, ' HH:mm  dd-MMM-yyyy ')}" />
+								</div>
+							</div>
+						</li>
+
+					</ol>
+					<span th:if='${not @userController.logged}'>Log in to add
+						topic!</span> <span th:if='${@userController.logged}'>
+						<form action='/add_topic' method='post'>
+							<textarea class="quicklogin__username-input form-control" required="required" type="text" name="content" placeholder="Enter topic" /> <input
+								type="hidden" th:value='${@forumController.categoryId}'
+								name="categoryId" /><br/> <input class="btn btn-success btn-createnew" type='submit' value='Save Topic' />
+						</form>
+					</span>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
