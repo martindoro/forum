@@ -1,5 +1,11 @@
 package forum.server.controller;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+
+import javax.imageio.ImageIO;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -100,5 +106,26 @@ public class ForumController {
 		model.addAttribute("total_comments", commentService.getCommentCount());
 		model.addAttribute("total_users", userService.getUserCount());
 		model.addAttribute("total_topics", topicService.getTopicCount());
+//		model.addAttribute("image", decodeToImage());
+	}
+
+	public String decodeToImage() {
+       String b64 = "";
+		BufferedImage image = null;
+		try {
+			ByteArrayInputStream bis = new ByteArrayInputStream(userService.getImage("j"));
+			image = ImageIO.read(bis);
+//			ImageIO.write(image, "png", new File("c:\\image\\mypic.png"));
+			bis.close();
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			ImageIO.write( image, "png", baos );
+			baos.flush();
+			byte[] imageInByteArray = baos.toByteArray();
+			baos.close();
+			 b64 = javax.xml.bind.DatatypeConverter.printBase64Binary(imageInByteArray);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return b64;
 	}
 }
