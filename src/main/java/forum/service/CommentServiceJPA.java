@@ -19,6 +19,10 @@ public class CommentServiceJPA {
 		entityManager.persist(comment);
 	}
 	
+	public Comment getComment(int ident) {
+		return (Comment) entityManager.createQuery("SELECT c FROM Comment c WHERE c.ident = :ident").setParameter("ident", ident).getSingleResult();
+	}
+	
 	public List<Comment> getCommentsUser(String userName) {
 		return entityManager
 				.createQuery("SELECT c FROM Comment c WHERE c.userName = :user_name ORDER BY c.createdOn DESC")
