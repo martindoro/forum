@@ -45,10 +45,10 @@ public class ServiceController {
 	}
 
 	@RequestMapping("/add_reply")
-	public String reply(Comment comment, int replyto, Model model) {
-		comment.setReplyto(replyto);
-		commentService.addComment(comment);
-		return "topic";
+	public String reply(@RequestParam(value = "topicId", required = false) String topicId,@RequestParam(value = "replyto") int replyto,@RequestParam(value = "content") String content, Model model) {
+		int topicIdent = Integer.parseInt(topicId);
+		commentService.addComment(new Comment(userController.getLoggedPlayer().login, topicIdent, content, replyto));
+		return "forward:/comment?ident=" + topicId;
 	}
 
 	@RequestMapping("/add_topic")
