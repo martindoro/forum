@@ -14,6 +14,7 @@ public class Favorite {
 	private int ident;
 	private String userName;
 	private int commentId;
+	private int value;
 	
 	public Favorite() {
 	}
@@ -21,6 +22,14 @@ public class Favorite {
 	public Favorite(String userName, int commentId) {
 		this.userName = userName;
 		this.commentId = commentId;
+	}
+
+	public int getValue() {
+		return value;
+	}
+
+	public void setValue(int value) {
+		this.value = value;
 	}
 
 	public int getIdent() {

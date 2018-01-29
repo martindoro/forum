@@ -18,6 +18,7 @@ public class Comment {
 	private String content;
 	private Date createdOn;
 	private int replyto;
+	private int value;
 
 	public Comment() {
 	}
@@ -35,6 +36,15 @@ public class Comment {
 		this.content = content;
 		this.replyto = replyto;
 		this.createdOn = new java.sql.Timestamp(new Date().getTime());
+		this.value = 0;
+	}
+
+	public int getValue() {
+		return value;
+	}
+
+	public void setValue(int value) {
+		this.value = value;
 	}
 
 	public int getIdent() {

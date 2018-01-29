@@ -48,4 +48,8 @@ public class CommentServiceJPA {
 			return null;
 		}
 	}
+	
+	public void setCommentValue(int ident, int value) {
+		entityManager.createQuery("UPDATE Comment c SET c.value = c.value + " + value + " WHERE c.ident = :ident").setParameter("ident", ident).executeUpdate();
+	}
 }

@@ -45,7 +45,9 @@ public class ServiceController {
 	}
 
 	@RequestMapping("/add_reply")
-	public String reply(@RequestParam(value = "topicId", required = false) String topicId,@RequestParam(value = "replyto") int replyto,@RequestParam(value = "content") String content, Model model) {
+	public String reply(@RequestParam(value = "topicId", required = false) String topicId,
+			@RequestParam(value = "replyto") int replyto, @RequestParam(value = "content") String content,
+			Model model) {
 		int topicIdent = Integer.parseInt(topicId);
 		commentService.addComment(new Comment(userController.getLoggedPlayer().login, topicIdent, content, replyto));
 		return "forward:/comment?ident=" + topicId;
@@ -64,9 +66,37 @@ public class ServiceController {
 		return "forward:/";
 	}
 
-	@RequestMapping("/favorite")
-	public String favorite(Favorite favorite, Model model) {
-		favoriteService.setFavorite(favorite);
-		return "comment";
+	@RequestMapping("/favoritePlus")
+	public String favoritePlus(@RequestParam(value = "topicId", required = false) String topicId, @RequestParam(value = "ident", required = false) int ident, Model model) {
+		if (favoriteService.isFavorite(userController.getLoggedPlayer().getLogin(), ident)) {
+			if (favoriteService.getFavorite(userController.getLoggedPlayer().getLogin(), ident).getValue() < 1) {
+				favoriteService.updateFavorite(userController.getLoggedPlayer().getLogin(),
+						favoriteService.getFavorite(userController.getLoggedPlayer().getLogin(), ident).getIdent(), 1);
+				commentService.setCommentValue(ident, 1);
+			}
+		} else {
+			Favorite favorite = new Favorite(userController.getLoggedPlayer().login, ident);
+			favorite.setValue(1);
+			favoriteService.setFavorite(favorite);
+			commentService.setCommentValue(ident, 1);
+		}
+		return "forward:/comment?ident=" + topicId;
+	}
+
+	@RequestMapping("/favoriteMinus")
+	public String favoriteMinus(@RequestParam(value = "topicId", required = false) String topicId, @RequestParam(value = "ident", required = false) int ident, Model model) {
+		if (favoriteService.isFavorite(userController.getLoggedPlayer().getLogin(), ident)) {
+			if (favoriteService.getFavorite(userController.getLoggedPlayer().getLogin(), ident).getValue() > -1) {
+				favoriteService.updateFavorite(userController.getLoggedPlayer().getLogin(),
+						favoriteService.getFavorite(userController.getLoggedPlayer().getLogin(), ident).getIdent(), -1);
+				commentService.setCommentValue(ident, -1);
+			}
+		} else {
+			Favorite favorite = new Favorite(userController.getLoggedPlayer().login, ident);
+			favorite.setValue(-1);
+			favoriteService.setFavorite(favorite);
+			commentService.setCommentValue(ident, -1);
+		}
+		return "forward:/comment?ident=" + topicId;
 	}
 }

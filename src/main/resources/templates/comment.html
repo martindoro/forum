@@ -73,6 +73,16 @@
 								</div>
 							</div>
 						</div>
+						<form action='/favoritePlus' method='post'>
+							<input type='hidden' th:value='${comments.ident}' name='ident' />
+							<input type="hidden" th:value='${@forumController.topicId}'
+								name="topicId" /> <input type='submit' value='PLUS' />
+						</form>
+						<form action='/favoriteMinus' method='post'>
+							<input type='hidden' th:value='${comments.ident}' name='ident' />
+							<input type="hidden" th:value='${@forumController.topicId}'
+								name="topicId" /> <input type='submit' value='MINUS' />
+						</form>
 						<span th:if='${not @userController.logged}'>Log in to
 							reply!</span> <span th:if='${@userController.logged}'>
 							<form class="quicklogin-form" action='/add_reply' method='post'>
