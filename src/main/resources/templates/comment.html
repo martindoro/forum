@@ -8,60 +8,38 @@
 <link rel="stylesheet" type="text/css" href="css/test2.css" />
 
 <title>Java Academy Forum</title>
-<style type="text/css" id="st_userconfig_CSS">
-/* slickpanel overrides. please do not eat */
-
-/* Typography */
-.container, .layout-boxed #wrap, .breadcrumbs-bar.detached,
-	.layout-stretched .nav-breadcrumbs {
-	max-width: 1230px;
-}
-
-.postbody .content {
-	font-size: 16px;
-}
-
-/* colors */
-.itemlist__item--colbar, .cp-main h3, #tabs, .st-section__header,
-	.btn-primary, .thead, .category-header, .section-header {
-	background-color: rgb(49, 63, 79)
-}
-
-/* header */
-.main-header {
-	background-color: rgb(255, 255, 255);
-	background-image: none;
-	height: 50px;
-	background-position:;
-}
-
-/* footer */
-#page-footer {
-	background-color: rgb(49, 63, 79);
-	background-position:;
-}
-
-/* Post Author Label */
-.topic-author-label .label {
-	background-color: rgb(83, 184, 124);
-}
-</style>
 </head>
 <body>
 	<div class="header-wrapper">
 		<header id="wp-header">
-			<!-- <div class="section-boxed section-header"> -->
-			<!-- <div class="navigation-container"> -->
-			<!-- <div class="nav-menu"> -->
-			<!-- </div> -->
-			<!-- <div class="clear"></div> -->
-			<!-- </div> -->
-			<!-- </div> -->
+			<div class="section-boxed section-header">
+				<a href="/"> <img src="images/tsys.png" alt="Logo" class="logo" />
+				</a> <a href="/" style="padding-left: 80px">Home</a> <a href="#news">News</a>
+				<a href="#contact">Contact</a> <span
+					th:if='${not @userController.logged}'>
+					<form action="/login" method="post" class="navright">
 
-
+						<input type="text" name="login" placeholder="Login" /> <input
+							type="password" name="password" placeholder="Password" /> <input
+							type="submit" value="Login"
+							class="linkButton linkButton a linkButton a:hover" /> <a
+							class="active" href="/register" id="myBtn" style="float: right">Or
+							Register</a>
+					</form>
+				</span> <span th:if='${@userController.logged}'> <a href="/logout"
+					style="float: right">
+						<p class="logged"
+							th:text="'Logged as:' + ' ' + ${@userController.LoggedPlayer?.Login}" />
+				</a>
+				</span>
+				<div id="logo-container" class="topmenu"></div>
+				<nav class="navigation-container">
+					<div id="menu" class="nav-menu"></div>
+				</nav>
+			</div>
 		</header>
-
 	</div>
+
 	<div id="page-body">
 		<div class="container">
 			<div class="big-grid">
@@ -79,8 +57,8 @@
 							<div class="inner">
 								<dl class="postprofile">
 									<dt class="avatar-container">
-									
-										<img class="avatar"  th:src="*{'data:image/png;base64,'+image}"/>
+
+										<img class="avatar" th:src="*{'data:image/png;base64,'+image}" />
 									</dt>
 									<dt class="profile-main no-profile-rank"
 										th:text='${comments.userName}'>Username</dt>
@@ -92,18 +70,7 @@
 
 									</p>
 									<div class="content" th:text='${comments.content}' />
-
-									<!-- 										<table id="center-element"> -->
-									<!-- 											<tr th:each='comments:${getComments}'> -->
-									<!-- 												<td th:text='${comments.content}' /> -->
-									<!-- 												<td -->
-									<!-- 													th:text="${#dates.format(comments.createdOn, ' HH:mm  dd-MMM-yyyy ')}"></td> -->
-									<!-- 											</tr> -->
-									<!-- 										</table> -->
-
 								</div>
-
-
 							</div>
 						</div>
 						<span th:if='${not @userController.logged}'>Log in to
@@ -144,14 +111,6 @@
 			<div id='right' th:replace="fragments::header" />
 		</div>
 	</div>
-	<footer id="page-footer" class="page-footer page-footer--basic">
-		<div class="page-footer__before">
-			<div class="container">
-				<p
-					th:text="'Logged as:' + ' ' + ${@userController.LoggedPlayer?.Login}" />
-			</div>
-		</div>
-	</footer>
 
 </body>
 </html>
