@@ -10778,3 +10778,41 @@ ul.recipients .button2 {
     background: #ddd;
     color: black;
 }
+
+
+/* slickpanel overrides. please do not eat */
+
+/* Typography */
+.container, .layout-boxed #wrap, .breadcrumbs-bar.detached,
+	.layout-stretched .nav-breadcrumbs {
+	max-width: 1230px;
+}
+
+.postbody .content {
+	font-size: 16px;
+}
+
+/* colors */
+.itemlist__item--colbar, .cp-main h3, #tabs, .st-section__header,
+	.btn-primary, .thead, .category-header, .section-header {
+	background-color: rgb(49, 63, 79)
+}
+
+/* header */
+.main-header {
+	background-color: rgb(255, 255, 255);
+	background-image: none;
+	height: 50px;
+	background-position:;
+}
+
+/* footer */
+#page-footer {
+	background-color: rgb(49, 63, 79);
+	background-position:;
+}
+
+/* Post Author Label */
+.topic-author-label .label {
+	background-color: rgb(83, 184, 124);
+}
