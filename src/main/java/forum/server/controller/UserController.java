@@ -51,6 +51,13 @@ public class UserController {
 		return loggedPlayer != null;
 	}
 
+	@RequestMapping("/rhchange")
+	public String rhchange(ForumUser forumUser, String setbox, Model model) {
+		//userServiceJPA.register(forumUser);
+		//loggedPlayer = userServiceJPA.login(forumUser.getLogin(), forumUser.getPassword());
+		return "forward:/";
+	}
+	
 	private void fillModel(Model model) {
 		model.addAttribute("admin", userServiceJPA.isAdmin(loggedPlayer.getLogin()));
 	}
