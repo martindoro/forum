@@ -19,8 +19,8 @@ public class CommentServiceJPA {
 		entityManager.persist(comment);
 	}
 	
-	public Comment getComment(int ident) {
-		return (Comment) entityManager.createQuery("SELECT c FROM Comment c WHERE c.ident = :ident").setParameter("ident", ident).getSingleResult();
+	public String getCommentContent(int ident) {
+		return (String) entityManager.createQuery("SELECT c.content FROM Comment c WHERE c.ident = :ident").setParameter("ident", ident).getSingleResult();
 	}
 	
 	public List<Comment> getCommentsUser(String userName) {
