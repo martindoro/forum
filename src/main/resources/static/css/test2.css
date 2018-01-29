@@ -10690,7 +10690,7 @@ ul.recipients .button2 {
 }
 
 .header-wrapper {
-    position: fixed;
+    position: relative;
     background-color: #313f4f;
     width: 100%;
 	top: 0;
