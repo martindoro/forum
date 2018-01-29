@@ -45,4 +45,5 @@ public class ForumServer {
 	public UserServiceJPA userService() {
 		return new UserServiceJPA();
 	}
+
 }

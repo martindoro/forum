@@ -79,7 +79,8 @@
 							<div class="inner">
 								<dl class="postprofile">
 									<dt class="avatar-container">
-										<img class="avatar" src="/images/default.jpeg" />
+									
+										<img class="avatar"  th:src="*{'data:image/png;base64,'+image}"/>
 									</dt>
 									<dt class="profile-main no-profile-rank"
 										th:text='${comments.userName}'>Username</dt>

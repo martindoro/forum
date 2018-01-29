@@ -1,15 +1,14 @@
 package forum.server.controller;
 
+import java.net.URL;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import forum.service.CommentServiceJPA;
-import forum.service.TopicServiceJPA;
-import forum.service.UserServiceJPA;
-
 import forum.entity.ForumUser;
+import forum.service.UserServiceJPA;
 
 @Controller
 public class UserController {
@@ -17,7 +16,6 @@ public class UserController {
 	private String chkbx;
 	private ForumUser loggedPlayer;
 
-	
 	@Autowired
 	private UserServiceJPA userServiceJPA;
 
@@ -48,8 +46,7 @@ public class UserController {
 		loggedPlayer = null;
 		return "forward:/";
 	}
-	
-	
+
 	public boolean isLogged() {
 		return loggedPlayer != null;
 	}

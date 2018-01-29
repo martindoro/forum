@@ -1,9 +1,14 @@
 package forum.entity;
 
+import java.awt.Image;
+import java.sql.Blob;
+import java.util.Arrays;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 @Entity
 public class ForumUser {
 //boolean userIsAdmin
@@ -16,6 +21,18 @@ public class ForumUser {
 	private String password;
 	private String email;
 	private int admin;
+	
+    private byte[] pic;
+	
+	
+	
+	public byte[] getPic(){
+		return this.pic;
+	}
+	
+	public void setPic(byte[] pic){
+		this.pic = pic;
+	}
 
 	public int getAdmin() {
 		return admin;
@@ -32,6 +49,13 @@ public class ForumUser {
 		this.login = login;
 		this.password = password;
 		this.email = email;
+	
+	}
+
+	@Override
+	public String toString() {
+		return "ForumUser [ident=" + ident + ", login=" + login + ", password=" + password + ", email=" + email
+				+ ", admin=" + admin + ", pic=" + Arrays.toString(pic) + "]";
 	}
 
 	public int getIdent() {
