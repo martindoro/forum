@@ -1,28 +1,105 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1" />
-<title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-<link rel="stylesheet" type="text/css" href="css/test1.css" />
+<meta charset="UTF-8" />
+
+<!-- 		<link rel="stylesheet" type="text/css" href="gs/css/bootstrap.css"/> -->
+<!-- 		<link rel="stylesheet" type="text/css" href="gs/css/style.css"/> -->
+<link rel="stylesheet" type="text/css" href="/css/test2.css" />
+
+<title>Java Academy Forum</title>
+
+
+<style type="text/css" id="st_userconfig_CSS">
+/* slickpanel overrides. please do not eat */
+
+/* Typography */
+.container, .layout-boxed #wrap, .breadcrumbs-bar.detached,
+	.layout-stretched .nav-breadcrumbs {
+	max-width: 1230px;
+}
+
+.postbody .content {
+	font-size: 16px;
+}
+
+/* colors */
+.itemlist__item--colbar, .cp-main h3, #tabs, .st-section__header,
+	.btn-primary, .thead, .category-header, .section-header {
+	background-color: rgb(49, 63, 79)
+}
+
+/* header */
+.main-header {
+	background-color: rgb(255, 255, 255);
+	background-image: none;
+	height: 50px;
+	background-position:;
+}
+
+/* footer */
+#page-footer {
+	background-color: rgb(49, 63, 79);
+	background-position:;
+}
+
+/* Post Author Label */
+.topic-author-label .label {
+	background-color: rgb(83, 184, 124);
+}
+</style>
 </head>
 <body>
-<div th:replace="test1::navbar"/>
+<div class="header-wrapper">
+<header id="wp-header">
+<div class="section-boxed section-header">
+<!-- <div class="navigation-container"> -->
+<!-- <div class="nav-menu"> -->
+<!-- </div> -->
+<!-- <div class="clear"></div> -->
+<!-- </div> -->
+<!-- </div> -->
 
-	<div class="w3-row">
-		<div class="w3-col m4 l3"></div>
-	</div>
+<!-- <div th:fragment="navbar"> -->
 
+<!-- <p>testline</p> -->
+<a href="/">	<img src="images/tsys.png" alt="Logo" class="logo"/> </a>
+<a href="/" style="padding-left:80px">Home</a> <a href="#news">News</a> <a href="#contact">Contact</a>
+<span th:if='${not @userController.logged}'>
+<form action="/login" method="post" class="navright">
+		
+		<input type="text" name="login" placeholder="Login" />
+		<input type="password" name="password" placeholder="Password" />
+		<input type="submit" value="Login" class="linkButton linkButton a linkButton a:hover"/>
+		<a class="active" href="/register" id="myBtn" style="float: right">Or Register</a>
+</form>
+</span>
+<span th:if='${@userController.logged}'>
+<a href="/logout" style="float: right">
+<p class="logged" th:text="'Logged as:' + ' ' + ${@userController.LoggedPlayer?.Login}" />
+			</a>
+</span>
 
-	<div class="main">
+	<div id="logo-container" class="topmenu">
 	
+	</div>
+	<nav class="navigation-container">
+	<div  id="menu" class="nav-menu">
+		
+</div>
+</nav>
+	
+</div>
 
+</header>
 
-		<!-- 	<div class="container"> -->
-		<div class="w3-row">
-			<div class="w3-col m4 l3">
-				<!-- 		<div class="col"> -->
-				<p>Register Form</p><hr/>
+</div>
+	<div id="page-body" class="spacer">
+		<div class="container">
+			<div class="big-grid">
+				<div class="col-maincontent">
+				
+							<p>Register Form</p><hr/>
 	<form action="/register_sub" method="post">
 	<div class="block">
 	<label>Login Name:</label> <br/><input class="inpu" type="text" name="Login" required="required" placeholder="Login"/><br/>
@@ -36,60 +113,51 @@
 	<div class="block">
 	<label>Email:</label> <br/><input type="email" name="email"/><br/><br/>
 	</div>
+	<label>Profile Picture:</label>
+	<input type="file" name="pic" accept="image/*"/>
 	<input type="checkbox" name="checkbox" value="checkbox"/> I Agree with rules!<br/><br/>
 	<input type="submit" value="Register"/>
 	</form>
-	<p>Red Marked Fields are Mandatory!</p>
-				
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
-				<p>Some text some text some text some text..</p>
+	
+	
+	
+	
+
+
+
+
+					<br />
+
+
+					<script src="/js/registerValid.js"></script>
+
+
+				</div>
 			</div>
-			<!-- 	</div> -->
+<!-- 			<div class="sidebar-widget statistics"> -->
+<!-- 				<div class="widget-header"> -->
+<!-- 					<i class="widget-icon fi fi-chart-bar"> </i> Statistics -->
+
+<!-- 				</div> -->
+<!-- 				<div id="widget-statistics" class="widget-content collapse in"> -->
+<!-- 					<p> -->
+<!-- 						<i class="fa fa-comment"></i> Total topics <strong -->
+<!-- 							th:text='${total_topics}' /> -->
+<!-- 					</p> -->
+<!-- 					<p> -->
+<!-- 						<i class="fa fa-comment"></i> Total post <strong -->
+<!-- 							th:text='${total_comments}' /> -->
+<!-- 					</p> -->
+<!-- 					<p> -->
+<!-- 						<i class="fa fa-comment"></i> Total members <strong -->
+<!-- 							th:text='${total_users}' /> -->
+<!-- 					</p> -->
+
+
+<!-- 				</div> -->
+<!-- 			</div> -->
 		</div>
 	</div>
-	<!-- </div> -->
+	
 </body>
 </html>

@@ -70,6 +70,7 @@ public class ForumController {
 		fillModel(model);
 		return "/comment";
 	}
+	
 
 	@RequestMapping("/topic")
 	public String topic(int ident, Model model) {
