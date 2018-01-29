@@ -46,7 +46,7 @@ public class UserController {
 	@RequestMapping("/logout")
 	public String login(Model model) {
 		loggedPlayer = null;
-		return "forward:/test1";
+		return "forward:/";
 	}
 	
 	public boolean isLogged() {

@@ -1,0 +1,219 @@
+div {
+	border-style: solid;
+	border-width: 1px;
+}
+
+/* .unlist { */
+/* position: fixed; */
+/* top: 0; */
+/* #bottom: 0; */
+/* width: 100%; */
+/* list-style-type: none; */
+/* margin: 0; */
+/* padding: 0; */
+/* overflow: hidden; */
+/* background-color: #333;	    */
+/* display: inline-block; */
+
+/* } */
+
+/* .list { */
+/* float: left; */
+/* border-right: 1px solid #bbb; */
+/* } */
+
+/* .list:last-child { */
+/* border-right: none; */
+/* } */
+/* .list a { */
+/* display: block; */
+/* color: white; */
+/* text-align: center; */
+/* padding: 14px 16px; */
+/* text-decoration: none; */
+/* } */
+
+/* /* Change the link color to #111 (black) on hover */ */
+/* .list a:hover { */
+/* background-color: #111; */
+/* } */
+
+
+/* .menubar { */
+/* height: 3em; */
+/* #height: 15em; */
+/* text-align: center;	 */
+
+/* } */
+
+/* .active { */
+/* #background-color: #4CAF50; */
+/* background-color: #7f0000; */
+/* } */
+
+.over {
+	overflow:hidden
+}
+
+.main {
+	#margin-top: 30px;
+	margin-top: -25px;
+	position: relative;
+	overflow:hidden
+}
+
+/* .ram { */
+/* 		border-style: solid; */
+/* 		border-width: 1px; */
+	
+/* } */
+
+
+/* The navigation bar */
+.topmenu {
+    overflow: hidden;
+    background-color: #333;
+   # position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+	#position: absolute;
+margin-top: 0px;
+}
+
+/* Links inside the navbar */
+.topmenu a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change background on mouse-over */
+.topmenu a:hover {
+    background: #ddd;
+    color: black;
+}
+
+/* Main content */
+.main {
+    margin-top: 100px; /* Add a top margin to avoid content overlay */
+}
+
+
+/* The Modal (background) */
+.modal {
+display: none; /* Hidden by default */
+position: fixed; /* Stay in place */
+z-index: 1; /* Sit on top */
+left: 0;
+top: 0;
+width: 100%; /* Full width */
+height: 100%; /* Full height */
+overflow: auto; /* Enable scroll if needed */
+background-color: rgb(0,0,0); /* Fallback color */
+background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+			    }
+
+/* Modal Content/Box */
+.modal-content {
+background-color: #fefefe;
+margin: 15% auto; /* 15% from the top and centered */
+padding: 20px;
+border: 1px solid #888;
+width: 35%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+text-align: right;
+color: #aaa;
+float: right;
+font-size: 28px;
+font-weight: bold;
+position: right;	
+}
+
+.close:hover,
+.close:focus {
+color: black;
+text-decoration: none;
+cursor: pointer;
+position: right;	
+ }
+ 
+ .active {
+#background-color: #4CAF50;
+background-color: #7f0000;
+}
+
+.login {
+	float: right;
+/* 	padding: 14px 16px; */
+/* 	padding: 5px;
+	
+	    float: left; */
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 10px 12px;
+    text-decoration: none;
+}
+
+p {
+	#color: white;
+}
+
+.logo {
+/* 	margin: auto;
+	padding: 10px;
+    float: left;
+    display: block; */
+height: 25px;
+width: 175px;
+
+}
+
+input[type=text] {
+    #background-color: #3CBC8D;
+    color: black;
+}
+
+input[type=password] {
+    #background-color: #3CBC8D;
+    color: black;
+}
+
+.linkButton { 
+     background: none;
+     border: none;
+     #color: #0066ff;
+     text-decoration: underline;
+     cursor: pointer; 
+         display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+     
+
+}
+
+.linkButton a {
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.linkButton a:hover {
+    background: #ddd;
+    color: black;
+}
+
+.logged {
+	font-size :10px;
+	
+}
