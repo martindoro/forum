@@ -16,8 +16,8 @@
 <div class="header-wrapper">
 <header id="wp-header">
 <div class="section-boxed section-header">
-<a href="/" class="spacer">	<img src="images/tsys.png" alt="Logo" class="logo"/> </a>
-<a href="/" style="padding-left:80px">Home</a> <a href="#contact">Contact</a>
+<a href="/">	<img src="images/tsys.png" alt="Logo" class="logo"/> </a>
+<a href="/" style="padding-left:80px">Home</a> <a href="#news">News</a> <a href="#contact">Contact</a>
 <span th:if='${not @userController.logged}'>
 <form action="/login" method="post" class="navright">
 		
@@ -28,14 +28,9 @@
 </form>
 </span>
 <span th:if='${@userController.logged}'>
-
 <a href="/logout" style="float: right">
-
-<p class="logged" th:text="' Logged as:' + ' ' + ${@userController.LoggedPlayer?.Login}" />
-	</a>
-	
-			<a href="/profile" style="float: right"><img src="images/gear1.png" class="gear" alt="User Profile"/></a>
-			<span th:if='${admin}'><a href="/admin" style="float: right">Admin Zone</a></span>
+<p class="logged" th:text="'Logged as:' + ' ' + ${@userController.LoggedPlayer?.Login}" />
+			</a>
 </span>
 
 	<div id="logo-container" class="topmenu">

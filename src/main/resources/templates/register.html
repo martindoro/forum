@@ -14,16 +14,6 @@
 <div class="header-wrapper">
 <header id="wp-header">
 <div class="section-boxed section-header">
-<!-- <div class="navigation-container"> -->
-<!-- <div class="nav-menu"> -->
-<!-- </div> -->
-<!-- <div class="clear"></div> -->
-<!-- </div> -->
-<!-- </div> -->
-
-<!-- <div th:fragment="navbar"> -->
-
-<!-- <p>testline</p> -->
 <a href="/">	<img src="images/tsys.png" alt="Logo" class="logo"/> </a>
 <a href="/" style="padding-left:80px">Home</a> <a href="#news">News</a> <a href="#contact">Contact</a>
 <span th:if='${not @userController.logged}'>
@@ -61,15 +51,15 @@
 				<div class="col-maincontent">
 				
 							<p>Register Form</p><hr/>
-	<form action="/register_sub" method="post">
+	<form action="/register_sub" method="post" id="myForm">
 	<div class="block">
-	<label>Login Name:</label> <br/><input class="inpu" type="text" name="Login" required="required" placeholder="Login"/><br/>
+	<label>Login Name:</label> <br/><input class="inpu" type="text" name="login" id="field_username" placeholder="Login" title="Username must not be blank and contain only letters, numbers and underscores." /><br/>
 	</div>
 	<div class="block">
-	<label>Password: </label><br/><input class="inpu" type="password" name="password" required="required" placeholder="Password"/><br/>
+	<label>Password: </label><br/><input class="inpu" type="password" name="password" id="field_pwd1" placeholder="Password"  title="Password must contain at least 6 characters, including UPPER/lowercase and numbers."/><br/>
 	</div>
 	<div class="block">
-	<label>Retype Password:</label><br/> <input class="inpu" type="password" name="password_check"  placeholder="Password" required="required"/><br/>
+	<label>Retype Password:</label><br/> <input class="inpu" type="password" name="password2" id="field_pwd2" placeholder="Password"  title="Please enter the same Password as above." /><br/>
 	</div>
 	<div class="block">
 	<label>Email:</label> <br/><input type="email" name="email"/><br/><br/>
@@ -81,10 +71,11 @@
 	</form>
 	
 					<br />
-					<script src="/js/registerValid.js"></script>
 				</div>
 			</div>
 		</div>
 	</div>
+					<script src="js/registerValid.js" />
+	
 </body>
 </html>
