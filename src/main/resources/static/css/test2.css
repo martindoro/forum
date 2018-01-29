@@ -10760,9 +10760,14 @@ ul.recipients .button2 {
     top: 0; /* Position the navbar at the top of the page */
     width: 100%; /* Full width */
 	
-
 }
 
+.gear {
+	
+	height: 25px;
+	width: 25px;
+	
+}
 /* Links inside the navbar */
 .topmenu a {
     float: left;

@@ -71,6 +71,18 @@ public class ForumController {
 		return "/comment";
 	}
 	
+	@RequestMapping("/profile")
+	public String profile(Model model) {
+		fillModel(model);
+		return "/profile";
+	}
+	
+	@RequestMapping("/admin")
+	public String admin(Model model) {
+		fillModel(model);
+		return "/admin";
+	}
+	
 
 	@RequestMapping("/topic")
 	public String topic(int ident, Model model) {
