@@ -10696,6 +10696,19 @@ ul.recipients .button2 {
 	top: 0;
 }
 
+.header-wrapper a {
+  padding: 0px 10px;
+  word-wrap: normal;
+  display: inline-block;
+  font-size: 20px;
+}
+
+.header-wrapper a:hover {
+  color: #B54444;
+
+}
+
+
 #logo-container {
     float: left;
     margin: 0 3.06%;
@@ -10731,7 +10744,8 @@ ul.recipients .button2 {
 }
 
 .spacer {
-	margin-top: 150px;
+	#margin-top: 150px;
+	padding: 5px;
 }
 
 .logo {
@@ -10768,6 +10782,9 @@ ul.recipients .button2 {
 	width: 25px;
 	
 }
+
+
+
 /* Links inside the navbar */
 .topmenu a {
     float: left;
