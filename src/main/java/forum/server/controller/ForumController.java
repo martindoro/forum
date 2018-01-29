@@ -3,6 +3,7 @@ package forum.server.controller;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 
 import javax.imageio.ImageIO;
 
@@ -106,26 +107,26 @@ public class ForumController {
 		model.addAttribute("total_comments", commentService.getCommentCount());
 		model.addAttribute("total_users", userService.getUserCount());
 		model.addAttribute("total_topics", topicService.getTopicCount());
-//		model.addAttribute("image", decodeToImage());
+	//	model.addAttribute("image", decodeToImage());
 	}
 
-	public String decodeToImage() {
+	public String decodeToImage(String login) {
        String b64 = "";
-		BufferedImage image = null;
+		BufferedImage image ;
 		try {
-			ByteArrayInputStream bis = new ByteArrayInputStream(userService.getImage("j"));
-			image = ImageIO.read(bis);
-//			ImageIO.write(image, "png", new File("c:\\image\\mypic.png"));
+			ByteArrayInputStream bis = new ByteArrayInputStream(userService.getImage(login));
+			image = ImageIO.read(bis);			
 			bis.close();
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			ImageIO.write(image, "png", new File("C:\\Users\\Dominika\\Desktop\\nl\\mypic.png") );
 			ImageIO.write( image, "png", baos );
 			baos.flush();
 			byte[] imageInByteArray = baos.toByteArray();
 			baos.close();
 			 b64 = javax.xml.bind.DatatypeConverter.printBase64Binary(imageInByteArray);
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("daco je zle ");
 		}
-		return b64;
+		return "data:image/png;base64," + b64;
 	}
 }

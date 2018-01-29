@@ -51,7 +51,7 @@
 				<div class="col-maincontent">
 				
 							<p>Register Form</p><hr/>
-	<form action="/register_sub" method="post" id="myForm">
+	<form action="/register_sub" method="post" id="myForm" enctype="multipart/form-data" >
 	<div class="block">
 	<label>Login Name:</label> <br/><input class="inpu" type="text" name="login" id="field_username" placeholder="Login" title="Username must not be blank and contain only letters, numbers and underscores." /><br/>
 	</div>
@@ -65,7 +65,7 @@
 	<label>Email:</label> <br/><input type="email" name="email"/><br/><br/>
 	</div>
 	<label>Profile Picture:</label>
-	<input type="file" name="pic" accept="image/*"/>
+	<input type="file" name="file" accept="image/*"/>
 	<input type="checkbox" name="checkbox" value="checkbox"/> I Agree with rules!<br/><br/>
 	<input class="btn btn-success btn-createnew" type="submit" value="Register"/>
 	</form>

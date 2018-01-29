@@ -58,7 +58,7 @@
 								<dl class="postprofile">
 									<dt class="avatar-container">
 
-										<img class="avatar" th:src="*{'data:image/png;base64,'+image}" />
+										<img class="avatar" th:src="*{@forumController.decodeToImage(comments.userName)}" />
 									</dt>
 									<dt class="profile-main no-profile-rank"
 										th:text='${comments.userName}'>Username</dt>

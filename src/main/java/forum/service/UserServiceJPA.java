@@ -20,21 +20,6 @@ public class UserServiceJPA {
 	private EntityManager entityManager;
 
 	public void register(ForumUser user) {
-		File file = new File("");
-
-		byte[] picInBytes = new byte[(int) file.length()];
-		try {
-			FileInputStream fileInputStream = new FileInputStream(file);
-			fileInputStream.read(picInBytes);
-			fileInputStream.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		user.setPic(picInBytes);
 		entityManager.persist(user);
 	}
 
