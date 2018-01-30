@@ -75,6 +75,7 @@ public class ForumController {
 	@RequestMapping("/comment")
 	public String comment(int ident, Model model) {
 		topicId = ident;
+		model.addAttribute("getTopicById", topicService.getContentById(topicId));
 		fillModel(model);
 		return "/comment";
 	}

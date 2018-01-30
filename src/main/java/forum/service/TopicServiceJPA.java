@@ -34,4 +34,7 @@ public class TopicServiceJPA {
 	public long getTopicCount() {
 		return (long) entityManager.createQuery("SELECT COUNT(t) FROM Topic t").getSingleResult();
 	}
+	public String getContentById(int ident) {
+		return (String) entityManager.createQuery("SELECT t.content FROM Topic t WHERE t.ident = :ident").setParameter("ident", ident).getSingleResult();
+	}
 }
