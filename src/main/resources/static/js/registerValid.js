@@ -2,7 +2,7 @@
 	        var FileSize = file.files[0].size / 1024 / 1024; // in MB
 	        if (FileSize > 1) {
 	            alert('File size exceeds 1 MB');
-	            $(file).val(''); //for clearing with Jquery
+	            $(file).val('');
 	        } else {
 
 	        }
@@ -46,8 +46,8 @@ document.addEventListener("DOMContentLoaded", function() {
         e.preventDefault();
         return;
       }
-//      alert("Both username and password are VALID!");
-      alert("Regisration was successfully completed!");
+// alert("Both username and password are VALID!");
+// alert("Regisration was successfully completed!");
     };
 
     var myForm = document.getElementById("myForm");

@@ -45,6 +45,16 @@ public class UserServiceJPA {
 		}
 		return true;
 	}
+	
+	public boolean isPlayer(String login) {
+		try {
+			entityManager.createQuery("SELECT fu FROM ForumUser fu WHERE fu.login =:login")
+					.setParameter("login", login).getSingleResult();
+		} catch (NoResultException e) {
+			return false;
+		}
+		return true;
+	}
 
 	public long getUserCount() {
 		return (long) entityManager.createQuery("SELECT COUNT(fu) FROM ForumUser fu").getSingleResult();

@@ -26,6 +26,7 @@ public class ForumController {
 	private CategoryServiceJPA categoryService;
 	@Autowired
 	private UserServiceJPA userService;
+	private UserController userController;
 	private int topicId;
 	private int categoryId;
 
@@ -45,6 +46,7 @@ public class ForumController {
 
 	@RequestMapping("/register")
 	public String register(Model model) {
+
 		return "register";
 	}
 

@@ -14,11 +14,11 @@ import org.springframework.web.multipart.MultipartFile;
 import forum.entity.ForumUser;
 import forum.service.UserServiceJPA;
 
-
-
 @Controller
 public class UserController {
 	private String errormsg;
+	
+
 	private String chkbx;
 	private ForumUser loggedPlayer;
 
@@ -36,19 +36,27 @@ public class UserController {
 	@RequestMapping("/login")
 	public String login(ForumUser forumUser, Model model) {
 		loggedPlayer = userServiceJPA.login(forumUser.getLogin(), forumUser.getPassword());
+		errormsg= "";
 		fillModel(model);
-		return "forward:";
+		return "forward:/";
 	}
 
 	@RequestMapping("/register_sub")
-	public String register_sub(@RequestParam("file") MultipartFile file,ForumUser forumUser, String password_check, String checkbox, Model model) throws IOException, ServletException {
-		 if (!file.isEmpty()) {
-	            byte[] bytes = file.getBytes();
-		 forumUser.setPic(bytes);
-	    }	
-		userServiceJPA.register(forumUser);
-		loggedPlayer = userServiceJPA.login(forumUser.getLogin(), forumUser.getPassword());
-		return "forward:/";
+	public String register_sub(@RequestParam("file") MultipartFile file, ForumUser forumUser, String password_check,
+			String checkbox, Model model) throws IOException, ServletException {
+		
+		if (!file.isEmpty()) {
+			byte[] bytes = file.getBytes();
+			forumUser.setPic(bytes);
+		}
+		if (!userServiceJPA.isPlayer(forumUser.getLogin())) {
+			userServiceJPA.register(forumUser);
+			loggedPlayer = userServiceJPA.login(forumUser.getLogin(), forumUser.getPassword());
+		} else {
+			errormsg = "Login already exists!!";
+		}
+
+		return isLogged() ? "forward:/" : "register";
 	}
 
 	@RequestMapping("/logout")
@@ -61,20 +69,28 @@ public class UserController {
 		return loggedPlayer != null;
 	}
 
-	
 	@RequestMapping("/rhchange")
 	public String rhchange(ForumUser forumUser, String setAdmin, String setUser, String rhchange, Model model) {
-		//userServiceJPA.register(forumUser);
-		//System.out.println(rhchange);
+		// userServiceJPA.register(forumUser);
+		// System.out.println(rhchange);
 		if ("setAdmin".equals(setAdmin)) {
-		userServiceJPA.setAdmin(rhchange);
+			userServiceJPA.setAdmin(rhchange);
 		} else if ("setUser".equals(setUser)) {
 			userServiceJPA.setUser(rhchange);
 		}
 		return "forward:/admin";
 	}
-	
+
 	private void fillModel(Model model) {
+		model.addAttribute("controller", this);
 		model.addAttribute("admin", userServiceJPA.isAdmin(loggedPlayer.getLogin()));
 	}
+
+	public String getErrormsg() {
+		return errormsg;
+	}
+	public void setErrormsg(String errormsg) {
+		this.errormsg = errormsg;
+	}
+
 }
