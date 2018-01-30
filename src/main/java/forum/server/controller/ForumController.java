@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import forum.entity.ForumUser;
 import forum.service.CategoryServiceJPA;
 import forum.service.CommentServiceJPA;
 import forum.service.TopicServiceJPA;
@@ -29,6 +30,15 @@ public class ForumController {
 	private UserController userController;
 	private int topicId;
 	private int categoryId;
+	private ForumUser loggedPlayer;
+	
+	public ForumUser getLoggedPlayer() {
+		return loggedPlayer;
+	}
+
+	public void setLoggedPlayer(ForumUser loggedPlayer) {
+		this.loggedPlayer = loggedPlayer;
+	}
 
 	public int getCategoryId() {
 		return categoryId;
@@ -100,6 +110,7 @@ public class ForumController {
 		return "/topic";
 	}
 
+
 	private void fillModel(Model model) {
 		model.addAttribute("controller", this);
 		model.addAttribute("getComments", commentService.getCommentsTopic(topicId));
@@ -108,6 +119,8 @@ public class ForumController {
 		model.addAttribute("total_comments", commentService.getCommentCount());
 		model.addAttribute("total_users", userService.getUserCount());
 		model.addAttribute("total_topics", topicService.getTopicCount());
+		
+		
 	}
 
 	public String decodeToImage(String login) {

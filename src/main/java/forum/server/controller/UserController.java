@@ -38,13 +38,12 @@ public class UserController {
 		loggedPlayer = userServiceJPA.login(forumUser.getLogin(), forumUser.getPassword());
 		errormsg= "";
 		fillModel(model);
-		return "forward:/";
+		return "redirect:/";
 	}
 
 	@RequestMapping("/register_sub")
 	public String register_sub(@RequestParam("file") MultipartFile file, ForumUser forumUser, String password_check,
-			String checkbox, Model model) throws IOException, ServletException {
-		
+			String checkbox, Model model) throws IOException, ServletException {		
 		if (!file.isEmpty()) {
 			byte[] bytes = file.getBytes();
 			forumUser.setPic(bytes);
@@ -56,13 +55,13 @@ public class UserController {
 			errormsg = "Login already exists!!";
 		}
 
-		return isLogged() ? "forward:/" : "register";
+		return isLogged() ? "redirect:/" : "register";
 	}
 
 	@RequestMapping("/logout")
 	public String login(Model model) {
 		loggedPlayer = null;
-		return "forward:/";
+		return "redirect:/";
 	}
 
 	public boolean isLogged() {
@@ -83,7 +82,7 @@ public class UserController {
 
 	private void fillModel(Model model) {
 		model.addAttribute("controller", this);
-		model.addAttribute("admin", userServiceJPA.isAdmin(loggedPlayer.getLogin()));
+		
 	}
 
 	public String getErrormsg() {
