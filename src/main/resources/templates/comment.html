@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" >
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
 <!-- <link rel="stylesheet" type="text/css" href="css/test1.css" /> -->
@@ -9,7 +9,8 @@
 
 <title>Java Academy Forum</title>
 </head>
-<body class="section-viewtopic ltr  postAuthorAlign-left layout-stretched roundAvatars-enabled nb-h">
+<body
+	class="section-viewtopic ltr  postAuthorAlign-left layout-stretched roundAvatars-enabled nb-h">
 	<div class="header-wrapper">
 		<header id="wp-header">
 			<div class="section-boxed section-header">
@@ -66,41 +67,50 @@
 										th:text='${comments.userName}' />
 								</dl>
 								<div class="postbody">
-								<ol class="post-buttons">	
-								<li  class="icon_post_target has-tooltip">#</li>
-								<span>Quote</span>
-								</ol>
+									<ol class="post-buttons">
+										<li class="icon_post_target has-tooltip">#</li>
+										<span>Quote</span>
+									</ol>
 									<p class="author">
 										<span class="timestamp"
 											th:text="${#dates.format(comments.createdOn, ' HH:mm  dd-MMM-yyyy ')}" />
-											
+
 
 									</p>
-									<span th:if='${comments.replyto &gt; 0}'><blockquote><div class="blockquote__inner">" <span
-												th:text="${@commentService.getCommentContent(comments.replyto)}"></span> "</div></blockquote><br/><br/><br/></span>
+									<span th:if='${comments.replyto &gt; 0}'><b><span
+											th:text="${@commentService.getComment(comments.replyto).userName}"></span></b><br />
+									<i>" <span
+											th:text="${@commentService.getComment(comments.replyto).content}"></span>
+											"
+									</i><br />
+									<br /></span>
 									<div class="content" th:text='${comments.content}'></div>
-									
+
 									<div class="signature">
-							<span th:if='${not @userController.logged}'></span> <span th:if='${@userController.logged}'>
-									
-									<form action='/favoritePlus' method='post'>
-							<input type='hidden' th:value='${comments.ident}' name='ident' />
-							<input type="hidden" th:value='${@forumController.topicId}'
-								name="topicId" /> <input type='submit' value='PLUS' />
-						</form>
-						<form action='/favoriteMinus' method='post'>
-							<input type='hidden' th:value='${comments.ident}' name='ident' />
-							<input type="hidden" th:value='${@forumController.topicId}'
-								name="topicId" /> <input type='submit' value='MINUS' />
-						</form>
-								</span>	
-									
+										<span th:if='${not @userController.logged}'></span> <span
+											th:if='${@userController.logged}'>
+
+											<form action='/favoritePlus' method='post'>
+												<input type='hidden' th:value='${comments.ident}'
+													name='ident' /> <input type="hidden"
+													th:value='${@forumController.topicId}' name="topicId" /> <input
+													type='submit' value='PLUS' />
+											</form>
+											<form action='/favoriteMinus' method='post'>
+												<input type='hidden' th:value='${comments.ident}'
+													name='ident' /> <input type="hidden"
+													th:value='${@forumController.topicId}' name="topicId" /> <input
+													type='submit' value='MINUS' />
+											</form>
+										</span>
+
 									</div>
 								</div>
 							</div>
 						</div>
-						
-						<span th:if='${not @userController.logged}'></span> <span th:if='${@userController.logged}'>
+
+						<span th:if='${not @userController.logged}'></span> <span
+							th:if='${@userController.logged}'>
 							<form class="quicklogin-form" action='/add_reply' method='post'>
 								<textarea required="required" id="comment1"
 									class="quicklogin__username-input form-control" type="text"
