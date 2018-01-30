@@ -30,7 +30,10 @@
 <span th:if='${@userController.logged}'>
 <a href="/logout" style="float: right">
 <p class="logged" th:text="'Logged as:' + ' ' + ${@userController.LoggedPlayer?.Login}" />
-			</a>
+</a>
+<span th:if='${admin}'>
+<a href="/admin">Admin Zone</a>
+</span>
 </span>
 
 	<div id="logo-container" class="topmenu">

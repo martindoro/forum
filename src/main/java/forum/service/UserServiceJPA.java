@@ -49,4 +49,20 @@ public class UserServiceJPA {
 	public long getUserCount() {
 		return (long) entityManager.createQuery("SELECT COUNT(fu) FROM ForumUser fu").getSingleResult();
 	}
+	
+	public void setAdmin(String login) {
+		entityManager
+				.createQuery("UPDATE ForumUser fu SET fu.admin =:admin WHERE fu.login = :login")
+				.setParameter("admin", 1).setParameter("login", login)
+				.executeUpdate();
+	
+	}
+	
+	public void setUser(String login) {
+		entityManager
+				.createQuery("UPDATE ForumUser fu SET fu.admin =:admin WHERE fu.login = :login")
+				.setParameter("admin", 0).setParameter("login", login)
+				.executeUpdate();
+	
+	}
 }
