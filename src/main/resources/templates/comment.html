@@ -8,6 +8,26 @@
 <link rel="stylesheet" type="text/css" href="css/test2.css" />
 
 <title>Java Academy Forum</title>
+<style>
+.input-click{
+  background: none;
+
+}
+
+.input-click:active{
+  background-color:orange;
+}
+.input-click[type=image]:hover{
+  background-color: green;     /* oranges! yey */
+}
+
+input-click[type=image]:after{
+  background-color: green;     /* oranges! yey */
+} 
+.input-click1[type=image]:hover{
+  background-color: red;     /* oranges! yey */
+}
+</style>
 </head>
 <body
 	class="section-viewtopic ltr  postAuthorAlign-left layout-stretched roundAvatars-enabled nb-h">
@@ -59,7 +79,7 @@
 								<dl class="postprofile">
 									<dt class="avatar-container">
 
-										<img class="avatar"
+										<img class="avatar" width="77" height="130"
 											th:src="*{@forumController.decodeToImage(comments.userName)}"
 											onerror="this.src='images/default.jpeg';" />
 									</dt>
@@ -77,30 +97,33 @@
 
 
 									</p>
-									<span th:if='${comments.replyto &gt; 0}'><b><span
-											th:text="${@commentService.getComment(comments.replyto).userName}"></span></b><br />
-									<i>" <span
+									<blockquote><span th:if='${comments.replyto &gt; 0}'><cite><span
+											th:text="${@commentService.getComment(comments.replyto).userName}"></span> said:</cite>
+									<i> <span class="blockquote__inner"
 											th:text="${@commentService.getComment(comments.replyto).content}"></span>
-											"
+											
 									</i><br />
-									<br /></span>
+									<br /></span></blockquote>
 									<div class="content" th:text='${comments.content}'></div>
 
 									<div class="signature">
-										<span th:if='${not @userController.logged}'></span> <span
+										<span th:if='${not @userController.logged}'>Only registered user can rate this post</span> <span
 											th:if='${@userController.logged}'>
 
-											<form action='/favoritePlus' method='post'>
+											<form action='/favoritePlus' method='post' style="display:inline">
 												<input type='hidden' th:value='${comments.ident}'
 													name='ident' /> <input type="hidden"
-													th:value='${@forumController.topicId}' name="topicId" /> <input
-													type='submit' value='PLUS' />
-											</form>
-											<form action='/favoriteMinus' method='post'>
+													th:value='${@forumController.topicId}' name="topicId" /> 
+													<input
+													type='image' id="text1" value='PLUS' src="images/icons8-plus.png" 
+													class="input-click"/>	
+																							
+													</form>
+											<form action='/favoriteMinus' method='post' style="display:inline">
 												<input type='hidden' th:value='${comments.ident}'
 													name='ident' /> <input type="hidden"
-													th:value='${@forumController.topicId}' name="topicId" /> <input
-													type='submit' value='MINUS' />
+													th:value='${@forumController.topicId}' name="topicId" /> <input class="input-click1"
+													type='image' value='MINUS' src="images/icons8-minus.png"/>
 											</form>
 										</span>
 
