@@ -71,8 +71,8 @@
 											th:text="${#dates.format(comments.createdOn, ' HH:mm  dd-MMM-yyyy ')}" />
 
 									</p>
-									<span th:if='${comments.replyto &gt; 0}'><i><p
-												th:text="${@commentService.getCommentContent(comments.replyto)}"></p></i></span>
+									<span th:if='${comments.replyto &gt; 0}'><i>" <span
+												th:text="${@commentService.getCommentContent(comments.replyto)}"></span> "</i><br/><br/></span>
 									<div class="content" th:text='${comments.content}'></div>
 								</div>
 							</div>
