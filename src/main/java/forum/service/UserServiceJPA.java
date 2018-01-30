@@ -20,7 +20,7 @@ public class UserServiceJPA {
 	public ForumUser login(String login, String password) {
 		try {
 			return (ForumUser) entityManager
-					.createQuery("SELECT fu FROM ForumUser fu WHERE fu.login =:login AND fu.password =:password")
+					.createQuery("SELECT fu FROM ForumUser fu WHERE fu.login =:login AND fu.password = crypt(:password, fu.password)")
 					.setParameter("login", login).setParameter("password", password).getSingleResult();
 		} catch (NoResultException e) {
 			return null;

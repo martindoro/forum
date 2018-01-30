@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import org.hibernate.annotations.ColumnTransformer;
 
 @Entity
 public class ForumUser {
@@ -15,6 +16,7 @@ public class ForumUser {
 	private int ident;
 	@Column(unique = true)
 	public String login;
+	@ColumnTransformer(write = "crypt(?, gen_salt('bf', 8))")
 	private String password;
 	private String email;
 	private int admin;
