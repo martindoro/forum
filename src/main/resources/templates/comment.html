@@ -58,7 +58,9 @@
 								<dl class="postprofile">
 									<dt class="avatar-container">
 
-										<img class="avatar" th:src="*{@forumController.decodeToImage(comments.userName)}" />
+										<img class="avatar"
+											th:src="*{@forumController.decodeToImage(comments.userName)}"
+											onerror="this.src='images/default.jpeg';" />
 									</dt>
 									<dt class="profile-main no-profile-rank"
 										th:text='${comments.userName}'>Username</dt>
@@ -69,7 +71,8 @@
 											th:text="${#dates.format(comments.createdOn, ' HH:mm  dd-MMM-yyyy ')}" />
 
 									</p>
-									<span th:if='${comments.replyto &gt; 0}'><i><p th:text="${@commentService.getCommentContent(comments.replyto)}"></p></i></span>
+									<span th:if='${comments.replyto &gt; 0}'><i><p
+												th:text="${@commentService.getCommentContent(comments.replyto)}"></p></i></span>
 									<div class="content" th:text='${comments.content}'></div>
 								</div>
 							</div>

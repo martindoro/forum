@@ -9,28 +9,27 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+
 @Entity
 public class ForumUser {
-//boolean userIsAdmin
+	// boolean userIsAdmin
 	@Id
 	@GeneratedValue
 	private int ident;
-	@Column(unique=true)
+	@Column(unique = true)
 	public String login;
-	@Column(unique=true)
+	@Column(unique = true)
 	private String password;
 	private String email;
 	private int admin;
-	
-    private byte[] pic;
-	
-	
-	
-	public byte[] getPic(){
+
+	private byte[] pic;
+
+	public byte[] getPic() {
 		return this.pic;
 	}
-	
-	public void setPic(byte[] pic){
+
+	public void setPic(byte[] pic) {
 		this.pic = pic;
 	}
 
@@ -44,12 +43,12 @@ public class ForumUser {
 
 	public ForumUser() {
 	}
-	
+
 	public ForumUser(String login, String password, String email) {
 		this.login = login;
 		this.password = password;
 		this.email = email;
-	
+
 	}
 
 	@Override

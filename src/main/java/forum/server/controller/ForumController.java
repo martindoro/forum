@@ -77,19 +77,18 @@ public class ForumController {
 		fillModel(model);
 		return "/comment";
 	}
-	
+
 	@RequestMapping("/profile")
 	public String profile(Model model) {
 		fillModel(model);
 		return "/profile";
 	}
-	
+
 	@RequestMapping("/admin")
 	public String admin(Model model) {
 		fillModel(model);
 		return "/admin";
 	}
-	
 
 	@RequestMapping("/topic")
 	public String topic(int ident, Model model) {
@@ -101,32 +100,33 @@ public class ForumController {
 
 	private void fillModel(Model model) {
 		model.addAttribute("controller", this);
-		model.addAttribute("getComments" , commentService.getCommentsTopic(topicId));
+		model.addAttribute("getComments", commentService.getCommentsTopic(topicId));
 		model.addAttribute("getTopics", topicService.getTopicList(categoryId));
 		model.addAttribute("categories", categoryService.getCategory());
 		model.addAttribute("total_comments", commentService.getCommentCount());
 		model.addAttribute("total_users", userService.getUserCount());
 		model.addAttribute("total_topics", topicService.getTopicCount());
-	//	model.addAttribute("image", decodeToImage());
 	}
 
 	public String decodeToImage(String login) {
-       String b64 = "";
-		BufferedImage image ;
+		String finalImage = "";
+		BufferedImage image;
 		try {
 			ByteArrayInputStream bis = new ByteArrayInputStream(userService.getImage(login));
-			image = ImageIO.read(bis);			
+			image = ImageIO.read(bis);
 			bis.close();
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			ImageIO.write(image, "png", new File("C:\\Users\\Dominika\\Desktop\\nl\\mypic.png") );
-			ImageIO.write( image, "png", baos );
+			ImageIO.write(image, "png", baos);
 			baos.flush();
 			byte[] imageInByteArray = baos.toByteArray();
 			baos.close();
-			 b64 = javax.xml.bind.DatatypeConverter.printBase64Binary(imageInByteArray);
+			finalImage = javax.xml.bind.DatatypeConverter.printBase64Binary(imageInByteArray);
 		} catch (Exception e) {
+			/*
+			 * TODO Upravit exception
+			 */
 			System.out.println("daco je zle ");
 		}
-		return "data:image/png;base64," + b64;
+		return "data:image/png;base64," + finalImage;
 	}
 }

@@ -48,7 +48,7 @@ public class UserController {
 	@RequestMapping("/register_sub")
 	public String register_sub(@RequestParam("file") MultipartFile file,ForumUser forumUser, String password_check, String checkbox, Model model) throws IOException, ServletException {
 		 if (!file.isEmpty()) {
-	            byte[] bytes = file.getBytes(); // alternatively, file.getInputStream();
+	            byte[] bytes = file.getBytes();
 		 forumUser.setPic(bytes);
 	    }	
 		userServiceJPA.register(forumUser);
