@@ -1,14 +1,11 @@
 package forum.entity;
 
-import java.awt.Image;
-import java.sql.Blob;
 import java.util.Arrays;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 
 @Entity
 public class ForumUser {
@@ -18,7 +15,6 @@ public class ForumUser {
 	private int ident;
 	@Column(unique = true)
 	public String login;
-	@Column(unique = true)
 	private String password;
 	private String email;
 	private int admin;

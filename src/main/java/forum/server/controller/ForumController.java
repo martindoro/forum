@@ -3,7 +3,6 @@ package forum.server.controller;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 
 import javax.imageio.ImageIO;
 
