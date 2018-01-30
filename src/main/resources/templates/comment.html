@@ -9,26 +9,36 @@
 
 <title>Java Academy Forum</title>
 <style>
-.input-click{
-  background: none;
-
+.input-click {
+	background: none;
 }
 
-.input-click:active{
-  background-color:orange;
-}
-.input-click[type=image]:hover{
-  background-color: green;     /* oranges! yey */
+.input-click:active {
+	background-color: orange;
 }
 
-input-click[type=image]:after{
-  background-color: green;     /* oranges! yey */
-} 
-.input-click1[type=image]:hover{
-  background-color: red;     /* oranges! yey */
+.input-click[type=image]:hover {
+	background-color: green; 
+}
+
+input-click[type=image]:after {
+	background-color: green; 
+}
+
+.input-click1[type=image]:hover {
+	background-color: red;
+}
+
+.spoiler {
+	display: none;
+}
+
+.trigger:checked+.spoiler {
+	display: block;
 }
 </style>
 </head>
+
 <body
 	class="section-viewtopic ltr  postAuthorAlign-left layout-stretched roundAvatars-enabled nb-h">
 	<div class="header-wrapper">
@@ -73,6 +83,11 @@ input-click[type=image]:after{
 					<!-- 						</div> -->
 					<!-- 					</div> -->
 
+					<div class="page-header">
+						<!-- 						<div class="page-header-inner"> -->
+						<h2 class="page-title" th:text='${getTopicById}' />
+						<!-- 						</div> -->
+					</div>
 					<div class="postlist" th:each='comments:${getComments}'>
 						<div class="post has-profile">
 							<div class="inner">
@@ -88,8 +103,7 @@ input-click[type=image]:after{
 								</dl>
 								<div class="postbody">
 									<ol class="post-buttons">
-										<li class="icon_post_target has-tooltip">#</li>
-										<span>Quote</span>
+										<li class="icon_post_target has-tooltip">Quote</li>
 									</ol>
 									<p class="author">
 										<span class="timestamp"
@@ -97,33 +111,48 @@ input-click[type=image]:after{
 
 
 									</p>
-									<blockquote><span th:if='${comments.replyto &gt; 0}'><cite><span
-											th:text="${@commentService.getComment(comments.replyto).userName}"></span> said:</cite>
-									<i> <span class="blockquote__inner"
-											th:text="${@commentService.getComment(comments.replyto).content}"></span>
-											
-									</i><br />
-									<br /></span></blockquote>
+									<blockquote>
+										<span th:if='${comments.replyto &gt; 0}'><cite><span
+												th:text="${@commentService.getComment(comments.replyto).userName}"></span>
+												said:</cite> <i> <span class="blockquote__inner"
+												th:text="${@commentService.getComment(comments.replyto).content}"></span>
+
+										</i><br /> <br /></span>
+									</blockquote>
 									<div class="content" th:text='${comments.content}'></div>
 
 									<div class="signature">
-										<span th:if='${not @userController.logged}'>Only registered user can rate this post</span> <span
+										<span th:if='${not @userController.logged}'>Only
+											registered user can rate this post</span> <span
 											th:if='${@userController.logged}'>
 
-											<form action='/favoritePlus' method='post' style="display:inline">
+											<form action='/favoritePlus' method='post'
+												style="display: inline">
 												<input type='hidden' th:value='${comments.ident}'
 													name='ident' /> <input type="hidden"
 													th:value='${@forumController.topicId}' name="topicId" /> 
-													<input
-													type='image' id="text1" value='PLUS' src="images/icons8-plus.png" 
-													class="input-click"/>	
-																							
-													</form>
-											<form action='/favoriteMinus' method='post' style="display:inline">
+												<div th:if='${@favoriteService.isFavorite(@userController.loggedPlayer.login, comments.ident)}'>
+												<span th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &lt;0}' >
+													<img src="images/redminus.png" />
+													<input 
+													type='image' id="text1" value='PLUS'
+													src="images/icons8-plus.png" class="input-click" />
+													</span>
+												</div>
+											</form>
+											<form action='/favoriteMinus' method='post'
+												style="display: inline">
 												<input type='hidden' th:value='${comments.ident}'
 													name='ident' /> <input type="hidden"
-													th:value='${@forumController.topicId}' name="topicId" /> <input class="input-click1"
-													type='image' value='MINUS' src="images/icons8-minus.png"/>
+													th:value='${@forumController.topicId}' name="topicId" />
+													<div th:if='${@favoriteService.isFavorite(@userController.loggedPlayer.login, comments.ident)}'>
+												<span th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &gt;0}'>
+												<img src="images/greenplus.png" /> 
+													 <input
+													class="input-click1" type='image' value='MINUS'
+													src="images/icons8-minus.png" />
+													</span>
+													</div>
 											</form>
 										</span>
 
@@ -134,20 +163,19 @@ input-click[type=image]:after{
 
 						<span th:if='${not @userController.logged}'></span> <span
 							th:if='${@userController.logged}'>
-							<form class="quicklogin-form" action='/add_reply' method='post'>
-								<textarea required="required" id="comment1"
-									class="quicklogin__username-input form-control" type="text"
-									name="content" placeholder="Enter reply" />
-								<input type="hidden" th:value='${@forumController.topicId}'
-									name="topicId" /><input type="hidden"
-									th:value='${comments.ident}' name="replyto" /> <br /> <input
-									class="btn btn-success btn-createnew" type='submit'
-									value='Save Reply' />
-							</form>
+								<form class="quicklogin-form" action='/add_reply' method='post'>
+									<textarea required="required" id="comment1"
+										class="quicklogin__username-input form-control" type="text"
+										name="content" placeholder="Enter reply" />
+									<input type="hidden" th:value='${@forumController.topicId}'
+										name="topicId" /><input type="hidden"
+										th:value='${comments.ident}' name="replyto" /> <br /> <input
+										class="btn btn-success btn-createnew" type='submit'
+										value='Save Reply' />
+								</form>
 						</span>
 					</div>
 				</div>
-
 			</div>
 			<!-- 			<div class="action-bar bottom"> -->
 			<!-- 				<div class="buttons"> -->
