@@ -93,13 +93,8 @@ public class UserController {
 	public boolean isAdmin() {
 		if(isLogged()) {
 			admin = userServiceJPA.isAdmin(loggedPlayer.getLogin());
-		}
-		
+		}		
 		return admin ;
-	}
-
-	public void setAdmin(boolean admin) {
-		this.admin = admin;
 	}
 
 }

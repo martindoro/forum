@@ -27,7 +27,6 @@ public class ForumController {
 	private CategoryServiceJPA categoryService;
 	@Autowired
 	private UserServiceJPA userService;
-	private UserController userController = new  UserController();
 	private int topicId;
 	private int categoryId;
 

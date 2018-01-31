@@ -72,7 +72,12 @@ public class UserServiceJPA {
 		entityManager
 				.createQuery("UPDATE ForumUser fu SET fu.admin =:admin WHERE fu.login = :login")
 				.setParameter("admin", 0).setParameter("login", login)
-				.executeUpdate();
-	
+				.executeUpdate();	
+	}
+	public void updateImage(String login, byte[] pic) {
+		entityManager
+				.createQuery("UPDATE ForumUser fu SET fu.pic =:pic WHERE fu.login = :login")
+				.setParameter("pic", pic).setParameter("login", login)
+				.executeUpdate();	
 	}
 }
