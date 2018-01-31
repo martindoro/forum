@@ -59,7 +59,7 @@
 </header>
 
 </div>
-	<div id="page-body" class="spacer">
+	<div id="page-body" class="spacer profile">
 		<div class="container">
 			<div class="big-grid">
 				<div class="col-maincontent">
@@ -69,47 +69,30 @@
 	<p> Here we will be able to change user password, email, profile pic</p>
 				
 				<br/>	
-								<span th:if='${@userController.admin}'>
-				<form action="/rhchange" method="post">
-	<div class="block">
-	<label>Insert Username:</label> <br/><input class="inpu" type="text" name="rhchange" required="required" placeholder="Username"/><br/>
-	</div>
-	
-	
-	<input type="checkbox" name="setAdmin" value="setAdmin"/> Set User As Admin
-	<input type="checkbox" name="setUser" value="setUser"/> Set User As Standard User
-	<input type="submit" value="OK"/>
-	</form>
-	</span>
+				
 	
 	<br/>
 	
-	<p>Email Change</p>
-	<form action="/echange" method="post">
-	<div class="block">
-	<label>Insert New Email Address:</label> <br/><input class="inpu" type="email" name="email" placeholder="example@example.com"/><br/>
-	</div>
-	
-	
-<!-- 	<input type="checkbox" name="setAdmin" value="setAdmin"/> Set User As Admin -->
-<!-- 	<input type="checkbox" name="setUser" value="setUser"/> Set User As Standard User -->
-	<input type="submit" value="OK"/>
-	</form>
+
 	
 		<br/>
 	
 	<p>User Settings</p>
-	<form action="/userSettingsChange" method="post">
+	<form action="/userSettingsChange" method="post" enctype="multipart/form-data">
 	<div class="block">
-	<label>Insert New Email Address:</label> <br/><input class="inpu" type="email" name="email" placeholder="example@example.com"/><br/>
+	<label>Insert New Email Address:</label><input class="inpu" type="email" name="email" placeholder="example@example.com"/><br/>
 	</div>
 	<div class="block">
-	<label>Insert Password:</label> <br/><input class="inpu" type="password" name="password" placeholder="Start123"/><br/>
+	<label>Insert Password:</label><input class="inpu" type="password" name="password" placeholder="Start123"/><br/>
 	</div>
 	
 	
 <!-- 	<input type="checkbox" name="setAdmin" value="setAdmin"/> Set User As Admin -->
 <!-- 	<input type="checkbox" name="setUser" value="setUser"/> Set User As Standard User -->
+	<div class="block profile">
+	<label>Profile Picture:</label><input class="profile" onchange="javascript:ValidateSize(this)" type="file" name="file" accept="image/*" />
+	</div>					
+	
 	<input type="submit" value="OK"/>
 	</form>
 				

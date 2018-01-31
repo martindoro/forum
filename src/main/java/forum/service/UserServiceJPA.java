@@ -79,6 +79,7 @@ public class UserServiceJPA {
 				.createQuery("UPDATE ForumUser fu SET fu.pic =:pic WHERE fu.login = :login")
 				.setParameter("pic", pic).setParameter("login", login)
 				.executeUpdate();	
+		
 	}
 	
 	public void emailChange(String login, String email) {
