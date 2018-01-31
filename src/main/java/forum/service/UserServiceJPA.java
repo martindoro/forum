@@ -1,10 +1,13 @@
 package forum.service;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
+import forum.entity.Category;
 import forum.entity.ForumUser;
 
 @Transactional
@@ -105,6 +108,14 @@ public class UserServiceJPA {
 				.setParameter("login", login).executeUpdate();
 	}
 
+	public List<ForumUser> getForumUser() {
+//		  try {
+//		   setCategories();
+//		    } catch( SQLException e) { return
+//		  entityManager.createQuery("SELECT c FROM Category c").getResultList(); }
+//		 
+		return entityManager.createQuery("SELECT fu FROM ForumUser fu ").getResultList();
+	}
 
 }
 

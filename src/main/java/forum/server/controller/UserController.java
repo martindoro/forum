@@ -110,6 +110,7 @@ public class UserController {
 
 	private void fillModel(Model model) {
 		model.addAttribute("controller", this);
+		model.addAttribute("ForumUser", userServiceJPA.getForumUser());
 		
 	}
 

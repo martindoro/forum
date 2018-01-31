@@ -68,19 +68,21 @@
 				<span th:if='${@userController.admin}'>
 				<form action="/rhchange" method="post">
 	<div class="block">
-	<label>Insert Username:</label> <br/><input class="inpu" type="text" name="rhchange" required="required" placeholder="Username"/><br/>
+<!-- 	<label>Insert Username:</label> <br/><input class="inpu" type="text" name="rhchange" placeholder="Username"/><br/> -->
+	Choose User From List: 
+	<select name="rhchange">
+  	<option th:each='forumUser : ${ForumUser}' th:value="${forumUser.login}"> <p th:text="${forumUser.login}"/> </option>
+	</select>
 	</div>
 	
 	
-	<input type="checkbox" name="setAdmin" value="setAdmin"/> Set User As Admin
-	<input type="checkbox" name="setUser" value="setUser"/> Set User As Standard User
-	<input type="checkbox" name="removeUser" value="removeUser"/> Remove User ! (Warrning, you can't revert that action!)
+	<input type="checkbox" name="setAdmin" value="setAdmin"/> Set User As Admin <br/>
+	<input type="checkbox" name="setUser" value="setUser"/> Set User As Standard User<br/>
+	<input type="checkbox" name="removeUser" value="removeUser"/> Remove User ! (Warrning, you can't revert that action!)<br/>
 	<input type="submit" value="OK"/>
 	</form>
+	
 	</span>
-				
-				
-				
 				
 	
 				</div>

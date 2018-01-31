@@ -111,6 +111,7 @@ public class ForumController {
 		model.addAttribute("total_comments", commentService.getCommentCount());
 		model.addAttribute("total_users", userService.getUserCount());
 		model.addAttribute("total_topics", topicService.getTopicCount());
+		model.addAttribute("ForumUser", userService.getForumUser());
 	}
 
 	public String decodeToImage(String login) {
