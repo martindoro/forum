@@ -52,4 +52,12 @@ public class CommentServiceJPA {
 	public void setCommentValue(int ident, int value) {
 		entityManager.createQuery("UPDATE Comment c SET c.value = c.value + " + value + " WHERE c.ident = :ident").setParameter("ident", ident).executeUpdate();
 	}
+	
+	public int getTopCommentValue(int ident) {
+		try {
+			return (int) entityManager.createQuery("SELECT MAX(c.value) FROM Comment c WHERE c.topicId = :ident").setParameter("ident", ident).getSingleResult();
+		} catch (Exception e) {
+			return 0;
+		}
+	}
 }

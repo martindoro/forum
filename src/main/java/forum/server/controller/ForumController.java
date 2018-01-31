@@ -77,6 +77,7 @@ public class ForumController {
 	public String comment(int ident, Model model) {
 		topicId = ident;
 		model.addAttribute("getTopicById", topicService.getContentById(topicId));
+		model.addAttribute("topicId", topicId);
 		fillModel(model);
 		return "/comment";
 	}
