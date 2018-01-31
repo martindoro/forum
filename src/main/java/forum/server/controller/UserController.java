@@ -79,15 +79,23 @@ public class UserController {
 	}
 	
 	@RequestMapping("/echange")
-	public String echange(ForumUser forumUser, String setAdmin, String email, String echange, Model model) {
-		// userServiceJPA.register(forumUser);
-		// System.out.println(rhchange);
+	public String echange(ForumUser forumUser, Model model) {
 		
-			userServiceJPA.emailChange(echange, email);
-		
+			userServiceJPA.emailChange(loggedPlayer.getLogin(), forumUser.getEmail());
 			
+		System.out.println(loggedPlayer.getLogin());
+		System.out.println(forumUser.getEmail());
+		return "forward:/profile";
+	}
+	
+	@RequestMapping("/userSettingsChange")
+	public String userSettingsChange(ForumUser forumUser, Model model) {
 		
-		return "forward:/admin";
+			userServiceJPA.emailChange(loggedPlayer.getLogin(), forumUser.getEmail());
+			
+			userServiceJPA.passChange(loggedPlayer.getLogin(), forumUser.getPassword());
+			
+		return "forward:/profile";
 	}
 
 	private void fillModel(Model model) {

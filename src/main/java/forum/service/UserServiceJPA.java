@@ -82,10 +82,20 @@ public class UserServiceJPA {
 	}
 	
 	public void emailChange(String login, String email) {
+		if (!email.isEmpty()) {
 		entityManager
 				.createQuery("UPDATE ForumUser fu SET fu.email =:email WHERE fu.login = :login")
 				.setParameter("email", email).setParameter("login", login)
 				.executeUpdate();
+		}
+	}
 	
+	public void passChange(String login, String password) {
+		if (!password.isEmpty()) {
+		entityManager
+				.createQuery("UPDATE ForumUser fu SET fu.password =crypt(:password, fu.password) WHERE fu.login = :login")
+				.setParameter("password", password).setParameter("login", login)
+				.executeUpdate();
+		}
 	}
 }
