@@ -71,13 +71,17 @@ public class UserController {
 	}
 
 	@RequestMapping("/rhchange")
-	public String rhchange(ForumUser forumUser, String setAdmin, String setUser, String rhchange, Model model) {
+	public String rhchange(ForumUser forumUser, String setAdmin, String setUser, String rhchange, String removeUser, Model model) {
 		// userServiceJPA.register(forumUser);
 		// System.out.println(rhchange);
 		if ("setAdmin".equals(setAdmin)) {
 			userServiceJPA.setAdmin(rhchange);
 		} else if ("setUser".equals(setUser)) {
 			userServiceJPA.setUser(rhchange);
+		} else if ("removeUser".equals(removeUser)){
+			userServiceJPA.removeUser(rhchange);
+			System.out.println(removeUser);
+			System.out.println(rhchange);
 		}
 		return "forward:/admin";
 	}

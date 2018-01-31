@@ -99,4 +99,14 @@ public class UserServiceJPA {
 				.executeUpdate();
 		}
 	}
+	
+	public void removeUser(String login) {
+		entityManager.createQuery("DELETE FROM ForumUser fu  WHERE fu.login = :login")
+				.setParameter("login", login).executeUpdate();
+	}
+
+
 }
+
+
+
