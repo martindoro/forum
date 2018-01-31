@@ -152,26 +152,27 @@ input-click[type=image]:after {
 										<span th:if='${not @userController.logged}'>Only
 											registered user can rate this post</span> <span
 											th:if='${@userController.logged}'>
-											<div
-												th:if='${@favoriteService.isFavorite(@userController.loggedPlayer.login, comments.ident)}'>
+
+
+											<form action='/favoritePlus' method='post'
+												style="display: inline">
 												<div
-													th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &lt;=0}'>
-													<form action='/favoritePlus' method='post'
-														style="display: inline">
-
-
+													th:if='${@favoriteService.isFavorite(@userController.loggedPlayer.login, comments.ident)}'>
+													<div
+														th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &lt;=0}'>
 														<input type='hidden' th:value='${comments.ident}'
 															name='ident' /> <input type="hidden"
 															th:value='${@forumController.topicId}' name="topicId" />
 														<input type='image' id="text1" value='PLUS'
 															src="images/icons8-plus.png" class="input-click" />
-														<div
-															th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &lt;0}'>
-															<img src="images/redminus.png" />
-														</div>
-													</form>
+													</div>
+													<div
+														th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &lt;0}'>
+														<img src="images/redminus.png" />
+													</div>
 												</div>
-											</div>
+
+											</form>
 
 											<form action='/favoriteMinus' method='post'
 												style="display: inline">
