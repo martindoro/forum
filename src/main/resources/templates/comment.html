@@ -93,42 +93,44 @@ input-click[type=image]:after {
 							<div class="inner">
 								<dl class="postprofile">
 									<dt class="avatar-container">
-
-										<img class="avatar" width="77" height="130"
-											th:src="*{@forumController.decodeToImage(comments.userName)}"
-											onerror="this.src='images/default.jpeg';" />
+										<div class="avatar">
+											<img width="77" height="130"
+												th:src="*{@forumController.decodeToImage(comments.userName)}"
+												onerror="this.src='images/default.jpeg';" />
+										</div>
+										<img
+											th:if='${@commentService.getTopCommentValue(topicId) == comments.value and @commentService.getTopCommentValue(topicId) > 3}'
+											src="images/top.png" />
 									</dt>
 									<dt class="profile-main no-profile-rank "
 										th:text='${comments.userName}' />
 								</dl>
 								<div class="postbody">
-									<img
-										th:if='${@commentService.getTopCommentValue(topicId) == comments.value and @commentService.getTopCommentValue(topicId) > 3}'
-										src="images/top.png" />
+
 
 									<ol class="post-buttons">
 										<!-- 										<li class="icon_post_target has-tooltip">Quote</li> -->
-										<span th:if='${not @userController.logged}'></span>
-										<span th:if='${@userController.logged}'>
-											<li class="icon_post_target has-tooltip">Your rating:
-												<div
-													th:if='${@favoriteService.isFavorite(@userController.loggedPlayer.login, comments.ident)}'>
-													<div
-														th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &gt;0}'>
-														<img class="icon_post_target has-tooltip"
-															src="images/greenplus.png" />
-													</div>
-													<div
-														th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &lt;0}'>
-														<img src="images/redminus.png" />
-													</div>
-													<div
-														th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value ==0}'>
-														<span>Not rated yet</span>
-													</div>
-												</div>
-										</li>
-										</span>
+										<!-- 										<span th:if='${not @userController.logged}'></span> -->
+										<!-- 										<span th:if='${@userController.logged}'> -->
+										<!-- 											<li class="icon_post_target has-tooltip">Your rating: -->
+										<!-- 												<div -->
+										<!-- 													th:if='${@favoriteService.isFavorite(@userController.loggedPlayer.login, comments.ident)}'> -->
+										<!-- 													<div -->
+										<!-- 														th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &gt;0}'> -->
+										<!-- 														<img class="icon_post_target has-tooltip" -->
+										<!-- 															src="images/greenplus.png" /> -->
+										<!-- 													</div> -->
+										<!-- 													<div -->
+										<!-- 														th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &lt;0}'> -->
+										<!-- 														<img src="images/redminus.png" /> -->
+										<!-- 													</div> -->
+										<!-- 													<div -->
+										<!-- 														th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value ==0}'> -->
+										<!-- 														<span>Not rated yet</span> -->
+										<!-- 													</div> -->
+										<!-- 												</div> -->
+										<!-- 										</li> -->
+										<!-- 										</span> -->
 									</ol>
 									<p class="author">
 										<span class="timestamp"
@@ -149,37 +151,46 @@ input-click[type=image]:after {
 									<div class="signature">
 										<span th:if='${not @userController.logged}'>Only
 											registered user can rate this post</span> <span
-											th:if='${@userController.logged}'> <!-- 												<div th:if='${@favoriteService.isFavorite(@userController.loggedPlayer.login, comments.ident)}'> -->
-											<!-- 													<div th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &lt;=0}'> -->
-											<form action='/favoritePlus' method='post'
-												style="display: inline">
+											th:if='${@userController.logged}'>
+											<div
+												th:if='${@favoriteService.isFavorite(@userController.loggedPlayer.login, comments.ident)}'>
+												<div
+													th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &lt;=0}'>
+													<form action='/favoritePlus' method='post'
+														style="display: inline">
 
 
-												<input type='hidden' th:value='${comments.ident}'
-													name='ident' /> <input type="hidden"
-													th:value='${@forumController.topicId}' name="topicId" /> <input
-													type='image' id="text1" value='PLUS'
-													src="images/icons8-plus.png" class="input-click" />
-												<!-- 														<div th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &lt;0}'> -->
-												<!-- 															<img src="images/redminus.png" /> -->
-												<!-- 														</div> -->
-											</form> <!-- 															</div> --> <!-- 												</div> -->
+														<input type='hidden' th:value='${comments.ident}'
+															name='ident' /> <input type="hidden"
+															th:value='${@forumController.topicId}' name="topicId" />
+														<input type='image' id="text1" value='PLUS'
+															src="images/icons8-plus.png" class="input-click" />
+														<div
+															th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &lt;0}'>
+															<img src="images/redminus.png" />
+														</div>
+													</form>
+												</div>
+											</div>
 
 											<form action='/favoriteMinus' method='post'
 												style="display: inline">
-												<!-- 												<span th:if='${@favoriteService.isFavorite(@userController.loggedPlayer.login, comments.ident)}'> -->
-												<!-- 													<span th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &gt;=0}'> -->
-												<input type='hidden' th:value='${comments.ident}'
-													name='ident' /> <input type="hidden"
-													th:value='${@forumController.topicId}' name="topicId" /> <input
-													class="input-click1" type='image' value='MINUS'
-													src="images/icons8-minus.png" />
-												<!-- 													</span> -->
-												<!-- 													<div th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &gt;0}'> -->
-												<!-- 														<img src="images/greenplus.png" style="display: inline" /> -->
-												<!-- 													</div> -->
+												<div
+													th:if='${@favoriteService.isFavorite(@userController.loggedPlayer.login, comments.ident)}'>
+													<div
+														th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &gt;=0}'>
+														<input type='hidden' th:value='${comments.ident}'
+															name='ident' /> <input type="hidden"
+															th:value='${@forumController.topicId}' name="topicId" />
+														<input class="input-click1" type='image' value='MINUS'
+															src="images/icons8-minus.png" />
+													</div>
+													<div
+														th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &gt;0}'>
+														<img src="images/greenplus.png" style="display: inline" />
+													</div>
 
-												<!-- 												</span> -->
+												</div>
 											</form>
 										</span>
 									</div>
