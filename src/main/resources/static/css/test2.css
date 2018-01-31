@@ -10838,3 +10838,7 @@ ul.recipients .button2 {
 .topic-author-label .label {
 	background-color: rgb(83, 184, 124);
 }
+
+#textarea1 {
+	height:100px
+}
