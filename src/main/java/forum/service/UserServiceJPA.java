@@ -80,4 +80,12 @@ public class UserServiceJPA {
 				.setParameter("pic", pic).setParameter("login", login)
 				.executeUpdate();	
 	}
+	
+	public void emailChange(String login, String email) {
+		entityManager
+				.createQuery("UPDATE ForumUser fu SET fu.email =:email WHERE fu.login = :login")
+				.setParameter("email", email).setParameter("login", login)
+				.executeUpdate();
+	
+	}
 }

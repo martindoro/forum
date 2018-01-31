@@ -77,6 +77,18 @@ public class UserController {
 		}
 		return "forward:/admin";
 	}
+	
+	@RequestMapping("/echange")
+	public String echange(ForumUser forumUser, String setAdmin, String email, String echange, Model model) {
+		// userServiceJPA.register(forumUser);
+		// System.out.println(rhchange);
+		
+			userServiceJPA.emailChange(echange, email);
+		
+			
+		
+		return "forward:/admin";
+	}
 
 	private void fillModel(Model model) {
 		model.addAttribute("controller", this);

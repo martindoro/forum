@@ -35,10 +35,14 @@
 		<a class="active" href="/register" id="myBtn" style="float: right">Or Register</a>
 </form>
 </span>
-<span th:if='${@userController.logged}'>
+<span th:if='${@userController.logged}' class="navright">
 <a href="/logout" style="float: right">
 <p class="logged" th:text="'Logged as:' + ' ' + ${@userController.LoggedPlayer?.Login}" />
-			</a>
+</a>
+<span th:if='${@userController.admin}'>
+<a href="/admin">Admin Zone</a>
+</span>
+<a href="/profile"><img src="/images/gear1.png" alt="profile" label="Profile" class="gear"/></a>
 </span>
 
 	<div id="logo-container" class="topmenu">
