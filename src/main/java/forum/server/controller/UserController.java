@@ -1,7 +1,11 @@
 package forum.server.controller;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +45,7 @@ public class UserController {
 
 	@RequestMapping("/register_sub")
 	public String register_sub(@RequestParam("file") MultipartFile file, ForumUser forumUser, String password_check,
-			String checkbox, Model model) throws IOException, ServletException {		
+			String checkbox, Model model) throws IOException, ServletException {		 
 		if (!file.isEmpty()) {
 			byte[] bytes = file.getBytes();
 			forumUser.setPic(bytes);

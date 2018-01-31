@@ -3,6 +3,7 @@ package forum.server.controller;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
@@ -11,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import forum.entity.ForumUser;
 import forum.service.CategoryServiceJPA;
 import forum.service.CommentServiceJPA;
 import forum.service.TopicServiceJPA;
@@ -126,11 +126,10 @@ public class ForumController {
 			byte[] imageInByteArray = baos.toByteArray();
 			baos.close();
 			finalImage = javax.xml.bind.DatatypeConverter.printBase64Binary(imageInByteArray);
-		} catch (Exception e) {
-			/*
-			 * TODO Upravit exception
-			 */
-			System.out.println("daco je zle ");
+		} catch (IOException e) {
+			
+		} catch (NullPointerException ee) {
+		
 		}
 		return "data:image/png;base64," + finalImage;
 	}
