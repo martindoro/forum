@@ -89,7 +89,7 @@ input-click[type=image]:after {
 						<!-- 						</div> -->
 					</div>
 					<div class="postlist" th:each='comments:${getComments}'>
-						<div th:class="${#strings.contains(comments.value, @commentService.getTopCommentValue(topicId))} ? 'toppost has-profile' : 'post has-profile'">
+						<div th:class="${#strings.contains(comments.value, @commentService.getTopCommentValue(topicId)) and comments.value &gt;3} ? 'toppost has-profile' : 'post has-profile'">
 							<div class="inner">
 								<dl class="postprofile">
 									<dt class="avatar-container">
@@ -98,9 +98,7 @@ input-click[type=image]:after {
 												th:src="*{@forumController.decodeToImage(comments.userName)}"
 												onerror="this.src='images/default.jpeg';" />
 										</div>
-<!-- 										<img -->
-<!-- 											th:if='${@commentService.getTopCommentValue(topicId) == comments.value and @commentService.getTopCommentValue(topicId) > 3}' -->
-<!-- 											src="images/top.png" /> -->
+										
 									</dt>
 									<dt class="profile-main no-profile-rank "
 										th:text='${comments.userName}' />
@@ -186,6 +184,9 @@ input-click[type=image]:after {
 												</div>
 											</form>
 										</span>
+<!-- 										<img  -->
+<!-- 											th:if='${@commentService.getTopCommentValue(topicId) == comments.value and @commentService.getTopCommentValue(topicId) > 3}' -->
+<!-- 											src="images/top.png" /> -->
 									</div>
 								</div>
 							</div>

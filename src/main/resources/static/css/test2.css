@@ -9586,7 +9586,8 @@ blockquote cite {
  color:#969696;
  margin:15px -15px -15px;
  padding:15px;
- border-top:1px solid #E7E7E7
+ border-top:1px solid #E7E7E7;
+ height:95px
 }
 .postbody .video-embed-wrapper {
  max-width:560px;
@@ -10845,4 +10846,10 @@ ul.recipients .button2 {
 
 #textarea1 {
 	height:100px
+}
+
+.toppost {
+ border:4px solid #69a786;
+ position:relative;
+ margin-bottom:15px
 }
