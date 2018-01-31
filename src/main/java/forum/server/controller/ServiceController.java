@@ -80,7 +80,7 @@ public class ServiceController {
 			favoriteService.setFavorite(favorite);
 			commentService.setCommentValue(ident, 1);
 		}
-		return "forward:/comment?ident=" + topicId;
+		return "redirect:/comment?ident=" + topicId;
 	}
 
 	@RequestMapping("/favoriteMinus")
@@ -97,6 +97,6 @@ public class ServiceController {
 			favoriteService.setFavorite(favorite);
 			commentService.setCommentValue(ident, -1);
 		}
-		return "forward:/comment?ident=" + topicId;
+		return "redirect:/comment?ident=" + topicId;
 	}
 }
