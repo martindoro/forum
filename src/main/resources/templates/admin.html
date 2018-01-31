@@ -61,7 +61,7 @@
 				<div class="col-maincontent">
 				
 				
-				<span th:if='${admin}'>
+				<span th:if='${@userController.admin}'>
 				<form action="/rhchange" method="post">
 	<div class="block">
 	<label>Insert Username:</label> <br/><input class="inpu" type="text" name="rhchange" required="required" placeholder="Username"/><br/>

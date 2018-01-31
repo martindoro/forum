@@ -31,7 +31,7 @@
 <a href="/logout" style="float: right">
 <p class="logged" th:text="'Logged as:' + ' ' + ${@userController.LoggedPlayer?.Login}" />
 </a>
-<span th:if='${admin}'>
+<span th:if='${@userController.admin}'>
 <a href="/admin">Admin Zone</a>
 </span>
 <a href="/profile"><img src="/images/gear1.png" alt="profile" label="Profile" class="gear"/></a>
@@ -94,9 +94,7 @@
 					</div>
 
 
-				<span th:if='${admin}'>
-
-
+				<span th:if='${@userController.admin}'>
 					<form action="/add_category" method="post">
 						<label>NEW Category: <input type="text" name="content" />
 						</label> <input type="submit" value="Send" />

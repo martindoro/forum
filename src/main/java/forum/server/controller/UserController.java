@@ -17,10 +17,8 @@ import forum.service.UserServiceJPA;
 @Controller
 public class UserController {
 	private String errormsg;
-	
-
-	private String chkbx;
 	private ForumUser loggedPlayer;
+	private boolean admin;
 
 	@Autowired
 	private UserServiceJPA userServiceJPA;
@@ -90,6 +88,18 @@ public class UserController {
 	}
 	public void setErrormsg(String errormsg) {
 		this.errormsg = errormsg;
+	}
+
+	public boolean isAdmin() {
+		if(isLogged()) {
+			admin = userServiceJPA.isAdmin(loggedPlayer.getLogin());
+		}
+		
+		return admin ;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
 	}
 
 }

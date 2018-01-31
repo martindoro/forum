@@ -27,19 +27,11 @@ public class ForumController {
 	private CategoryServiceJPA categoryService;
 	@Autowired
 	private UserServiceJPA userService;
-	private UserController userController;
+	private UserController userController = new  UserController();
 	private int topicId;
 	private int categoryId;
-	private ForumUser loggedPlayer;
+
 	
-	public ForumUser getLoggedPlayer() {
-		return loggedPlayer;
-	}
-
-	public void setLoggedPlayer(ForumUser loggedPlayer) {
-		this.loggedPlayer = loggedPlayer;
-	}
-
 	public int getCategoryId() {
 		return categoryId;
 	}
@@ -119,8 +111,6 @@ public class ForumController {
 		model.addAttribute("total_comments", commentService.getCommentCount());
 		model.addAttribute("total_users", userService.getUserCount());
 		model.addAttribute("total_topics", topicService.getTopicCount());
-		
-		
 	}
 
 	public String decodeToImage(String login) {
