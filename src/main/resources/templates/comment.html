@@ -9,25 +9,25 @@
 
 <title>Java Academy Forum</title>
 <style>
-.input-click {
-	background: none;
-}
+/* .input-click { */
+/* 	background: none; */
+/* } */
 
-.input-click:active {
-	background-color: orange;
-}
+/* .input-click:active { */
+/* 	background-color: orange; */
+/* } */
 
-.input-click[type=image]:hover {
-	background-color: green;
-}
+/* .input-click[type=image]:hover { */
+/* 	background-color: green; */
+/* } */
 
-input-click[type=image]:after {
-	background-color: green;
-}
+/* input-click[type=image]:after { */
+/* 	background-color: green; */
+/* } */
 
-.input-click1[type=image]:hover {
-	background-color: red;
-}
+/* .input-click1[type=image]:hover { */
+/* 	background-color: red; */
+/* } */
 
 .spoiler {
 	display: none;
@@ -142,8 +142,8 @@ background-position:5px 7px
 							<div class="inner">
 								<dl class="postprofile">
 									<dt class="avatar-container">
-										<div class="avatar">
-											<img
+										<div class="avatar" >
+											<img width="100" height="100"
 												th:src="*{@forumController.decodeToImage(comments.userName)}"
 												onerror="this.src='images/default.jpeg';" />
 										</div>
@@ -179,26 +179,25 @@ background-position:5px 7px
 
 
 											<form action='/favoritePlus' method='post'
-												style="display: inline">
+												style="float: left">
 												<div
 													th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &lt;=0}'>
 													<input type='hidden' th:value='${comments.ident}'
 														name='ident' /> <input type="hidden"
 														th:value='${@forumController.topicId}' name="topicId" />
 													<input type='image' id="text1" value='PLUS'
-														src="images/icons8-plus.png" class="input-click" />
+														src="images/thumb-up.png" class="input-click" />
 												</div>
 												<div
 													th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &lt;0}'>
-													<img src="images/redminus.png" />
+													<img src="images/dislikered.png" />
 												</div>
 											</form>
 
-											<form action='/favoriteMinus' method='post'
-												style="display: inline">
+											<form action='/favoriteMinus' method='post' style="float: right">
 												<div
 													th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &gt;0}'>
-													<img src="images/greenplus.png" style="display: inline" />
+													<img src="images/thumb-up-green.png"/>
 												</div>
 												<div
 													th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &gt;=0}'>
@@ -206,7 +205,7 @@ background-position:5px 7px
 														name='ident' /> <input type="hidden"
 														th:value='${@forumController.topicId}' name="topicId" />
 													<input class="input-click1" type='image' value='MINUS'
-														src="images/icons8-minus.png" />
+														src="images/dislike.png" />
 												</div>
 											</form>
 										</span>
