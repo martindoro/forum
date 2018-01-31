@@ -93,12 +93,16 @@ public class UserController {
 	}
 	
 	@RequestMapping("/userSettingsChange")
-	public String userSettingsChange(ForumUser forumUser, Model model) {
+	public String userSettingsChange(@RequestParam("file") MultipartFile file, ForumUser forumUser, Model model) throws IOException {
 		
 			userServiceJPA.emailChange(loggedPlayer.getLogin(), forumUser.getEmail());
 			
 			userServiceJPA.passChange(loggedPlayer.getLogin(), forumUser.getPassword());
-			
+			if (!file.isEmpty()) {
+			byte[] bytes = file.getBytes();
+		
+			userServiceJPA.updateImage(loggedPlayer.getLogin(), bytes);
+			}
 		return "forward:/profile";
 	}
 
