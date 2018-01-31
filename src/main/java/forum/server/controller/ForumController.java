@@ -27,6 +27,8 @@ public class ForumController {
 	private CategoryServiceJPA categoryService;
 	@Autowired
 	private UserServiceJPA userService;
+	@Autowired
+	private UserController userController;
 	private int topicId;
 	private int categoryId;
 
@@ -47,7 +49,7 @@ public class ForumController {
 
 	@RequestMapping("/register")
 	public String register(Model model) {
-
+		userController.setLoginMsg("");
 		return "register";
 	}
 
@@ -85,12 +87,14 @@ public class ForumController {
 	@RequestMapping("/profile")
 	public String profile(Model model) {
 		fillModel(model);
+		userController.setLoginMsg("");
 		return "/profile";
 	}
 
 	@RequestMapping("/admin")
 	public String admin(Model model) {
 		fillModel(model);
+		userController.setLoginMsg("");
 		return "/admin";
 	}
 
@@ -99,6 +103,7 @@ public class ForumController {
 		categoryId = ident;
 		model.addAttribute("getCategoryById", categoryService.getContentById(categoryId));
 		fillModel(model);
+		userController.setLoginMsg("");
 		return "/topic";
 	}
 

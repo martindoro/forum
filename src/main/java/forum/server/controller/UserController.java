@@ -1,11 +1,7 @@
 package forum.server.controller;
 
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +19,7 @@ public class UserController {
 	private String errormsg;
 	private ForumUser loggedPlayer;
 	private boolean admin;
-
+	private String loginMsg;
 	@Autowired
 	private UserServiceJPA userServiceJPA;
 
@@ -38,11 +34,15 @@ public class UserController {
 	@RequestMapping("/login")
 	public String login(ForumUser forumUser, Model model) {
 		loggedPlayer = userServiceJPA.login(forumUser.getLogin(), forumUser.getPassword());
-		errormsg= "";
+		loginMsg= "";
+		if (loggedPlayer == null) {
+			loginMsg = "Username or password wrong";
+		}
+
+		errormsg = "";
 		fillModel(model);
 		return "redirect:/";
 	}
-
 	@RequestMapping("/register_sub")
 	public String register_sub(@RequestParam("file") MultipartFile file, ForumUser forumUser, String password_check,
 			String checkbox, Model model) throws IOException, ServletException {		 
@@ -126,6 +126,12 @@ public class UserController {
 			admin = userServiceJPA.isAdmin(loggedPlayer.getLogin());
 		}		
 		return admin ;
+	}
+	public String getLoginMsg() {
+		return loginMsg;
+	}
+	public void setLoginMsg(String loginMsg) {
+		this.loginMsg = loginMsg;
 	}
 
 }
