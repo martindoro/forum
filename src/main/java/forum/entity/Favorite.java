@@ -23,6 +23,12 @@ public class Favorite {
 		this.userName = userName;
 		this.commentId = commentId;
 	}
+	
+	public Favorite(String userName, int commentId, int value) {
+		this.userName = userName;
+		this.commentId = commentId;
+		this.value = value;
+	}
 
 	public int getValue() {
 		return value;

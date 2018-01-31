@@ -51,10 +51,14 @@ public class FavoriteServiceJPA {
 	}
 
 	public Favorite getFavorite(String user, int ident) {
-		return (Favorite) entityManager
-				.createQuery("SELECT f FROM Favorite f WHERE f.userName = :userName AND f.commentId = :commentId")
-				.setParameter("userName", user).setParameter("commentId", ident)
-				.getSingleResult();
+		try {
+			return (Favorite) entityManager
+					.createQuery("SELECT f FROM Favorite f WHERE f.userName = :userName AND f.commentId = :commentId")
+					.setParameter("userName", user).setParameter("commentId", ident)
+					.getSingleResult();
+		} catch (Exception e) {
+			return new Favorite(user, ident, 0);
+		}
 	}
 
 	public void updateFavorite(String login, int ident, int value) {
