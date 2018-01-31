@@ -80,8 +80,6 @@ public class UserController {
 			userServiceJPA.setUser(rhchange);
 		} else if ("removeUser".equals(removeUser)){
 			userServiceJPA.removeUser(rhchange);
-			System.out.println(removeUser);
-			System.out.println(rhchange);
 		}
 		return "forward:/admin";
 	}
