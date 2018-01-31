@@ -89,7 +89,8 @@ input-click[type=image]:after {
 						<!-- 						</div> -->
 					</div>
 					<div class="postlist" th:each='comments:${getComments}'>
-						<div th:class="${#strings.contains(comments.value, @commentService.getTopCommentValue(topicId)) and comments.value &gt;3} ? 'toppost has-profile' : 'post has-profile'">
+						<div
+							th:class="${#strings.contains(comments.value, @commentService.getTopCommentValue(topicId)) and comments.value &gt;3} ? 'toppost has-profile' : 'post has-profile'">
 							<div class="inner">
 								<dl class="postprofile">
 									<dt class="avatar-container">
@@ -98,37 +99,13 @@ input-click[type=image]:after {
 												th:src="*{@forumController.decodeToImage(comments.userName)}"
 												onerror="this.src='images/default.jpeg';" />
 										</div>
-										
+
 									</dt>
 									<dt class="profile-main no-profile-rank "
 										th:text='${comments.userName}' />
 								</dl>
 								<div class="postbody">
-
-
 									<ol class="post-buttons">
-										<!-- 										<li class="icon_post_target has-tooltip">Quote</li> -->
-										<!-- 										<span th:if='${not @userController.logged}'></span> -->
-										<!-- 										<span th:if='${@userController.logged}'> -->
-										<!-- 											<li class="icon_post_target has-tooltip">Your rating: -->
-										<!-- 												<div -->
-										<!-- 													th:if='${@favoriteService.isFavorite(@userController.loggedPlayer.login, comments.ident)}'> -->
-										<!-- 													<div -->
-										<!-- 														th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &gt;0}'> -->
-										<!-- 														<img class="icon_post_target has-tooltip" -->
-										<!-- 															src="images/greenplus.png" /> -->
-										<!-- 													</div> -->
-										<!-- 													<div -->
-										<!-- 														th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &lt;0}'> -->
-										<!-- 														<img src="images/redminus.png" /> -->
-										<!-- 													</div> -->
-										<!-- 													<div -->
-										<!-- 														th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value ==0}'> -->
-										<!-- 														<span>Not rated yet</span> -->
-										<!-- 													</div> -->
-										<!-- 												</div> -->
-										<!-- 										</li> -->
-										<!-- 										</span> -->
 									</ol>
 									<p class="author">
 										<span class="timestamp"
@@ -184,9 +161,9 @@ input-click[type=image]:after {
 												</div>
 											</form>
 										</span>
-<!-- 										<img  -->
-<!-- 											th:if='${@commentService.getTopCommentValue(topicId) == comments.value and @commentService.getTopCommentValue(topicId) > 3}' -->
-<!-- 											src="images/top.png" /> -->
+										<!-- 										<img  -->
+										<!-- 											th:if='${@commentService.getTopCommentValue(topicId) == comments.value and @commentService.getTopCommentValue(topicId) > 3}' -->
+										<!-- 											src="images/top.png" /> -->
 									</div>
 								</div>
 							</div>
