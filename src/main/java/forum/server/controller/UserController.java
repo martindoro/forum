@@ -84,9 +84,10 @@ public class UserController {
 
 		System.out.println(rhchange);
 		System.out.println(removeUser);
-	//	} else if ("removeUser".equals(removeUser)){
+	
+		if ("removeUser".equals(removeUser)) {
 			userServiceJPA.removeUser(rhchange);
-	//	}
+	}
 		return "forward:/admin";
 	}
 	
