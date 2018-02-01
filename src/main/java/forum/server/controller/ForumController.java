@@ -8,6 +8,7 @@ import java.sql.SQLException;
 
 import javax.imageio.ImageIO;
 
+import org.hibernate.JDBCException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
@@ -46,7 +47,7 @@ public class ForumController {
 
 	@RequestMapping("/")
 	public String user(Model model) throws SQLException {
-		updateDatabase();
+			updateDatabase();
 		fillModel(model);
 		return "index";
 	}

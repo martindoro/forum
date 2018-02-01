@@ -36,6 +36,9 @@ public class CommentServiceJPA {
 	public long getCommentCountForTopic(int topicId) {
 		return  (long) entityManager.createQuery("SELECT COUNT(c.ident)  FROM Comment c WHERE c.topicId = :topicId").setParameter("topicId", topicId).getSingleResult();
 	}
+	public long getCommentCountForUser(String username) {
+		return  (long) entityManager.createQuery("SELECT COUNT(c.ident)  FROM Comment c WHERE c.userName = :username").setParameter("username", username).getSingleResult();
+	}
 	
 	public long getCommentCount() {
 		return (long)  entityManager.createQuery("SELECT COUNT(c.ident)  FROM Comment c").getSingleResult();

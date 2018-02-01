@@ -100,6 +100,7 @@ img#close {
 												th:src="*{@forumController.decodeToImage(comments.userName)}"
 												onerror="this.src='images/default.jpeg';" />
 										</div>
+										<p th:text="${@commentService.getCommentCountForUser(comments.userName)}" />
 
 									</dt>
 									<dt class="profile-main no-profile-rank "
