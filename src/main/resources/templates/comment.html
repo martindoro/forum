@@ -104,12 +104,11 @@ img#close {
 									</dt>
 									<dt class="profile-main no-profile-rank "
 										th:text='${comments.userName}' />
-											<dd class="profile-posts">
-								<strong>Posts:</strong>
-								<p th:text="${@commentService.getCommentCountForUser(comments.userName)}" />
-								</dd>
+									<dd class="profile-posts">
+										<strong>Posts:</strong> <span
+											th:text="${@commentService.getCommentCountForUser(comments.userName)}" />
+									</dd>
 								</dl>
-							
 								<div class="postbody">
 									<ol class="post-buttons">
 										<button id="popup" onclick="div_show()" type="hidden"
@@ -135,7 +134,6 @@ img#close {
 										<span th:if='${not @userController.logged}'>Only
 											registered user can rate this post</span> <span
 											th:if='${@userController.logged}'>
-
 
 											<form action='/favoritePlus' method='post'>
 												<div
@@ -210,15 +208,13 @@ img#close {
 						name="content" placeholder="Enter comment"
 						onKeyDown="limitText(this.form.content,this.form.countdown,255);"
 						onKeyUp="limitText(this.form.content,this.form.countdown,255);" />
-					<font size="2">(Maximum characters: 255) <br/> <input
+					<font size="2">(Maximum characters: 255) <br /> <input
 						readonly='readonly' type="text" name="countdown" size="3"
 						value="255" class="countdown" /> characters left
 					</font> <input type="hidden" th:value='${@forumController.topicId}'
 						name="topicId" /> <br /> <input
 						class="btn btn-success btn-createnew" type='submit'
 						value='Save Comment' />
-
-
 				</form>
 			</span>
 		</div>
