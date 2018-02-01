@@ -17,7 +17,7 @@
 		<header id="wp-header">
 			<div class="section-boxed section-header">
 				<a href="/"> <img src="images/tsys.png" alt="Logo" class="logo" />
-				</a> <a href="/" style="padding-left: 80px">Home</a> <a href="#news">News</a>
+				</a> <a href="/" style="padding-left: 80px">Home</a>
 				<a href="#contact">Contact</a> <span
 					th:if='${not @userController.logged}'>
 					<form action="/login" method="post" class="navright">				
@@ -35,8 +35,10 @@
 							th:text="'Logged as:' + ' ' + ${@userController.LoggedPlayer?.Login}" />
 				</a> <span th:if='${@userController.admin}'> <a href="/admin">Admin
 							Zone</a>
-				</span> <a href="/profile"><img src="/images/gear1.png" alt="profile"
-						label="Profile" class="gear" /></a>
+						
+				</span> 
+				<a href="/profile">		<img src='/images/cogwheel-outline.png' alt="profile" label="Profile" onmouseover="this.src='/images/cogwheel-outline_col.png';" onmouseout="this.src='/images/cogwheel-outline.png';" />			</a>
+
 				</span>
 
 				<div id="logo-container" class="topmenu"></div>
