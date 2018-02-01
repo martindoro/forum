@@ -38,6 +38,14 @@ img#close {
 		}
 	}
 </script>
+<script>
+function reveal(id) {
+	if(document.getElementById(id).style.display == 'none') {
+		document.getElementById(id).style.display = 'inline';
+	}else {
+		document.getElementById(id).style.display = 'none';
+	}
+}</script>
 </head>
 
 <body
@@ -120,6 +128,7 @@ img#close {
 								</dl>
 								<div class="postbody">
 									<ol class="post-buttons">
+									<button title="Click to show/hide content" type="button" th:onclick="'reveal(\''+${comments.ident}+'\');'">Reply</button>
 										<li class="icon_post_target has-tooltip">Reply</li>
 									</ol>
 									<p class="author">
@@ -181,8 +190,9 @@ img#close {
 							</div>
 						</div>
 
-						<span th:if='${not @userController.logged}'></span> <span
-							th:if='${@userController.logged}'>
+<!-- 						<span th:if='${not @userController.logged}'></span> <span -->
+<!-- 							th:if='${@userController.logged}'> -->
+						<div th:id='${comments.ident}' style="display:none">
 							<form class="quicklogin-form" action='/add_reply' method='post'
 								id="form" name="form">
 								<textarea required="required" id="comment1"
@@ -194,7 +204,8 @@ img#close {
 									class="btn btn-success btn-createnew" type='submit'
 									value='Save Reply' />
 							</form>
-						</span>
+							</div>
+<!-- 						</span> -->
 					</div>
 				</div>
 			</div>
