@@ -10853,3 +10853,7 @@ ul.recipients .button2 {
  position:relative;
  margin-bottom:15px
 }
+
+.countdown[type="text"] {
+	background: transparent;
+	border: none;

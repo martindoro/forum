@@ -9,82 +9,35 @@
 
 <title>Java Academy Forum</title>
 <style>
-/* .input-click { */
-/* 	background: none; */
-/* } */
-
-/* .input-click:active { */
-/* 	background-color: orange; */
-/* } */
-
-/* .input-click[type=image]:hover { */
-/* 	background-color: green; */
-/* } */
-
-/* input-click[type=image]:after { */
-/* 	background-color: green; */
-/* } */
-
-/* .input-click1[type=image]:hover { */
-/* 	background-color: red; */
-/* } */
-
-.spoiler {
-	display: none;
-}
-
-.trigger:checked+.spoiler {
-	display: block;
-}
-
 #abc {
-width:100%;
-height:100%;
- opacity:.95; 
-/* top:0; */
-/* left:0; */
-display:none;
-position:bottom;
-/* background-color:#313131; */
-overflow:auto
+	width: 100%;
+	height: 100%;
+	opacity: .95;
+	/* top:0; */
+	/* left:0; */
+	display: none;
+	position: bottom;
+	/* background-color:#313131; */
+	overflow: auto
 }
+
 img#close {
-position:absolute;
-right:-14px;
-top:-14px;
-cursor:pointer
+	position: absolute;
+	right: -14px;
+	top: -14px;
+	cursor: pointer
 }
-/* form { */
-/* max-width:300px; */
-/* min-width:250px; */
-/* padding:10px 50px; */
-/* border:2px solid gray; */
-/* border-radius:10px; */
-/* font-family:raleway; */
-/* background-color:#fff */
-/* } */
-/* input[type=text] { */
-/* width:82%; */
-/* padding:10px; */
-/* margin-top:30px; */
-/* border:1px solid #ccc; */
-/* padding-left:40px; */
-/* font-size:16px; */
-/* font-family:raleway */
-/* } */
-#name {
-background-image:url(../images/name.jpg);
-background-repeat:no-repeat;
-background-position:5px 7px
-}
-#email {
-background-image:url(../images/email.png);
-background-repeat:no-repeat;
-background-position:5px 7px
-}
-
-
 </style>
+
+<script language="javascript" type="text/javascript">
+	function limitText(limitField, limitCount, limitNum) {
+		if (limitField.value.length > limitNum) {
+			limitField.value = limitField.value.substring(0, limitNum);
+		} else {
+			limitCount.value = limitNum - limitField.value.length;
+		}
+	}
+</script>
 </head>
 
 <body
@@ -142,7 +95,7 @@ background-position:5px 7px
 							<div class="inner">
 								<dl class="postprofile">
 									<dt class="avatar-container">
-										<div class="avatar" >
+										<div class="avatar">
 											<img width="100" height="100"
 												th:src="*{@forumController.decodeToImage(comments.userName)}"
 												onerror="this.src='images/default.jpeg';" />
@@ -153,8 +106,9 @@ background-position:5px 7px
 										th:text='${comments.userName}' />
 								</dl>
 								<div class="postbody">
-									<ol class="post-buttons"><button  id="popup" onclick="div_show()" type="hidden"
-									th:value='${comments.ident}' name="replyto">Reply</button>
+									<ol class="post-buttons">
+										<button id="popup" onclick="div_show()" type="hidden"
+											th:value='${comments.ident}' name="replyto">Reply</button>
 									</ol>
 									<p class="author">
 										<span class="timestamp"
@@ -178,15 +132,14 @@ background-position:5px 7px
 											th:if='${@userController.logged}'>
 
 
-											<form action='/favoritePlus' method='post'
-												>
+											<form action='/favoritePlus' method='post'>
 												<div
 													th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &lt;=0}'>
 													<input type='hidden' th:value='${comments.ident}'
 														name='ident' /> <input type="hidden"
 														th:value='${@forumController.topicId}' name="topicId" />
 													<input type='image' id="text1" value='PLUS'
-														src="images/thumb-up.png" class="input-click" />
+														src="images/like.png" class="input-click" />
 												</div>
 												<div
 													th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &lt;0}'>
@@ -197,7 +150,7 @@ background-position:5px 7px
 											<form action='/favoriteMinus' method='post'>
 												<div
 													th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &gt;0}'>
-													<img src="images/thumb-up-green.png"/>
+													<img src="images/likegreen.png" />
 												</div>
 												<div
 													th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &gt;=0}'>
@@ -217,23 +170,24 @@ background-position:5px 7px
 							</div>
 						</div>
 
-<!-- 						<span th:if='${not @userController.logged}'></span> <span -->
-<!-- 							th:if='${@userController.logged}'> -->
-							<div id="abc">
+						<!-- 						<span th:if='${not @userController.logged}'></span> <span -->
+						<!-- 							th:if='${@userController.logged}'> -->
+						<div id="abc">
 							<div id="popupContact">
-							<form class="quicklogin-form" action='/add_reply' method='post' id="form" name="form">
-								<textarea required="required" id="comment1"
-									class="quicklogin__username-input form-control" type="text"
-									name="content" placeholder="Enter reply" />
-								<input type="hidden" th:value='${@forumController.topicId}'
-									name="topicId" /><input type="hidden"
-									th:value='${comments.ident}' name="replyto" /> <br /> <input
-									class="btn btn-success btn-createnew" type='submit'
-									value='Save Reply' />
-							</form>
+								<form class="quicklogin-form" action='/add_reply' method='post'
+									id="form" name="form">
+									<textarea required="required" id="comment1"
+										class="quicklogin__username-input form-control" type="text"
+										name="content" placeholder="Enter reply" />
+									<input type="hidden" th:value='${@forumController.topicId}'
+										name="topicId" /><input type="hidden"
+										th:value='${comments.ident}' name="replyto" /> <br /> <input
+										class="btn btn-success btn-createnew" type='submit'
+										value='Save Reply' />
+								</form>
 							</div>
-							</div>
-<!-- 						</span> -->
+						</div>
+						<!-- 						</span> -->
 					</div>
 				</div>
 			</div>
@@ -248,11 +202,18 @@ background-position:5px 7px
 				<form class="quicklogin-form" action='/add_comment' method='post'>
 					<textarea required="required" id="textarea1"
 						class="quicklogin__username-input form-control" type="text"
-						name="content" placeholder="Enter comment" />
-					<input type="hidden" th:value='${@forumController.topicId}'
+						name="content" placeholder="Enter comment"
+						onKeyDown="limitText(this.form.content,this.form.countdown,255);"
+						onKeyUp="limitText(this.form.content,this.form.countdown,255);" />
+					<font size="2">(Maximum characters: 255) <br/> <input
+						readonly='readonly' type="text" name="countdown" size="3"
+						value="255" class="countdown" /> characters left.
+					</font> <input type="hidden" th:value='${@forumController.topicId}'
 						name="topicId" /> <br /> <input
 						class="btn btn-success btn-createnew" type='submit'
 						value='Save Comment' />
+
+
 				</form>
 			</span>
 		</div>
