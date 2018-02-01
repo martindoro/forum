@@ -4,14 +4,17 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.imageio.ImageIO;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import forum.entity.ForumUser;
 import forum.service.CategoryServiceJPA;
 import forum.service.CommentServiceJPA;
 import forum.service.TopicServiceJPA;
@@ -42,7 +45,8 @@ public class ForumController {
 	}
 
 	@RequestMapping("/")
-	public String user(Model model) {
+	public String user(Model model) throws SQLException {
+		updateDatabase();
 		fillModel(model);
 		return "index";
 	}
@@ -139,4 +143,18 @@ public class ForumController {
 		}
 		return "data:image/png;base64," + finalImage;
 	}
+	public void updateDatabase() throws SQLException   {
+			ForumUser user = new ForumUser();
+		user.setAdmin(1);
+		user.setEmail("admin@admin");
+		user.setLogin("admin");
+		user.setPassword("admin");
+		try {
+			userService.register(user);
+		} catch (DataIntegrityViolationException e) {
+			
+		}
+		
+	}
+	
 }

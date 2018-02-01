@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 
+import forum.server.controller.ForumController;
 import forum.service.CategoryServiceJPA;
 import forum.service.CommentServiceJPA;
 import forum.service.FavoriteServiceJPA;
@@ -16,8 +17,8 @@ import forum.service.UserServiceJPA;
 // @EnableWs
 @EnableAutoConfiguration
 @EntityScan({ "forum.entity" })
-public class ForumServer {
-	public static void main(String[] args) {
+public class ForumServer {	
+	public static void main(String[] args) {			
 		SpringApplication.run(ForumServer.class, args);
 	}
 
@@ -45,5 +46,9 @@ public class ForumServer {
 	public UserServiceJPA userService() {
 		return new UserServiceJPA();
 	}
+
+	
+	
+	
 
 }

@@ -1,6 +1,7 @@
 package forum.server.controller;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 import javax.servlet.ServletException;
 
@@ -45,7 +46,7 @@ public class UserController {
 	}
 	@RequestMapping("/register_sub")
 	public String register_sub(@RequestParam("file") MultipartFile file, ForumUser forumUser, String password_check,
-			String checkbox, Model model) throws IOException, ServletException {		 
+			String checkbox, Model model) throws IOException, ServletException, SQLException {		 
 		if (!file.isEmpty()) {
 			byte[] bytes = file.getBytes();
 			forumUser.setPic(bytes);

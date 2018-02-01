@@ -1,5 +1,6 @@
 package forum.service;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -7,7 +8,8 @@ import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
-import forum.entity.Category;
+import org.postgresql.util.PSQLException;
+
 import forum.entity.ForumUser;
 
 @Transactional
@@ -16,9 +18,10 @@ public class UserServiceJPA {
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	public void register(ForumUser user) {
-		entityManager.persist(user);
+	public void register(ForumUser user) throws SQLException {		
+				entityManager.persist(user);				
 	}
+	
 
 	public ForumUser login(String login, String password) {
 		try {
