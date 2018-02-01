@@ -63,20 +63,15 @@ public class UserServiceJPA {
 		return (long) entityManager.createQuery("SELECT COUNT(fu) FROM ForumUser fu").getSingleResult();
 	}
 	
-	public void setAdmin(String login) {
+	public void setAdmin(String login, int value) {
 		entityManager
 				.createQuery("UPDATE ForumUser fu SET fu.admin =:admin WHERE fu.login = :login")
-				.setParameter("admin", 1).setParameter("login", login)
+				.setParameter("admin", value).setParameter("login", login)
 				.executeUpdate();
 	
 	}
 	
-	public void setUser(String login) {
-		entityManager
-				.createQuery("UPDATE ForumUser fu SET fu.admin =:admin WHERE fu.login = :login")
-				.setParameter("admin", 0).setParameter("login", login)
-				.executeUpdate();	
-	}
+
 	public void updateImage(String login, byte[] pic) {
 		entityManager
 				.createQuery("UPDATE ForumUser fu SET fu.pic =:pic WHERE fu.login = :login")

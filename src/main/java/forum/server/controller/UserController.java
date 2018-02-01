@@ -72,16 +72,21 @@ public class UserController {
 	}
 
 	@RequestMapping("/rhchange")
-	public String rhchange(ForumUser forumUser, String setAdmin, String setUser, String rhchange, String removeUser, Model model) {
-		// userServiceJPA.register(forumUser);
-		// System.out.println(rhchange);
-		if ("setAdmin".equals(setAdmin)) {
-			userServiceJPA.setAdmin(rhchange);
-		} else if ("setUser".equals(setUser)) {
-			userServiceJPA.setUser(rhchange);
-		} else if ("removeUser".equals(removeUser)){
+	public String rhchange(ForumUser forumUser,@RequestParam(value="value", required = false) int setAdmin, @RequestParam(value="rhchange", required = false) String rhchange, String removeUser, Model model) {
+
+			userServiceJPA.setAdmin(rhchange, setAdmin);
+
+		return "forward:/admin";
+	}
+	
+	@RequestMapping("/removeUser")
+	public String removeUSer(ForumUser forumUser, String rhchange, String removeUser, Model model) {
+
+		System.out.println(rhchange);
+		System.out.println(removeUser);
+	//	} else if ("removeUser".equals(removeUser)){
 			userServiceJPA.removeUser(rhchange);
-		}
+	//	}
 		return "forward:/admin";
 	}
 	

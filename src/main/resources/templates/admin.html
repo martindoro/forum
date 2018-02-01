@@ -53,10 +53,10 @@
 				<div class="col-maincontent">
 				
 				
-				<span th:if='${@userController.admin}'>
+				<!-- <span th:if='${@userController.admin}'>
 				<form action="/rhchange" method="post">
 	<div class="block">
-<!-- 	<label>Insert Username:</label> <br/><input class="inpu" type="text" name="rhchange" placeholder="Username"/><br/> -->
+	<label>Insert Username:</label> <br/><input class="inpu" type="text" name="rhchange" placeholder="Username"/><br/>
 	Choose User From List: 
 	<select name="rhchange">
   	<option th:each='forumUser : ${ForumUser}' th:value="${forumUser.login}"> <p th:text="${forumUser.login}"/> </option>
@@ -70,9 +70,35 @@
 	<input type="submit" value="OK"/>
 	</form>
 	
-	</span>
+	</span> -->
 				
-	
+				<br/>
+				<table style="width:60%">
+  <tr>
+    <th>User Name</th>
+    <th>User Rights</th> 
+    <th>Remove User ! (Warrning, you can't revert that action!)</th>
+  </tr>
+  <tr th:each='forumUser : ${ForumUser}'>
+    <td><p th:text="${forumUser.login}"/></td>
+    <td><span th:if="${@userService.isAdmin(forumUser.login)}"><a th:href='${"/rhchange?value=0&amp;rhchange="+forumUser.login}'>Set to Standard User</a></span>
+    <span th:if="${not @userService.isAdmin(forumUser.login)}"><a th:href='${"/rhchange?value=1&amp;rhchange="+forumUser.login}'>Set to Admin</a></span>
+    </td>
+    <td>
+    <form action="/removeUser" method="post">
+    <input type="hidden" name="rhchange" th:value="${forumUser.login}"/>
+    <input type="checkbox" name="removeUser" value="removeUser"/> Remove User 
+    <input type="submit" value="OK"/>
+    </form>
+    </td>
+   <!-- <a  th:href='${"/addRating?value=1&amp;game=" + game.ident }'> -->
+  </tr>
+  <tr>
+  
+  </tr>
+</table>
+
+
 				</div>
 			</div>
 		</div>
