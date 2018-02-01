@@ -8,44 +8,16 @@
 <link rel="stylesheet" type="text/css" href="css/test2.css" />
 
 <title>Java Academy Forum</title>
-<style>
-#abc {
-	width: 100%;
-	height: 100%;
-	opacity: .95;
-	/* top:0; */
-	/* left:0; */
-	display: none;
-	position: bottom;
-	/* background-color:#313131; */
-	overflow: auto
-}
 
-img#close {
-	position: absolute;
-	right: -14px;
-	top: -14px;
-	cursor: pointer
-}
-</style>
-
-<script language="javascript" type="text/javascript">
-	function limitText(limitField, limitCount, limitNum) {
-		if (limitField.value.length > limitNum) {
-			limitField.value = limitField.value.substring(0, limitNum);
+<script>
+	function reveal(id) {
+		if (document.getElementById(id).style.display == 'none') {
+			document.getElementById(id).style.display = 'inline';
 		} else {
-			limitCount.value = limitNum - limitField.value.length;
+			document.getElementById(id).style.display = 'none';
 		}
 	}
 </script>
-<script>
-function reveal(id) {
-	if(document.getElementById(id).style.display == 'none') {
-		document.getElementById(id).style.display = 'inline';
-	}else {
-		document.getElementById(id).style.display = 'none';
-	}
-}</script>
 </head>
 
 <body
@@ -92,15 +64,7 @@ function reveal(id) {
 	<div id="page-body">
 		<div class="container">
 			<div class="big-grid">
-
 				<div class="col-maincontent">
-					<!-- 					<div class="action-bar bottom"> -->
-					<!-- 						<div class="buttons"> -->
-					<!-- 							<a class="btn btn-success btn-createnew" href="#comment1">+ -->
-					<!-- 								Post reply</a> -->
-					<!-- 						</div> -->
-					<!-- 					</div> -->
-
 					<div class="page-header">
 						<!-- 						<div class="page-header-inner"> -->
 						<h2 class="page-title" th:text='${getTopicById}' />
@@ -128,13 +92,16 @@ function reveal(id) {
 								</dl>
 								<div class="postbody">
 									<ol class="post-buttons">
-									<button title="Click to show/hide content" type="button" th:onclick="'reveal(\''+${comments.ident}+'\');'">Reply</button>
-										<li class="icon_post_target has-tooltip">Reply</li>
+										<span th:if='${not @userController.logged}'></span>
+										<span th:if='${@userController.logged}'>
+											<li class="icon_post_target has-tooltip"
+											title="Click to show/hide content" type="button"
+											th:onclick="'reveal(\''+${comments.ident}+'\');'">Reply</li>
+										</span>
 									</ol>
 									<p class="author">
 										<span class="timestamp"
 											th:text="${#dates.format(comments.createdOn, ' HH:mm  dd-MMM-yyyy ')}" />
-
 
 									</p>
 									<blockquote>
@@ -182,17 +149,11 @@ function reveal(id) {
 												</div>
 											</form>
 										</span>
-										<!-- 										<img  -->
-										<!-- 											th:if='${@commentService.getTopCommentValue(topicId) == comments.value and @commentService.getTopCommentValue(topicId) > 3}' -->
-										<!-- 											src="images/top.png" /> -->
 									</div>
 								</div>
 							</div>
 						</div>
-
-<!-- 						<span th:if='${not @userController.logged}'></span> <span -->
-<!-- 							th:if='${@userController.logged}'> -->
-						<div th:id='${comments.ident}' style="display:none">
+						<div th:id='${comments.ident}' style="display: none">
 							<form class="quicklogin-form" action='/add_reply' method='post'
 								id="form" name="form">
 								<textarea required="required" id="comment1"
@@ -204,8 +165,7 @@ function reveal(id) {
 									class="btn btn-success btn-createnew" type='submit'
 									value='Save Reply' />
 							</form>
-							</div>
-<!-- 						</span> -->
+						</div>
 					</div>
 				</div>
 			</div>
