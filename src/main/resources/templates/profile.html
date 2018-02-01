@@ -59,43 +59,52 @@
 </header>
 
 </div>
-	<div id="page-body" class="spacer profile">
+	<div id="page-body" class="spacer ">
 		<div class="container">
 			<div class="big-grid">
 				<div class="col-maincontent">
 				
+		
+				<div class="container">
+				<div class="row">
+				<p>User Settings</p><br/>
+				</div>
+				<form action="/userSettingsChange" method="post" enctype="multipart/form-data">
+					<div class="row">
+						<div class="col-25">
+						<label for="email">Insert New Email Address:</label>
+						</div>
 				
 				
-	<p> Here we will be able to change user password, email, profile pic</p>
-				
-				<br/>	
-				
-	
-	<br/>
-	
-
-	
-		<br/>
-	
-	<p>User Settings</p>
-	<form action="/userSettingsChange" method="post" enctype="multipart/form-data">
-	<div class="block">
-	<label>Insert New Email Address:</label><input class="inpu" type="email" name="email" placeholder="example@example.com"/><br/>
-	</div>
-	<div class="block">
-	<label>Insert Password:</label><input class="inpu" type="password" name="password" placeholder="Start123"/><br/>
-	</div>
-	
-	
-<!-- 	<input type="checkbox" name="setAdmin" value="setAdmin"/> Set User As Admin -->
-<!-- 	<input type="checkbox" name="setUser" value="setUser"/> Set User As Standard User -->
-	<div class="block profile">
-	<label>Profile Picture:</label><input class="profile" onchange="javascript:ValidateSize(this)" type="file" name="file" accept="image/*" />
-	</div>					
-	
-	<input type="submit" value="OK"/>
-	</form>
-				
+						<div class="col-75">
+						<input class="inpu" id="email" type="email" name="email" placeholder="example@example.com"/><br/>
+						</div>
+						
+						
+					</div>
+					
+					<div class="row">
+						<div class="col-25"> <label for="password">Insert Password:</label></div>
+					
+						<div class="col-75">
+						<input class="inpu" id="password" type="password" name="password" placeholder="Start123"/><br/>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-25">
+						<label for="picture">Profile Picture:</label>
+						</div>
+					
+						<div class="col-75">
+						<input class="profile" id="picture" onchange="javascript:ValidateSize(this)" type="file" name="file" accept="image/*" />
+						</div>
+					</div>
+					<div class="row">
+				<input type="submit" value="OK"/>
+				</div>
+				</form>
+				</div>
 				
 				
 	

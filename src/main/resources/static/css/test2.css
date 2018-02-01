@@ -10788,6 +10788,18 @@ ul.recipients .button2 {
 	text-align: center;
 }
 
+.col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+}
+
+.col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+}
+
 
 
 /* Links inside the navbar */
