@@ -73,10 +73,11 @@
 	</span> -->
 				
 				<br/>
-				<table style="width:60%">
+				<table style="width:80%">
   <tr>
     <th>User Name</th>
     <th>User Rights</th> 
+    <th> Password Change</th>
     <th>Remove User ! (Warrning, you can't revert that action!)</th>
   </tr>
   <tr th:each='forumUser : ${ForumUser}'>
@@ -84,6 +85,14 @@
     <td><span th:if="${@userService.isAdmin(forumUser.login)}"><a th:href='${"/rhchange?value=0&amp;rhchange="+forumUser.login}'>Set to Standard User</a></span>
     <span th:if="${not @userService.isAdmin(forumUser.login)}"><a th:href='${"/rhchange?value=1&amp;rhchange="+forumUser.login}'>Set to Admin</a></span>
     </td>
+    <td>
+    <form action="/userPassChange" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="rhchange" th:value="${forumUser.login}"/>
+    <input class="inpu" id="password" type="password" name="password" placeholder="Start123"/>
+    <input type="submit" value="OK"/>
+    </form>
+    </td>
+    
     <td>
     <form action="/removeUser" method="post">
     <input type="hidden" name="rhchange" th:value="${forumUser.login}"/>

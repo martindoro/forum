@@ -112,6 +112,15 @@ public class UserController {
 			}
 		return "forward:/profile";
 	}
+	
+	@RequestMapping("/userPassChange")
+	public String userPassChange(ForumUser forumUser, String rhchange, String password, Model model) throws IOException {		
+				System.out.println(rhchange);
+				System.out.println(password);
+			userServiceJPA.passChange(rhchange, password);
+
+		return "forward:/admin";
+	}
 
 	private void fillModel(Model model) {
 		model.addAttribute("controller", this);
