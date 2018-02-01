@@ -179,7 +179,7 @@ background-position:5px 7px
 
 
 											<form action='/favoritePlus' method='post'
-												style="float: left">
+												>
 												<div
 													th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &lt;=0}'>
 													<input type='hidden' th:value='${comments.ident}'
@@ -194,7 +194,7 @@ background-position:5px 7px
 												</div>
 											</form>
 
-											<form action='/favoriteMinus' method='post' style="float: right">
+											<form action='/favoriteMinus' method='post'>
 												<div
 													th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &gt;0}'>
 													<img src="images/thumb-up-green.png"/>
