@@ -10845,7 +10845,8 @@ ul.recipients .button2 {
 }
 
 #textarea1 {
-	height:100px
+	height:100px;
+	width:100%
 }
 
 .toppost {

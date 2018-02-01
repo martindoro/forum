@@ -100,12 +100,16 @@ img#close {
 												th:src="*{@forumController.decodeToImage(comments.userName)}"
 												onerror="this.src='images/default.jpeg';" />
 										</div>
-										<p th:text="${@commentService.getCommentCountForUser(comments.userName)}" />
 
 									</dt>
 									<dt class="profile-main no-profile-rank "
 										th:text='${comments.userName}' />
+											<dd class="profile-posts">
+								<strong>Posts:</strong>
+								<p th:text="${@commentService.getCommentCountForUser(comments.userName)}" />
+								</dd>
 								</dl>
+							
 								<div class="postbody">
 									<ol class="post-buttons">
 										<button id="popup" onclick="div_show()" type="hidden"
@@ -208,7 +212,7 @@ img#close {
 						onKeyUp="limitText(this.form.content,this.form.countdown,255);" />
 					<font size="2">(Maximum characters: 255) <br/> <input
 						readonly='readonly' type="text" name="countdown" size="3"
-						value="255" class="countdown" /> characters left.
+						value="255" class="countdown" /> characters left
 					</font> <input type="hidden" th:value='${@forumController.topicId}'
 						name="topicId" /> <br /> <input
 						class="btn btn-success btn-createnew" type='submit'
