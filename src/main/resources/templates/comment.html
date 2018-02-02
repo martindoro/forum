@@ -145,7 +145,7 @@
 						<div th:id='${comments.ident}' style="display: none">
 							<form class="quicklogin-form" action='/add_reply' method='post'
 								id="form" name="form">
-								<textarea required="required" id="textarea1"
+								<textarea required="required" id="comment1"
 									class="quicklogin__username-input form-control" type="text"
 									name="content" placeholder="Enter reply"
 									onKeyDown="limitText(this.form.content,this.form.countdown,255);"
@@ -156,7 +156,7 @@
 								</font> <input type="hidden" th:value='${@forumController.topicId}'
 									name="topicId" /><input type="hidden"
 									th:value='${comments.ident}' name="replyto" /> <br /> <input
-									class="btn btn-success btn-createnew" type='submit' onclick="javascript:profanityCheck()"
+									class="btn btn-success btn-createnew" type='submit' onclick="javascript:profanityCheckReply()"
 									value='Save Reply' /> <br /> <br />
 							</form>
 						</div>
@@ -182,7 +182,7 @@
 						value="255" class="countdown" /> characters left
 					</font> <input type="hidden" th:value='${@forumController.topicId}'
 						name="topicId" /> <br /> <input
-						class="btn btn-success btn-createnew" type='submit' onclick="javascript:profanityCheck()"
+						class="btn btn-success btn-createnew" type='submit' onclick="javascript:profanityCheckComment()"
 						value='Save Comment' />
 				</form>
 			</span>
