@@ -6,28 +6,8 @@
 <!-- 		<link rel="stylesheet" type="text/css" href="gs/css/bootstrap.css"/> -->
 <!-- 		<link rel="stylesheet" type="text/css" href="gs/css/style.css"/> -->
 <link rel="stylesheet" type="text/css" href="css/test2.css" />
-
 <title>Java Academy Forum</title>
-<script language="javascript" type="text/javascript">
-	function limitText(limitField, limitCount, limitNum) {
-		if (limitField.value.length > limitNum) {
-			limitField.value = limitField.value.substring(0, limitNum);
-		} else {
-			limitCount.value = limitNum - limitField.value.length;
-		}
-	}
-</script>
-<script>
-	function reveal(id) {
-		if (document.getElementById(id).style.display == 'none') {
-			document.getElementById(id).style.display = 'inline';
-		} else {
-			document.getElementById(id).style.display = 'none';
-		}
-	}
-</script>
 </head>
-
 <body
 	class="section-viewtopic ltr  postAuthorAlign-left layout-stretched roundAvatars-enabled nb-h">
 	<div class="header-wrapper">
@@ -85,7 +65,7 @@
 								<dl class="postprofile">
 									<dt class="avatar-container">
 										<div class="avatar">
-											<img width="100" height="100"
+											<img
 												th:src="*{@forumController.decodeToImage(comments.userName)}"
 												onerror="this.src='images/default.jpeg';" />
 										</div>
@@ -103,7 +83,7 @@
 										<span th:if='${not @userController.logged}'></span>
 										<span th:if='${@userController.logged}'>
 											<li class="icon_post_target has-tooltip"
-											title="Click to reply" type="button"
+											title="Click to reply" type="button" style="cursor:pointer"
 											th:onclick="'reveal(\''+${comments.ident}+'\');'">Reply</li>
 										</span>
 									</ol>
@@ -127,14 +107,14 @@
 											registered user can rate this post</span> <span
 											th:if='${@userController.logged}'>
 
-											<form action='/favoritePlus' method='post' style='float:left;width:5%;'>
+											<form action='/favoritePlus' method='post'
+												style='float: left; width: 5%;'>
 												<div
 													th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &lt;=0}'>
 													<input type='hidden' th:value='${comments.ident}'
 														name='ident' /> <input type="hidden"
 														th:value='${@forumController.topicId}' name="topicId" />
-													<input type='image' value='PLUS'
-														src="images/like.png" class="input-click" />
+													<input type='image' value='PLUS' src="images/like.png" />
 												</div>
 												<div
 													th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &lt;0}'>
@@ -142,7 +122,8 @@
 												</div>
 											</form>
 
-											<form action='/favoriteMinus' method='post' style='float:right;width:95%'>
+											<form action='/favoriteMinus' method='post'
+												style='float: right; width: 95%'>
 												<div
 													th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &gt;0}'>
 													<input type='image' src="images/likegreen.png" />
@@ -152,9 +133,9 @@
 													<input type='hidden' th:value='${comments.ident}'
 														name='ident' /> <input type="hidden"
 														th:value='${@forumController.topicId}' name="topicId" />
-													<input class="input-click1" type='image' value='MINUS'
-														src="images/dislike.png" />
+													<input type='image' value='MINUS' src="images/dislike.png" />
 												</div>
+												
 											</form>
 										</span>
 									</div>
@@ -208,5 +189,7 @@
 		</div>
 	</div>
 	<script src="js/reply.js" />
+	<script src="js/charCounter.js" />
+
 </body>
 </html>
