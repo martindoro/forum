@@ -156,7 +156,7 @@
 								</font> <input type="hidden" th:value='${@forumController.topicId}'
 									name="topicId" /><input type="hidden"
 									th:value='${comments.ident}' name="replyto" /> <br /> <input
-									class="btn btn-success btn-createnew" type='submit'
+									class="btn btn-success btn-createnew" type='submit' onclick="javascript:profanityCheck()"
 									value='Save Reply' /> <br /> <br />
 							</form>
 						</div>
@@ -182,7 +182,7 @@
 						value="255" class="countdown" /> characters left
 					</font> <input type="hidden" th:value='${@forumController.topicId}'
 						name="topicId" /> <br /> <input
-						class="btn btn-success btn-createnew" type='submit'
+						class="btn btn-success btn-createnew" type='submit' onclick="javascript:profanityCheck()"
 						value='Save Comment' />
 				</form>
 			</span>
@@ -190,6 +190,9 @@
 	</div>
 	<script src="js/reply.js" />
 	<script src="js/charCounter.js" />
-
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+		crossorigin="anonymous">	
+	</script>
 </body>
 </html>
