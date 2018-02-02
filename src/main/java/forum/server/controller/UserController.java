@@ -86,14 +86,6 @@ public class UserController {
 		return "forward:/admin";
 	}
 
-	@RequestMapping("/removeUser")
-	public String removeUSer(ForumUser forumUser, String rhchange, String removeUser, Model model) {
-		if ("removeUser".equals(removeUser)) {
-			userServiceJPA.setRights(rhchange, -1);
-		}
-		return "forward:/admin";
-	}
-
 	@RequestMapping("/echange")
 	public String echange(ForumUser forumUser, Model model) {
 
