@@ -109,32 +109,32 @@
 
 											<form action='/favoritePlus' method='post'
 												style='float: left; width: 5%;'>
-												<div
+												<span
 													th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &lt;=0}'>
 													<input type='hidden' th:value='${comments.ident}'
 														name='ident' /> <input type="hidden"
 														th:value='${@forumController.topicId}' name="topicId" />
 													<input type='image' value='PLUS' src="images/like.png" />
-												</div>
-												<div
+												</span>
+												<span
 													th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &lt;0}'>
-													<input type='image' src="images/dislikered.png" />
-												</div>
+													<input type='image' src="images/dislikered.png" style='float: right;'/>
+												</span>
 											</form>
 
 											<form action='/favoriteMinus' method='post'
 												style='float: right; width: 95%'>
-												<div
+												<span
 													th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &gt;0}'>
-													<input type='image' src="images/likegreen.png" />
-												</div>
-												<div
+													<input type='image' src="images/likegreen.png" style='float: left;'/>
+												</span>
+												<span
 													th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &gt;=0}'>
 													<input type='hidden' th:value='${comments.ident}'
 														name='ident' /> <input type="hidden"
 														th:value='${@forumController.topicId}' name="topicId" />
 													<input type='image' value='MINUS' src="images/dislike.png" />
-												</div>
+												</span>
 												
 											</form>
 										</span>
