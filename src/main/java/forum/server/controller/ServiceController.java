@@ -39,8 +39,19 @@ public class ServiceController {
 	@RequestMapping("/add_comment")
 	public String comment(@RequestParam(value = "topicId", required = false) String topicId,
 			@RequestParam(value = "content", required = false) String content, Model model) {
-		int topicIdent = Integer.parseInt(topicId);
-		commentService.addComment(new Comment(userController.getLoggedPlayer().login, topicIdent, content));
+		commentService.addComment(new Comment(userController.getLoggedPlayer().login, Integer.parseInt(topicId), content));
+		return "forward:/comment?ident=" + topicId;
+	}
+
+	@RequestMapping("/edit_comment")
+	public String editComment(@RequestParam(value = "ident", required = false) String ident,
+			@RequestParam(value = "content", required = false) String content,
+			@RequestParam(value = "topicId", required = false) String topicId, Model model) {
+		if(content.contains("*edit*")) {
+			commentService.editComment(Integer.parseInt(ident), content);
+		}else {
+			commentService.editComment(Integer.parseInt(ident), "*edit*" + content);
+		}
 		return "forward:/comment?ident=" + topicId;
 	}
 
@@ -67,7 +78,8 @@ public class ServiceController {
 	}
 
 	@RequestMapping("/favoritePlus")
-	public String favoritePlus(@RequestParam(value = "topicId", required = false) String topicId, @RequestParam(value = "ident", required = false) int ident, Model model) {
+	public String favoritePlus(@RequestParam(value = "topicId", required = false) String topicId,
+			@RequestParam(value = "ident", required = false) int ident, Model model) {
 		if (favoriteService.isFavorite(userController.getLoggedPlayer().getLogin(), ident)) {
 			if (favoriteService.getFavorite(userController.getLoggedPlayer().getLogin(), ident).getValue() < 1) {
 				favoriteService.updateFavorite(userController.getLoggedPlayer().getLogin(),
@@ -84,7 +96,8 @@ public class ServiceController {
 	}
 
 	@RequestMapping("/favoriteMinus")
-	public String favoriteMinus(@RequestParam(value = "topicId", required = false) String topicId, @RequestParam(value = "ident", required = false) int ident, Model model) {
+	public String favoriteMinus(@RequestParam(value = "topicId", required = false) String topicId,
+			@RequestParam(value = "ident", required = false) int ident, Model model) {
 		if (favoriteService.isFavorite(userController.getLoggedPlayer().getLogin(), ident)) {
 			if (favoriteService.getFavorite(userController.getLoggedPlayer().getLogin(), ident).getValue() > -1) {
 				favoriteService.updateFavorite(userController.getLoggedPlayer().getLogin(),

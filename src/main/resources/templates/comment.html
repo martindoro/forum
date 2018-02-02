@@ -83,8 +83,13 @@
 										<span th:if='${not @userController.logged}'></span>
 										<span th:if='${@userController.logged}'>
 											<li class="icon_post_target has-tooltip"
-											title="Click to reply" type="button" style="cursor:pointer"
+											title="Click to reply" type="button" style="cursor: pointer"
 											th:onclick="'reveal(\''+${comments.ident}+'\');'">Reply</li>
+										</span>
+										<span th:if='${@userController.logged and @userController.loggedPlayer.getLogin().equals(comments.userName)}'>
+											<li class="icon_post_target has-tooltip"
+											title="Click to edit" type="button" style="cursor: pointer"
+											th:onclick="'reveal(\''+'edit'+${comments.ident}+'\');'">Edit</li>
 										</span>
 									</ol>
 									<p class="author">
@@ -112,13 +117,13 @@
 												<span
 													th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &lt;=0}'>
 													<input type='hidden' th:value='${comments.ident}'
-														name='ident' /> <input type="hidden"
-														th:value='${@forumController.topicId}' name="topicId" />
-													<input type='image' value='PLUS' src="images/like.png" />
-												</span>
-												<span
+													name='ident' /> <input type="hidden"
+													th:value='${@forumController.topicId}' name="topicId" /> <input
+													type='image' value='PLUS' src="images/like.png" />
+												</span> <span
 													th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &lt;0}'>
-													<input type='image' src="images/dislikered.png" style='float: right;'/>
+													<input type='image' src="images/dislikered.png"
+													style='float: right;' />
 												</span>
 											</form>
 
@@ -126,16 +131,16 @@
 												style='float: right; width: 95%'>
 												<span
 													th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &gt;0}'>
-													<input type='image' src="images/likegreen.png" style='float: left;'/>
-												</span>
-												<span
+													<input type='image' src="images/likegreen.png"
+													style='float: left;' />
+												</span> <span
 													th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &gt;=0}'>
 													<input type='hidden' th:value='${comments.ident}'
-														name='ident' /> <input type="hidden"
-														th:value='${@forumController.topicId}' name="topicId" />
-													<input type='image' value='MINUS' src="images/dislike.png" />
+													name='ident' /> <input type="hidden"
+													th:value='${@forumController.topicId}' name="topicId" /> <input
+													type='image' value='MINUS' src="images/dislike.png" />
 												</span>
-												
+
 											</form>
 										</span>
 									</div>
@@ -156,8 +161,28 @@
 								</font> <input type="hidden" th:value='${@forumController.topicId}'
 									name="topicId" /><input type="hidden"
 									th:value='${comments.ident}' name="replyto" /> <br /> <input
-									class="btn btn-success btn-createnew" type='submit' onclick="javascript:profanityCheckReply()"
-									value='Save Reply' /> <br /> <br />
+									class="btn btn-success btn-createnew" type='submit'
+									onclick="javascript:profanityCheckReply()" value='Save Reply' />
+								<br /> <br />
+							</form>
+						</div>
+						<div th:id="'edit' + ${comments.ident}" style="display: none">
+							<form class="quicklogin-form" action='/edit_comment'
+								method='post' id="form" name="form">
+								<textarea required="required" id="comment1"
+									class="quicklogin__username-input form-control" type="text"
+									name="content" th:text='${comments.content}'
+									onKeyDown="limitText(this.form.content,this.form.countdown,249);"
+									onKeyUp="limitText(this.form.content,this.form.countdown,249);" />
+								<font size="2">(Maximum characters: 249) <br /> <input
+									readonly='readonly' type="text" name="countdown" size="3"
+									value="249" class="countdown" /> characters left
+								</font> <input type="hidden" th:value='${@forumController.topicId}'
+									name="topicId" /><input type="hidden"
+									th:value='${comments.ident}' name="ident" /> <br /> <input
+									class="btn btn-success btn-createnew" type='submit'
+									onclick="javascript:profanityCheckReply()" value='Edit comment' />
+								<br /> <br />
 							</form>
 						</div>
 					</div>
@@ -182,17 +207,18 @@
 						value="255" class="countdown" /> characters left
 					</font> <input type="hidden" th:value='${@forumController.topicId}'
 						name="topicId" /> <br /> <input
-						class="btn btn-success btn-createnew" type='submit' onclick="javascript:profanityCheckComment()"
-						value='Save Comment' />
+						class="btn btn-success btn-createnew" type='submit'
+						onclick="javascript:profanityCheckComment()" value='Save Comment' />
 				</form>
 			</span>
 		</div>
 	</div>
 	<script src="js/reply.js" />
 	<script src="js/charCounter.js" />
-<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"
 		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-		crossorigin="anonymous">	
+		crossorigin="anonymous">
+		
 	</script>
 </body>
 </html>

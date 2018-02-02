@@ -19,6 +19,10 @@ public class CommentServiceJPA {
 		entityManager.persist(comment);
 	}
 	
+	public void editComment(int ident, String content) {
+		entityManager.createQuery("UPDATE Comment c SET c.content = :content WHERE c.ident = :ident").setParameter("content", content).setParameter("ident", ident).executeUpdate();
+	}
+	
 	public Comment getComment(int ident) {
 		return (Comment) entityManager.createQuery("SELECT c FROM Comment c WHERE c.ident = :ident").setParameter("ident", ident).getSingleResult();
 	}
