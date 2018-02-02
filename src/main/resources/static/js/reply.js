@@ -7,7 +7,7 @@ function reveal(id) {
 }
 
 function profanityCheck() {
-	var profanities = new Array("lukas", "mato", "jakub", "matus");
+	var profanities = new Array("lukas", "mato", "jakub", "matus",",lukas", ",mato", ",jakub", ",matus");
 	var text =  document.getElementById('textarea1').value; 
 	    for (var i = 0; i < profanities.length; i++) {    	
 	        if(text.toLowerCase().includes(profanities[i].toLowerCase())){
