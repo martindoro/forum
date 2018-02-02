@@ -18,6 +18,9 @@ public class UserServiceJPA {
 	public void register(ForumUser user) {		
 				entityManager.persist(user);				
 	}
+	public void addExtension() {
+		entityManager.createNativeQuery("CREATE EXTENSION IF NOT EXISTS pgcrypto").executeUpdate();
+	}
 	
 
 	public ForumUser login(String login, String password) {
