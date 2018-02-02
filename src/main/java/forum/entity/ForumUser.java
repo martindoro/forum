@@ -31,7 +31,7 @@ public class ForumUser {
 		this.pic = pic;
 	}
 
-	public int getAdmin() {
+	public int getRights() {
 		return admin;
 	}
 
