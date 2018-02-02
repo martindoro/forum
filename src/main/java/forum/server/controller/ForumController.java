@@ -47,8 +47,6 @@ public class ForumController {
 
 	@RequestMapping("/")
 	public String user(Model model) throws SQLException {
-		userService.addExtension();
-		updateDatabase();
 		fillModel(model);
 		return "index";
 	}

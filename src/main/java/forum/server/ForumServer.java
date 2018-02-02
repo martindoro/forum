@@ -1,5 +1,10 @@
 package forum.server;
 
+import java.sql.SQLException;
+
+import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -17,8 +22,13 @@ import forum.service.UserServiceJPA;
 // @EnableWs
 @EnableAutoConfiguration
 @EntityScan({ "forum.entity" })
-public class ForumServer {	
-	public static void main(String[] args) {			
+public class ForumServer {
+	@Autowired
+	UserServiceJPA userServiceJPA;
+	@Autowired
+	ForumController forumController;
+
+	public static void main(String[] args) {
 		SpringApplication.run(ForumServer.class, args);
 	}
 
@@ -47,8 +57,13 @@ public class ForumServer {
 		return new UserServiceJPA();
 	}
 
-	
-	
-	
+	@PostConstruct
+	public void setExtension() {
+		userServiceJPA.addExtension();
+	}
+	@PostConstruct
+	public void setAdmin() throws SQLException {
+		forumController.updateDatabase();;
+	}
 
 }
