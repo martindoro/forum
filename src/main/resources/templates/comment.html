@@ -103,7 +103,7 @@
 										<span th:if='${not @userController.logged}'></span>
 										<span th:if='${@userController.logged}'>
 											<li class="icon_post_target has-tooltip"
-											title="Click to show/hide content" type="button"
+											title="Click to reply" type="button"
 											th:onclick="'reveal(\''+${comments.ident}+'\');'">Reply</li>
 										</span>
 									</ol>
@@ -127,25 +127,25 @@
 											registered user can rate this post</span> <span
 											th:if='${@userController.logged}'>
 
-											<form action='/favoritePlus' method='post'>
+											<form action='/favoritePlus' method='post' style='float:left;width:5%;'>
 												<div
 													th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &lt;=0}'>
 													<input type='hidden' th:value='${comments.ident}'
 														name='ident' /> <input type="hidden"
 														th:value='${@forumController.topicId}' name="topicId" />
-													<input type='image' id="text1" value='PLUS'
+													<input type='image' value='PLUS'
 														src="images/like.png" class="input-click" />
 												</div>
 												<div
 													th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &lt;0}'>
-													<img src="images/dislikered.png" />
+													<input type='image' src="images/dislikered.png" />
 												</div>
 											</form>
 
-											<form action='/favoriteMinus' method='post'>
+											<form action='/favoriteMinus' method='post' style='float:right;width:95%'>
 												<div
 													th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &gt;0}'>
-													<img src="images/likegreen.png" />
+													<input type='image' src="images/likegreen.png" />
 												</div>
 												<div
 													th:if='${@favoriteService.getFavorite(@userController.loggedPlayer.login, comments.ident).value &gt;=0}'>
@@ -166,12 +166,17 @@
 								id="form" name="form">
 								<textarea required="required" id="comment1"
 									class="quicklogin__username-input form-control" type="text"
-									name="content" placeholder="Enter reply" />
-								<input type="hidden" th:value='${@forumController.topicId}'
+									name="content" placeholder="Enter reply"
+									onKeyDown="limitText(this.form.content,this.form.countdown,255);"
+									onKeyUp="limitText(this.form.content,this.form.countdown,255);" />
+								<font size="2">(Maximum characters: 255) <br /> <input
+									readonly='readonly' type="text" name="countdown" size="3"
+									value="255" class="countdown" /> characters left
+								</font> <input type="hidden" th:value='${@forumController.topicId}'
 									name="topicId" /><input type="hidden"
 									th:value='${comments.ident}' name="replyto" /> <br /> <input
 									class="btn btn-success btn-createnew" type='submit'
-									value='Save Reply' />
+									value='Save Reply' /> <br /> <br />
 							</form>
 						</div>
 					</div>
