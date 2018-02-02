@@ -38,9 +38,7 @@ public class UserController {
 		loginMsg = "";
 		if (loggedPlayer == null) {
 			loginMsg = "Username or password wrong";
-		}
-
-		if (loggedPlayer.getRights() == -1) {
+		} else if (loggedPlayer.getRights() == -1) {
 			loginMsg = "your account is banned, contact administrator";
 			loggedPlayer = null;
 		}
