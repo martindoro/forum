@@ -2,9 +2,6 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8" />
-<!-- <link rel="stylesheet" type="text/css" href="css/test1.css" /> -->
-<!-- 		<link rel="stylesheet" type="text/css" href="gs/css/bootstrap.css"/> -->
-<!-- 		<link rel="stylesheet" type="text/css" href="gs/css/style.css"/> -->
 <link rel="stylesheet" type="text/css" href="css/test2.css" />
 <title>Java Academy Forum</title>
 </head>
@@ -38,7 +35,6 @@
 						onmouseover="this.src='/images/cogwheel-outline_col.png';"
 						onmouseout="this.src='/images/cogwheel-outline.png';" />
 				</a>
-
 				</span>
 
 				<div id="logo-container" class="topmenu"></div>
@@ -56,7 +52,7 @@
 					<div class="page-header">
 						<!-- 						<div class="page-header-inner"> -->
 						<h2 class="page-title" th:text='${getTopicById}' />
-						<!-- 						</div> -->
+
 					</div>
 					<div class="postlist" th:each='comments:${getComments}'>
 						<div
@@ -69,7 +65,6 @@
 												th:src="*{@forumController.decodeToImage(comments.userName)}"
 												onerror="this.src='images/default.jpeg';" />
 										</div>
-
 									</dt>
 									<dt class="profile-main no-profile-rank "
 										th:text='${comments.userName}' />
@@ -78,33 +73,38 @@
 											th:text="${@commentService.getCommentCountForUser(comments.userName)}" />
 									</dd>
 								</dl>
+
 								<div class="postbody">
 									<ol class="post-buttons">
 										<span th:if='${not @userController.logged}'></span>
+
 										<span th:if='${@userController.logged}'>
 											<li class="icon_post_target has-tooltip"
 											title="Click to reply" type="button" style="cursor: pointer"
 											th:onclick="'reveal(\''+${comments.ident}+'\');'">Reply</li>
 										</span>
-										<span th:if='${@userController.logged and @userController.loggedPlayer.getLogin().equals(comments.userName)}'>
+
+										<span
+											th:if='${@userController.logged and @userController.loggedPlayer.getLogin().equals(comments.userName)}'>
 											<li class="icon_post_target has-tooltip"
 											title="Click to edit" type="button" style="cursor: pointer"
 											th:onclick="'reveal(\''+'edit'+${comments.ident}+'\');'">Edit</li>
 										</span>
 									</ol>
+
 									<p class="author">
 										<span class="timestamp"
 											th:text="${#dates.format(comments.createdOn, ' HH:mm  dd-MMM-yyyy ')}" />
-
 									</p>
+
 									<blockquote>
 										<span th:if='${comments.replyto &gt; 0}'><cite><span
 												th:text="${@commentService.getComment(comments.replyto).userName}"></span>
 												said:</cite> <i> <span class="blockquote__inner"
 												th:text="${@commentService.getComment(comments.replyto).content}"></span>
-
 										</i><br /> <br /></span>
 									</blockquote>
+
 									<div class="content" th:text='${comments.content}'></div>
 
 									<div class="signature">
@@ -140,7 +140,6 @@
 													th:value='${@forumController.topicId}' name="topicId" /> <input
 													type='image' value='MINUS' src="images/dislike.png" />
 												</span>
-
 											</form>
 										</span>
 									</div>
@@ -188,11 +187,6 @@
 					</div>
 				</div>
 			</div>
-			<!-- 			<div class="action-bar bottom"> -->
-			<!-- 				<div class="buttons"> -->
-			<!-- 					<a class="btn btn-success btn-createnew">+ Post reply</a> -->
-			<!-- 				</div> -->
-			<!-- 			</div> -->
 
 			<span th:if='${not @userController.logged}'>Log in to add
 				comment!</span> <span th:if='${@userController.logged}'>

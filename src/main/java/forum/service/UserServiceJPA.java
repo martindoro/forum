@@ -1,12 +1,10 @@
 package forum.service;
 
 import java.util.List;
-
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
-
 import forum.entity.ForumUser;
 
 @Transactional
@@ -16,7 +14,8 @@ public class UserServiceJPA {
 	private EntityManager entityManager;
 
 	public void register(ForumUser user) {
-		entityManager.persist(user);
+		if(isValid(user.getPassword()))
+				entityManager.persist(user);
 	}
 
 	public void addExtension() {
@@ -85,7 +84,7 @@ public class UserServiceJPA {
 	}
 
 	public void passChange(String login, String password) {
-		if (!password.isEmpty()) {
+		if (!password.isEmpty() && isValid(password)) {
 			entityManager.createQuery(
 					"UPDATE ForumUser fu SET fu.password =crypt(:password, fu.password) WHERE fu.login = :login")
 					.setParameter("password", password).setParameter("login", login).executeUpdate();
@@ -94,5 +93,9 @@ public class UserServiceJPA {
 
 	public List<ForumUser> getForumUser() {
 		return entityManager.createQuery("SELECT fu FROM ForumUser fu ").getResultList();
+	}
+	
+	private boolean isValid(String password) {
+		return password.matches("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,255})");
 	}
 }

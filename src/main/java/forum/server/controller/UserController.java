@@ -42,7 +42,6 @@ public class UserController {
 			loginMsg = "your account is banned, contact administrator";
 			loggedPlayer = null;
 		}
-
 		errormsg = "";
 		fillModel(model);
 		return "redirect:/";
@@ -61,7 +60,6 @@ public class UserController {
 		} else {
 			errormsg = "Login already exists!!";
 		}
-
 		return isLogged() ? "redirect:/" : "register";
 	}
 
@@ -78,19 +76,13 @@ public class UserController {
 	@RequestMapping("/rhchange")
 	public String rhchange(ForumUser forumUser, @RequestParam(value = "value", required = false) int setAdmin,
 			@RequestParam(value = "rhchange", required = false) String rhchange, String removeUser, Model model) {
-
 		userServiceJPA.setRights(rhchange, setAdmin);
-
 		return "forward:/admin";
 	}
 
 	@RequestMapping("/echange")
 	public String echange(ForumUser forumUser, Model model) {
-
 		userServiceJPA.emailChange(loggedPlayer.getLogin(), forumUser.getEmail());
-
-		System.out.println(loggedPlayer.getLogin());
-		System.out.println(forumUser.getEmail());
 		return "forward:/profile";
 	}
 
@@ -101,7 +93,6 @@ public class UserController {
 		userServiceJPA.passChange(loggedPlayer.getLogin(), forumUser.getPassword());
 		if (!file.isEmpty()) {
 			byte[] bytes = file.getBytes();
-
 			userServiceJPA.updateImage(loggedPlayer.getLogin(), bytes);
 		}
 		return "forward:/profile";
@@ -113,7 +104,6 @@ public class UserController {
 		System.out.println(rhchange);
 		System.out.println(password);
 		userServiceJPA.passChange(rhchange, password);
-
 		return "forward:/admin";
 	}
 

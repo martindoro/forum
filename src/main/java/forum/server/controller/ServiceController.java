@@ -39,7 +39,8 @@ public class ServiceController {
 	@RequestMapping("/add_comment")
 	public String comment(@RequestParam(value = "topicId", required = false) String topicId,
 			@RequestParam(value = "content", required = false) String content, Model model) {
-		commentService.addComment(new Comment(userController.getLoggedPlayer().login, Integer.parseInt(topicId), content));
+		commentService
+				.addComment(new Comment(userController.getLoggedPlayer().login, Integer.parseInt(topicId), content));
 		return "forward:/comment?ident=" + topicId;
 	}
 
@@ -47,9 +48,9 @@ public class ServiceController {
 	public String editComment(@RequestParam(value = "ident", required = false) String ident,
 			@RequestParam(value = "content", required = false) String content,
 			@RequestParam(value = "topicId", required = false) String topicId, Model model) {
-		if(content.contains("*edit*")) {
+		if (content.contains("*edit*")) {
 			commentService.editComment(Integer.parseInt(ident), content);
-		}else {
+		} else {
 			commentService.editComment(Integer.parseInt(ident), "*edit*" + content);
 		}
 		return "forward:/comment?ident=" + topicId;

@@ -36,7 +36,6 @@ public class ForumController {
 	private int topicId;
 	private int categoryId;
 
-	
 	public int getCategoryId() {
 		return categoryId;
 	}
@@ -111,7 +110,6 @@ public class ForumController {
 		return "/topic";
 	}
 
-
 	private void fillModel(Model model) {
 		model.addAttribute("controller", this);
 		model.addAttribute("getComments", commentService.getCommentsTopic(topicId));
@@ -137,14 +135,15 @@ public class ForumController {
 			baos.close();
 			finalImage = javax.xml.bind.DatatypeConverter.printBase64Binary(imageInByteArray);
 		} catch (IOException e) {
-			
+
 		} catch (NullPointerException ee) {
-		
+
 		}
 		return "data:image/png;base64," + finalImage;
 	}
-	public void updateDatabase() throws SQLException   {
-			ForumUser user = new ForumUser();
+
+	public void updateDatabase() throws SQLException {
+		ForumUser user = new ForumUser();
 		user.setAdmin(1);
 		user.setEmail("admin@admin");
 		user.setLogin("admin");
@@ -152,9 +151,7 @@ public class ForumController {
 		try {
 			userService.register(user);
 		} catch (DataIntegrityViolationException e) {
-			
+
 		}
-		
 	}
-	
 }

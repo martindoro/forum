@@ -10,7 +10,6 @@ import org.hibernate.annotations.ColumnTransformer;
 
 @Entity
 public class ForumUser {
-	// boolean userIsAdmin
 	@Id
 	@GeneratedValue
 	private int ident;
@@ -46,7 +45,6 @@ public class ForumUser {
 		this.login = login;
 		this.password = password;
 		this.email = email;
-
 	}
 
 	@Override
