@@ -1,5 +1,9 @@
 package forum.server.controller;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import org.postgresql.util.PSQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
@@ -17,7 +21,6 @@ import forum.service.CategoryServiceJPA;
 import forum.service.CommentServiceJPA;
 import forum.service.FavoriteServiceJPA;
 import forum.service.TopicServiceJPA;
-import forum.service.UserServiceJPA;
 
 @Controller
 @Scope(WebApplicationContext.SCOPE_SESSION)
@@ -32,15 +35,25 @@ public class ServiceController {
 	@Autowired
 	private TopicServiceJPA topicService;
 	@Autowired
-	private UserServiceJPA userService;
-	@Autowired
 	private UserController userController;
+
+	List<String> profanities = new ArrayList<String>(Arrays.asList("lukas", "mato", "jakub", "matus"));
 
 	@RequestMapping("/add_comment")
 	public String comment(@RequestParam(value = "topicId", required = false) String topicId,
 			@RequestParam(value = "content", required = false) String content, Model model) {
-		commentService
-				.addComment(new Comment(userController.getLoggedPlayer().login, Integer.parseInt(topicId), content));
+		int badWords = 0;
+		for (int i = 0; i < profanities.size(); i++) {
+			if (content.toLowerCase().contains(profanities.get(i))) {
+				badWords++;
+			}
+		}
+		if(badWords == 0) {
+			commentService.addComment(
+						new Comment(userController.getLoggedPlayer().login, Integer.parseInt(topicId), content));
+		}
+		
+		
 		return "forward:/comment?ident=" + topicId;
 	}
 
