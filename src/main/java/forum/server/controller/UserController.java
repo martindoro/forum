@@ -114,10 +114,10 @@ public class UserController {
 	}
 	
 	@RequestMapping("/userBlock")
-	public String userBlock(ForumUser forumUser, String rhchange, Model model) {
+	public String userBlock(String rhchange, String email, Model model) {
 		userServiceJPA.setRights(rhchange, -1);
 		try {
-			emailServiceTLS.sendBanMail(forumUser.getEmail());
+			emailServiceTLS.sendBanMail(email);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

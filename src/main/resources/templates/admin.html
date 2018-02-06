@@ -109,6 +109,7 @@
     <span th:if="${not @userService.isBan(forumUser.login)}">
     <form action="/userBlock" method="post">
     <input type="hidden" name="rhchange" th:value="${forumUser.login}"/>
+    <input type="hidden" name="email" th:value="${forumUser.email}"/>
     <input type="checkbox" name="removeUser" value="removeUser"/> Block User 
     <input type="submit" value="OK"/>
     </form>
