@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import forum.entity.ForumUser;
+import forum.service.EmailServiceTLS;
 import forum.service.UserServiceJPA;
 
 @Controller
@@ -28,6 +29,8 @@ public class UserController {
 	private String loginMsg;
 	@Autowired
 	private UserServiceJPA userServiceJPA;
+	@Autowired
+	private EmailServiceTLS emailServiceTLS;
 
 	public ForumUser getLoggedPlayer() {
 		return loggedPlayer;
@@ -51,9 +54,6 @@ public class UserController {
 		fillModel(model);
 		return "redirect:/";
 	}
-	
-	
-	
 
 	@RequestMapping("/register_sub")
 	public String register_sub(@RequestParam("file") MultipartFile file, ForumUser forumUser, String password_check,
@@ -109,16 +109,18 @@ public class UserController {
 	@RequestMapping("/userPassChange")
 	public String userPassChange(ForumUser forumUser, String rhchange, String password, Model model)
 			throws IOException {
-
 		userServiceJPA.passChange(rhchange, password);
 		return "forward:/admin";
 	}
 	
 	@RequestMapping("/userBlock")
-	public String userBlock(ForumUser forumUser, String rhchange, Model model)
-			 {
+	public String userBlock(ForumUser forumUser, String rhchange, Model model) {
 		userServiceJPA.setRights(rhchange, -1);
-		
+		try {
+			emailServiceTLS.sendBanMail(forumUser.getEmail());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return "forward:/admin";
 	}
 

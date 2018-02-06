@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Bean;
 import forum.server.controller.ForumController;
 import forum.service.CategoryServiceJPA;
 import forum.service.CommentServiceJPA;
+import forum.service.EmailServiceTLS;
 import forum.service.FavoriteServiceJPA;
 import forum.service.TopicServiceJPA;
 import forum.service.UserServiceJPA;
@@ -51,6 +52,11 @@ public class ForumServer {
 	@Bean
 	public UserServiceJPA userService() {
 		return new UserServiceJPA();
+	}
+	
+	@Bean
+	public EmailServiceTLS emailService() {
+		return new EmailServiceTLS();
 	}
 
 	@PostConstruct
