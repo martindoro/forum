@@ -11,6 +11,7 @@
 
 </head>
 <body>
+
 <div class="header-wrapper">
 		<header id="wp-header">
 			<div class="section-boxed section-header">
@@ -72,18 +73,29 @@
 	
 	</span> -->
 				
-				<br/>
-				<table style="width:80%">
+				<span th:if='${@userController.admin}'> 
+						
+			
+				<table style="width:70%">
   <tr>
     <th>User Name</th>
     <th>User Rights</th> 
     <th> Password Change</th>
-    <th>Remove User ! (Warrning, you can't revert that action!)</th>
+<!--      <th> Block/Unblock User</th> -->
+    <th>Block User ! </th>
   </tr>
   <tr th:each='forumUser : ${ForumUser}'>
     <td><p th:text="${forumUser.login}"/></td>
-    <td><span th:if="${@userService.isAdmin(forumUser.login)}"><a th:href='${"/rhchange?value=0&amp;rhchange="+forumUser.login}'>Set to Standard User</a></span>
+    <td>
+    <span th:if="${not @userService.isBan(forumUser.login)}">
+    <span th:if="${@userService.isAdmin(forumUser.login)}"><a th:href='${"/rhchange?value=0&amp;rhchange="+forumUser.login}'>Set to Standard User</a></span>
     <span th:if="${not @userService.isAdmin(forumUser.login)}"><a th:href='${"/rhchange?value=1&amp;rhchange="+forumUser.login}'>Set to Admin</a></span>
+   
+   
+    
+  
+    </span>
+   
     </td>
     <td>
     <form action="/userPassChange" method="post" enctype="multipart/form-data">
@@ -94,20 +106,24 @@
     </td>
     
     <td>
+    <span th:if="${not @userService.isBan(forumUser.login)}">
     <form action="/removeUser" method="post">
     <input type="hidden" name="rhchange" th:value="${forumUser.login}"/>
-    <input type="checkbox" name="removeUser" value="removeUser"/> Remove User 
+    <input type="checkbox" name="removeUser" value="removeUser"/> Block User 
     <input type="submit" value="OK"/>
     </form>
+    </span>
+    <span th:if="${@userService.isBan(forumUser.login)}">
+    <a th:href='${"/rhchange?value=0&amp;rhchange="+forumUser.login}'>Unblock</a></span>
+    
     </td>
-   <!-- <a  th:href='${"/addRating?value=1&amp;game=" + game.ident }'> -->
+  
   </tr>
   <tr>
   
   </tr>
 </table>
-
-
+	</span> 
 				</div>
 			</div>
 		</div>

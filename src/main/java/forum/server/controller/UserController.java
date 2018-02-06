@@ -20,6 +20,11 @@ public class UserController {
 	private String errormsg;
 	private ForumUser loggedPlayer;
 	private boolean admin;
+	private boolean ban;
+	public void setBan(boolean ban) {
+		this.ban = ban;
+	}
+
 	private String loginMsg;
 	@Autowired
 	private UserServiceJPA userServiceJPA;
@@ -125,6 +130,13 @@ public class UserController {
 			admin = userServiceJPA.isAdmin(loggedPlayer.getLogin());
 		}
 		return admin;
+	}
+	
+	public boolean isBan() {
+		if (isLogged()) {
+			ban = userServiceJPA.isBan(loggedPlayer.getLogin());
+		}
+		return ban;
 	}
 
 	public String getLoginMsg() {

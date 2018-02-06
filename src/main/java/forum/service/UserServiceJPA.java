@@ -60,6 +60,16 @@ public class UserServiceJPA {
 		}
 		return true;
 	}
+	
+	public boolean isBan(String login) {
+		try {
+			entityManager.createQuery("SELECT fu FROM ForumUser fu WHERE fu.admin =:admin AND fu.login =:login")
+					.setParameter("admin", -1).setParameter("login", login).getSingleResult();
+		} catch (NoResultException e) {
+			return false;
+		}
+		return true;
+	}
 
 	public long getUserCount() {
 		return (long) entityManager.createQuery("SELECT COUNT(fu) FROM ForumUser fu").getSingleResult();
