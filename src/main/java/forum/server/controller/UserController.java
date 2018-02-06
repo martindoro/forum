@@ -51,6 +51,9 @@ public class UserController {
 		fillModel(model);
 		return "redirect:/";
 	}
+	
+	
+	
 
 	@RequestMapping("/register_sub")
 	public String register_sub(@RequestParam("file") MultipartFile file, ForumUser forumUser, String password_check,
@@ -106,9 +109,16 @@ public class UserController {
 	@RequestMapping("/userPassChange")
 	public String userPassChange(ForumUser forumUser, String rhchange, String password, Model model)
 			throws IOException {
-		System.out.println(rhchange);
-		System.out.println(password);
+
 		userServiceJPA.passChange(rhchange, password);
+		return "forward:/admin";
+	}
+	
+	@RequestMapping("/userBlock")
+	public String userBlock(ForumUser forumUser, String rhchange, Model model)
+			 {
+		userServiceJPA.setRights(rhchange, -1);
+		
 		return "forward:/admin";
 	}
 
