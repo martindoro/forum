@@ -1,8 +1,11 @@
 package forum.service;
 
 import java.util.Properties;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import javax.mail.Message;
+import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
@@ -37,13 +40,24 @@ public class EmailServiceTLS {
 
 		Transport transport = session.getTransport();
 
-		try {
-			transport.connect(HOST, SMTP_USERNAME, SMTP_PASSWORD);
-			transport.sendMessage(msg, msg.getAllRecipients());
-		} catch (Exception ex) {
-			
-		} finally {
-			transport.close();
-		}
+		ExecutorService emailExecutor = Executors.newSingleThreadExecutor();
+        emailExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+        			transport.connect(HOST, SMTP_USERNAME, SMTP_PASSWORD);
+        			transport.sendMessage(msg, msg.getAllRecipients());
+        			} catch (MessagingException e) {
+						e.printStackTrace();
+                } finally {
+                	try {
+						transport.close();
+					} catch (MessagingException e) {
+						e.printStackTrace();
+					}
+                }
+            }
+        });
+        emailExecutor.shutdown();
 	}
 }
