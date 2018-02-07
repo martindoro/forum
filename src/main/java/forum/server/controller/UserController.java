@@ -39,6 +39,8 @@ public class UserController {
 
 	/**
 	 * Returns true if logged user is admin, false if not
+	 * 
+	 * @return true if current user is admin, false if not
 	 */
 	public boolean isAdmin() {
 		if (isLogged()) {

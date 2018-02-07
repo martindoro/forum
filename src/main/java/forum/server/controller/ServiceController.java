@@ -40,10 +40,15 @@ public class ServiceController {
 	List<String> profanities = new ArrayList<String>(Arrays.asList("lukas", "mato", "jakub", "matus"));
 
 	/**
-	 * Mapping for addComment method, this method will add post/reply after submit with badword filter
-	 * @param topicId - id of topic
-	 * @param content of comment
-	 * @param model  - current model
+	 * Mapping for addComment method, this method will add post/reply after submit
+	 * with badword filter
+	 * 
+	 * @param topicId
+	 *            - id of topic
+	 * @param content
+	 *            of comment
+	 * @param model
+	 *            - current model
 	 * @return String of new comment
 	 */
 	@RequestMapping("/add_comment")
@@ -55,21 +60,26 @@ public class ServiceController {
 				badWords++;
 			}
 		}
-		if(badWords == 0) {
+		if (badWords == 0) {
 			commentService.addComment(
-						new Comment(userController.getLoggedPlayer().login, Integer.parseInt(topicId), content));
+					new Comment(userController.getLoggedPlayer().login, Integer.parseInt(topicId), content));
 		}
-		
-		
+
 		return "forward:/comment?ident=" + topicId;
 	}
 
 	/**
-	 * Mapping for editComment method, with this method we can edit existing post/comment.
-	 * @param ident - id of edited comment
-	 * @param content - of comment
-	 * @param topicId - id of topic
-	 * @param model  - current model
+	 * Mapping for editComment method, with this method we can edit existing
+	 * post/comment.
+	 * 
+	 * @param ident
+	 *            - id of edited comment
+	 * @param content
+	 *            - of comment
+	 * @param topicId
+	 *            - id of topic
+	 * @param model
+	 *            - current model
 	 * @return edited String of content from comment
 	 */
 	@RequestMapping("/edit_comment")
@@ -85,11 +95,17 @@ public class ServiceController {
 	}
 
 	/**
-	 * Mapping for addReply method, with this method we can send reply on existing post/comment.
-	 * @param topicId - id of topic
-	 * @param replyto - id of topic to which have reply be mapped
-	 * @param content - content of reply
-	 * @param model - current model
+	 * Mapping for addReply method, with this method we can send reply on existing
+	 * post/comment.
+	 * 
+	 * @param topicId
+	 *            - id of topic
+	 * @param replyto
+	 *            - id of topic to which have reply be mapped
+	 * @param content
+	 *            - content of reply
+	 * @param model
+	 *            - current model
 	 * @return String of reply for existing post/comment.
 	 */
 	@RequestMapping("/add_reply")
@@ -103,9 +119,13 @@ public class ServiceController {
 
 	/**
 	 * Mapping for addTopic method, with this method we can add new topic.
-	 * @param categoryId - id of category to which have be new topic added
-	 * @param content - content of category
-	 * @param model - current model
+	 * 
+	 * @param categoryId
+	 *            - id of category to which have be new topic added
+	 * @param content
+	 *            - content of category
+	 * @param model
+	 *            - current model
 	 * @return new topic with ident
 	 */
 	@RequestMapping("/add_topic")
@@ -116,11 +136,16 @@ public class ServiceController {
 	}
 
 	/**
-	 * Mapping for addCategory, this option is visible only for users with Admin rights, with this method we can add new category
-	 * @param - content of new category
-	 * @param model - current model
+	 * Mapping for addCategory, this option is visible only for users with Admin
+	 * rights, with this method we can add new category
+	 * 
+	 * @param content
+	 *            - content of new category
+	 * @param model
+	 *            - current model
 	 * @return new category with ident
 	 * @throws PSQLException
+	 *             when something wrong happens with database
 	 */
 	@RequestMapping("/add_category")
 	public String category(String content, Model model) throws PSQLException {
@@ -130,9 +155,13 @@ public class ServiceController {
 
 	/**
 	 * Mapping for like/favourite buttons
-	 * @param topicId - id of topic which have to be liked
-	 * @param ident of user who liked post
-	 * @param model - current model
+	 * 
+	 * @param topicId
+	 *            - id of topic which have to be liked
+	 * @param ident
+	 *            of user who liked post
+	 * @param model
+	 *            - current model
 	 * @return value of like button plus
 	 */
 	@RequestMapping("/favoritePlus")
@@ -152,11 +181,16 @@ public class ServiceController {
 		}
 		return "redirect:/comment?ident=" + topicId;
 	}
+
 	/**
 	 * Mapping for like/favourite buttons
-	 * @param topicId - id of topic which have to be liked
-	 * @param ident - ident of user who liked post
-	 * @param model - current model
+	 * 
+	 * @param topicId
+	 *            - id of topic which have to be liked
+	 * @param ident
+	 *            - ident of user who liked post
+	 * @param model
+	 *            - current model
 	 * @return value of like button minus
 	 */
 	@RequestMapping("/favoriteMinus")
