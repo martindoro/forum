@@ -7,7 +7,7 @@ import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(uniqueConstraints={@UniqueConstraint(columnNames= {"userName", "commentId"})})
+@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "userName", "commentId" }) })
 public class Favorite {
 	@Id
 	@GeneratedValue
@@ -15,15 +15,35 @@ public class Favorite {
 	private String userName;
 	private int commentId;
 	private int value;
-	
+
 	public Favorite() {
 	}
-	
+
+	/**
+	 * Constructor for favorite comment
+	 * 
+	 * @param userName
+	 *            user who likes the comment
+	 * @param commentId
+	 *            ID of comment which is marked as favorite or not favorite
+	 */
+
 	public Favorite(String userName, int commentId) {
 		this.userName = userName;
 		this.commentId = commentId;
 	}
-	
+
+	/**
+	 * Constructor for favorite comment
+	 * 
+	 * @param userName
+	 *            user who likes the comment
+	 * @param commentId
+	 *            ID of comment which is marked as favorite or not favorite
+	 * @param value
+	 *            value of comment=1,0,-1
+	 */
+
 	public Favorite(String userName, int commentId, int value) {
 		this.userName = userName;
 		this.commentId = commentId;

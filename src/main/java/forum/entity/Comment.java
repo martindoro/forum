@@ -23,12 +23,36 @@ public class Comment {
 	public Comment() {
 	}
 
+	/**
+	 * Constructor for new comment
+	 * 
+	 * @param userName
+	 *            user who add new reply
+	 * @param topicId
+	 *            ID of topic where new comment is added
+	 * @param content
+	 *            content of comment
+	 */
+
 	public Comment(String userName, int topicId, String content) {
 		this.userName = userName;
 		this.topicId = topicId;
 		this.content = content;
 		this.createdOn = new java.sql.Timestamp(new Date().getTime());
 	}
+
+	/**
+	 * Constructor for new comment/reply with all required variables
+	 * 
+	 * @param userName
+	 *            user who add new reply
+	 * @param topicId
+	 *            ID of topic where new comment is added
+	 * @param content
+	 *            content of comment
+	 * @param replyto
+	 *            ID of comment which user reply to
+	 */
 
 	public Comment(String userName, int topicId, String content, int replyto) {
 		this.userName = userName;
