@@ -63,6 +63,7 @@ public class CommentServiceJPA {
 	 * Get list of all comments for topic
 	 * 
 	 * @param topicId
+	 *            topic ID for database selection
 	 * @return all comments for topic in ascending order
 	 */
 
