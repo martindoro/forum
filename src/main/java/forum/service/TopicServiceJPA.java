@@ -40,4 +40,19 @@ public class TopicServiceJPA {
 		return (String) entityManager.createQuery("SELECT t.content FROM Topic t WHERE t.ident = :ident")
 				.setParameter("ident", ident).getSingleResult();
 	}
+	
+	/*
+	*/
+	public boolean getTopicState(int ident) {
+		return (boolean) entityManager.createQuery("SELECT t.lock FROM Topic t WHERE t.ident = :ident")
+				.setParameter("ident", ident).getSingleResult();
+	}
+	
+	public void setTopicState(int ident, boolean lock) {
+					entityManager.createQuery(
+							"UPDATE Topic t SET t.lock =:lock WHERE t.ident = :ident")
+					.setParameter("ident", ident).setParameter("lock", lock).executeUpdate();
+		}
+	
+	
 }

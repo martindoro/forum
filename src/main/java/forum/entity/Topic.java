@@ -14,6 +14,7 @@ public class Topic {
 	private int categoryId;
 	private String content;
 	private Date createdOn;
+	private boolean lock;
 
 	public Topic() {
 	}
@@ -23,6 +24,7 @@ public class Topic {
 		this.categoryId = categoryId;
 		this.content = content;
 		this.createdOn = new java.sql.Timestamp(new Date().getTime());
+		this.lock = false;
 	}
 
 	public int getIdent() {
@@ -63,5 +65,13 @@ public class Topic {
 
 	public void setCreatedOn(Date createdOn) {
 		this.createdOn = createdOn;
+	}
+
+	public boolean isLock() {
+		return lock;
+	}
+
+	public void setLock(boolean lock) {
+		this.lock = lock;
 	}
 }

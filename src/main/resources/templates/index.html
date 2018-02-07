@@ -62,15 +62,21 @@
 
 								<div class="item-inner">
 									<div class="item-col-icon forum-image">
+									<span th:if='${not @topicService.getTopicState(topic.ident)}'>
+										<img src="/images/lock1.png" />
+										</span>
+										<span th:if='${@topicService.getTopicState(topic.ident)}'>
 										<img src="/images/favicon.gif" />
+										</span>
 									</div>
 									<div class="item-col-main">
 
 										<div class="itemlist__item item-col-main">
-
+											
 											<a class="item-title"
 												th:href='${"/comment?ident=" + topic.ident}'><p
 													th:text="${topic.content}" /></a>
+													
 										</div>
 									</div>
 									<div class="item-col-stats">

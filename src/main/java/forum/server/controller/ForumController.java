@@ -83,6 +83,7 @@ public class ForumController {
 		topicId = ident;
 		model.addAttribute("getTopicById", topicService.getContentById(topicId));
 		model.addAttribute("topicId", topicId);
+		model.addAttribute("topicState", topicService.getTopicState(topicId));
 		fillModel(model);
 		return "/comment";
 	}
@@ -119,6 +120,7 @@ public class ForumController {
 		model.addAttribute("total_users", userService.getUserCount());
 		model.addAttribute("total_topics", topicService.getTopicCount());
 		model.addAttribute("ForumUser", userService.getForumUser());
+		//model.addAttribute("lockTopic", topicService.getTopicState( ));
 	}
 
 	public String decodeToImage(String login) {

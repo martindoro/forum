@@ -187,9 +187,10 @@
 					</div>
 				</div>
 			</div>
-
+			
 			<span th:if='${not @userController.logged}'>Log in to add
 				comment!</span> <span th:if='${@userController.logged}'>
+				<span th:if='${topicState}'>
 				<form class="quicklogin-form" action='/add_comment' method='post'>
 					<textarea required="required" id="textarea1"
 						class="quicklogin__username-input form-control" type="text"
@@ -205,6 +206,7 @@
 						onclick="javascript:profanityCheckComment()" value='Save Comment' />
 				</form>
 			</span>
+		</span>
 		</div>
 	</div>
 	<script src="js/reply.js" />
