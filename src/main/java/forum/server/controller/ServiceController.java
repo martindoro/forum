@@ -39,6 +39,13 @@ public class ServiceController {
 
 	List<String> profanities = new ArrayList<String>(Arrays.asList("lukas", "mato", "jakub", "matus"));
 
+	/**
+	 * Mapping for addComment method, this method will add post/reply after submit
+	 * @param topicId
+	 * @param content of comment
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/add_comment")
 	public String comment(@RequestParam(value = "topicId", required = false) String topicId,
 			@RequestParam(value = "content", required = false) String content, Model model) {
@@ -57,6 +64,14 @@ public class ServiceController {
 		return "forward:/comment?ident=" + topicId;
 	}
 
+	/**
+	 * Mapping for editComment method, with this method we can edit existing post/comment.
+	 * @param ident
+	 * @param content
+	 * @param topicId
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/edit_comment")
 	public String editComment(@RequestParam(value = "ident", required = false) String ident,
 			@RequestParam(value = "content", required = false) String content,
@@ -69,6 +84,14 @@ public class ServiceController {
 		return "forward:/comment?ident=" + topicId;
 	}
 
+	/**
+	 * Mapping for addReply method, with this method we can send reply on existing post/comment.
+	 * @param topicId
+	 * @param replyto
+	 * @param content
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/add_reply")
 	public String reply(@RequestParam(value = "topicId", required = false) String topicId,
 			@RequestParam(value = "replyto") int replyto, @RequestParam(value = "content") String content,
@@ -78,6 +101,13 @@ public class ServiceController {
 		return "forward:/comment?ident=" + topicId;
 	}
 
+	/**
+	 * Mapping for addTopic method, with this method we can add new topic.
+	 * @param categoryId
+	 * @param content
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/add_topic")
 	public String topic(@RequestParam(value = "categoryId", required = false) int categoryId,
 			@RequestParam(value = "content", required = false) String content, Model model) {
@@ -85,12 +115,26 @@ public class ServiceController {
 		return "forward:/topic?ident=" + categoryId;
 	}
 
+	/**
+	 * Mapping for addCategory, this option is visible only for users with Admin rights, with this method we can add new category
+	 * @param content
+	 * @param model
+	 * @return
+	 * @throws PSQLException
+	 */
 	@RequestMapping("/add_category")
 	public String category(String content, Model model) throws PSQLException {
 		categoryService.addCategory(new Category(content));
 		return "forward:/";
 	}
 
+	/**
+	 * Mapping for like/favourite buttons
+	 * @param topicId
+	 * @param ident
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/favoritePlus")
 	public String favoritePlus(@RequestParam(value = "topicId", required = false) String topicId,
 			@RequestParam(value = "ident", required = false) int ident, Model model) {
@@ -108,7 +152,13 @@ public class ServiceController {
 		}
 		return "redirect:/comment?ident=" + topicId;
 	}
-
+	/**
+	 * Mapping for like/favourite buttons
+	 * @param topicId
+	 * @param ident
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping("/favoriteMinus")
 	public String favoriteMinus(@RequestParam(value = "topicId", required = false) String topicId,
 			@RequestParam(value = "ident", required = false) int ident, Model model) {
