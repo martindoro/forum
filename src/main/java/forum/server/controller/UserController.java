@@ -39,7 +39,12 @@ public class UserController {
 	public void setLoggedPlayer(ForumUser loggedPlayer) {
 		this.loggedPlayer = loggedPlayer;
 	}
-
+/**
+ * Mapping for login, log user into system
+ * @param forumUser Object user to be logged
+ * @param model
+ * @return String for address
+ */
 	@RequestMapping("/login")
 	public String login(ForumUser forumUser, Model model) {
 		loggedPlayer = userServiceJPA.login(forumUser.getLogin(), forumUser.getPassword());
@@ -54,11 +59,23 @@ public class UserController {
 		fillModel(model);
 		return "redirect:/";
 	}
-
+/**
+ * Register new user to DB
+ * @param file File image 
+ * @param forumUser Object User to be saved to DB
+ * @param password_check String for check if password is valid
+ * @param checkbox String to check if checkbox was marked
+ * @param model
+ * @return String to Address
+ * @throws IOException
+ * @throws ServletException
+ * @throws SQLException
+ */
 	@RequestMapping("/register_sub")
 	public String register_sub(@RequestParam("file") MultipartFile file, ForumUser forumUser, String password_check,
 			String checkbox, Model model) throws IOException, ServletException, SQLException {
-		if (!file.isEmpty()) {
+		if("checkbox".equals(checkbox)) {
+			if (!file.isEmpty()) {
 			byte[] bytes = file.getBytes();
 			forumUser.setPic(bytes);
 		}
@@ -68,6 +85,10 @@ public class UserController {
 		} else {
 			errormsg = "Login already exists!!";
 		}
+		}else {
+			errormsg = "Please agree with rules";
+		}
+		
 		return isLogged() ? "redirect:/" : "register";
 	}
 

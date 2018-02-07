@@ -35,27 +35,33 @@ public class ForumController {
 	private UserController userController;
 	private int topicId;
 	private int categoryId;
-
-	public int getCategoryId() {
-		return categoryId;
-	}
-
-	public int getTopicId() {
-		return topicId;
-	}
-
+	
+/**
+ * Mapping for index.html
+ * @param model
+ * @return String of address
+ */
 	@RequestMapping("/")
 	public String user(Model model) {
 		fillModel(model);
 		return "index";
 	}
-
+/**
+ * Mapping for register.html
+ * @param model
+ * @return String of address
+ */
 	@RequestMapping("/register")
 	public String register(Model model) {
 		userController.setLoginMsg("");
 		return "register";
 	}
-
+/**
+ * Mapping for comment.html,list all comments
+ * @param ident
+ * @param model
+ * @return String of address
+ */
 	@RequestMapping("/comment")
 	public String comment(int ident, Model model) {
 		topicId = ident;
@@ -65,21 +71,34 @@ public class ForumController {
 		fillModel(model);
 		return "/comment";
 	}
-
+/**
+ * Mapping for profile.html, user config
+ * @param model
+ * @return String of address
+ */
 	@RequestMapping("/profile")
 	public String profile(Model model) {
 		fillModel(model);
 		userController.setLoginMsg("");
 		return "/profile";
 	}
-
+/**
+ * Mapping for admin.html,admin rights
+ * @param model
+ * @return String of address
+ */
 	@RequestMapping("/admin")
 	public String admin(Model model) {
 		fillModel(model);
 		userController.setLoginMsg("");
 		return "/admin";
 	}
-
+/**
+ * Mapping for topic.html, all topic list
+ * @param ident
+ * @param model
+ * @return String of address
+ */
 	@RequestMapping("/topic")
 	public String topic(int ident, Model model) {
 		categoryId = ident;
@@ -88,7 +107,10 @@ public class ForumController {
 		userController.setLoginMsg("");
 		return "/topic";
 	}
-
+/**
+ * Fill models 
+ * @param model
+ */
 	private void fillModel(Model model) {
 		model.addAttribute("controller", this);
 		model.addAttribute("getComments", commentService.getCommentsTopic(topicId));
@@ -99,7 +121,11 @@ public class ForumController {
 		model.addAttribute("total_topics", topicService.getTopicCount());
 		model.addAttribute("ForumUser", userService.getForumUser());
 	}
-
+/**
+ * Pull image(byteArray) from DB and decode it to image for html page
+ * @param login
+ * @return String of image information
+ */
 	public String decodeToImage(String login) {
 		String finalImage = "";
 		BufferedImage image;
@@ -120,7 +146,10 @@ public class ForumController {
 		}
 		return "data:image/png;base64," + finalImage;
 	}
-
+/**
+ * Add default admin to DB on first run
+ * @throws SQLException
+ */
 	public void updateDatabase() throws SQLException {
 		ForumUser user = new ForumUser();
 		user.setAdmin(1);
@@ -131,5 +160,19 @@ public class ForumController {
 			userService.register(user);
 		} catch (DataIntegrityViolationException e) {
 		}
+	}
+	/**
+	 * Category ident
+	 * @return Category ident
+	 */
+	public int getCategoryId() {
+		return categoryId;
+	}
+/**
+ * Topic ident
+ * @return Topic ident
+ */
+	public int getTopicId() {
+		return topicId;
 	}
 }
