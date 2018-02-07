@@ -41,6 +41,13 @@ public class ForumUser {
 	public ForumUser() {
 	}
 
+	/**
+	 * Constructor for new forum user with all variables(login, password and email) except user picture,
+	 * which is added to table later by update
+	 * @param login new user login on registration
+	 * @param password new user password on registration(gets hashed when writing to database)
+	 * @param email new user email on registration
+	 */
 	public ForumUser(String login, String password, String email) {
 		this.login = login;
 		this.password = password;

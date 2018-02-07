@@ -18,7 +18,14 @@ public class Topic {
 
 	public Topic() {
 	}
-	
+
+	/**
+	 * Constructor for Topic object with all necessary variables and auto timestamp on creation
+	 * and auto topic unlocked
+	 * @param userName user login - author of topic
+	 * @param categoryId category ident where topic was created
+	 * @param content topic content
+	 */
 	public Topic(String userName, int categoryId, String content) {
 		this.userName = userName;
 		this.categoryId = categoryId;

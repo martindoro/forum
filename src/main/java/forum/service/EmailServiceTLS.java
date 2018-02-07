@@ -10,7 +10,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 @Transactional
 public class EmailServiceTLS {
@@ -20,7 +20,15 @@ public class EmailServiceTLS {
 	private final String SMTP_PASSWORD = "aA123456";
 	private final String HOST = "smtp.zoho.eu";
 	private final int PORT = 587;
-
+	
+	/**
+	 *Sends(in separate thread) email alert
+	 *that forum user has been banned from using forum.
+	 *Requires user having working email account.
+	 *
+	 * @param {string} to forum user`s email address
+	 * @throws Will throw exception when there is some connection problem
+	 */
 	public void sendBanMail(String to) throws Exception {
 		String subject = "Ban notification";
 		String body = "You have been banned, please reply to this email for more info!";
