@@ -15,7 +15,9 @@ public class Category {
 	private int ident;
 
 	private String content;
-
+/**
+ * Constructor
+ */
 	public Category() {
 	}
 
