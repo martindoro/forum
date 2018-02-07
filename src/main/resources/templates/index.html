@@ -62,10 +62,10 @@
 
 								<div class="item-inner">
 									<div class="item-col-icon forum-image">
-									<span th:if='${not @topicService.getTopicState(topic.ident)}'>
+									<span th:if='${@topicService.getTopicState(topic.ident)}'>
 										<img src="/images/lock1.png" />
 										</span>
-										<span th:if='${@topicService.getTopicState(topic.ident)}'>
+										<span th:if='${not @topicService.getTopicState(topic.ident)}'>
 										<img src="/images/favicon.gif" />
 										</span>
 									</div>

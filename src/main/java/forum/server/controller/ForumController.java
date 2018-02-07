@@ -45,7 +45,7 @@ public class ForumController {
 	}
 
 	@RequestMapping("/")
-	public String user(Model model) throws SQLException {
+	public String user(Model model) {
 		fillModel(model);
 		return "index";
 	}
@@ -54,28 +54,6 @@ public class ForumController {
 	public String register(Model model) {
 		userController.setLoginMsg("");
 		return "register";
-	}
-
-	@RequestMapping("/test")
-	public String test(Model model) {
-		return "test";
-	}
-
-	@RequestMapping("/test1")
-	public String test1(Model model) {
-		return "test1";
-	}
-
-	@RequestMapping("/test2")
-	public String test2(Model model) {
-		fillModel(model);
-		return "test2";
-	}
-
-	@RequestMapping("/test3")
-	public String test3(Model model) {
-		fillModel(model);
-		return "test3";
 	}
 
 	@RequestMapping("/comment")
@@ -120,7 +98,6 @@ public class ForumController {
 		model.addAttribute("total_users", userService.getUserCount());
 		model.addAttribute("total_topics", topicService.getTopicCount());
 		model.addAttribute("ForumUser", userService.getForumUser());
-		//model.addAttribute("lockTopic", topicService.getTopicState( ));
 	}
 
 	public String decodeToImage(String login) {
@@ -153,7 +130,6 @@ public class ForumController {
 		try {
 			userService.register(user);
 		} catch (DataIntegrityViolationException e) {
-
 		}
 	}
 }

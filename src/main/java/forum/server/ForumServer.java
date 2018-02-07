@@ -24,7 +24,10 @@ public class ForumServer {
 	UserServiceJPA userServiceJPA;
 	@Autowired
 	ForumController forumController;
-
+	/**
+	 * Run Server
+	 * @param args
+	 */	  
 	public static void main(String[] args) {
 		SpringApplication.run(ForumServer.class, args);
 	}
@@ -58,12 +61,17 @@ public class ForumServer {
 	public EmailServiceTLS emailService() {
 		return new EmailServiceTLS();
 	}
-
+/**
+ * Add extension PGcrypto to postgre
+ */
 	@PostConstruct
 	public void setExtension() {
 		userServiceJPA.addExtension();
 	}
-	
+	/**
+	 * Add admin to DB
+	 * @throws SQLException
+	 */
 	@PostConstruct
 	public void setAdmin() throws SQLException {
 		forumController.updateDatabase();

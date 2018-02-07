@@ -190,7 +190,7 @@
 			
 			<span th:if='${not @userController.logged}'>Log in to add
 				comment!</span> <span th:if='${@userController.logged}'>
-				<span th:if='${topicState}'>
+				<span th:if='${not topicState}'>
 				<form class="quicklogin-form" action='/add_comment' method='post'>
 					<textarea required="required" id="textarea1"
 						class="quicklogin__username-input form-control" type="text"
