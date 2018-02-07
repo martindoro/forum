@@ -26,8 +26,8 @@ public class EmailServiceTLS {
 	 *that forum user has been banned from using forum.
 	 *Requires user having working email account.
 	 *
-	 * @param {string} to forum user`s email address
-	 * @throws Will throw exception when there is some connection problem
+	 * @param to forum user`s email address
+	 * @throws Exception Will throw exception when there is some connection problem
 	 */
 	public void sendBanMail(String to) throws Exception {
 		String subject = "Ban notification";
