@@ -28,9 +28,9 @@ public class UserServiceJPA {
 	
 	/**
 	 * Login Method for user login, method will select user and hashed password from database
-	 * @param login
-	 * @param password
-	 * @return
+	 * @param login - user login to be selected 
+	 * @param password - user password to be selected
+	 * @return Selected user name and password
 	 */
 	public ForumUser login(String login, String password) {
 		try {
@@ -44,8 +44,8 @@ public class UserServiceJPA {
 
 	/**
 	 * Method for selecting user profile picture from database
-	 * @param login
-	 * @return
+	 * @param login - user login to be used for selecting specific profile picture
+	 * @return - profile picture for specific user
 	 */
 	public byte[] getImage(String login) {
 		try {
@@ -57,8 +57,8 @@ public class UserServiceJPA {
 	}
 	/**
 	 * isAdmin method to select only users with admin rights(needed for specific functions)
-	 * @param login
-	 * @return
+	 * @param login - user login to be used for selecting user rights from database
+	 * @return - true or false if logged user have admin rights
 	 */
 	public boolean isAdmin(String login) {
 		try {
@@ -72,8 +72,8 @@ public class UserServiceJPA {
 
 	/**
 	 * isPlayer Method is to get login data for specific user from database
-	 * @param login
-	 * @return
+	 * @param login - selecting specific user by login
+	 * @return - login of user name
 	 */
 	public boolean isPlayer(String login) {
 		try {
@@ -87,8 +87,8 @@ public class UserServiceJPA {
 	
 	/**
 	 * isBan Method is selecting users with BAN activated 
-	 * @param login
-	 * @return
+	 * @param login - selecting users by login
+	 * @return - users with ban activated
 	 */
 	public boolean isBan(String login) {
 		try {
@@ -107,8 +107,8 @@ public class UserServiceJPA {
 
 	/**
 	 * Method for changing user rights(Admin/user)
-	 * @param login
-	 * @param value
+	 * @param login - to change/update specific user 
+	 * @param value - to set specific value (admin/user)
 	 */
 	public void setRights(String login, int value) {
 		entityManager.createQuery("UPDATE ForumUser fu SET fu.admin =:admin WHERE fu.login = :login")
@@ -118,8 +118,8 @@ public class UserServiceJPA {
 
 	/**
 	 * Method for updating/changing profile picture from user profile
-	 * @param login
-	 * @param pic
+	 * @param login - to change profile picture for specific login
+	 * @param pic - picture to be uploaded
 	 */
 	public void updateImage(String login, byte[] pic) {
 		entityManager.createQuery("UPDATE ForumUser fu SET fu.pic =:pic WHERE fu.login = :login")
@@ -128,8 +128,8 @@ public class UserServiceJPA {
 
 	/**
 	 * Method for email change, email can be changed by admin from admin zone or by user from user profile
-	 * @param login
-	 * @param email
+	 * @param login - username of wich user mail have to be edited
+	 * @param email - new email address
 	 */
 	public void emailChange(String login, String email) {
 		if (!email.isEmpty()) {
@@ -140,8 +140,8 @@ public class UserServiceJPA {
 
 	/**
 	 * Method for password change, admin can change password for all users or users can update their password from user profile page.
-	 * @param login
-	 * @param password
+	 * @param login - of which user password have to be changed
+	 * @param password - new password
 	 */
 	public void passChange(String login, String password) {
 		if (!password.isEmpty() && isValid(password)) {
@@ -153,7 +153,7 @@ public class UserServiceJPA {
 
 	/**
 	 * Method will return list of all registered users
-	 * @return
+	 * @return - list of all registered users
 	 */
 	public List<ForumUser> getForumUser() {
 		return entityManager.createQuery("SELECT fu FROM ForumUser fu ").getResultList();
@@ -166,8 +166,8 @@ public class UserServiceJPA {
 	 * At least one Upper Case letter
 	 * Minimal length 6 characters
 	 * Maximal length 255 characters 
-	 * @param password
-	 * @return
+	 * @param password to be set
+	 * @return true of false, if the password is matching with Regular Expression
 	 */
 	private boolean isValid(String password) {
 		return password.matches("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,255})");

@@ -40,11 +40,11 @@ public class ServiceController {
 	List<String> profanities = new ArrayList<String>(Arrays.asList("lukas", "mato", "jakub", "matus"));
 
 	/**
-	 * Mapping for addComment method, this method will add post/reply after submit
+	 * Mapping for addComment method, this method will add post/reply after submit with badword filter
 	 * @param topicId
 	 * @param content of comment
 	 * @param model
-	 * @return
+	 * @return String of new comment
 	 */
 	@RequestMapping("/add_comment")
 	public String comment(@RequestParam(value = "topicId", required = false) String topicId,
@@ -70,7 +70,7 @@ public class ServiceController {
 	 * @param content
 	 * @param topicId
 	 * @param model
-	 * @return
+	 * @return edited String of content from comment
 	 */
 	@RequestMapping("/edit_comment")
 	public String editComment(@RequestParam(value = "ident", required = false) String ident,
@@ -90,7 +90,7 @@ public class ServiceController {
 	 * @param replyto
 	 * @param content
 	 * @param model
-	 * @return
+	 * @return String of reply for existing post/comment.
 	 */
 	@RequestMapping("/add_reply")
 	public String reply(@RequestParam(value = "topicId", required = false) String topicId,
@@ -106,7 +106,7 @@ public class ServiceController {
 	 * @param categoryId
 	 * @param content
 	 * @param model
-	 * @return
+	 * @return new topic with ident
 	 */
 	@RequestMapping("/add_topic")
 	public String topic(@RequestParam(value = "categoryId", required = false) int categoryId,
@@ -119,7 +119,7 @@ public class ServiceController {
 	 * Mapping for addCategory, this option is visible only for users with Admin rights, with this method we can add new category
 	 * @param content
 	 * @param model
-	 * @return
+	 * @return new category with ident
 	 * @throws PSQLException
 	 */
 	@RequestMapping("/add_category")
@@ -133,7 +133,7 @@ public class ServiceController {
 	 * @param topicId
 	 * @param ident
 	 * @param model
-	 * @return
+	 * @return value of like button plus
 	 */
 	@RequestMapping("/favoritePlus")
 	public String favoritePlus(@RequestParam(value = "topicId", required = false) String topicId,
@@ -157,7 +157,7 @@ public class ServiceController {
 	 * @param topicId
 	 * @param ident
 	 * @param model
-	 * @return
+	 * @return value of like button minus
 	 */
 	@RequestMapping("/favoriteMinus")
 	public String favoriteMinus(@RequestParam(value = "topicId", required = false) String topicId,
