@@ -38,7 +38,7 @@ public class ForumController {
 	
 /**
  * Mapping for index.html
- * @param model
+ * @param model Current model
  * @return String of address
  */
 	@RequestMapping("/")
@@ -48,7 +48,7 @@ public class ForumController {
 	}
 /**
  * Mapping for register.html
- * @param model
+ * @param model Current model
  * @return String of address
  */
 	@RequestMapping("/register")
@@ -58,8 +58,8 @@ public class ForumController {
 	}
 /**
  * Mapping for comment.html,list all comments
- * @param ident
- * @param model
+ * @param ident ident
+ * @param model Current model
  * @return String of address
  */
 	@RequestMapping("/comment")
@@ -73,7 +73,7 @@ public class ForumController {
 	}
 /**
  * Mapping for profile.html, user config
- * @param model
+ * @param model Current model
  * @return String of address
  */
 	@RequestMapping("/profile")
@@ -84,7 +84,7 @@ public class ForumController {
 	}
 /**
  * Mapping for admin.html,admin rights
- * @param model
+ * @param model Current model
  * @return String of address
  */
 	@RequestMapping("/admin")
@@ -95,8 +95,8 @@ public class ForumController {
 	}
 /**
  * Mapping for topic.html, all topic list
- * @param ident
- * @param model
+ * @param ident ident
+ * @param model Current model
  * @return String of address
  */
 	@RequestMapping("/topic")
@@ -110,10 +110,10 @@ public class ForumController {
 	
 	/**
 	 * 
-	 * @param value
-	 * @param lock
-	 * @param model
-	 * @return
+	 * @param value Value of topic(lock/unlock)
+	 * @param lock boolean
+	 * @param model Current model
+	 * @return String to address
 	 */
 	
 	@RequestMapping("/setTopicState")
@@ -126,7 +126,7 @@ public class ForumController {
 	
 /**
  * Fill models 
- * @param model
+ * @param model Current model
  */
 	private void fillModel(Model model) {
 		model.addAttribute("controller", this);
@@ -140,7 +140,7 @@ public class ForumController {
 	}
 /**
  * Pull image(byteArray) from DB and decode it to image for html page
- * @param login
+ * @param login username
  * @return String of image information
  */
 	public String decodeToImage(String login) {
@@ -165,7 +165,7 @@ public class ForumController {
 	}
 /**
  * Add default admin to DB on first run
- * @throws SQLException
+ * @throws SQLException throws when is not connected to DB
  */
 	public void updateDatabase() throws SQLException {
 		ForumUser user = new ForumUser();
@@ -179,7 +179,7 @@ public class ForumController {
 		}
 	}
 	/**
-	 * Category ident
+	 * Category ident 
 	 * @return Category ident
 	 */
 	public int getCategoryId() {
