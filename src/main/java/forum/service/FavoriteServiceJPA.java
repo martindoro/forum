@@ -17,11 +17,11 @@ public class FavoriteServiceJPA {
 
 	/**
 	 * Adds new row(if not exists) to favorite table with corresponding parameters
-	 * comment ident, user ident and favorite value
-	 * +1 for thumbs up
-	 * 0 for neutral
+	 * comment ident, user ident and favorite value +1 for thumbs up 0 for neutral
 	 * -1 for thumbs down
-	 * @param favorite Favorite object containing all variables
+	 * 
+	 * @param favorite
+	 *            Favorite object containing all variables
 	 */
 	public void setFavorite(Favorite favorite) {
 		try {
@@ -41,7 +41,9 @@ public class FavoriteServiceJPA {
 	/**
 	 * Returns complete list of favorited comments for current forum user with
 	 * comment ident, user ident and a value
-	 * @param userName forum user`s login for favorites database selection
+	 * 
+	 * @param userName
+	 *            forum user`s login for favorites database selection
 	 * @return List of Favorites for current user
 	 */
 	public List<Favorite> getFavorites(String userName) {
@@ -51,16 +53,18 @@ public class FavoriteServiceJPA {
 
 	/**
 	 * Returns a boolean if a comment has been favorited by user
-	 * @param user user`s login for favorites database selection
-	 * @param ident comment ident for favorites database selection
+	 * 
+	 * @param user
+	 *            user`s login for favorites database selection
+	 * @param ident
+	 *            comment ident for favorites database selection
 	 * @return true if user has ever favorited this comment, false when not
 	 */
 	public boolean isFavorite(String user, int ident) {
 		try {
 			entityManager
 					.createQuery("SELECT f FROM Favorite f WHERE f.userName = :userName AND f.commentId = :commentId")
-					.setParameter("userName", user).setParameter("commentId", ident)
-					.getSingleResult();
+					.setParameter("userName", user).setParameter("commentId", ident).getSingleResult();
 			return true;
 		} catch (NoResultException e) {
 			return false;
@@ -69,33 +73,39 @@ public class FavoriteServiceJPA {
 
 	/**
 	 * Returns a Favorite object for current user and comment
-	 * @param user current user`s login for database selection
-	 * @param ident comment ident for database selection
-	 * @return Favorite object when there is database entry, new neutral Favorite object when not
+	 * 
+	 * @param user
+	 *            current user`s login for database selection
+	 * @param ident
+	 *            comment ident for database selection
+	 * @return Favorite object when there is database entry, new neutral Favorite
+	 *         object when not
 	 */
 	public Favorite getFavorite(String user, int ident) {
 		try {
 			return (Favorite) entityManager
 					.createQuery("SELECT f FROM Favorite f WHERE f.userName = :userName AND f.commentId = :commentId")
-					.setParameter("userName", user).setParameter("commentId", ident)
-					.getSingleResult();
+					.setParameter("userName", user).setParameter("commentId", ident).getSingleResult();
 		} catch (Exception e) {
 			return new Favorite(user, ident, 0);
 		}
 	}
 
 	/**
-	 * After user clicking like or dislike on page for a comment, this method changes database entry
-	 * with current value
-	 * @param login user`s login for Favorite entry selection
-	 * @param ident comment ident for Favorite entry selection
-	 * @param value new Favorite value to be set
+	 * After user clicking like or dislike on page for a comment, this method
+	 * changes database entry with current value
+	 * 
+	 * @param login
+	 *            user`s login for Favorite entry selection
+	 * @param ident
+	 *            comment ident for Favorite entry selection
+	 * @param value
+	 *            new Favorite value to be set
 	 */
 	public void updateFavorite(String login, int ident, int value) {
 		entityManager
 				.createQuery("UPDATE Favorite f SET f.value = f.value + " + value
 						+ " WHERE f.ident = :ident AND f.userName = :userName")
-				.setParameter("ident", ident).setParameter("userName", login)
-				.executeUpdate();
+				.setParameter("ident", ident).setParameter("userName", login).executeUpdate();
 	}
 }

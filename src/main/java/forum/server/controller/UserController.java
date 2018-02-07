@@ -23,10 +23,6 @@ public class UserController {
 	private boolean admin;
 	private boolean ban;
 
-	public void setBan(boolean ban) {
-		this.ban = ban;
-	}
-
 	private String loginMsg;
 	@Autowired
 	private UserServiceJPA userServiceJPA;
@@ -41,6 +37,9 @@ public class UserController {
 		this.errormsg = errormsg;
 	}
 
+	/**
+	 * Returns true if logged user is admin, false if not
+	 */
 	public boolean isAdmin() {
 		if (isLogged()) {
 			admin = userServiceJPA.isAdmin(loggedPlayer.getLogin());
@@ -48,11 +47,20 @@ public class UserController {
 		return admin;
 	}
 
+	/**
+	 * Returns true is logged user is banned, false if not
+	 * 
+	 * @return true if current user is banned, false if not
+	 */
 	public boolean isBan() {
 		if (isLogged()) {
 			ban = userServiceJPA.isBan(loggedPlayer.getLogin());
 		}
 		return ban;
+	}
+
+	public void setBan(boolean ban) {
+		this.ban = ban;
 	}
 
 	public boolean isLogged() {
@@ -81,6 +89,7 @@ public class UserController {
 	 * @param forumUser
 	 *            Object user to be logged
 	 * @param model
+	 *            current model
 	 * @return String for address
 	 */
 	@RequestMapping("/login")
@@ -110,14 +119,16 @@ public class UserController {
 	 * @param checkbox
 	 *            String to check if checkbox was marked
 	 * @param model
+	 *            current model
 	 * @return String to Address
 	 * @throws IOException
-	 * @throws ServletException
+	 *             when user login is used
 	 * @throws SQLException
+	 *             when there is something bad with database
 	 */
 	@RequestMapping("/register_sub")
 	public String register_sub(@RequestParam("file") MultipartFile file, ForumUser forumUser, String password_check,
-			String checkbox, Model model) throws IOException, ServletException, SQLException {
+			String checkbox, Model model) throws IOException, SQLException {
 		if ("checkbox".equals(checkbox)) {
 			if (!file.isEmpty()) {
 				byte[] bytes = file.getBytes();
@@ -132,7 +143,6 @@ public class UserController {
 		} else {
 			errormsg = "Please agree with rules";
 		}
-
 		return isLogged() ? "redirect:/" : "register";
 	}
 
@@ -140,6 +150,7 @@ public class UserController {
 	 * Mapping for logout user from system
 	 * 
 	 * @param model
+	 *            current model
 	 * @return String to address
 	 */
 	@RequestMapping("/logout")
@@ -157,8 +168,8 @@ public class UserController {
 	 *            Number for state(-1 ban, 0 standard, 1 admin)
 	 * @param rhchange
 	 *            String login who is going to change
-	 * @param removeUser
 	 * @param model
+	 *            current model
 	 * @return String to address
 	 */
 	@RequestMapping("/rhchange")
@@ -176,8 +187,10 @@ public class UserController {
 	 * @param forumUser
 	 *            Object user
 	 * @param model
+	 *            current model
 	 * @return String to address
 	 * @throws IOException
+	 *             when some error on database occurs
 	 */
 	@RequestMapping("/userSettingsChange")
 	public String userSettingsChange(@RequestParam("file") MultipartFile file, ForumUser forumUser, Model model)
@@ -201,8 +214,10 @@ public class UserController {
 	 * @param password
 	 *            String new password
 	 * @param model
+	 *            current model
 	 * @return String to address
 	 * @throws IOException
+	 *             when some error with communication
 	 */
 	@RequestMapping("/userPassChange")
 	public String userPassChange(ForumUser forumUser, String rhchange, String password, Model model)
@@ -219,6 +234,7 @@ public class UserController {
 	 * @param email
 	 *            String new email
 	 * @param model
+	 *            current model
 	 * @return String to address
 	 */
 	@RequestMapping("/userBlock")
@@ -233,13 +249,13 @@ public class UserController {
 	}
 
 	/**
-	 * Fill models
+	 * Fill model
 	 * 
 	 * @param model
+	 *            current model
 	 */
 	private void fillModel(Model model) {
 		model.addAttribute("controller", this);
 		model.addAttribute("ForumUser", userServiceJPA.getForumUser());
 	}
-
 }
