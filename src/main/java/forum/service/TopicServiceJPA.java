@@ -53,6 +53,14 @@ public class TopicServiceJPA {
 							"UPDATE Topic t SET t.lock =:lock WHERE t.ident = :ident")
 					.setParameter("ident", ident).setParameter("lock", lock).executeUpdate();
 		}
+
+/*	public void setTopicState(int ident, String lock) {
+		// TODO Auto-generated method stub
+		entityManager.createQuery(
+				"UPDATE Topic t SET t.lock =:lock WHERE t.ident = :ident")
+		.setParameter("ident", ident).setParameter("lock", lock).executeUpdate();
+		
+	}*/
 	
 	
 }

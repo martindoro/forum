@@ -8,12 +8,12 @@ import java.sql.SQLException;
 
 import javax.imageio.ImageIO;
 
-import org.hibernate.JDBCException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import forum.entity.ForumUser;
 import forum.service.CategoryServiceJPA;
@@ -107,6 +107,23 @@ public class ForumController {
 		userController.setLoginMsg("");
 		return "/topic";
 	}
+	
+	/**
+	 * 
+	 * @param value
+	 * @param lock
+	 * @param model
+	 * @return
+	 */
+	
+	@RequestMapping("/setTopicState")
+	public String setTopicState(@RequestParam(value = "value", required = false) int value, @RequestParam(value = "lock", required = false) boolean lock, Model model) {
+		//userServiceJPA.setRights(rhchange, setAdmin);
+		fillModel(model);
+		topicService.setTopicState(value, lock);
+		return "forward:/";
+	}
+	
 /**
  * Fill models 
  * @param model
