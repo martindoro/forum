@@ -26,7 +26,7 @@ public class ForumServer {
 	ForumController forumController;
 	/**
 	 * Run Server
-	 * @param args
+	 * @param args args
 	 */	  
 	public static void main(String[] args) {
 		SpringApplication.run(ForumServer.class, args);
@@ -70,7 +70,7 @@ public class ForumServer {
 	}
 	/**
 	 * Add admin to DB
-	 * @throws SQLException
+	 * @throws SQLException throws when is not connected to DB
 	 */
 	@PostConstruct
 	public void setAdmin() throws SQLException {
