@@ -69,7 +69,7 @@ public class ForumController {
 		model.addAttribute("topicId", topicId);
 		model.addAttribute("topicState", topicService.getTopicState(topicId));
 		fillModel(model);
-		return "/comment";
+		return "comment";
 	}
 /**
  * Mapping for profile.html, user config
@@ -80,7 +80,7 @@ public class ForumController {
 	public String profile(Model model) {
 		fillModel(model);
 		userController.setLoginMsg("");
-		return "/profile";
+		return "profile";
 	}
 /**
  * Mapping for admin.html,admin rights
@@ -91,7 +91,7 @@ public class ForumController {
 	public String admin(Model model) {
 		fillModel(model);
 		userController.setLoginMsg("");
-		return "/admin";
+		return "admin";
 	}
 /**
  * Mapping for topic.html, all topic list
@@ -105,7 +105,7 @@ public class ForumController {
 		model.addAttribute("getCategoryById", categoryService.getContentById(categoryId));
 		fillModel(model);
 		userController.setLoginMsg("");
-		return "/topic";
+		return "topic";
 	}
 	
 	/**
