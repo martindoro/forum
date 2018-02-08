@@ -1,79 +1,89 @@
 package forum.entity;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
+
+import java.util.Date;
 
 import org.junit.Test;
 
 public class TopicTest {
 
-	@Test
-	public void testTopic() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testTopicStringIntString() {
-		fail("Not yet implemented");
-	}
+	Topic topic = new Topic();
 
 	@Test
 	public void testGetIdent() {
-		fail("Not yet implemented");
+		topic.setIdent(1);
+		assertEquals(1, topic.getIdent());
 	}
 
 	@Test
 	public void testSetIdent() {
-		fail("Not yet implemented");
+		topic.setIdent(1);
+		assertEquals(1, topic.getIdent());
 	}
 
 	@Test
 	public void testGetUserName() {
-		fail("Not yet implemented");
+		topic.setUserName("testUsername");
+		assertEquals("testUsername", topic.getUserName());
 	}
 
 	@Test
 	public void testSetUserName() {
-		fail("Not yet implemented");
+		topic.setUserName("testUsername");
+		assertEquals("testUsername", topic.getUserName());
 	}
 
 	@Test
 	public void testGetCategoryId() {
-		fail("Not yet implemented");
+		topic.setCategoryId(1);
+		assertEquals(1, topic.getCategoryId());
 	}
 
 	@Test
 	public void testSetCategoryId() {
-		fail("Not yet implemented");
+		topic.setCategoryId(1);
+		assertEquals(1, topic.getCategoryId());
 	}
 
 	@Test
 	public void testGetContent() {
-		fail("Not yet implemented");
+		topic.setContent("testContent");
+		assertEquals("testContent", topic.getContent());
 	}
 
 	@Test
 	public void testSetContent() {
-		fail("Not yet implemented");
+		topic.setContent("testContent");
+		assertEquals("testContent", topic.getContent());
 	}
 
 	@Test
 	public void testGetCreatedOn() {
-		fail("Not yet implemented");
+		Date date = new Date();
+		date.setTime(0);
+		topic.setCreatedOn(date);
+		assertEquals(new Date(0), topic.getCreatedOn());
 	}
 
 	@Test
 	public void testSetCreatedOn() {
-		fail("Not yet implemented");
+		Date date = new Date();
+		date.setTime(0);
+		topic.setCreatedOn(date);
+		assertEquals(new Date(0), topic.getCreatedOn());
 	}
 
 	@Test
 	public void testIsLock() {
-		fail("Not yet implemented");
+		assertEquals(false, topic.isLock());
 	}
 
 	@Test
 	public void testSetLock() {
-		fail("Not yet implemented");
+		topic.setLock(true);
+		assertEquals(true, topic.isLock());
 	}
 
 }

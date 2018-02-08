@@ -1,59 +1,76 @@
 package forum.server.controller;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.fail;
 
+import org.aspectj.lang.annotation.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import forum.entity.ForumUser;
+
+@RunWith(SpringJUnit4ClassRunner.class)
 public class UserControllerTest {
-
+	ForumUser loggedPlayer = new ForumUser();
+	UserController userController = new UserController();
 	@Test
 	public void testGetErrormsg() {
-		fail("Not yet implemented");
+		userController.setErrormsg("test");
+		assertEquals("test", userController.getErrormsg());
 	}
 
 	@Test
 	public void testSetErrormsg() {
-		fail("Not yet implemented");
+		userController.setErrormsg("test");
+		assertEquals("test", userController.getErrormsg());
 	}
 
 	@Test
 	public void testIsAdmin() {
-		fail("Not yet implemented");
+		assertEquals(false, userController.isAdmin());
 	}
 
 	@Test
 	public void testIsBan() {
-		fail("Not yet implemented");
+		assertEquals(false, userController.isBan());
 	}
 
 	@Test
 	public void testSetBan() {
-		fail("Not yet implemented");
+		userController.setBan(true);
+		assertEquals(true, userController.isBan());
 	}
 
 	@Test
 	public void testIsLogged() {
-		fail("Not yet implemented");
+		assertEquals(false, userController.isLogged());
 	}
 
 	@Test
 	public void testGetLoginMsg() {
-		fail("Not yet implemented");
+		userController.setLoginMsg("testMessage");
+		assertEquals("testMessage", userController.getLoginMsg());
 	}
 
 	@Test
 	public void testSetLoginMsg() {
-		fail("Not yet implemented");
+		userController.setLoginMsg("testSet");
+		assertEquals("testSet", userController.getLoginMsg());
 	}
 
 	@Test
 	public void testGetLoggedPlayer() {
-		fail("Not yet implemented");
+		assertEquals(null, userController.getLoggedPlayer());
 	}
 
 	@Test
 	public void testSetLoggedPlayer() {
-		fail("Not yet implemented");
+		userController.setLoggedPlayer(new ForumUser("login","password","email"));
+		loggedPlayer = userController.getLoggedPlayer();
+		assertEquals(loggedPlayer,userController.getLoggedPlayer());	
 	}
 
 	@Test

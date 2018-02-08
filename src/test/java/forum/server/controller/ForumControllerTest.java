@@ -51,14 +51,4 @@ public class ForumControllerTest {
 		fail("Not yet implemented");
 	}
 
-	@Test
-	public void testGetCategoryId() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testGetTopicId() {
-		fail("Not yet implemented");
-	}
-
 }
