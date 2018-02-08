@@ -68,4 +68,51 @@ public class EmailServiceTLS {
         });
         emailExecutor.shutdown();
 	}
+	
+	/**
+	 * Sends email from contact form to both admin and sender if valid email address provided
+	 * @param from forum user email address
+	 * @param content a message from user
+	 * @throws Exception can throw an exception when some error occurs on sending
+	 */
+	public void contactAdmin(String from, String content) throws Exception {
+		String subject = "Ban notification";
+		String body = content;
+		Properties props = System.getProperties();
+		props.put("mail.transport.protocol", "smtp");
+		props.put("mail.smtp.port", PORT);
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.auth", "true");
+
+		Session session = Session.getDefaultInstance(props);
+
+		MimeMessage msg = new MimeMessage(session);
+		msg.setFrom(new InternetAddress(FROM, fromName));
+		msg.setRecipient(Message.RecipientType.TO, new InternetAddress("javaacademy@zoho.eu"));
+		msg.setRecipient(Message.RecipientType.CC, new InternetAddress(from));
+		msg.setSubject(subject);
+		msg.setContent(body, "text/html");
+
+		Transport transport = session.getTransport();
+
+		ExecutorService emailExecutor = Executors.newSingleThreadExecutor();
+        emailExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                try {
+        			transport.connect(HOST, SMTP_USERNAME, SMTP_PASSWORD);
+        			transport.sendMessage(msg, msg.getAllRecipients());
+        			} catch (MessagingException e) {
+						e.printStackTrace();
+                } finally {
+                	try {
+						transport.close();
+					} catch (MessagingException e) {
+						e.printStackTrace();
+					}
+                }
+            }
+        });
+        emailExecutor.shutdown();
+	}
 }
