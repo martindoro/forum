@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import forum.entity.ForumUser;
 import forum.service.CategoryServiceJPA;
 import forum.service.CommentServiceJPA;
+import forum.service.EmailServiceTLS;
 import forum.service.TopicServiceJPA;
 import forum.service.UserServiceJPA;
 
@@ -33,6 +34,9 @@ public class ForumController {
 	private UserServiceJPA userService;
 	@Autowired
 	private UserController userController;
+	@Autowired
+	private EmailServiceTLS emailService;
+	
 	private int topicId;
 	private int categoryId;
 	
@@ -59,7 +63,17 @@ public class ForumController {
 	
 	@RequestMapping("/contact")
 	public String contact(Model model) {
-		userController.setLoginMsg("");
+		//userController.setLoginMsg("");
+		//emailService.contactAdmin(from, content);
+		return "contact";
+	}
+	
+	@RequestMapping("/contactAdmin")
+	public String contactAdmin(Model model, String from, String content) throws Exception {
+		//userController.setLoginMsg("");
+		emailService.contactAdmin(from, content);
+		System.out.println(from);
+		System.out.println(content);
 		return "contact";
 	}
 /**

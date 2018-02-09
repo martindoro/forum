@@ -55,40 +55,43 @@
 		
 				<div class="container">
 				<div class="row">
-				<p>User Settings</p><br/>
+			
 				</div>
-				<form action="/userSettingsChange" method="post" enctype="multipart/form-data">
+				<form action="/contactAdmin" method="post" enctype="multipart/form-data">
 					<div class="row">
 						<div class="col-25">
-						<label for="email">Insert New Email Address:</label>
+						<label for="email">Insert Your Email Address:</label>
 						</div>
 				
 				
 						<div class="col-75">
-						<input class="inpu" id="email" type="email" name="email" autocomplete="off" text="" placeholder="example@example.com"/><br/>
+						<input class="inpu" id="email" type="email" name="from" autocomplete="off" text="" placeholder="example@example.com"/><br/>
 						</div>
 						
 						
 					</div>
 					
 					<div class="row">
-						<div class="col-25"> <label for="password">Insert Password:</label></div>
-					
-						<div class="col-75">
-						<input class="inpu" id="password" type="password" name="password" autocomplete="off" placeholder="Start123"/><br/>
-						</div>
-					</div>
-					
-					<div class="row">
 						<div class="col-25">
-						<label for="picture">Profile Picture:</label>
+						<label for="text">Insert Your Message:</label>
 						</div>
-					
+				
+				
 						<div class="col-75">
-						<input class="profile" id="picture" onchange="javascript:ValidateSize(this)" type="file" name="file" accept="image/*" />
+<!-- 						<input class="inpu" id="text" type="text" name="content" autocomplete="off" text="" placeholder=""/> -->
+						<br/>
+						<textarea rows="4" cols="50" name="content">
+Your Message
+</textarea>
 						</div>
+						
+						
 					</div>
-					<div class="row">
+					
+				
+					
+
+				<div class="row">
 				<input type="submit" value="OK"/>
 				</div>
 				</form>

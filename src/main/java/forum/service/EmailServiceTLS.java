@@ -76,7 +76,7 @@ public class EmailServiceTLS {
 	 * @throws Exception can throw an exception when some error occurs on sending
 	 */
 	public void contactAdmin(String from, String content) throws Exception {
-		String subject = "Ban notification";
+		String subject = "Message from" + " " + from;
 		String body = content;
 		Properties props = System.getProperties();
 		props.put("mail.transport.protocol", "smtp");
