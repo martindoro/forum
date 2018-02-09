@@ -56,6 +56,12 @@ public class ForumController {
 		userController.setLoginMsg("");
 		return "register";
 	}
+	
+	@RequestMapping("/contact")
+	public String contact(Model model) {
+		userController.setLoginMsg("");
+		return "contact";
+	}
 /**
  * Mapping for comment.html,list all comments
  * @param ident ident

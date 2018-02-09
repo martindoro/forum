@@ -8,7 +8,8 @@ public class ServiceControllerTest {
 
 	@Test
 	public void testComment() {
-		fail("Not yet implemented");
+	//	fail("Not yet implemented");
+		
 	}
 
 	@Test

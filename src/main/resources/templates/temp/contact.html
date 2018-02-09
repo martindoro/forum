@@ -8,14 +8,15 @@
 <link rel="stylesheet" type="text/css" href="/css/test2.css" />
 
 <title>Java Academy Forum</title>
+
 </head>
 <body>
-	<div class="header-wrapper">
-				<header id="wp-header">
+<div class="header-wrapper">
+		<header id="wp-header">
 			<div class="section-boxed section-header">
 				<a href="/"> <img src="images/tsys.png" alt="Logo" class="logo" />
 				</a> <a href="/" style="padding-left: 80px">Home</a>
-				<a href="contact">Contact</a> <span
+				<a href="#contact">Contact</a> <span
 					th:if='${not @userController.logged}'>
 					<form action="/login" method="post" class="navright">				
   <span class="popuptext" id="myPopup" ><p th:text='${@userController.loginMsg}'/></span>
@@ -45,57 +46,59 @@
 			</div>
 		</header>
 
-	</div>
-	<div id="page-body" class="spacer">
+</div>
+	<div id="page-body" class="spacer ">
 		<div class="container">
 			<div class="big-grid">
 				<div class="col-maincontent">
-
-					<p>Register Form</p>
-					<hr />
-					<form action="/register_sub" method="post" id="myForm"
-						enctype="multipart/form-data">
-						<div class="block">
-							<label>Login Name:</label> <br />
-							<input class="inpu" type="text" name="login" id="field_username"
-								placeholder="Login"
-								title="Username must not be blank and contain only letters, numbers and underscores." /><br />
+				
+		
+				<div class="container">
+				<div class="row">
+				<p>User Settings</p><br/>
+				</div>
+				<form action="/userSettingsChange" method="post" enctype="multipart/form-data">
+					<div class="row">
+						<div class="col-25">
+						<label for="email">Insert New Email Address:</label>
 						</div>
-						<div class="block">
-							<label>Password: </label><br />
-							<input class="inpu" type="password" name="password"
-								id="field_pwd1" placeholder="Password"
-								title="Password must contain at least 6 characters, including UPPER/lowercase and numbers." /><br />
+				
+				
+						<div class="col-75">
+						<input class="inpu" id="email" type="email" name="email" autocomplete="off" text="" placeholder="example@example.com"/><br/>
 						</div>
-						<div class="block">
-							<label>Retype Password:</label><br /> <input class="inpu"
-								type="password" name="password2" id="field_pwd2"
-								placeholder="Password"
-								title="Please enter the same Password as above." /><br />
+						
+						
+					</div>
+					
+					<div class="row">
+						<div class="col-25"> <label for="password">Insert Password:</label></div>
+					
+						<div class="col-75">
+						<input class="inpu" id="password" type="password" name="password" autocomplete="off" placeholder="Start123"/><br/>
 						</div>
-						<div class="block">
-							<label>Email:</label> <br />
-							<input type="email" name="email" /><br />
-							<br />
+					</div>
+					
+					<div class="row">
+						<div class="col-25">
+						<label for="picture">Profile Picture:</label>
 						</div>
-						<label>Profile Picture:</label> <input
-							onchange="javascript:ValidateSize(this)" type="file" name="file"
-							accept="image/*" /> <input type="checkbox" name="checkbox"
-							value="checkbox" /> I Agree with rules!<br />
-						<br /> <input class="btn btn-success btn-createnew" type="submit"
-							value="Register" />
-
-					</form>
-<span th:text='${@userController.errormsg}'/>
-					<br />
+					
+						<div class="col-75">
+						<input class="profile" id="picture" onchange="javascript:ValidateSize(this)" type="file" name="file" accept="image/*" />
+						</div>
+					</div>
+					<div class="row">
+				<input type="submit" value="OK"/>
+				</div>
+				</form>
+				</div>
+				
+				
+	
 				</div>
 			</div>
 		</div>
 	</div>
-	<script src="js/registerValid.js" />
-	<script src="https://code.jquery.com/jquery-3.2.1.min.js"
-		integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
-		crossorigin="anonymous">	
-	</script>
 </body>
 </html>
