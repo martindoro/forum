@@ -15,11 +15,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import forum.entity.Favorite;
 import forum.server.ForumServer;
+import forum.server.ForumServerForTest;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @DataJpaTest
 @ImportAutoConfiguration
-@ContextConfiguration(classes = ForumServer.class)
+@ContextConfiguration(classes = ForumServerForTest.class)
 public class FavoriteServiceJPATest {
 
 	@Autowired 

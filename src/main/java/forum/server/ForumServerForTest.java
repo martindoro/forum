@@ -1,10 +1,5 @@
 package forum.server;
 
-import java.sql.SQLException;
-
-import javax.annotation.PostConstruct;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -24,17 +19,13 @@ import forum.service.UserServiceJPA;
 @SpringBootApplication
 @EnableAutoConfiguration
 @EntityScan({ "forum.entity" })
-public class ForumServer {
-	@Autowired
-	UserServiceJPA userServiceJPA;
-	@Autowired
-	ForumController forumController;
+public class ForumServerForTest {
 	/**
 	 * Run Server
 	 * @param args args
 	 */	  
 	public static void main(String[] args) {
-		SpringApplication.run(ForumServer.class, args);
+		SpringApplication.run(ForumServerForTest.class, args);
 	}
 
 	@Bean
@@ -75,22 +66,5 @@ public class ForumServer {
 	@Bean
 	public UserController userController() {
 		return new UserController();
-	}
-	
-	/**
-	 * Add extension PGcrypto to postgre
-	 */
-	@PostConstruct
-	public void setExtension() {
-		userServiceJPA.addExtension();
-	}
-	
-	/**
-	 * Add admin to DB
-	 * @throws SQLException throws when is not connected to DB
-	 */
-	@PostConstruct
-	public void setAdmin() throws SQLException {
-		forumController.updateDatabase();
 	}
 }
