@@ -11,4 +11,8 @@ public class EmailServiceTLSTest {
 		fail("Not yet implemented");
 	}
 
+	@Test
+	public void testContactAdmin() {
+		fail("Not yet implemented");
+	}
 }

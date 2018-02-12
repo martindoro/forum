@@ -19,7 +19,7 @@ import forum.entity.Favorite;
 import forum.entity.Topic;
 import forum.service.CategoryServiceJPA;
 import forum.service.CommentServiceJPA;
-import forum.service.FavoriteServiceJPA;
+import forum.service.FavoriteService;
 import forum.service.TopicServiceJPA;
 
 @Controller
@@ -31,7 +31,7 @@ public class ServiceController {
 	@Autowired
 	private CommentServiceJPA commentService;
 	@Autowired
-	private FavoriteServiceJPA favoriteService;
+	private FavoriteService favoriteService;
 	@Autowired
 	private TopicServiceJPA topicService;
 	@Autowired

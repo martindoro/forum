@@ -10,19 +10,15 @@ import org.springframework.transaction.annotation.Transactional;
 import forum.entity.Favorite;
 
 @Transactional
-public class FavoriteServiceJPA {
+public class FavoriteServiceJPA implements FavoriteService {
 
 	@PersistenceContext
 	private EntityManager entityManager;
 
-	/**
-	 * Adds new row(if not exists) to favorite table with corresponding parameters
-	 * comment ident, user ident and favorite value +1 for thumbs up 0 for neutral
-	 * -1 for thumbs down
-	 * 
-	 * @param favorite
-	 *            Favorite object containing all variables
+	/* (non-Javadoc)
+	 * @see forum.service.FavoriteService#setFavorite(forum.entity.Favorite)
 	 */
+	@Override
 	public void setFavorite(Favorite favorite) {
 		try {
 			entityManager
@@ -38,28 +34,19 @@ public class FavoriteServiceJPA {
 		}
 	}
 
-	/**
-	 * Returns complete list of favorited comments for current forum user with
-	 * comment ident, user ident and a value
-	 * 
-	 * @param userName
-	 *            forum user`s login for favorites database selection
-	 * @return List of Favorites for current user
+	/* (non-Javadoc)
+	 * @see forum.service.FavoriteService#getFavorites(java.lang.String)
 	 */
+	@Override
 	public List<Favorite> getFavorites(String userName) {
 		return entityManager.createQuery("SELECT f FROM Favorite f WHERE f.userName = :userName")
 				.setParameter("username", userName).getResultList();
 	}
 
-	/**
-	 * Returns a boolean if a comment has been favorited by user
-	 * 
-	 * @param user
-	 *            user`s login for favorites database selection
-	 * @param ident
-	 *            comment ident for favorites database selection
-	 * @return true if user has ever favorited this comment, false when not
+	/* (non-Javadoc)
+	 * @see forum.service.FavoriteService#isFavorite(java.lang.String, int)
 	 */
+	@Override
 	public boolean isFavorite(String user, int ident) {
 		try {
 			entityManager
@@ -71,16 +58,10 @@ public class FavoriteServiceJPA {
 		}
 	}
 
-	/**
-	 * Returns a Favorite object for current user and comment
-	 * 
-	 * @param user
-	 *            current user`s login for database selection
-	 * @param ident
-	 *            comment ident for database selection
-	 * @return Favorite object when there is database entry, new neutral Favorite
-	 *         object when not
+	/* (non-Javadoc)
+	 * @see forum.service.FavoriteService#getFavorite(java.lang.String, int)
 	 */
+	@Override
 	public Favorite getFavorite(String user, int ident) {
 		try {
 			return (Favorite) entityManager
@@ -91,17 +72,10 @@ public class FavoriteServiceJPA {
 		}
 	}
 
-	/**
-	 * After user clicking like or dislike on page for a comment, this method
-	 * changes database entry with current value
-	 * 
-	 * @param login
-	 *            user`s login for Favorite entry selection
-	 * @param ident
-	 *            comment ident for Favorite entry selection
-	 * @param value
-	 *            new Favorite value to be set
+	/* (non-Javadoc)
+	 * @see forum.service.FavoriteService#updateFavorite(java.lang.String, int, int)
 	 */
+	@Override
 	public void updateFavorite(String login, int ident, int value) {
 		entityManager
 				.createQuery("UPDATE Favorite f SET f.value = f.value + " + value

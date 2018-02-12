@@ -9,9 +9,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import forum.server.controller.ForumController;
+import forum.server.controller.UserController;
 import forum.service.CategoryServiceJPA;
 import forum.service.CommentServiceJPA;
 import forum.service.EmailServiceTLS;
+import forum.service.FavoriteService;
 import forum.service.FavoriteServiceJPA;
 import forum.service.TopicServiceJPA;
 import forum.service.UserServiceJPA;
@@ -43,7 +45,7 @@ public class ForumServer {
 	}
 
 	@Bean
-	public FavoriteServiceJPA favoriteService() {
+	public FavoriteService favoriteService() {
 		return new FavoriteServiceJPA();
 	}
 
@@ -61,13 +63,25 @@ public class ForumServer {
 	public EmailServiceTLS emailService() {
 		return new EmailServiceTLS();
 	}
-/**
- * Add extension PGcrypto to postgre
- */
+	
+	@Bean
+	public ForumController forumController() {
+		return new ForumController();
+	}
+	
+	@Bean
+	public UserController userController() {
+		return new UserController();
+	}
+	
+	/**
+	 * Add extension PGcrypto to postgre
+	 */
 	@PostConstruct
 	public void setExtension() {
 		userServiceJPA.addExtension();
 	}
+	
 	/**
 	 * Add admin to DB
 	 * @throws SQLException throws when is not connected to DB

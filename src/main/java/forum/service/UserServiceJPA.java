@@ -28,7 +28,7 @@ public class UserServiceJPA {
 	 * extension will be set once as database table has been created
 	 */
 	public void addExtension() {
-		entityManager.createNativeQuery("CREATE EXTENSION IF NOT EXISTS pgcrypto").executeUpdate();
+//		entityManager.createNativeQuery("CREATE EXTENSION IF NOT EXISTS pgcrypto").executeUpdate();
 	}
 	
 	
