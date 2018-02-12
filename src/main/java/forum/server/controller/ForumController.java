@@ -192,7 +192,7 @@ public class ForumController {
 		user.setAdmin(1);
 		user.setEmail("admin@admin");
 		user.setLogin("admin");
-		user.setPassword("admin");
+		user.setPassword("Admin123");
 		try {
 			userService.register(user);
 		} catch (DataIntegrityViolationException e) {
