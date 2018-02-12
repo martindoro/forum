@@ -14,6 +14,7 @@ import forum.service.EmailServiceTLS;
 import forum.service.FavoriteService;
 import forum.service.FavoriteServiceJPA;
 import forum.service.TopicServiceJPA;
+import forum.service.UserService;
 import forum.service.UserServiceJPA;
 
 @SpringBootApplication
@@ -22,8 +23,10 @@ import forum.service.UserServiceJPA;
 public class ForumServerForTest {
 	/**
 	 * Run Server
-	 * @param args args
-	 */	  
+	 * 
+	 * @param args
+	 *            args
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(ForumServerForTest.class, args);
 	}
@@ -49,22 +52,23 @@ public class ForumServerForTest {
 	}
 
 	@Bean
-	public UserServiceJPA userService() {
+	public UserService userService() {
 		return new UserServiceJPA();
 	}
-	
+
 	@Bean
 	public EmailServiceTLS emailService() {
 		return new EmailServiceTLS();
 	}
-	
+
 	@Bean
 	public ForumController forumController() {
 		return new ForumController();
 	}
-	
+
 	@Bean
 	public UserController userController() {
 		return new UserController();
 	}
+
 }

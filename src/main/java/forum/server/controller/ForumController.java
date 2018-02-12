@@ -20,7 +20,7 @@ import forum.service.CategoryServiceJPA;
 import forum.service.CommentServiceJPA;
 import forum.service.EmailServiceTLS;
 import forum.service.TopicServiceJPA;
-import forum.service.UserServiceJPA;
+import forum.service.UserService;
 
 @Controller
 public class ForumController {
@@ -31,7 +31,7 @@ public class ForumController {
 	@Autowired
 	private CategoryServiceJPA categoryService;
 	@Autowired
-	private UserServiceJPA userService;
+	private UserService userService;
 	@Autowired
 	private UserController userController;
 	@Autowired

@@ -14,7 +14,7 @@ import forum.entity.ForumUser;
 @Transactional
 @Repository
 
-public class UserServiceJPA {
+public class UserServiceJPA implements UserService{
 
 	@PersistenceContext
 	private EntityManager entityManager;

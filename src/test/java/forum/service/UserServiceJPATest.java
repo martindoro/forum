@@ -1,40 +1,55 @@
 package forum.service;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import java.sql.SQLException;
+
+import javax.persistence.EntityManager;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import forum.entity.ForumUser;
+
+import forum.server.ForumServerForTest;
 
 
-@RunWith(SpringRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class)
 @DataJpaTest
+@ImportAutoConfiguration
+@ContextConfiguration(classes = ForumServerForTest.class)
 public class UserServiceJPATest {
 
 /*	@PersistenceContext
 	private EntityManager entityManager;*/
 	
     @Autowired
-    private TestEntityManager entityManager;
+    private EntityManager entityManager;
 	
-	//@Autowired
-	UserServiceJPA userServiceJPA;
+	@Autowired
+	UserService userService;
 
 	// public static final String SELECT_COMMAND = "SELECT * from forumuser where
 	// login = '%s'";
-	public static final String URL = "jdbc:postgresql://localhost/forum";
+/*	public static final String URL = "jdbc:postgresql://localhost/forum";
 	public static final String USER = "postgres";
-	public static final String PASSWORD = "Postgres1234";
+	public static final String PASSWORD = "Postgres1234";*/
 
 	@Test
 	public void testRegister() {
-		fail("Not yet implemented");
+		ForumUser forumUser = new ForumUser("makollar","Start123","makollar@makollar.sk");
+		//userService.register(new ForumUser("makollar","Start123","makollar@makollar.sk"));
+	
+		userService.register(forumUser);
+		
+		//assertEquals("makollar", userService.isPlayer("makollar"));
+		
+		//fail("Not yet implemented");
 	}
 
 	@Test
@@ -53,7 +68,7 @@ public class UserServiceJPATest {
 	}
 
 	@Test
-	public void testIsAdmin() throws SQLException {
+	public void testIsAdmin() {
 /*		// fail("Not yet implemented");
 
 		
@@ -72,8 +87,12 @@ public class UserServiceJPATest {
 			// e.printStackTrace();
 		}*/
 		
-		assertEquals(1, userServiceJPA.isAdmin("admin"));
-
+		//assertEquals(1, userServiceJPA.isAdmin("admin"));
+		
+		
+		//userService.isAdmin("admin")
+		assertEquals(false, userService.isAdmin("admin"));
+		
 	}
 
 	@Test

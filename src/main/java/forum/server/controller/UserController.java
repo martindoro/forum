@@ -14,7 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import forum.entity.ForumUser;
 import forum.service.EmailServiceTLS;
-import forum.service.UserServiceJPA;
+import forum.service.UserService;
 
 @Controller
 public class UserController {
@@ -25,7 +25,7 @@ public class UserController {
 
 	private String loginMsg;
 	@Autowired
-	private UserServiceJPA userServiceJPA;
+	private UserService userServiceJPA;
 	@Autowired
 	private EmailServiceTLS emailServiceTLS;
 
