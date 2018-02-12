@@ -8,21 +8,25 @@ import javax.persistence.PersistenceContext;
 import org.springframework.transaction.annotation.Transactional;
 
 import forum.entity.Category;
+import forum.service.interfaces.CategoryService;
 
 @Transactional
-public class CategoryServiceJPA {
+public class CategoryServiceJPA implements CategoryService {
 	@PersistenceContext
 	private EntityManager entityManager;
 
+	/* (non-Javadoc)
+	 * @see forum.service.CategoryService#addCategory(forum.entity.Category)
+	 */
+	@Override
 	public void addCategory(Category category) {
 		entityManager.persist(category);
 	}
 
-	/**
-	 * List of all created categories in forum
-	 * 
-	 * @return list of categories names or null
+	/* (non-Javadoc)
+	 * @see forum.service.CategoryService#getCategory()
 	 */
+	@Override
 	public List<Category> getCategory() {
 		try {
 			return entityManager.createQuery("SELECT c FROM Category c ").getResultList();
@@ -31,25 +35,20 @@ public class CategoryServiceJPA {
 		}
 	}
 
-	/**
-	 * Deletion of existed category from database.
-	 * 
-	 * @param ident
-	 *            ID of category for selection from database
+	/* (non-Javadoc)
+	 * @see forum.service.CategoryService#removeCategory(int)
 	 */
+	@Override
 	public void removeCategory(int ident) {
 		entityManager.createQuery("DELETE FROM Category c WHERE c.ident = :ident").setParameter("ident", ident)
 				.executeUpdate();
 	}
 
-	/**
-	 * Get name of particular category
-	 * 
-	 * @param ident
-	 *            ID of category for selection from database
-	 * @return category name
+	/* (non-Javadoc)
+	 * @see forum.service.CategoryService#getContentById(int)
 	 */
 
+	@Override
 	public String getContentById(int ident) {
 		return (String) entityManager.createQuery("SELECT c.content FROM Category c WHERE c.ident = :ident")
 				.setParameter("ident", ident).getSingleResult();
