@@ -14,9 +14,9 @@ import forum.service.EmailServiceTLS;
 import forum.service.FavoriteServiceJPA;
 import forum.service.TopicServiceJPA;
 import forum.service.UserServiceJPA;
-import forum.service.impl.CommentService;
-import forum.service.impl.FavoriteService;
-import forum.service.impl.UserService;
+import forum.service.interfaces.CommentService;
+import forum.service.interfaces.FavoriteService;
+import forum.service.interfaces.UserService;
 
 @SpringBootApplication
 @EnableAutoConfiguration

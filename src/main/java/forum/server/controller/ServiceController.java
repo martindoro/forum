@@ -19,8 +19,8 @@ import forum.entity.Favorite;
 import forum.entity.Topic;
 import forum.service.CategoryServiceJPA;
 import forum.service.TopicServiceJPA;
-import forum.service.impl.CommentService;
-import forum.service.impl.FavoriteService;
+import forum.service.interfaces.CommentService;
+import forum.service.interfaces.FavoriteService;
 
 @Controller
 @Scope(WebApplicationContext.SCOPE_SESSION)

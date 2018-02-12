@@ -1,4 +1,4 @@
-package forum.service.impl;
+package forum.service.interfaces;
 
 import java.util.List;
 

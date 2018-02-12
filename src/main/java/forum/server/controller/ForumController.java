@@ -19,8 +19,8 @@ import forum.entity.ForumUser;
 import forum.service.CategoryServiceJPA;
 import forum.service.EmailServiceTLS;
 import forum.service.TopicServiceJPA;
-import forum.service.impl.CommentService;
-import forum.service.impl.UserService;
+import forum.service.interfaces.CommentService;
+import forum.service.interfaces.UserService;
 
 @Controller
 public class ForumController {

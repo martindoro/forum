@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import forum.entity.ForumUser;
-import forum.service.impl.UserService;
+import forum.service.interfaces.UserService;
 
 @Transactional
 @Repository

@@ -8,6 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.transaction.annotation.Transactional;
 
 import forum.entity.Favorite;
+import forum.service.interfaces.FavoriteService;
 
 @Transactional
 public class FavoriteServiceJPA implements FavoriteService {
