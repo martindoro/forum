@@ -16,6 +16,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import forum.entity.Favorite;
 import forum.server.ForumServer;
 import forum.server.ForumServerForTest;
+import forum.service.impl.FavoriteService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @DataJpaTest

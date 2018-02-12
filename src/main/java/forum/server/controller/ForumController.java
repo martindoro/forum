@@ -17,15 +17,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import forum.entity.ForumUser;
 import forum.service.CategoryServiceJPA;
-import forum.service.CommentServiceJPA;
 import forum.service.EmailServiceTLS;
 import forum.service.TopicServiceJPA;
-import forum.service.UserService;
+import forum.service.impl.CommentService;
+import forum.service.impl.UserService;
 
 @Controller
 public class ForumController {
 	@Autowired
-	private CommentServiceJPA commentService;
+	private CommentService commentService;
 	@Autowired
 	private TopicServiceJPA topicService;
 	@Autowired

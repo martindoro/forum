@@ -17,6 +17,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import forum.entity.ForumUser;
 
 import forum.server.ForumServerForTest;
+import forum.service.impl.UserService;
 
 
 @RunWith(SpringJUnit4ClassRunner.class)

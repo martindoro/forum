@@ -14,7 +14,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import forum.entity.ForumUser;
 import forum.service.EmailServiceTLS;
-import forum.service.UserService;
+import forum.service.impl.UserService;
 
 @Controller
 public class UserController {

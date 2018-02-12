@@ -72,40 +72,4 @@ public class UserControllerTest {
 		loggedPlayer = userController.getLoggedPlayer();
 		assertEquals(loggedPlayer,userController.getLoggedPlayer());	
 	}
-
-	@Test
-	public void testLoginForumUserModel() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testRegister_sub() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testLoginModel() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testRhchange() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testUserSettingsChange() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testUserPassChange() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testUserBlock() {
-		fail("Not yet implemented");
-	}
-
 }

@@ -16,10 +16,11 @@ import forum.server.controller.UserController;
 import forum.service.CategoryServiceJPA;
 import forum.service.CommentServiceJPA;
 import forum.service.EmailServiceTLS;
-import forum.service.FavoriteService;
 import forum.service.FavoriteServiceJPA;
 import forum.service.TopicServiceJPA;
 import forum.service.UserServiceJPA;
+import forum.service.impl.CommentService;
+import forum.service.impl.FavoriteService;
 
 @SpringBootApplication
 @EnableAutoConfiguration
@@ -43,7 +44,7 @@ public class ForumServer {
 	}
 
 	@Bean
-	public CommentServiceJPA commentService() {
+	public CommentService commentService() {
 		return new CommentServiceJPA();
 	}
 

@@ -18,9 +18,9 @@ import forum.entity.Comment;
 import forum.entity.Favorite;
 import forum.entity.Topic;
 import forum.service.CategoryServiceJPA;
-import forum.service.CommentServiceJPA;
-import forum.service.FavoriteService;
 import forum.service.TopicServiceJPA;
+import forum.service.impl.CommentService;
+import forum.service.impl.FavoriteService;
 
 @Controller
 @Scope(WebApplicationContext.SCOPE_SESSION)
@@ -29,7 +29,7 @@ public class ServiceController {
 	@Autowired
 	private CategoryServiceJPA categoryService;
 	@Autowired
-	private CommentServiceJPA commentService;
+	private CommentService commentService;
 	@Autowired
 	private FavoriteService favoriteService;
 	@Autowired
