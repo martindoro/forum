@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import forum.entity.ForumUser;
-import forum.service.EmailServiceTLS;
-import forum.service.interfaces.UserService;
+import forum.service.UserService;
+import forum.service.impl.EmailServiceTLS;
 
 @Controller
 public class UserController {

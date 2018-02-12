@@ -15,7 +15,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import forum.entity.Category;
 import forum.server.ForumServerForTest;
-import forum.service.interfaces.CategoryService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @DataJpaTest

@@ -16,11 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import forum.entity.ForumUser;
-import forum.service.CategoryServiceJPA;
-import forum.service.EmailServiceTLS;
-import forum.service.TopicServiceJPA;
-import forum.service.interfaces.CommentService;
-import forum.service.interfaces.UserService;
+import forum.service.CommentService;
+import forum.service.UserService;
+import forum.service.impl.CategoryServiceJPA;
+import forum.service.impl.EmailServiceTLS;
+import forum.service.impl.TopicServiceJPA;
 
 @Controller
 public class ForumController {

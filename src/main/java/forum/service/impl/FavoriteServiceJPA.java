@@ -1,4 +1,4 @@
-package forum.service;
+package forum.service.impl;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.transaction.annotation.Transactional;
 
 import forum.entity.Favorite;
-import forum.service.interfaces.FavoriteService;
+import forum.service.FavoriteService;
 
 @Transactional
 public class FavoriteServiceJPA implements FavoriteService {
@@ -41,7 +41,7 @@ public class FavoriteServiceJPA implements FavoriteService {
 	@Override
 	public List<Favorite> getFavorites(String userName) {
 		return entityManager.createQuery("SELECT f FROM Favorite f WHERE f.userName = :userName")
-				.setParameter("username", userName).getResultList();
+				.setParameter("userName", userName).getResultList();
 	}
 
 	/* (non-Javadoc)

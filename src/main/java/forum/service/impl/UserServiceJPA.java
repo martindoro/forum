@@ -1,4 +1,4 @@
-package forum.service;
+package forum.service.impl;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import forum.entity.ForumUser;
-import forum.service.interfaces.UserService;
+import forum.service.UserService;
 
 @Transactional
 @Repository

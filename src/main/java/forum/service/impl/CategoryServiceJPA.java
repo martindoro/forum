@@ -1,4 +1,4 @@
-package forum.service;
+package forum.service.impl;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import javax.persistence.PersistenceContext;
 import org.springframework.transaction.annotation.Transactional;
 
 import forum.entity.Category;
-import forum.service.interfaces.CategoryService;
+import forum.service.CategoryService;
 
 @Transactional
 public class CategoryServiceJPA implements CategoryService {

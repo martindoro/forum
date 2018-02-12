@@ -1,4 +1,4 @@
-package forum.service;
+package forum.service.impl;
 
 import java.util.Properties;
 import java.util.concurrent.ExecutorService;

@@ -13,7 +13,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import forum.entity.Comment;
 import forum.server.ForumServerForTest;
-import forum.service.interfaces.CommentService;
 @RunWith(SpringJUnit4ClassRunner.class)
 @DataJpaTest
 @ImportAutoConfiguration

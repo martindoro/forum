@@ -13,14 +13,14 @@ import org.springframework.context.annotation.Bean;
 
 import forum.server.controller.ForumController;
 import forum.server.controller.UserController;
-import forum.service.CategoryServiceJPA;
-import forum.service.CommentServiceJPA;
-import forum.service.EmailServiceTLS;
-import forum.service.FavoriteServiceJPA;
-import forum.service.TopicServiceJPA;
-import forum.service.UserServiceJPA;
-import forum.service.interfaces.CommentService;
-import forum.service.interfaces.FavoriteService;
+import forum.service.CommentService;
+import forum.service.FavoriteService;
+import forum.service.impl.CategoryServiceJPA;
+import forum.service.impl.CommentServiceJPA;
+import forum.service.impl.EmailServiceTLS;
+import forum.service.impl.FavoriteServiceJPA;
+import forum.service.impl.TopicServiceJPA;
+import forum.service.impl.UserServiceJPA;
 
 @SpringBootApplication
 @EnableAutoConfiguration

@@ -1,4 +1,4 @@
-package forum.service;
+package forum.service.impl;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import javax.persistence.PersistenceContext;
 //import javax.transaction.Transactional;
 import org.springframework.transaction.annotation.Transactional;
 import forum.entity.Comment;
-import forum.service.interfaces.CommentService;
+import forum.service.CommentService;
 
 @Transactional
 public class CommentServiceJPA implements CommentService {

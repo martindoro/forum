@@ -17,10 +17,10 @@ import forum.entity.Category;
 import forum.entity.Comment;
 import forum.entity.Favorite;
 import forum.entity.Topic;
-import forum.service.CategoryServiceJPA;
-import forum.service.TopicServiceJPA;
-import forum.service.interfaces.CommentService;
-import forum.service.interfaces.FavoriteService;
+import forum.service.CommentService;
+import forum.service.FavoriteService;
+import forum.service.impl.CategoryServiceJPA;
+import forum.service.impl.TopicServiceJPA;
 
 @Controller
 @Scope(WebApplicationContext.SCOPE_SESSION)
