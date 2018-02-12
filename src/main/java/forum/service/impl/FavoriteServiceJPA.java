@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
+
 import org.springframework.transaction.annotation.Transactional;
 
 import forum.entity.Favorite;
@@ -77,10 +78,9 @@ public class FavoriteServiceJPA implements FavoriteService {
 	 * @see forum.service.FavoriteService#updateFavorite(java.lang.String, int, int)
 	 */
 	@Override
-	public void updateFavorite(String login, int ident, int value) {
+	public void updateFavorite(int ident, int value) {
 		entityManager
-				.createQuery("UPDATE Favorite f SET f.value = f.value + " + value
-						+ " WHERE f.ident = :ident AND f.userName = :userName")
-				.setParameter("ident", ident).setParameter("userName", login).executeUpdate();
+				.createQuery("UPDATE Favorite f SET f.value = (f.value + " + value + ") WHERE f.ident = :ident")
+				.setParameter("ident", ident).executeUpdate();
 	}
 }

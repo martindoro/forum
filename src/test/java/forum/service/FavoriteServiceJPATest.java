@@ -1,6 +1,7 @@
 package forum.service;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -67,8 +68,8 @@ public class FavoriteServiceJPATest {
 	@Test
 	public void testUpdateFavorite() {
 		assertEquals(0, favoriteService.getFavorite("aaa", 19).getValue());
-		favoriteService.updateFavorite("aaa", 19, -1);
-		//assertEquals(1, favoriteService.getFavorite("aaa", 19).getValue());
+		favoriteService.updateFavorite(favoriteService.getFavorite("aaa", 19).getIdent(), 1);
+		assertEquals(1, favoriteService.getFavorite("aaa", 19).getValue());
 	}
 
 }

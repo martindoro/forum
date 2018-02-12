@@ -53,13 +53,11 @@ public interface FavoriteService {
 	 * After user clicking like or dislike on page for a comment, this method
 	 * changes database entry with current value
 	 * 
-	 * @param login
-	 *            user`s login for Favorite entry selection
 	 * @param ident
 	 *            comment ident for Favorite entry selection
 	 * @param value
 	 *            new Favorite value to be set
 	 */
-	void updateFavorite(String login, int ident, int value);
+	void updateFavorite(int ident, int value);
 
 }
