@@ -142,6 +142,17 @@ public class ForumController {
 		fillModel(model);
 		topicService.setTopicState(value, lock);
 		return "forward:/";
+		
+	}
+	
+	@RequestMapping("/setTopicStateFromTopic")
+	public String setTopicStateFromTopic(@RequestParam(value = "value", required = false) int value, @RequestParam(value = "lock", required = false) boolean lock, int ident, Model model) {
+		//userServiceJPA.setRights(rhchange, setAdmin);
+		categoryId = ident;
+		model.addAttribute("getCategoryById", categoryService.getContentById(categoryId));
+		fillModel(model);
+		topicService.setTopicState(value, lock);
+		return "topic";
 	}
 	
 /**

@@ -23,9 +23,9 @@
 					<form action="/login" method="post" class="navright">				
   <span class="popuptext" id="myPopup" ><p th:text='${@userController.loginMsg}'/></span>
 				<input type="text" name="login" placeholder="Login" required= 'required' /> <input
-							type="password" name="password" placeholder="Password" required= 'required' /> <input
-							type="submit" value="Login"
-							class="linkButton linkButton a linkButton a:hover" /> <a
+							type="password" name="password" placeholder="Password" required= 'required' /> 
+							<input type="submit" value="Login" class="linkButton" />
+<!-- 							<a href="/login" onclick="form.submit();">Login</a>--> <a 
 							class="active" href="/register" id="myBtn" style="float: right">Or
 							Register</a>
 					</form>

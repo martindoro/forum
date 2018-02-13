@@ -3,8 +3,19 @@ package forum.service;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import javax.persistence.EntityManager;
+import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferByte;
+import java.awt.image.WritableRaster;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 
+import javax.imageio.ImageIO;
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +51,13 @@ public class UserServiceJPATest {
 	ForumUser forumUser1 = new ForumUser("janko","Start123","janko@forum.sk");
 	ForumUser forumUser2 = new ForumUser("katka","Start123","katka@forum.sk");
 
+	@Before
+	public void setUp() {
+		userService.register(forumUser);
+		userService.register(forumUser1);
+		userService.register(forumUser2);
+	}
+	
 	// public static final String SELECT_COMMAND = "SELECT * from forumuser where
 	// login = '%s'";
 /*	public static final String URL = "jdbc:postgresql://localhost/forum";
@@ -57,10 +75,6 @@ public class UserServiceJPATest {
 		//fail("Not yet implemented");
 	}
 
-	@Test
-	public void testAddExtension() {
-		fail("Not yet implemented");
-	}
 
 	@Test
 	public void testLogin() {
@@ -72,7 +86,11 @@ public class UserServiceJPATest {
 
 	@Test
 	public void testGetImage() {
-		fail("Not yet implemented");
+		
+		//userService.getImage(forumUser.getLogin());
+		//System.err.println(userService.getImage(forumUser.getLogin()));
+		assertEquals(null, userService.getImage(forumUser.getLogin()));
+		//fail("Not yet implemented");
 	}
 
 	@Test
@@ -91,19 +109,22 @@ public class UserServiceJPATest {
 
 	@Test
 	public void testIsPlayer() {
-		fail("Not yet implemented");
+		
+		userService.isPlayer(forumUser.getLogin());
+		assertEquals("ferko", forumUser.getLogin());
+		//fail("Not yet implemented");
 	}
 
 	@Test
 	public void testIsBan() {
-		fail("Not yet implemented");
+		userService.setRights(forumUser.getLogin(), -1);
+		assertEquals(true, userService.isBan(forumUser.getLogin()));
+		//fail("Not yet implemented");
 	}
 
 	@Test
 	public void testGetUserCount() {
-		userService.register(forumUser);
-		userService.register(forumUser1);
-		userService.register(forumUser2);
+	
 		assertEquals(3, userService.getUserCount());
 		
 		//fail("Not yet implemented");
@@ -120,9 +141,53 @@ public class UserServiceJPATest {
 		//fail("Not yet implemented");
 	}
 
+	//@Test(expected = NoResultException.class)
 	@Test
-	public void testUpdateImage() {
-		fail("Not yet implemented");
+	public void testUpdateImage() throws IOException{
+		//URL url = getClass().getResource("/Users/matuskollar/Desktop/white-cogwheel.png");
+		//File file = new File(url.getPath());
+		//System.out.println(url);
+	//	System.err.println(file.getAbsolutePath());
+		
+		
+		//System.err.println(file.exists());
+		
+		//System.err.println(file.isFile());
+		//File file = new File(url.getPath());
+		
+		
+	/*	BufferedImage img = null;
+		File imgPath = new File("/Users/matuskollar/Desktop/white-cogwheel.png");
+		//BufferedImage bufferedImage = null;
+		 BufferedImage bufferedImage = ImageIO.read(imgPath);
+		//img = ImageIO.read(new File("/Users/matuskollar/Desktop/white-cogwheel.png"));
+   // BufferedImage bufferedImage = ImageIO.read(img);
+		//BufferedImage bufferedImage =
+		// get DataBufferBytes from Raster
+		WritableRaster raster = bufferedImage .getRaster();
+		DataBufferByte data   = (DataBufferByte) raster.getDataBuffer();
+	
+		System.err.println(data.getData());*/
+		
+		//userService.updateImage(forumUser.getLogin(), pic);
+		
+		File fnew=new File("/Users/matuskollar/Desktop/white-cogwheel.png");
+		BufferedImage originalImage=ImageIO.read(fnew);
+		ByteArrayOutputStream baos=new ByteArrayOutputStream();
+		ImageIO.write(originalImage, "png", baos );
+		byte[] imageInByte=baos.toByteArray();
+		System.err.println(imageInByte.length);
+		System.out.println(imageInByte);
+		userService.updateImage(forumUser.getLogin(), imageInByte);
+		//userService.updateImage(forumUser.getLogin(), imageInByte);
+		//userService.updateImage(forumUser.getLogin(), imageInByte);
+		
+		//assertEquals(0, userService.getImage(forumUser.getLogin()));
+		
+	//	System.err.println(img.getHeight());
+		//userService.updateImage(forumUser.getLogin(), img);
+		
+		//	fail("Not yet implemented");
 	}
 
 	@Test
@@ -153,7 +218,9 @@ public class UserServiceJPATest {
 
 	@Test
 	public void testGetForumUser() {
-		fail("Not yet implemented");
+		
+		assertEquals("katka", forumUser2.getLogin());
+		//fail("Not yet implemented");
 	}
 
 }

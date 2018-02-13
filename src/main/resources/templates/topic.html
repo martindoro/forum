@@ -64,6 +64,24 @@
 							<div class="item-inner">
 								<div class="item-col-icon forum-image">
 									<img src="/images/favicon.gif" />
+<!-- 										<span th:if='${@userController.admin}'> -->
+<!-- 									<span th:if='${@topicService.getTopicState(topic.ident)}'> -->
+<!-- 									<a th:href='${"/setTopicState?value="+topic.ident+ "&amp;lock=false"}'>	<img src="/images/lock1.png" title="Unlock" /> </a> -->
+<!-- 										</span>											 -->
+<!-- 										</span> -->
+<!-- 										<span th:if='${@topicService.getTopicState(topic.ident)}'> -->
+<!-- 										<span th:if='${not @userController.admin}'><img src="/images/lock1.png"/> -->
+<!-- 										</span> -->
+<!-- 										</span>										 -->
+<!-- 										<span th:if='${@userController.admin}'> -->
+<!-- 										<span th:if='${not @topicService.getTopicState(topic.ident)}'> -->
+<!-- 									<a th:href='${"/setTopicState?value="+topic.ident+ "&amp;lock=true"}'>	<img src="/images/favicon.gif" title="Lock" /> </a> -->
+<!-- 										</span>										 -->
+<!-- 										</span> -->
+<!-- 										<span th:if='${not @topicService.getTopicState(topic.ident)}'> -->
+<!-- 										<span th:if='${not @userController.admin}'><img src="/images/favicon.gif"/> -->
+<!-- 										</span> -->
+<!-- 										</span> -->
 								</div>
 								<div class="item-col-main">
 									<div class="itemlist__item item-col-main">
