@@ -45,7 +45,7 @@ public class TopicServiceJPA implements TopicService {
 	 */
 	@Override
 	public long getTopicCountForCategory(int ident) {
-		return (long) entityManager.createQuery("SELECT COUNT(t) FROM Topic t WHERE t.category_id = :ident")
+		return (long) entityManager.createQuery("SELECT COUNT(t) FROM Topic t WHERE t.categoryId = :ident")
 				.setParameter("ident", ident).getSingleResult();
 	}
 
