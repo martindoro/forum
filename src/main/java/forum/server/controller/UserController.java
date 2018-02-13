@@ -158,6 +158,7 @@ public class UserController {
 	@RequestMapping("/logout")
 	public String login(Model model) {
 		loggedPlayer = null;
+		admin = false;
 		return "redirect:/";
 	}
 

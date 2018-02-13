@@ -29,8 +29,9 @@ public class CommentServiceJPA implements CommentService {
 	 */
 	@Override
 	public void editComment(int ident, String content) {
-		entityManager.createQuery("UPDATE Comment c SET c.content = :content WHERE c.ident = :ident")
-				.setParameter("content", content).setParameter("ident", ident).executeUpdate();
+	Comment comment =	(Comment) entityManager.createQuery("SELECT c FROM Comment c WHERE c.ident = :ident")
+				.setParameter("ident", ident).getSingleResult();
+	comment.setContent(content);
 	}
 
 	/* (non-Javadoc)
@@ -112,8 +113,9 @@ public class CommentServiceJPA implements CommentService {
 
 	@Override
 	public void setCommentValue(int ident, int value) {
-		entityManager.createQuery("UPDATE Comment c SET c.value = c.value + " + value + " WHERE c.ident = :ident")
-				.setParameter("ident", ident).executeUpdate();
+		Comment commentValue = (Comment) entityManager.createQuery("SELECT c FROM Comment c  WHERE c.ident = :ident")
+				.setParameter("ident", ident).getSingleResult();
+		commentValue.setValue(value);
 	}
 
 	/* (non-Javadoc)
