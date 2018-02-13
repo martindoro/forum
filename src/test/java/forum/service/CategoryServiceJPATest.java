@@ -1,10 +1,10 @@
 package forum.service;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
-import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,33 +22,43 @@ import forum.server.ForumServerForTest;
 @ContextConfiguration(classes = ForumServerForTest.class)
 public class CategoryServiceJPATest {
 
-	@Autowired
-	private EntityManager entityManager;
-	
+	private Category category = new Category("other");
+	private Category category2 = new Category("software");
+
 	@Autowired
 	private CategoryService categoryService;
-	
+
+	@Before
+	public void items() {
+		categoryService.addCategory(category);
+		categoryService.addCategory(category2);
+
+	}
+
 	@Test
 	public void testAddCategory() {
-		Category category = new Category("other");
-		categoryService.addCategory(category);
-		category.setIdent(1);
 		assertEquals("other", categoryService.getContentById(1));
 	}
 
 	@Test
 	public void testGetCategory() {
-		fail("Not yet implemented");
+	assertEquals("other",categoryService.getCategory().get(0).getContent());
+	assertEquals("software",categoryService.getCategory().get(1).getContent());
+
 	}
 
-	@Test
+	@Test(expected = NoResultException.class)
 	public void testRemoveCategory() {
-		fail("Not yet implemented");
+		categoryService.removeCategory(category.getIdent());
+		assertEquals("", categoryService.getContentById(category.getIdent()));
 	}
 
 	@Test
 	public void testGetContentById() {
-		fail("Not yet implemented");
+		categoryService.addCategory(category);
+		assertEquals("other", categoryService.getContentById(category.getIdent()));
+		assertEquals("software", categoryService.getContentById(category2.getIdent()));
+		
 	}
 
 }
