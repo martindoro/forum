@@ -12,6 +12,8 @@ import org.springframework.transaction.annotation.Transactional;
 import forum.entity.ForumUser;
 import forum.service.UserService;
 
+//for testing purposes following lines have to be commented: 47 and 163 and these have to be uncommented 48 and 164
+
 @Transactional
 @Repository
 
@@ -43,6 +45,7 @@ public class UserServiceJPA implements UserService{
 		try {
 			return (ForumUser) entityManager.createQuery(
 					"SELECT fu FROM ForumUser fu WHERE fu.login =:login AND fu.password = crypt(:password, fu.password)")
+				//"SELECT fu FROM ForumUser fu WHERE fu.login =:login AND fu.password =:password")
 					.setParameter("login", login).setParameter("password", password).getSingleResult();
 		} catch (NoResultException e) {
 			return null;
@@ -140,8 +143,12 @@ public class UserServiceJPA implements UserService{
 	 */
 	public void emailChange(String login, String email) {
 		if (!email.isEmpty()) {
-			entityManager.createQuery("UPDATE ForumUser fu SET fu.email =:email WHERE fu.login = :login")
-					.setParameter("email", email).setParameter("login", login).executeUpdate();
+			//entityManager.createQuery("UPDATE ForumUser fu SET fu.email =:email WHERE fu.login = :login")
+				//	.setParameter("email", email).setParameter("login", login).executeUpdate();
+		ForumUser fu = (ForumUser) entityManager.createQuery("SELECT fu from ForumUser fu WHERE fu.login = :login").setParameter("login", login).getSingleResult();
+		fu.setEmail(email);
+				
+		
 		}
 	}
 
@@ -154,6 +161,7 @@ public class UserServiceJPA implements UserService{
 		if (!password.isEmpty() && isValid(password)) {
 			entityManager.createQuery(
 					"UPDATE ForumUser fu SET fu.password =crypt(:password, fu.password) WHERE fu.login = :login")
+					//"UPDATE ForumUser fu SET fu.password =:password WHERE fu.login = :login")
 					.setParameter("password", password).setParameter("login", login).executeUpdate();
 		}
 	}

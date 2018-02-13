@@ -84,8 +84,10 @@
 <!--      <th> Block/Unblock User</th> -->
     <th>Block User ! </th>
   </tr>
-  <tr th:each='forumUser : ${ForumUser}'>
-    <td><p th:text="${forumUser.login}"/></td>
+  
+  <tr th:each="forumUser : ${ForumUser}" th:if='${forumUser.login != @userController.LoggedPlayer?.Login}'>
+    <td>
+    <p th:text="${forumUser.login}"/></td>
     <td>
     <span th:if="${not @userService.isBan(forumUser.login)}">
     <span th:if="${@userService.isAdmin(forumUser.login)}"><a th:href='${"/rhchange?value=0&amp;rhchange="+forumUser.login}'>Set to Standard User</a></span>
@@ -120,6 +122,7 @@
     </td>
   
   </tr>
+  
   <tr>
   
   </tr>
