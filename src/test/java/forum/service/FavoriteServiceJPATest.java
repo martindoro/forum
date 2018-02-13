@@ -19,23 +19,17 @@ import forum.server.ForumServerForTest;
 @ImportAutoConfiguration
 @ContextConfiguration(classes = ForumServerForTest.class)
 public class FavoriteServiceJPATest {
-
-	private Favorite f1 = new Favorite("aaa", 15, 1);
-	private Favorite f2 = new Favorite("bbb", 16, 0);
-	private Favorite f3 = new Favorite("ccc", 17, -1);
-	private Favorite f4 = new Favorite("ddd", 18, 1);
-	private Favorite f5 = new Favorite("aaa", 19, 1);
 	
 	@Autowired
 	private FavoriteService favoriteService;
 	
 	@Before
 	public void setup() {
-	favoriteService.setFavorite(f1);
-	favoriteService.setFavorite(f2);
-	favoriteService.setFavorite(f3);
-	favoriteService.setFavorite(f4);
-	favoriteService.setFavorite(f5);
+	favoriteService.setFavorite(new Favorite("aaa", 15, 1));
+	favoriteService.setFavorite(new Favorite("bbb", 16, 0));
+	favoriteService.setFavorite(new Favorite("ccc", 17, -1));
+	favoriteService.setFavorite(new Favorite("ddd", 18, 1));
+	favoriteService.setFavorite(new Favorite("aaa", 19, 1));
 	}
 	
 	@Test
@@ -60,9 +54,12 @@ public class FavoriteServiceJPATest {
 
 	@Test
 	public void testGetFavorite() {
-		assertEquals(f2, favoriteService.getFavorite("bbb", 16));
-		assertEquals(f3, favoriteService.getFavorite("ccc", 17));
-		assertEquals(f4, favoriteService.getFavorite("ddd", 18));
+		assertEquals(16, favoriteService.getFavorite("bbb", 16).getCommentId());
+		assertEquals("bbb", favoriteService.getFavorite("bbb", 16).getUserName());
+		assertEquals(17, favoriteService.getFavorite("ccc", 17).getCommentId());
+		assertEquals("ccc", favoriteService.getFavorite("ccc", 17).getUserName());
+		assertEquals(18, favoriteService.getFavorite("ddd", 18).getCommentId());
+		assertEquals("ddd", favoriteService.getFavorite("ddd", 18).getUserName());
 	}
 
 	@Test
