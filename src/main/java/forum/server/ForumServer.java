@@ -16,6 +16,7 @@ import forum.server.controller.UserController;
 import forum.service.CommentService;
 import forum.service.EmailService;
 import forum.service.FavoriteService;
+import forum.service.TopicService;
 import forum.service.impl.CategoryServiceJPA;
 import forum.service.impl.CommentServiceJPA;
 import forum.service.impl.EmailServiceTLS;
@@ -55,7 +56,7 @@ public class ForumServer {
 	}
 
 	@Bean
-	public TopicServiceJPA topicService() {
+	public TopicService topicService() {
 		return new TopicServiceJPA();
 	}
 

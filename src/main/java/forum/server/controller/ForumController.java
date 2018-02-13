@@ -18,16 +18,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import forum.entity.ForumUser;
 import forum.service.CommentService;
 import forum.service.EmailService;
+import forum.service.TopicService;
 import forum.service.UserService;
 import forum.service.impl.CategoryServiceJPA;
-import forum.service.impl.TopicServiceJPA;
 
 @Controller
 public class ForumController {
 	@Autowired
 	private CommentService commentService;
 	@Autowired
-	private TopicServiceJPA topicService;
+	private TopicService topicService;
 	@Autowired
 	private CategoryServiceJPA categoryService;
 	@Autowired
