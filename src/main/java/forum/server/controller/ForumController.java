@@ -17,9 +17,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import forum.entity.ForumUser;
 import forum.service.CommentService;
+import forum.service.EmailService;
 import forum.service.UserService;
 import forum.service.impl.CategoryServiceJPA;
-import forum.service.impl.EmailServiceTLS;
 import forum.service.impl.TopicServiceJPA;
 
 @Controller
@@ -35,7 +35,7 @@ public class ForumController {
 	@Autowired
 	private UserController userController;
 	@Autowired
-	private EmailServiceTLS emailService;
+	private EmailService emailService;
 	
 	private int topicId;
 	private int categoryId;

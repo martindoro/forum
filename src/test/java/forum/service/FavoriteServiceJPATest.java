@@ -24,7 +24,7 @@ public class FavoriteServiceJPATest {
 	private Favorite f2 = new Favorite("bbb", 16, 0);
 	private Favorite f3 = new Favorite("ccc", 17, -1);
 	private Favorite f4 = new Favorite("ddd", 18, 1);
-	private Favorite f5 = new Favorite("aaa", 19, 0);
+	private Favorite f5 = new Favorite("aaa", 19, 1);
 	
 	@Autowired
 	private FavoriteService favoriteService;
@@ -41,7 +41,7 @@ public class FavoriteServiceJPATest {
 	@Test
 	public void testSetFavorite() {
 		assertEquals(0, favoriteService.getFavorite("bbb", 16).getValue());
-		assertEquals(0, favoriteService.getFavorite("aaa", 19).getValue());
+		assertEquals(1, favoriteService.getFavorite("aaa", 19).getValue());
 		assertEquals(1, favoriteService.getFavorite("aaa", 15).getValue());
 	}
 
@@ -67,9 +67,9 @@ public class FavoriteServiceJPATest {
 
 	@Test
 	public void testUpdateFavorite() {
-		assertEquals(0, favoriteService.getFavorite("aaa", 19).getValue());
-		favoriteService.updateFavorite(favoriteService.getFavorite("aaa", 19).getIdent(), 1);
 		assertEquals(1, favoriteService.getFavorite("aaa", 19).getValue());
+		favoriteService.updateFavorite(favoriteService.getFavorite("aaa", 19).getIdent(), -1);
+		assertEquals(0, favoriteService.getFavorite("aaa", 19).getValue());
 	}
 
 }

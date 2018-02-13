@@ -12,8 +12,10 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import org.springframework.transaction.annotation.Transactional;
 
+import forum.service.EmailService;
+
 @Transactional
-public class EmailServiceTLS {
+public class EmailServiceTLS implements EmailService {
 	private final String FROM = "javaacademy@zoho.eu";
 	private String fromName = "Forum Administrator";
 	private final String SMTP_USERNAME = "javaacademy";
@@ -21,14 +23,10 @@ public class EmailServiceTLS {
 	private final String HOST = "smtp.zoho.eu";
 	private final int PORT = 587;
 	
-	/**
-	 *Sends(in separate thread) email alert
-	 *that forum user has been banned from using forum.
-	 *Requires user having working email account.
-	 *
-	 * @param to forum user`s email address
-	 * @throws Exception Will throw exception when there is some connection problem
+	/* (non-Javadoc)
+	 * @see forum.service.impl.EmailService#sendBanMail(java.lang.String)
 	 */
+	@Override
 	public void sendBanMail(String to) throws Exception {
 		String subject = "Ban notification";
 		String body = "You have been banned, please reply to this email for more info!";
@@ -69,12 +67,10 @@ public class EmailServiceTLS {
         emailExecutor.shutdown();
 	}
 	
-	/**
-	 * Sends email from contact form to both admin and sender if valid email address provided
-	 * @param from forum user email address
-	 * @param content a message from user
-	 * @throws Exception can throw an exception when some error occurs on sending
+	/* (non-Javadoc)
+	 * @see forum.service.impl.EmailService#contactAdmin(java.lang.String, java.lang.String)
 	 */
+	@Override
 	public void contactAdmin(String from, String content) throws Exception {
 		String subject = "Message from" + " " + from;
 		String body = content;

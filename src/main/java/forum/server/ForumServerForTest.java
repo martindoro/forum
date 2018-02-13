@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import forum.server.controller.ForumController;
 import forum.server.controller.UserController;
 import forum.service.CommentService;
+import forum.service.EmailService;
 import forum.service.FavoriteService;
 import forum.service.UserService;
 import forum.service.impl.CategoryServiceJPA;
@@ -58,7 +59,7 @@ public class ForumServerForTest {
 	}
 
 	@Bean
-	public EmailServiceTLS emailService() {
+	public EmailService emailService() {
 		return new EmailServiceTLS();
 	}
 

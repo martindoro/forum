@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import forum.entity.ForumUser;
+import forum.service.EmailService;
 import forum.service.UserService;
-import forum.service.impl.EmailServiceTLS;
 
 @Controller
 public class UserController {
@@ -27,7 +27,7 @@ public class UserController {
 	@Autowired
 	private UserService userServiceJPA;
 	@Autowired
-	private EmailServiceTLS emailServiceTLS;
+	private EmailService emailServiceTLS;
 
 	public String getErrormsg() {
 		return errormsg;
