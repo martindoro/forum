@@ -58,6 +58,6 @@ public interface FavoriteService {
 	 * @param value
 	 *            new Favorite value to be set
 	 */
-	void updateFavorite(int ident, int value);
+	void updateFavorite(String user, int ident, int value);
 
 }

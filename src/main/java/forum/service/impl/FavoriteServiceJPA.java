@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import forum.entity.Favorite;
 import forum.entity.ForumUser;
 import forum.service.FavoriteService;
+import forum.service.UserService;
 
 @Transactional
 public class FavoriteServiceJPA implements FavoriteService {
@@ -79,8 +80,13 @@ public class FavoriteServiceJPA implements FavoriteService {
 	 * @see forum.service.FavoriteService#updateFavorite(java.lang.String, int, int)
 	 */
 	@Override
-	public void updateFavorite(int ident, int val) {
-		Favorite fav = (Favorite) entityManager.createQuery("SELECT f FROM Favorite f WHERE f.ident = :ident").setParameter("ident", ident).getSingleResult();
+	public void updateFavorite(String user, int ident, int val) {
+		Favorite fav;
+		try {
+			fav = (Favorite) entityManager.createQuery("SELECT f FROM Favorite f WHERE f.ident = :ident").setParameter("ident", ident).getSingleResult();
+		} catch (Exception e) {
+			fav = new Favorite(user, ident, val);
+		}
 		fav.setValue(fav.getValue() + val);
 	}
 }

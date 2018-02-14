@@ -115,7 +115,7 @@ public class CommentServiceJPA implements CommentService {
 	public void setCommentValue(int ident, int value) {
 		Comment commentValue = (Comment) entityManager.createQuery("SELECT c FROM Comment c  WHERE c.ident = :ident")
 				.setParameter("ident", ident).getSingleResult();
-		commentValue.setValue(value);
+		commentValue.setValue(commentValue.getValue() + value);
 	}
 
 	/* (non-Javadoc)

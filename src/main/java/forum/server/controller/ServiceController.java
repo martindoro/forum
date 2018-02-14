@@ -169,7 +169,7 @@ public class ServiceController {
 			@RequestParam(value = "ident", required = false) int ident, Model model) {
 		if (favoriteService.isFavorite(userController.getLoggedPlayer().getLogin(), ident)) {
 			if (favoriteService.getFavorite(userController.getLoggedPlayer().getLogin(), ident).getValue() < 1) {
-				favoriteService.updateFavorite(
+				favoriteService.updateFavorite(userController.getLoggedPlayer().getLogin(), 
 						favoriteService.getFavorite(userController.getLoggedPlayer().getLogin(), ident).getIdent(), 1);
 				commentService.setCommentValue(ident, 1);
 			}
@@ -198,7 +198,7 @@ public class ServiceController {
 			@RequestParam(value = "ident", required = false) int ident, Model model) {
 		if (favoriteService.isFavorite(userController.getLoggedPlayer().getLogin(), ident)) {
 			if (favoriteService.getFavorite(userController.getLoggedPlayer().getLogin(), ident).getValue() > -1) {
-				favoriteService.updateFavorite(
+				favoriteService.updateFavorite(userController.getLoggedPlayer().getLogin(), 
 						favoriteService.getFavorite(userController.getLoggedPlayer().getLogin(), ident).getIdent(), -1);
 				commentService.setCommentValue(ident, -1);
 			}

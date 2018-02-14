@@ -65,7 +65,7 @@ public class FavoriteServiceJPATest {
 	@Test
 	public void testUpdateFavorite() {
 		assertEquals(1, favoriteService.getFavorite("aaa", 19).getValue());
-		favoriteService.updateFavorite(favoriteService.getFavorite("aaa", 19).getIdent(), -1);
+		favoriteService.updateFavorite("aaa", favoriteService.getFavorite("aaa", 19).getIdent(), -1);
 		assertEquals(0, favoriteService.getFavorite("aaa", 19).getValue());
 	}
 
