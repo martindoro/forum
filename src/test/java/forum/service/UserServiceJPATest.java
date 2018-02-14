@@ -171,7 +171,7 @@ public class UserServiceJPATest {
 		
 		//userService.updateImage(forumUser.getLogin(), pic);
 		
-		File fnew=new File("/Users/matuskollar/Desktop/white-cogwheel.png");
+		File fnew=new File("C:\\Users\\student\\Desktop\\forum\\forum\\src\\main\\resources\\static\\images\\white-cogwheel.png");
 		BufferedImage originalImage=ImageIO.read(fnew);
 		ByteArrayOutputStream baos=new ByteArrayOutputStream();
 		ImageIO.write(originalImage, "png", baos );

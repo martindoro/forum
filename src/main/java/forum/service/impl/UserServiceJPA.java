@@ -44,8 +44,8 @@ public class UserServiceJPA implements UserService{
 	public ForumUser login(String login, String password) {
 		try {
 			return (ForumUser) entityManager.createQuery(
-					"SELECT fu FROM ForumUser fu WHERE fu.login =:login AND fu.password = crypt(:password, fu.password)")
-				//"SELECT fu FROM ForumUser fu WHERE fu.login =:login AND fu.password =:password")
+					//"SELECT fu FROM ForumUser fu WHERE fu.login =:login AND fu.password = crypt(:password, fu.password)")
+				"SELECT fu FROM ForumUser fu WHERE fu.login =:login AND fu.password =:password")
 					.setParameter("login", login).setParameter("password", password).getSingleResult();
 		} catch (NoResultException e) {
 			return null;
@@ -160,8 +160,8 @@ public class UserServiceJPA implements UserService{
 	public void passChange(String login, String password) {
 		if (!password.isEmpty() && isValid(password)) {
 			entityManager.createQuery(
-					"UPDATE ForumUser fu SET fu.password =crypt(:password, fu.password) WHERE fu.login = :login")
-					//"UPDATE ForumUser fu SET fu.password =:password WHERE fu.login = :login")
+					//"UPDATE ForumUser fu SET fu.password =crypt(:password, fu.password) WHERE fu.login = :login")
+					"UPDATE ForumUser fu SET fu.password =:password WHERE fu.login = :login")
 					.setParameter("password", password).setParameter("login", login).executeUpdate();
 		}
 	}
