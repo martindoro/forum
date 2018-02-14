@@ -16,7 +16,7 @@ public class ForumUser {
 	@Column(unique = true)
 	public String login;
 	//Please, comment line below in case of testing, H2 temporary database dont support password crypt
-	//@ColumnTransformer(write = "crypt(?, gen_salt('bf', 8))")
+	@ColumnTransformer(write = "crypt(?, gen_salt('bf', 8))")
 	private String password;
 	private String email;
 	private int admin;

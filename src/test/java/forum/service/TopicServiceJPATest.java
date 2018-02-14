@@ -45,53 +45,47 @@ public class TopicServiceJPATest {
 		assertEquals("Test content", topicService.getTopicList(1).get(0).getContent());
 		
 		
-		//fail("Not yet implemented");
+	
 	}
 
 	@Test
 	public void testGetTopicList() {
-		
 		assertEquals("ferko", topicService.getTopicList(1).get(0).getUserName());
-		//assertEquals(2, topicService.getTopicCount());
-		//fail("Not yet implemented");
+		
+	
 	}
 
 	@Test(expected = NoResultException.class)
 	public void testRemoveTopic() {
-		//fail("Not yet implemented");
+		
 		topicService.removeTopic(topic.getIdent());
 		assertEquals(null, topicService.getContentById(topic.getIdent()));
 	
 	}
 
 	@Test
-	public void testGetTopicCountForCategory() {
-		//fail("Not yet implemented");
+	public void testGetTopicCountForCategory() {	
 		assertEquals(2, topicService.getTopicCountForCategory(1));
 	}
 
 	@Test
-	public void testGetTopicCount() {
-		//fail("Not yet implemented");
+	public void testGetTopicCount() {		
 		assertEquals(3, topicService.getTopicCount());
 	}
 
 	@Test
-	public void testGetContentById() {
-		//fail("Not yet implemented");
+	public void testGetContentById() {		
 		assertEquals("Test content", topicService.getContentById((topic.getIdent())));
 	}
 
 	@Test
-	public void testGetTopicState() {
-		//fail("Not yet implemented");
+	public void testGetTopicState() {		
 		topicService.setTopicState(topic.getIdent(), false);
 		assertEquals(false, topicService.getTopicState(topic.getIdent()));
 	}
 
 	@Test
-	public void testSetTopicState() {
-		//fail("Not yet implemented");
+	public void testSetTopicState() {		
 		topicService.setTopicState(topic.getIdent(), true);
 		assertEquals(true, topicService.getTopicState(topic.getIdent()));
 	}
