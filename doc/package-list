@@ -1,1 +1,5 @@
+forum.entity
+forum.server
+forum.server.controller
 forum.service
+forum.service.impl

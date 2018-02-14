@@ -77,6 +77,7 @@
 								<div class="postbody">
 									<ol class="post-buttons">
 										<span th:if='${not @userController.logged}'></span>
+										<span class="icon_post_target has-tooltip">Comment value <b th:text='${comments.value}'></b></span>
 
 										<span th:if='${@userController.logged}'>
 											<li class="icon_post_target has-tooltip"
