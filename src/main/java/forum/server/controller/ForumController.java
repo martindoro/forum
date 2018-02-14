@@ -146,9 +146,9 @@ public class ForumController {
 	}
 	
 	@RequestMapping("/setTopicStateFromTopic")
-	public String setTopicStateFromTopic(@RequestParam(value = "value", required = false) int value, @RequestParam(value = "lock", required = false) boolean lock, int ident, Model model) {
+	public String setTopicStateFromTopic(@RequestParam(value = "value", required = false) int value, @RequestParam(value = "lock", required = false) boolean lock, Model model) {
 		//userServiceJPA.setRights(rhchange, setAdmin);
-		categoryId = ident;
+		//categoryId = ident;
 		model.addAttribute("getCategoryById", categoryService.getContentById(categoryId));
 		fillModel(model);
 		topicService.setTopicState(value, lock);
